@@ -20,7 +20,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Configuration
+
+    require 'passaporte_web'
+
+    PassaporteWeb.configure do |c|
+      c.url = 'http://sandbox.app.passaporteweb.com.br' # defaults to 'https://app.passaporteweb.com.br' if omitted
+      c.application_token = 'some-app-token'
+      c.application_secret = 'some-app-secret'
+      c.user_token = 'some-user-token'
+      c.user_secret = 'some-user-secret'
+    end
 
 ## Contributing
 
