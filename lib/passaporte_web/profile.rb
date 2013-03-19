@@ -41,12 +41,10 @@ module PassaporteWeb
       self.new(attributes_hash)
     end
 
-    # TOSPEC
     def initialize(attributes={})
       set_attributes(attributes)
     end
 
-    # TOSPEC
     def attributes
       ATTRIBUTES.inject({}) do |hash, attribute|
         hash[attribute] = self.send(attribute)
@@ -54,9 +52,12 @@ module PassaporteWeb
       end
     end
 
-    # TOSPEC
     def ==(other)
       self.uuid == other.uuid
+    end
+
+    def ===(other)
+      self.object_id == other.object_id
     end
 
     # PUT /profile/api/info/:uuid/
