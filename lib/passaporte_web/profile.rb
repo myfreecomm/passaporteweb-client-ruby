@@ -8,10 +8,10 @@ module PassaporteWeb
 
     attr_accessor *UPDATABLE_ATTRIBUTES
     attr_reader *(ATTRIBUTES - UPDATABLE_ATTRIBUTES)
+    attr_reader :errors
 
     # GET /profile/api/info/:uuid/
     # https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-uuid
-    # TOSPEC
     def self.find(uuid)
       response = RestClient.get(
         "#{PassaporteWeb.configuration.url}/profile/api/info/#{uuid}/",
@@ -19,7 +19,7 @@ module PassaporteWeb
         authorization: PassaporteWeb.configuration.application_credentials,
         content_type: :json,
         accept: :json,
-        user_agent: "PassaporteWeb Ruby Client v#{PassaporteWeb::VERSION}" # TODO ser configurável
+        user_agent: PassaporteWeb.configuration.user_agent
       )
       attributes_hash = MultiJson.decode(response.body)
       self.new(attributes_hash)
@@ -27,7 +27,6 @@ module PassaporteWeb
 
     # GET /profile/api/info/?email=:email
     # https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-email-email
-    # TOSPEC
     def self.find_by_email(email)
       response = RestClient.get(
         "#{PassaporteWeb.configuration.url}/profile/api/info/",
@@ -35,7 +34,7 @@ module PassaporteWeb
         authorization: PassaporteWeb.configuration.application_credentials,
         content_type: :json,
         accept: :json,
-        user_agent: "PassaporteWeb Ruby Client v#{PassaporteWeb::VERSION}" # TODO ser configurável
+        user_agent: PassaporteWeb.configuration.user_agent
       )
       attributes_hash = MultiJson.decode(response.body)
       self.new(attributes_hash)
@@ -43,6 +42,7 @@ module PassaporteWeb
 
     def initialize(attributes={})
       set_attributes(attributes)
+      @errors = {}
     end
 
     def attributes
@@ -62,7 +62,6 @@ module PassaporteWeb
 
     # PUT /profile/api/info/:uuid/
     # https://app.passaporteweb.com.br/static/docs/perfil.html#put-profile-api-info-uuid
-    # TOSPEC
     def save
       # TODO validar atributos?
       response = RestClient.put(
@@ -72,15 +71,16 @@ module PassaporteWeb
         authorization: PassaporteWeb.configuration.application_credentials,
         content_type: :json,
         accept: :json,
-        user_agent: "PassaporteWeb Ruby Client v#{PassaporteWeb::VERSION}" # TODO ser configurável
+        user_agent: PassaporteWeb.configuration.user_agent
       )
-      if response.code == 200
-        attributes_hash = MultiJson.decode(response.body)
-        set_attributes(attributes_hash)
-        true
-      else
-        false # TODO mostrar erros
-      end
+      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
+      attributes_hash = MultiJson.decode(response.body)
+      set_attributes(attributes_hash)
+      @errors = {}
+      true
+    rescue *[RestClient::Conflict, RestClient::BadRequest] => e
+      @errors = MultiJson.decode(e.response.body)
+      false
     end
 
     private
@@ -106,7 +106,6 @@ module PassaporteWeb
       @uuid = hash['uuid']
     end
 
-    # TOSPEC ?
     def update_body
       hash = self.attributes.select { |key, value| UPDATABLE_ATTRIBUTES.include?(key) && !value.nil? }
       MultiJson.encode(hash)

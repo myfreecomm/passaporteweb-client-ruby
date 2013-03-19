@@ -81,7 +81,53 @@ describe PassaporteWeb::Profile do
 
   describe ".find", :vcr => true do
     it "should find the requested profile by uuid" do
-      # TODO
+      profile = PassaporteWeb::Profile.find("5e32f927-c4ab-404e-a91c-b2abc05afb56")
+      profile.should be_instance_of(PassaporteWeb::Profile)
+      profile.uuid.should == '5e32f927-c4ab-404e-a91c-b2abc05afb56'
+      profile.email.should == 'teste@teste.com'
+      profile.update_info_url.should == '/profile/api/info/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
+    end
+    it "should raise an error if no profiles exist with that uuid" do
+      expect {
+        PassaporteWeb::Profile.find("invalid-uuid")
+      }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+    end
+  end
+
+  describe ".find_by_email", :vcr => true do
+    it "should find the requested profile by email" do
+      profile = PassaporteWeb::Profile.find_by_email("teste@teste.com")
+      profile.should be_instance_of(PassaporteWeb::Profile)
+      profile.uuid.should == '5e32f927-c4ab-404e-a91c-b2abc05afb56'
+      profile.email.should == 'teste@teste.com'
+      profile.update_info_url.should == '/profile/api/info/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
+    end
+    it "should raise an error if no profiles exist with that email" do
+      expect {
+        PassaporteWeb::Profile.find("invalid@email.com")
+      }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+    end
+  end
+
+  describe "#save", :vcr => true do
+    let(:profile) { PassaporteWeb::Profile.find("5e32f927-c4ab-404e-a91c-b2abc05afb56") }
+    context "on success" do
+      it "should update the profile attributes on the server" do
+        profile.first_name.should == 'Testeiro'
+        profile.first_name = 'Testador'
+        profile.save.should be_true
+        profile.first_name.should == 'Testador'
+
+        profile = PassaporteWeb::Profile.find("5e32f927-c4ab-404e-a91c-b2abc05afb56")
+        profile.first_name.should == 'Testador'
+      end
+    end
+    context "on failure" do
+      it "should return false and set the errors hash" do
+        profile.cpf = 42
+        profile.save.should be_false
+        profile.errors.should == {"cpf" => ["Certifique-se de que o valor tenha no mínimo 11 caracteres (ele possui 2)."]}
+      end
     end
   end
 
