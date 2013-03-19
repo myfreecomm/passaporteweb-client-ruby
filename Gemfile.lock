@@ -2,8 +2,9 @@ PATH
   remote: .
   specs:
     passaporteweb-client (0.0.1)
-      multi_json (= 1.7)
-      rest-client (= 1.6)
+      multi_json (~> 1.7)
+      recursive-open-struct (~> 0.3)
+      rest-client (~> 1.6)
 
 GEM
   remote: https://rubygems.org/
@@ -15,7 +16,7 @@ GEM
     diff-lcs (1.2.1)
     method_source (0.8.1)
     mime-types (1.21)
-    multi_json (1.7.0)
+    multi_json (1.7.1)
     pry (0.9.12)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -23,7 +24,8 @@ GEM
     pry-nav (0.2.3)
       pry (~> 0.9.10)
     rake (10.0.3)
-    rest-client (1.6.0)
+    recursive-open-struct (0.3.1)
+    rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)

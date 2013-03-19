@@ -5,6 +5,7 @@ require 'multi_json'
 
 require "passaporte_web/version"
 require "passaporte_web/configuration"
+require "passaporte_web/profile"
 
 module PassaporteWeb
 

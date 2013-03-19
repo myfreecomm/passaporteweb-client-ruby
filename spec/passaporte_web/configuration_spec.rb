@@ -21,4 +21,38 @@ describe PassaporteWeb::Configuration do
     config.user_secret.should be_nil
   end
 
+  describe "#application_credentials" do
+    let(:config) { PassaporteWeb::Configuration.new }
+    it "should return the HTTP Basic Auth header value for the application login" do
+      config.application_token = 'some-app-token'
+      config.application_secret = 'some-app-secret'
+      config.application_credentials.should == 'Basic c29tZS1hcHAtdG9rZW46c29tZS1hcHAtc2VjcmV0'
+    end
+    it "should require the application_token to be set" do
+      config.application_secret = 'some-app-secret'
+      expect { config.application_credentials }.to raise_error(ArgumentError, 'application_token not set')
+    end
+    it "should require the application_secret to be set" do
+      config.application_token = 'some-app-token'
+      expect { config.application_credentials }.to raise_error(ArgumentError, 'application_secret not set')
+    end
+  end
+
+  describe "#user_credentials" do
+    let(:config) { PassaporteWeb::Configuration.new }
+    it "should return the HTTP Basic Auth header value for the user login" do
+      config.user_token = 'some-user-token'
+      config.user_secret = 'some-user-secret'
+      config.user_credentials.should == 'Basic c29tZS11c2VyLXRva2VuOnNvbWUtdXNlci1zZWNyZXQ='
+    end
+    it "should require the user_token to be set" do
+      config.user_secret = 'some-user-secret'
+      expect { config.user_credentials }.to raise_error(ArgumentError, 'user_token not set')
+    end
+    it "should require the user_secret to be set" do
+      config.user_token = 'some-user-token'
+      expect { config.user_credentials }.to raise_error(ArgumentError, 'user_secret not set')
+    end
+  end
+
 end
