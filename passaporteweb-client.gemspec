@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "passaporteweb-client"
   spec.version       = PassaporteWeb::VERSION
   spec.authors       = ["Rodrigo Tassinari de Oliveira"]
-  spec.email         = ["rodrigo@pittlandia.net"]
+  spec.email         = ["rodrigo@pittlandia.net", "rodrigo.tassinari@myfreecomm.com.br"]
   spec.description   = %q{A Ruby client for the PassaporteWeb REST API}
   spec.summary       = %q{A Ruby client for the PassaporteWeb REST API: https://app.passaporteweb.com.br/static/docs/}
   spec.homepage      = "https://github.com/myfreecomm/passaporteweb-client-ruby"
