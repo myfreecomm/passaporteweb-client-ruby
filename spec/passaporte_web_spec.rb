@@ -11,11 +11,13 @@ describe PassaporteWeb do
     it 'should be done via block initialization' do
       PassaporteWeb.configure do |c|
         c.url = 'http://some/where'
+        c.user_agent = 'My App v1.0'
         c.application_token = 'some-app-token'
         c.application_secret = 'some-app-secret'
         c.user_secret = nil
       end
       PassaporteWeb.configuration.url.should == 'http://some/where'
+      PassaporteWeb.configuration.user_agent.should == 'My App v1.0'
       PassaporteWeb.configuration.application_token.should == 'some-app-token'
       PassaporteWeb.configuration.application_secret.should == 'some-app-secret'
       PassaporteWeb.configuration.user_token.should be_nil

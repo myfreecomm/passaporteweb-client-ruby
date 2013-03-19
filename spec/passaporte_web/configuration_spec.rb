@@ -7,6 +7,10 @@ describe PassaporteWeb::Configuration do
     PassaporteWeb::Configuration.new.url.should == 'https://app.passaporteweb.com.br'
   end
 
+  it "should use a default user agent" do
+    PassaporteWeb::Configuration.new.user_agent.should == "PassaporteWeb Ruby Client v#{PassaporteWeb::VERSION}"
+  end
+
   it 'should allow setting the configuration parameters' do
     config = PassaporteWeb::Configuration.new
 
