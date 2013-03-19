@@ -11,7 +11,8 @@ Gem::Specification.new do |spec|
   spec.description   = %q{A Ruby client for the PassaporteWeb REST API}
   spec.summary       = %q{A Ruby client for the PassaporteWeb REST API: https://app.passaporteweb.com.br/static/docs/}
   spec.homepage      = "https://github.com/myfreecomm/passaporteweb-client-ruby"
-  spec.license       = "MIT"
+  spec.license       = "Apache-v2"
+  spec.has_rdoc      = true
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
