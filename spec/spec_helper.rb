@@ -1,3 +1,9 @@
+if ENV['COVERAGE'] == 'on'
+  require 'simplecov'
+  SimpleCov.start
+  puts "required simplecov"
+end
+
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'passaporte_web'
 
