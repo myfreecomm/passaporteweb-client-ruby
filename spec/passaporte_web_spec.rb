@@ -14,6 +14,7 @@ describe PassaporteWeb do
         c.user_agent = 'My App v1.0'
         c.application_token = 'some-app-token'
         c.application_secret = 'some-app-secret'
+        c.user_token = nil
         c.user_secret = nil
       end
       PassaporteWeb.configuration.url.should == 'http://some/where'

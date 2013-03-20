@@ -12,14 +12,7 @@ module PassaporteWeb
     # GET /profile/api/info/:uuid/
     # https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-uuid
     def self.find(uuid)
-      response = RestClient.get(
-        "#{PassaporteWeb.configuration.url}/profile/api/info/#{uuid}/",
-        params: {},
-        authorization: PassaporteWeb.configuration.application_credentials,
-        content_type: :json,
-        accept: :json,
-        user_agent: PassaporteWeb.configuration.user_agent
-      )
+      response = Http.get("/profile/api/info/#{uuid}/")
       attributes_hash = MultiJson.decode(response.body)
       self.new(attributes_hash)
     end
@@ -27,14 +20,7 @@ module PassaporteWeb
     # GET /profile/api/info/?email=:email
     # https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-email-email
     def self.find_by_email(email)
-      response = RestClient.get(
-        "#{PassaporteWeb.configuration.url}/profile/api/info/",
-        params: {email: email},
-        authorization: PassaporteWeb.configuration.application_credentials,
-        content_type: :json,
-        accept: :json,
-        user_agent: PassaporteWeb.configuration.user_agent
-      )
+      response = Http.get("/profile/api/info/", email: email)
       attributes_hash = MultiJson.decode(response.body)
       self.new(attributes_hash)
     end
@@ -63,15 +49,7 @@ module PassaporteWeb
     # https://app.passaporteweb.com.br/static/docs/perfil.html#put-profile-api-info-uuid
     def save
       # TODO validar atributos?
-      response = RestClient.put(
-        "#{PassaporteWeb.configuration.url}/profile/api/info/#{uuid}/",
-        update_body,
-        params: {},
-        authorization: PassaporteWeb.configuration.application_credentials,
-        content_type: :json,
-        accept: :json,
-        user_agent: PassaporteWeb.configuration.user_agent
-      )
+      response = Http.put("/profile/api/info/#{uuid}/", update_body)
       raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
       attributes_hash = MultiJson.decode(response.body)
       set_attributes(attributes_hash)
@@ -106,8 +84,7 @@ module PassaporteWeb
     end
 
     def update_body
-      hash = self.attributes.select { |key, value| UPDATABLE_ATTRIBUTES.include?(key) && !value.nil? }
-      MultiJson.encode(hash)
+      self.attributes.select { |key, value| UPDATABLE_ATTRIBUTES.include?(key) && !value.nil? }
     end
 
   end
