@@ -1,5 +1,4 @@
 # encoding: utf-8
-require 'recursive-open-struct'
 module PassaporteWeb
 
   class Profile

@@ -3,7 +3,6 @@ PATH
   specs:
     passaporteweb-client (0.0.1)
       multi_json (~> 1.7)
-      recursive-open-struct (~> 0.3)
       rest-client (~> 1.6)
 
 GEM
@@ -31,7 +30,6 @@ GEM
     pry-nav (0.2.3)
       pry (~> 0.9.10)
     rake (10.0.3)
-    recursive-open-struct (0.3.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec (2.13.0)
@@ -65,5 +63,6 @@ DEPENDENCIES
   pry-nav (~> 0.2)
   rake
   rspec (~> 2.13)
+  simplecov (~> 0.7)
   vcr (~> 2.4)
   webmock (~> 1.10)

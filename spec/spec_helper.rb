@@ -1,11 +1,10 @@
+require 'simplecov'
 require 'coveralls'
-Coveralls.wear!
-
-# if ENV['COVERAGE'] == 'on'
-#   require 'simplecov'
-#   SimpleCov.start
-#   puts "required simplecov"
-# end
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+]
+SimpleCov.start
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'passaporte_web'
