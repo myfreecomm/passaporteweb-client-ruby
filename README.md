@@ -4,6 +4,10 @@ A Ruby client for the PassaporteWeb REST API
 
 PassaporteWeb API docs: https://app.passaporteweb.com.br/static/docs/
 
+[![Code Climate](https://codeclimate.com/github/myfreecomm/passaporteweb-client-ruby.png)](https://codeclimate.com/github/myfreecomm/passaporteweb-client-ruby)
+[![Build Status](https://travis-ci.org/myfreecomm/passaporteweb-client-ruby.png?branch=master)](https://travis-ci.org/myfreecomm/passaporteweb-client-ruby)
+[![Coverage Status](https://coveralls.io/repos/myfreecomm/passaporteweb-client-ruby/badge.png?branch=master)](https://coveralls.io/r/myfreecomm/passaporteweb-client-ruby)
+
 ## Installation
 
 Add this line to your application's Gemfile:
