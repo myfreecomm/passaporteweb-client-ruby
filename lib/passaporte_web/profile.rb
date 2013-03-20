@@ -63,24 +63,12 @@ module PassaporteWeb
     private
 
     def set_attributes(hash)
-      @accounts = hash['accounts'] # TODO é um array de hashes
-      @birth_date = hash['birth_date']
-      @country = hash['country']
-      @cpf = hash['cpf']
-      @email = hash['email']
-      @first_name = hash['first_name']
-      @gender = hash['gender']
-      @is_active = hash['is_active']
-      @language = hash['language']
-      @last_name = hash['last_name']
-      @nickname = hash['nickname']
-      @notifications = hash['notifications'] # TODO é um hash
-      @send_myfreecomm_news = hash['send_myfreecomm_news']
-      @send_partner_news = hash['send_partner_news']
-      @services = hash['services'] # TODO é um hash
-      @timezone = hash['timezone']
-      @update_info_url = hash['update_info_url']
-      @uuid = hash['uuid']
+      # TODO @accounts é um array de hashes
+      # TODO @services é um hash
+      # TODO @notifications é um hash
+      ATTRIBUTES.each do |attribute|
+        instance_variable_set("@#{attribute}".to_sym, hash[attribute.to_s])
+      end
     end
 
     def update_body
