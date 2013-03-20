@@ -15,15 +15,26 @@ module PassaporteWeb
     end
 
     def application_credentials
-      raise ArgumentError, 'application_token not set' if @application_token.nil? || @application_token.strip == ''
-      raise ArgumentError, 'application_secret not set' if @application_secret.nil? || @application_secret.strip == ''
-      "Basic #{::Base64.strict_encode64("#{@application_token}:#{@application_secret}")}"
+      check_tokens! :application_token, :application_secret
+      base64_credential(@application_token, @application_secret)
     end
 
     def user_credentials
-      raise ArgumentError, 'user_token not set' if @user_token.nil? || @user_token.strip == ''
-      raise ArgumentError, 'user_secret not set' if @user_secret.nil? || @user_secret.strip == ''
-      "Basic #{::Base64.strict_encode64("#{@user_token}:#{@user_secret}")}"
+      check_tokens! :user_token, :user_secret
+      base64_credential(@user_token, @user_secret)
+    end
+
+    private
+
+    def check_tokens!(*tokens)
+      tokens.each do |token|
+        value = instance_variable_get("@#{token}".to_sym)
+        raise ArgumentError, "#{token} not set" if value.nil? || value.to_s.strip == ''
+      end
+    end
+
+    def base64_credential(user, password)
+      "Basic #{::Base64.strict_encode64("#{user}:#{password}")}"
     end
   end
 
