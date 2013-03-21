@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rest-client", "~> 1.6.7"
   spec.add_dependency "multi_json", "~> 1.7.1"
 
-  spec.add_development_dependency "bundler", "~> 1.3.4"
+  spec.add_development_dependency "bundler", "~> 1.3.2"
   spec.add_development_dependency "rake", "~> 10.0.3"
   spec.add_development_dependency "rspec", "~> 2.13.0"
   spec.add_development_dependency "vcr", "~> 2.4.0"
