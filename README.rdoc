@@ -8,6 +8,8 @@ PassaporteWeb API docs: https://app.passaporteweb.com.br/static/docs/
 {<img src="https://coveralls.io/repos/myfreecomm/passaporteweb-client-ruby/badge.png?branch=master" alt="Coverage Status" />}[https://coveralls.io/r/myfreecomm/passaporteweb-client-ruby]
 {<img src="https://codeclimate.com/github/myfreecomm/passaporteweb-client-ruby.png" alt="Code Climate Status" />}[https://codeclimate.com/github/myfreecomm/passaporteweb-client-ruby]
 
+RDoc documentation: http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby
+
 == Installation
 
 Add this line to your application's Gemfile:
