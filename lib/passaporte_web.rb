@@ -7,6 +7,7 @@ require "passaporte_web/version"
 require "passaporte_web/configuration"
 require "passaporte_web/http"
 require "passaporte_web/profile"
+require "passaporte_web/registration_identity"
 
 module PassaporteWeb
 
