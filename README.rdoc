@@ -55,6 +55,40 @@ Or install it yourself as:
   profile1.save # true
   profile1.gender # 'M'
 
+=== Registration of Identity
+
+* Creates a new identity
+* Authentication token and secret using the application.
+* Fields <tt>first_name</tt>, <tt>last_name</tt>, <tt>cpf</tt> and <tt>inhibit_activation_message</tt> are optional.
+* <tt>password2</tt> and <tt>password</tt> fields are required even if the parameter <tt>must_change_password</tt> is used.
+
+    attributes = {
+      "email" => "lula_luis7@example.com",
+      "first_name" => "Luis Inácio",
+      "last_name" => "da Silva",
+      "password" => "rW5oHxYB",
+      "password2" => "rW5oHxYB",
+      "must_change_password" => true,
+      "tos" => true,
+      "inhibit_activation_message" => false,
+      "cpf" => "353.423.680-73",
+      "send_partner_news" => false,
+      "send_myfreecomm_news" => false
+    }
+    registration_identity = PassaporteWeb::RegistrationIdentity.new(attributes)
+
+    registration_identity.save # true
+
+    attributes = {
+      "email" => "lula_luis8@example.com",
+      "first_name" => "Luis Inácio",
+      "last_name" => "da Silva",
+      "tos" => true
+    }
+    registration_identity = PassaporteWeb::RegistrationIdentity.new(attributes)
+
+    registration_identity.save # false
+
 == Contributing
 
 1. Fork it
