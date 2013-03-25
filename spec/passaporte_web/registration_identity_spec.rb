@@ -43,7 +43,7 @@ describe PassaporteWeb::RegistrationIdentity do
   end
 
   describe ".save", :vcr => true do
-    before(:each) do
+    it "should save with password, password2 and must_change_password" do
       attributes = {
         "email" => "lula_luis4@example.com",
         "first_name" => "Luis Inácio",
@@ -53,10 +53,26 @@ describe PassaporteWeb::RegistrationIdentity do
         "must_change_password" => true,
         "tos" => true
       }
-      @registration_identity = PassaporteWeb::RegistrationIdentity.new(attributes)
+      registration_identity = PassaporteWeb::RegistrationIdentity.new(attributes)
+      registration_identity.save.should be_true
     end
-    it "should save with password, password2 and must_change_password" do
-      @registration_identity.save.should be_true
+
+    it "should sabe with all params" do
+      attributes = {
+        "email" => "lula_luis7@example.com",
+        "first_name" => "Luis Inácio",
+        "last_name" => "da Silva",
+        "password" => "rW5oHxYB",
+        "password2" => "rW5oHxYB",
+        "must_change_password" => true,
+        "tos" => true,
+        "inhibit_activation_message" => false,
+        "cpf" => "353.423.680-73",
+        "send_partner_news" => false,
+        "send_myfreecomm_news" => false
+      }
+      registration_identity = PassaporteWeb::RegistrationIdentity.new(attributes)
+      registration_identity.save.should be_true
     end
   end
 end
