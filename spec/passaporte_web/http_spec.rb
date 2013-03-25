@@ -62,25 +62,23 @@ describe PassaporteWeb::Http do
       RestClient.should_receive(:post).with(
         'https://some/where/foo',
         '{"hello":"world"}',
-        params: {spam: 'eggs'},
         authorization: 'Basic c29tZS1hcHAtdG9rZW46c29tZS1hcHAtc2VjcmV0',
         content_type: :json,
         accept: :json,
         user_agent: 'My Mocking App v1.1'
       ).and_return(mock_response)
-      described_class.post('/foo', {hello: 'world'}, {spam: 'eggs'})
+      described_class.post('/foo', {hello: 'world'})
     end
     it "should use RestClient.post with the supplied params and common options, with body already as json" do
       RestClient.should_receive(:post).with(
         'https://some/where/foo',
         '{"hello":"world"}',
-        params: {spam: 'eggs'},
         authorization: 'Basic c29tZS1hcHAtdG9rZW46c29tZS1hcHAtc2VjcmV0',
         content_type: :json,
         accept: :json,
         user_agent: 'My Mocking App v1.1'
       ).and_return(mock_response)
-      described_class.post('/foo', '{"hello":"world"}', {spam: 'eggs'})
+      described_class.post('/foo', '{"hello":"world"}')
     end
   end
 
