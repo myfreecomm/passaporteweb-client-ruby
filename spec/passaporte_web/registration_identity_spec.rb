@@ -57,6 +57,17 @@ describe PassaporteWeb::RegistrationIdentity do
       registration_identity.save.should be_true
     end
 
+    it "should save without password, password2 and must_change_password" do
+      attributes = {
+        "email" => "lula_luis8@example.com",
+        "first_name" => "Luis Inácio",
+        "last_name" => "da Silva",
+        "tos" => true
+      }
+      registration_identity = PassaporteWeb::RegistrationIdentity.new(attributes)
+      registration_identity.save.should_not be_true
+    end
+
     it "should sabe with all params" do
       attributes = {
         "email" => "lula_luis7@example.com",
