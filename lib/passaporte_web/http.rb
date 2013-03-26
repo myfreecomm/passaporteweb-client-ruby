@@ -4,6 +4,11 @@ module PassaporteWeb
   class Http
 
     def self.get(path='/', params={})
+      puts "*"*80
+      puts "#{PassaporteWeb.configuration.url}#{path}"
+      o = {params: params}.merge(common_params)
+      puts o
+      puts "*"*80
       RestClient.get(
         "#{PassaporteWeb.configuration.url}#{path}",
         {params: params}.merge(common_params)
