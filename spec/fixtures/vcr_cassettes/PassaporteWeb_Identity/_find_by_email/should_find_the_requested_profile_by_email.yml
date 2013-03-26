@@ -14,7 +14,7 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.0.1
+      - PassaporteWeb Ruby Client v0.0.3
   response:
     status:
       code: 200
@@ -32,13 +32,13 @@ http_interactions:
         YXBwbGljYXRpb24vanNvbg==
       !binary "RGF0ZQ==":
       - !binary |-
-        VHVlLCAxOSBNYXIgMjAxMyAyMDozMDowOSBHTVQ=
+        VHVlLCAyNiBNYXIgMjAxMyAxNTo1Nzo0NiBHTVQ=
       !binary "RXhwaXJlcw==":
       - !binary |-
-        VHVlLCAxOSBNYXIgMjAxMyAyMDozMDowOCBHTVQ=
+        VHVlLCAyNiBNYXIgMjAxMyAxNTo1Nzo0NSBHTVQ=
       !binary "TGFzdC1Nb2RpZmllZA==":
       - !binary |-
-        VHVlLCAxOSBNYXIgMjAxMyAyMDozMDowOSBHTVQ=
+        VHVlLCAyNiBNYXIgMjAxMyAxNTo1Nzo0NiBHTVQ=
       !binary "UDNw":
       - !binary |-
         Q1A9Ik5PTiBEU1AgQ09SIENVUmEgVElBIg==
@@ -50,7 +50,7 @@ http_interactions:
         QWNjZXB0LUVuY29kaW5n
       !binary "Q29udGVudC1MZW5ndGg=":
       - !binary |-
-        Mjkx
+        Mjk1
       !binary "WC1DYWNoZQ==":
       - !binary |-
         TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI=
@@ -68,13 +68,13 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIANHKSFEC/41Qy07DMBD8lcpnQkJIQOXEfyBkbZx1WOGsIz+KStV/x3Yp
-        DT31Yq1nx+OZOQgDPkiGGcXLRoi7jSAvQQXaZUCD8ZgwtoE0KQhk2Sf8IJSN
-        HNLUpK0hn0dR/6PVsFAtjmkPqrDzw7f3dPfodqTwJEQjcqCwl8oQ8knn/KBI
-        /LIrYm3rHh9bvW2fK9XBUHVNhxVsH1Q1tDCopgc99E/1leTJRKAZvy3nVByN
-        yaFIfa6Da3KrKrpWFKs8ygVcYHSS8cuvSomRxsy8xVPWMsBThGnloKR0+wsQ
-        lxECyhxVRmdKGYuzmgyWLm7v4M/8vNcOUdl5vvY/pTW6c/qBXPiQ+fuLHZyB
-        iomAPuBrOe+TlDj+AIIdKVw4AgAA
+        H4sIAHrFUVEC/41Q0U4CMRD8FdJnz0MEDTz5Eb4Z0+z1trixt720WwwS/t22
+        iJw88dJsZ6fTmTkoB1E0w4BqM1PqbqYoajBCuwJYcBEzxl7IkgEhzzHjB2V8
+        YsnTPG8dxTKq9h+thZFadcx7MJVdHr6953vEsCODJyHqkYVkr40j5JPO+UGV
+        +GU3xNa3K3xc2PXiuTFL6JrlfIkNrB9M0y2gM/MV2G711F5JnkwIDfjtuaTi
+        5FwJReZzGtxSmFTxilGQglfVMPd6hCCMQTN+xUk1KVFf+Lc4K1oOeJtgO/FR
+        s4b9BUhjD4K6BNYpuFrJGLwlh7WR25v4Mz/sbUA0fhiu/W/zGsO5g46CfOjy
+        /cUODkDVhJRKXup5n6XU8QdYO8YdPgIAAA==
     http_version: 
-  recorded_at: Tue, 19 Mar 2013 20:30:10 GMT
+  recorded_at: Tue, 26 Mar 2013 15:57:47 GMT
 recorded_with: VCR 2.4.0

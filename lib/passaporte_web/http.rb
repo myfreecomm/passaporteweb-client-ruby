@@ -19,6 +19,15 @@ module PassaporteWeb
       )
     end
 
+    def self.post(path='/', body={})
+      encoded_body = (body.is_a?(Hash) ? MultiJson.encode(body) : body)
+      RestClient.post(
+        "#{PassaporteWeb.configuration.url}#{path}",
+        encoded_body,
+        common_params
+      )
+    end
+
     private
 
     def self.common_params

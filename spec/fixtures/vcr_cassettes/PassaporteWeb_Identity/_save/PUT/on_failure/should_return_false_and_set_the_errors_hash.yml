@@ -14,7 +14,7 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.0.1
+      - PassaporteWeb Ruby Client v0.0.3
   response:
     status:
       code: 200
@@ -27,11 +27,11 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 19 Mar 2013 20:30:15 GMT
+      - Tue, 26 Mar 2013 15:57:47 GMT
       Expires:
-      - Tue, 19 Mar 2013 20:30:14 GMT
+      - Tue, 26 Mar 2013 15:57:46 GMT
       Last-Modified:
-      - Tue, 19 Mar 2013 20:30:15 GMT
+      - Tue, 26 Mar 2013 15:57:47 GMT
       P3p:
       - CP="NON DSP COR CURa TIA"
       Server:
@@ -39,7 +39,7 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Content-Length:
-      - '291'
+      - '295'
       X-Cache:
       - MISS from firewall.corp.myfreecomm.com.br
       X-Cache-Lookup:
@@ -51,21 +51,21 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIANfKSFEC/41Qy07DMBD8lcpnQkJIQOXEfyBkbZx1WOGsIz+KStV/x3Yp
-        DT31Yq1nx+OZOQgDPkiGGcXLRoi7jSAvQQXaZUCD8ZgwtoE0KQhk2Sf8IJSN
-        HNLUpK0hn0dR/6PVsFAtjmkPqrDzw7f3dPfodqTwJEQjcqCwl8oQ8knn/KBI
-        /LIrYm3rHh9bvW2fK9XBUHVNhxVsH1Q1tDCopgc99E/1leTJRKAZvy3nVByN
-        yaFIfa6Da3KrKrpWFKs8ygVcYHSS8cuvSomRxsy8xVPWMsBThGnloKR0+wsQ
-        lxECyhxVRmdKGYuzmgyWLm7v4M/8vNcOUdl5vvY/pTW6c/qBXPiQ+fuLHZyB
-        iomAPuBrOe+TlDj+AIIdKVw4AgAA
+        H4sIAHvFUVEC/41Q0U4CMRD8FdJnz0MEDTz5Eb4Z0+z1trixt720WwwS/t22
+        iJw88dJsZ6fTmTkoB1E0w4BqM1PqbqYoajBCuwJYcBEzxl7IkgEhzzHjB2V8
+        YsnTPG8dxTKq9h+thZFadcx7MJVdHr6953vEsCODJyHqkYVkr40j5JPO+UGV
+        +GU3xNa3K3xc2PXiuTFL6JrlfIkNrB9M0y2gM/MV2G711F5JnkwIDfjtuaTi
+        5FwJReZzGtxSmFTxilGQglfVMPd6hCCMQTN+xUk1KVFf+Lc4K1oOeJtgO/FR
+        s4b9BUhjD4K6BNYpuFrJGLwlh7WR25v4Mz/sbUA0fhiu/W/zGsO5g46CfOjy
+        /cUODkDVhJRKXup5n6XU8QdYO8YdPgIAAA==
     http_version: 
-  recorded_at: Tue, 19 Mar 2013 20:30:15 GMT
+  recorded_at: Tue, 26 Mar 2013 15:57:48 GMT
 - request:
     method: put
     uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/profile/api/info/5e32f927-c4ab-404e-a91c-b2abc05afb56/
     body:
       encoding: UTF-8
-      string: ! '{"cpf":42,"first_name":"42","gender":"","last_name":"","nickname":"","send_myfreecomm_news":false,"send_partner_news":false}'
+      string: ! '{"cpf":42,"first_name":"Testeiro","gender":"","last_name":"","nickname":"","send_myfreecomm_news":false,"send_partner_news":false}'
     headers:
       Accept:
       - application/json
@@ -74,9 +74,9 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.0.1
+      - PassaporteWeb Ruby Client v0.0.3
       Content-Length:
-      - '124'
+      - '130'
   response:
     status:
       code: 409
@@ -85,7 +85,7 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Date:
-      - Tue, 19 Mar 2013 20:30:15 GMT
+      - Tue, 26 Mar 2013 15:57:48 GMT
       P3p:
       - CP="NON DSP COR CURa TIA"
       Server:
@@ -105,5 +105,5 @@ http_interactions:
       string: ! '{"cpf": ["Certifique-se de que o valor tenha no m\u00ednimo 11 caracteres
         (ele possui 2)."]}'
     http_version: 
-  recorded_at: Tue, 19 Mar 2013 20:30:16 GMT
+  recorded_at: Tue, 26 Mar 2013 15:57:48 GMT
 recorded_with: VCR 2.4.0
