@@ -39,23 +39,21 @@ Or install it yourself as:
     c.user_secret = 'some-user-secret'
   end
 
-=== Profiles
+=== Identity
 
-  profile1 = PassaporteWeb::Profile.find("a5868d14-6529-477a-9c6b-a09dd42a7cd2")
-  profile1.email # "john@example.com"
-  profile1.first_name # "John"
+  identity1 = PassaporteWeb::Identity.find("a5868d14-6529-477a-9c6b-a09dd42a7cd2")
+  identity1.email # "john@example.com"
+  identity1.first_name # "John"
 
-  profile2 = PassaporteWeb::Profile.find_by_email("john@example.com")
-  profile2.uuid # "a5868d14-6529-477a-9c6b-a09dd42a7cd2"
+  identity2 = PassaporteWeb::Identity.find_by_email("john@example.com")
+  identity2.uuid # "a5868d14-6529-477a-9c6b-a09dd42a7cd2"
 
-  profile1 == profile2 # true
+  identity1 == profile2 # true
 
-  profile1.gender # nil
-  profile1.gender = 'M'
-  profile1.save # true
-  profile1.gender # 'M'
-
-=== Registration of Identity
+  identity1.gender # nil
+  identity1.gender = 'M'
+  identity1.save # true
+  identity1.gender # 'M'
 
 * Creates a new identity
 * Authentication token and secret using the application.
@@ -75,9 +73,9 @@ Or install it yourself as:
       "send_partner_news" => false,
       "send_myfreecomm_news" => false
     }
-    registration_identity = PassaporteWeb::RegistrationIdentity.new(attributes)
+    identity = PassaporteWeb::Identity.new(attributes)
 
-    registration_identity.save # true
+    identity.save # true
 
     attributes = {
       "email" => "lula_luis8@example.com",
@@ -85,9 +83,9 @@ Or install it yourself as:
       "last_name" => "da Silva",
       "tos" => true
     }
-    registration_identity = PassaporteWeb::RegistrationIdentity.new(attributes)
+    identity = PassaporteWeb::Identity.new(attributes)
 
-    registration_identity.save # false
+    identity.save # false
 
 == Contributing
 
