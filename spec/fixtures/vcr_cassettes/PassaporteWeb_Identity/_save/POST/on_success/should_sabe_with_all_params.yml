@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/create/
+    body:
+      encoding: UTF-8
+      string: ! '{"cpf":"545.334.276-50","email":"lula_luis75@example.com","first_name":"Luis
+        Inácio","last_name":"da Silva","send_myfreecomm_news":false,"send_partner_news":false,"password":"rW5oHxYB","password2":"rW5oHxYB","must_change_password":true,"inhibit_activation_message":false,"tos":true}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.0.3
+      Content-Length:
+      - '283'
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1FbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbg==
+      !binary "RGF0ZQ==":
+      - !binary |-
+        VHVlLCAyNiBNYXIgMjAxMyAxNTo1Nzo1MSBHTVQ=
+      !binary "RXhwaXJlcw==":
+      - !binary |-
+        VHVlLCAyNiBNYXIgMjAxMyAxNTo1Nzo1MCBHTVQ=
+      !binary "UDNw":
+      - !binary |-
+        Q1A9Ik5PTiBEU1AgQ09SIENVUmEgVElBIg==
+      !binary "U2VydmVy":
+      - !binary |-
+        bmdpbngvMC43LjY3
+      !binary "VmFyeQ==":
+      - !binary |-
+        QWNjZXB0LUVuY29kaW5n
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        MzMy
+      !binary "WC1DYWNoZQ==":
+      - !binary |-
+        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI=
+      !binary "WC1DYWNoZS1Mb29rdXA=":
+      - !binary |-
+        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEy
+        OA==
+      !binary "Vmlh":
+      - !binary |-
+        MS4xIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEyOCAoc3F1
+        aWQvMi43LlNUQUJMRTkp
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAH/FUVEC/41Qy07DMBD8lchnQpI2TgQnrkjcOAKyFmddVjh25EehVP13
+        7LTQ0BO39czueGb2TIMPwsCI7LZgAxSPpLfArgpGXoAMtM2EAu0xYcYGUiQh
+        kDU+4XsmbTQhTXViNfk8surPWgUTVeyQeJDzdj58eklvj25LEo9CNKAJFHZC
+        akJz1Pk5mCVO2yUZZSvVAOetrMt+1UDZdl1bQiO7UvFm3Tc3veJqqC4kjyYC
+        jfhlTU5lotY5FMn3UwEnRJFblPIQyRf35jnWNTaSLJutm0FM4IJBJwx++EVJ
+        MdKQ7/7jMWtpMJsIm8X/c2q3WwCTyoq85et1u+o7XufDOA0QUORCRHR6rmxy
+        VpHGubH/N/UbadwphyjtOF6m2iQa3dnSK7nwJrKBM4Yj0GxDRw1Cp956foef
+        ME4ar5MoO3wDsRMeTHACAAA=
+    http_version: 
+  recorded_at: Tue, 26 Mar 2013 15:57:52 GMT
+recorded_with: VCR 2.4.0
