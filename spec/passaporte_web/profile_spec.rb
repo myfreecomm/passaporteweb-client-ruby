@@ -120,23 +120,74 @@ describe PassaporteWeb::Profile do
   end
 
   describe "#save", :vcr => true do
-    let(:profile) { PassaporteWeb::Profile.find("5e32f927-c4ab-404e-a91c-b2abc05afb56") }
-    context "on success" do
-      it "should update the profile attributes on the server" do
-        profile.first_name.should == 'Testeiro'
-        profile.first_name = 'Testador'
-        profile.save.should be_true
-        profile.first_name.should == 'Testador'
+    describe "PUT" do
+      let(:profile) { PassaporteWeb::Profile.find("5e32f927-c4ab-404e-a91c-b2abc05afb56") }
+      context "on success" do
+        it "should update the profile attributes on the server" do
+          profile.first_name.should == 'Testador'
+          profile.first_name = 'Testeiro'
+          profile.save.should be_true
+          profile.first_name.should == 'Testeiro'
 
-        profile = PassaporteWeb::Profile.find("5e32f927-c4ab-404e-a91c-b2abc05afb56")
-        profile.first_name.should == 'Testador'
+          profile = PassaporteWeb::Profile.find("5e32f927-c4ab-404e-a91c-b2abc05afb56")
+          profile.first_name.should == 'Testeiro'
+        end
+      end
+      context "on failure" do
+        it "should return false and set the errors hash" do
+          profile.cpf = 42
+          profile.save.should be_false
+          profile.errors.should == {"cpf" => ["Certifique-se de que o valor tenha no mínimo 11 caracteres (ele possui 2)."]}
+        end
       end
     end
-    context "on failure" do
-      it "should return false and set the errors hash" do
-        profile.cpf = 42
-        profile.save.should be_false
-        profile.errors.should == {"cpf" => ["Certifique-se de que o valor tenha no mínimo 11 caracteres (ele possui 2)."]}
+
+    describe "POST" do
+      context "on success" do
+        it "should save with password, password2 and must_change_password" do
+          attributes = {
+            "email" => "lula_luis45@example.com",
+            "first_name" => "Luis Inácio",
+            "last_name" => "da Silva",
+            "password" => "rW5oHxYB",
+            "password2" => "rW5oHxYB",
+            "must_change_password" => true,
+            "tos" => true
+          }
+          profile = PassaporteWeb::Profile.new(attributes)
+          profile.save.should be_true
+        end
+
+        it "should sabe with all params" do
+          attributes = {
+            "email" => "lula_luis74@example.com",
+            "first_name" => "Luis Inácio",
+            "last_name" => "da Silva",
+            "password" => "rW5oHxYB",
+            "password2" => "rW5oHxYB",
+            "must_change_password" => true,
+            "tos" => true,
+            "inhibit_activation_message" => false,
+            "cpf" => "235.315.054-32",
+            "send_partner_news" => false,
+            "send_myfreecomm_news" => false
+          }
+          profile = PassaporteWeb::Profile.new(attributes)
+          profile.save.should be_true
+        end
+      end
+
+      context "on failure" do
+        it "should save without password, password2 and must_change_password" do
+          attributes = {
+            "email" => "lula_luis81@example.com",
+            "first_name" => "Luis Inácio",
+            "last_name" => "da Silva",
+            "tos" => true
+          }
+          profile = PassaporteWeb::Profile.new(attributes)
+          profile.save.should_not be_true
+        end
       end
     end
   end
