@@ -58,6 +58,11 @@ describe PassaporteWeb::Profile do
       profile.notifications.should == {"count" => 0, "list" => "/notifications/api/"}
       profile.accounts.should == []
       profile.services.should == {"myfinance" => "/accounts/api/service-info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/myfinance/", "account_manager" => "/accounts/api/service-info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/account_manager/"}
+      profile.password.should be_nil
+      profile.password2.should be_nil
+      profile.must_change_password.should be_nil
+      profile.inhibit_activation_message.should be_nil
+      profile.tos.should be_nil
     end
   end
 
