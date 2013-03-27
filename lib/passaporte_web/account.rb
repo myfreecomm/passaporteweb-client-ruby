@@ -9,6 +9,11 @@ module PassaporteWeb
     attr_reader *(ATTRIBUTES - UPDATABLE_ATTRIBUTES)
     attr_reader :errors
 
+    def initialize(attributes={})
+      set_attributes(attributes)
+      @errors = {}
+    end
+
     # GET /organizations/api/accounts/
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts
     def self.find_all(page=1, limit=20)
@@ -29,9 +34,23 @@ module PassaporteWeb
       end
     end
 
-    def initialize(attributes={})
-      set_attributes(attributes)
+    # POST /organizations/api/accounts/:uuid/members/
+    # https://app.passaporteweb.com.br/static/docs/account_manager.html#post-organizations-api-accounts-uuid-members
+    def self.save_user(uuid, identity, roles=nil)
+      # TODO validar atributos?
+      raise "The uuid field is required." if uuid.nil?
+      raise "The identity field is required." if identity.nil?
+      members = {}
+      members["identity"] = identity
+      members["roles"]    = roles unless roles.nil?
+      response = Http.post("/organizations/api/accounts/#{uuid}/members/", members)
+      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
       @errors = {}
+      true
+    rescue *[RestClient::Conflict, RestClient::BadRequest] => e
+      p e
+      @errors = MultiJson.decode(e.response.body)
+      false
     end
 
     def attributes

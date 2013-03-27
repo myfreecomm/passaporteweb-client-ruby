@@ -89,7 +89,29 @@ describe PassaporteWeb::Account do
         accounts.last["add_member_url"].should == "/organizations/api/accounts/ddc71259-cc15-4f9c-b876-856d633771ab/members/"
       end
     end
+  end
 
+  describe ".save_user", :vcr => true do
+    describe "POST" do
+      context "on success" do
+        it "should save the members in account" do
+          PassaporteWeb::Account.save_user("859d3542-84d6-4909-b1bd-4f43c1312065", "a5868d14-6529-477a-9c6b-a09dd42a7cd2", "user").should be_true
+        end
+      end
+      context "on failure" do
+        it "should not save the members in account without identity params" do
+          expect {
+            PassaporteWeb::Account.save_user("859d3542-84d6-4909-b1bd-4f43c1312062", nil)
+          }.to raise_error(RuntimeError, "The identity field is required.")
+        end
+
+        it "should not save the members in account without uuid params" do
+          expect {
+            PassaporteWeb::Account.save_user(nil, "859d3542-84d6-4909-b1bd-4f43c1312062")
+          }.to raise_error(RuntimeError, "The uuid field is required.")
+        end
+      end
+    end
   end
 
 end
