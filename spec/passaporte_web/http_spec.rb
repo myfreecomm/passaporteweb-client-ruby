@@ -30,6 +30,20 @@ describe PassaporteWeb::Http do
     end
   end
 
+  describe ".delete" do
+    it "should use RestClient.delete with the supplied params and common options" do
+      RestClient.should_receive(:delete).with(
+        'https://some/where/foo',
+        params: {spam: 'eggs'},
+        authorization: 'Basic c29tZS1hcHAtdG9rZW46c29tZS1hcHAtc2VjcmV0',
+        content_type: :json,
+        accept: :json,
+        user_agent: 'My Mocking App v1.1'
+      ).and_return(mock_response)
+      described_class.delete('/foo', spam: 'eggs')
+    end
+  end
+
   describe ".put" do
     it "should use RestClient.get with the supplied params and common options, encoding body as json" do
       RestClient.should_receive(:put).with(

@@ -28,6 +28,13 @@ module PassaporteWeb
       )
     end
 
+    def self.delete(path='/', params={})
+      RestClient.delete(
+        "#{PassaporteWeb.configuration.url}#{path}",
+        {params: params}.merge(common_params)
+      )
+    end
+
     private
 
     def self.common_params
