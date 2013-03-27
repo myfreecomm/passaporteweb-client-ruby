@@ -227,4 +227,27 @@ describe PassaporteWeb::Account do
     end
   end
 
+  describe ".new_account_user", :vcr => true do
+    describe "POST" do
+      context "on success" do
+        it "should save the members in account" do
+          PassaporteWeb::Account.new_account_user("5e32f927-c4ab-404e-a91c-b2abc05afb56", nil, "ContaPessoal4").should be_true
+        end
+      end
+      context "on failure" do
+        it "should not save the members in account without identity params" do
+          expect {
+            PassaporteWeb::Account.new_account_user("859d3542-84d6-4909-b1bd-4f43c1312062")
+          }.to raise_error(RuntimeError, "The fields uuid_user and name are required.")
+        end
+
+        it "should not save the members in account without uuid params" do
+          expect {
+            PassaporteWeb::Account.new_account_user(nil)
+          }.to raise_error(RuntimeError, "The uuid field is required.")
+        end
+      end
+    end
+  end
+
 end

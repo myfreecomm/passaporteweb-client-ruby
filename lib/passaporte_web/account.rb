@@ -52,7 +52,6 @@ module PassaporteWeb
       @errors = {}
       true
     rescue *[RestClient::Conflict, RestClient::BadRequest] => e
-      p e
       @errors = MultiJson.decode(e.response.body)
       false
     end
@@ -95,6 +94,26 @@ module PassaporteWeb
       param << "include_expired_accounts=#{include_expired_accounts}"
       response = Http.get("/organizations/api/identities/#{uuid}/accounts/#{'?'+param.join('&')}")
       MultiJson.decode(response.body)
+    end
+
+    # POST /organizations/api/identities/:uuid/accounts/
+    # https://app.passaporteweb.com.br/static/docs/account_manager.html#post-organizations-api-identities-uuid-accounts
+    def self.new_account_user(uuid=nil, uuid_user=nil, name=nil, plan_slug='passaporteweb-client-ruby', expiration=nil)
+      raise "The uuid field is required." if uuid.nil?
+      raise "The fields uuid_user and name are required." if uuid_user.nil? and name.nil?
+      account = {}
+      account["plan_slug"]  = plan_slug
+      account["uuid_user"]  = uuid_user unless uuid_user.nil?
+      account["name"]       = name unless name.nil?
+      account["expiration"] = expiration unless expiration.nil?
+      response = Http.post("/organizations/api/identities/#{uuid}/accounts/", account)
+      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 201
+      @errors = {}
+      true
+    rescue *[RestClient::Conflict, RestClient::BadRequest] => e
+      p e
+      @errors = MultiJson.decode(e.response.body)
+      false
     end
 
     def attributes

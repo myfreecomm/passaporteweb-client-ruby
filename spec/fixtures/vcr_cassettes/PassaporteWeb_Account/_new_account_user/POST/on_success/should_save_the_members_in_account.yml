@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/accounts/
+    body:
+      encoding: UTF-8
+      string: ! '{"plan_slug":"passaporteweb-client-ruby","name":"ContaPessoal4"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.1.0
+      Content-Length:
+      - '64'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 27 Mar 2013 20:52:36 GMT
+      Location:
+      - http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/32129835-be72-418b-91f4-0ccf07fa5d08/
+      P3p:
+      - CP="NON DSP COR CURa TIA"
+      Server:
+      - nginx/0.7.67
+      Vary:
+      - Authenticate, Accept
+      Content-Length:
+      - '556'
+      X-Cache:
+      - MISS from firewall.corp.myfreecomm.com.br
+      X-Cache-Lookup:
+      - MISS from firewall.corp.myfreecomm.com.br:3128
+      Via:
+      - 1.1 firewall.corp.myfreecomm.com.br:3128 (squid/2.7.STABLE9)
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"membership_details_url": "/organizations/api/accounts/32129835-be72-418b-91f4-0ccf07fa5d08/members/5e32f927-c4ab-404e-a91c-b2abc05afb56/",
+        "plan_slug": "passaporteweb-client-ruby", "roles": ["owner"], "url": "/organizations/api/accounts/32129835-be72-418b-91f4-0ccf07fa5d08/",
+        "expiration": null, "service_data": {"name": "Identity Client", "slug": "identity_client"},
+        "account_data": {"name": "ContaPessoal4", "uuid": "32129835-be72-418b-91f4-0ccf07fa5d08"},
+        "add_member_url": "/organizations/api/accounts/32129835-be72-418b-91f4-0ccf07fa5d08/members/"}'
+    http_version: 
+  recorded_at: Wed, 27 Mar 2013 20:52:36 GMT
+recorded_with: VCR 2.4.0
