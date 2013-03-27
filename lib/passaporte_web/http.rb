@@ -4,11 +4,6 @@ module PassaporteWeb
   class Http
 
     def self.get(path='/', params={})
-      puts "*"*80
-      puts "#{PassaporteWeb.configuration.url}#{path}"
-      o = {params: params}.merge(common_params)
-      puts o
-      puts "*"*80
       RestClient.get(
         "#{PassaporteWeb.configuration.url}#{path}",
         {params: params}.merge(common_params)
@@ -21,6 +16,15 @@ module PassaporteWeb
         "#{PassaporteWeb.configuration.url}#{path}",
         encoded_body,
         {params: params}.merge(common_params)
+      )
+    end
+
+    def self.post(path='/', body={})
+      encoded_body = (body.is_a?(Hash) ? MultiJson.encode(body) : body)
+      RestClient.post(
+        "#{PassaporteWeb.configuration.url}#{path}",
+        encoded_body,
+        common_params
       )
     end
 

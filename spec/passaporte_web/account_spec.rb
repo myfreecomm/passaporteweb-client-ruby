@@ -38,12 +38,26 @@ describe PassaporteWeb::Account do
     end
   end
 
-  # describe ".find", :vcr => true do
-  #   context "without params" do
-  #     it "should return " do
-  #       PassaporteWeb::Account.find
-  #     end
-  #   end
-  # end
+  describe ".find_all", :vcr => true do
+    context "without params" do
+      it "should return hash with accounts" do
+        accounts = PassaporteWeb::Account.find_all
+        accounts.size.should > 1
+        accounts.should be_instance_of(Array)
+        accounts.last["plan_slug"].should == "free"
+        accounts.last["add_member_url"].should == "/organizations/api/accounts/ddc71259-cc15-4f9c-b876-856d633771ab/members/"
+      end
+    end
+
+    context "with params limit and page" do
+      it "should return hash with account" do
+        accounts = PassaporteWeb::Account.find_all(1,1)
+        accounts.size.should == 1
+        accounts.should be_instance_of(Array)
+        accounts.last["plan_slug"].should == "identity-client"
+        accounts.last["add_member_url"].should == "/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/"
+      end
+    end
+  end
 
 end

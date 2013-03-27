@@ -14,42 +14,30 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.0.1
+      - PassaporteWeb Ruby Client v0.0.3
   response:
     status:
       code: 404
-      message: !binary |-
-        Tm90IEZvdW5k
+      message: Not Found
     headers:
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        dGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04
-      !binary "RGF0ZQ==":
-      - !binary |-
-        VHVlLCAxOSBNYXIgMjAxMyAyMDozMDowOCBHTVQ=
-      !binary "UDNw":
-      - !binary |-
-        Q1A9Ik5PTiBEU1AgQ09SIENVUmEgVElBIg==
-      !binary "U2VydmVy":
-      - !binary |-
-        bmdpbngvMC43LjY3
-      !binary "VmFyeQ==":
-      - !binary |-
-        Q29va2ll
-      !binary "WC1DYWNoZQ==":
-      - !binary |-
-        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI=
-      !binary "WC1DYWNoZS1Mb29rdXA=":
-      - !binary |-
-        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEy
-        OA==
-      !binary "Vmlh":
-      - !binary |-
-        MS4xIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEyOCAoc3F1
-        aWQvMi43LlNUQUJMRTkp
-      !binary "Q29ubmVjdGlvbg==":
-      - !binary |-
-        Y2xvc2U=
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Tue, 26 Mar 2013 15:57:45 GMT
+      P3p:
+      - CP="NON DSP COR CURa TIA"
+      Server:
+      - nginx/0.7.67
+      Vary:
+      - Cookie
+      X-Cache:
+      - MISS from firewall.corp.myfreecomm.com.br
+      X-Cache-Lookup:
+      - MISS from firewall.corp.myfreecomm.com.br:3128
+      Via:
+      - 1.1 firewall.corp.myfreecomm.com.br:3128 (squid/2.7.STABLE9)
+      Connection:
+      - close
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -100,5 +88,5 @@ http_interactions:
         YSwgcyk7CiAgICAgICAgfSkoKTsKICAgIDwvc2NyaXB0PgoKPC9ib2R5Pgo8
         L2h0bWw+Cg==
     http_version: 
-  recorded_at: Tue, 19 Mar 2013 20:30:09 GMT
+  recorded_at: Tue, 26 Mar 2013 15:57:46 GMT
 recorded_with: VCR 2.4.0

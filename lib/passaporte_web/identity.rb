@@ -1,8 +1,8 @@
 # encoding: utf-8
 module PassaporteWeb
 
-  class Profile
-    ATTRIBUTES = [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid]
+  class Identity
+    ATTRIBUTES = [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos]
     UPDATABLE_ATTRIBUTES = [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone]
 
     attr_accessor *UPDATABLE_ATTRIBUTES
@@ -45,11 +45,17 @@ module PassaporteWeb
       self.object_id == other.object_id
     end
 
-    # PUT /profile/api/info/:uuid/
+    # PUT  /profile/api/info/:uuid/
     # https://app.passaporteweb.com.br/static/docs/perfil.html#put-profile-api-info-uuid
+    # POST /accounts/api/create/
+    # https://app.passaporteweb.com.br/static/docs/cadastro_e_auth.html#post-accounts-api-create
     def save
       # TODO validar atributos?
-      response = Http.put("/profile/api/info/#{uuid}/", update_body)
+      if !self.uuid.nil?
+        response = Http.put("/profile/api/info/#{uuid}/", update_body)
+      else
+        response = Http.post("/accounts/api/create/", body)
+      end
       raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
       attributes_hash = MultiJson.decode(response.body)
       set_attributes(attributes_hash)
@@ -73,6 +79,10 @@ module PassaporteWeb
 
     def update_body
       self.attributes.select { |key, value| UPDATABLE_ATTRIBUTES.include?(key) && !value.nil? }
+    end
+
+    def body
+      self.attributes.select { |key, value| ATTRIBUTES.include?(key) && !value.nil? }
     end
 
   end

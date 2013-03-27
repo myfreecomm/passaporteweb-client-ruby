@@ -11,10 +11,10 @@ module PassaporteWeb
 
     # GET /organizations/api/accounts/
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts
-    def self.find(page=1, limit=20)
+    def self.find_all(page=1, limit=20)
       response = Http.get("/organizations/api/accounts/?page=#{page}&limit=#{limit}")
       attributes_hash = MultiJson.decode(response.body)
-      self.new(attributes_hash)
+      attributes_hash
     end
 
     def initialize(attributes={})
@@ -53,11 +53,7 @@ module PassaporteWeb
     private
 
     def set_attributes(hash)
-      binding.pry
       ATTRIBUTES.each do |attribute|
-        puts "*"*80
-        puts attribute
-        puts "*"*80
         instance_variable_set("@#{attribute}".to_sym, hash[attribute.to_s])
       end
     end
