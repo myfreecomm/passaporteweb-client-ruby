@@ -66,6 +66,16 @@ module PassaporteWeb
       MultiJson.decode(response.body)
     end
 
+    # PUT /organizations/api/accounts/:uuid/members/:member_uuid/
+    # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid-members-member-uuid
+    def self.update_roles_members(uuid=nil, member_uuid=nil, roles=nil)
+      raise "The uuid field is required."        if uuid.nil?
+      raise "The member_uuid field is required." if member_uuid.nil?
+      raise "The roles field is required."       if roles.nil?
+      response = Http.put("/organizations/api/accounts/#{uuid}/members/#{member_uuid}/", roles: roles)
+      MultiJson.decode(response.body)
+    end
+
     def attributes
       ATTRIBUTES.inject({}) do |hash, attribute|
         hash[attribute] = self.send(attribute)
