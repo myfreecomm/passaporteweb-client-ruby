@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.1.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Allow:
+      - GET, PUT, HEAD, OPTIONS
+      Cache-Control:
+      - no-cache
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 27 Mar 2013 14:39:15 GMT
+      Expires:
+      - Wed, 27 Mar 2013 14:39:14 GMT
+      P3p:
+      - CP="NON DSP COR CURa TIA"
+      Server:
+      - nginx/0.7.67
+      Vary:
+      - Authenticate, Accept, Accept-Encoding
+      Content-Length:
+      - '278'
+      X-Cache:
+      - MISS from firewall.corp.myfreecomm.com.br
+      X-Cache-Lookup:
+      - MISS from firewall.corp.myfreecomm.com.br:3128
+      Via:
+      - 1.1 firewall.corp.myfreecomm.com.br:3128 (squid/2.7.STABLE9)
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAJMEU1EC/61Ry27DIBD8lYhzEX5g1861p35DFaEFtikSxhbg9GH53wuN
+        3UPVQw65rWZ3Z2d2FjJZcCLY+UyOB2I0umjiJ1XWpIo8HMiAg0QfhIYIaeRl
+        2ZE3MwmNEYwNYvY2r7PRn8GZL4hmdIHBZBgoNc4uBtY1va4bXtGO65byvuip
+        LKWm/JXXqqzLqmgbtlGzqoBOSixpLTlQjryl0PZA4VE1FZe6AtmxrG4XnK/f
+        spR3/GgxZCtkfHfoyWk9JfReFvIF/JiM/2FIlG62NmEB/cUo3P+4EAcD5ovP
+        m4XD0+/P/8YhtjjW1NvU/MPjLhiiGdLgGDLLPBudG7fIvlJrLa4J3D1Qsn4D
+        5u6gOWoCAAA=
+    http_version: 
+  recorded_at: Wed, 27 Mar 2013 14:39:15 GMT
+recorded_with: VCR 2.4.0

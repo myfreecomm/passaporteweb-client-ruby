@@ -61,12 +61,22 @@ describe PassaporteWeb::Account do
 
   describe ".find_by_uuid", :vcr => true do
     context "with param" do
-      it "should return Hash with account" do
-        accounts = PassaporteWeb::Account.find_by_uuid("859d3542-84d6-4909-b1bd-4f43c1312065")
-        accounts.size.should == 1
-        accounts.should be_instance_of(Array)
-        accounts.last["plan_slug"].should == "identity-client"
-        accounts.last["add_member_url"].should == "/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/"
+      context "on success" do
+        it "should return Hash with account" do
+          accounts = PassaporteWeb::Account.find_by_uuid("859d3542-84d6-4909-b1bd-4f43c1312065")
+          accounts.size.should == 1
+          accounts.should be_instance_of(Array)
+          accounts.last["plan_slug"].should == "identity-client"
+          accounts.last["add_member_url"].should == "/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/"
+        end
+      end
+
+      context "on failed" do
+        it "should raise an error if no Account exist with that uuid" do
+          expect {
+            PassaporteWeb::Account.find_by_uuid("859d3542-84d6-4909-b1bd-4f43c1312062")
+          }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+        end
       end
     end
 
