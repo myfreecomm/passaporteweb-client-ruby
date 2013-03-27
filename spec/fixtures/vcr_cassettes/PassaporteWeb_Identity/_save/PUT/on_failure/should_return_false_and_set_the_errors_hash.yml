@@ -14,52 +14,78 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.0.3
+      - PassaporteWeb Ruby Client v0.1.0
   response:
     status:
       code: 200
-      message: OK
+      message: !binary |-
+        T0s=
     headers:
-      Cache-Control:
-      - no-cache
-      Content-Encoding:
-      - gzip
-      Content-Type:
-      - application/json
-      Date:
-      - Tue, 26 Mar 2013 15:57:47 GMT
-      Expires:
-      - Tue, 26 Mar 2013 15:57:46 GMT
-      Last-Modified:
-      - Tue, 26 Mar 2013 15:57:47 GMT
-      P3p:
-      - CP="NON DSP COR CURa TIA"
-      Server:
-      - nginx/0.7.67
-      Vary:
-      - Accept-Encoding
-      Content-Length:
-      - '295'
-      X-Cache:
-      - MISS from firewall.corp.myfreecomm.com.br
-      X-Cache-Lookup:
-      - MISS from firewall.corp.myfreecomm.com.br:3128
-      Via:
-      - 1.1 firewall.corp.myfreecomm.com.br:3128 (squid/2.7.STABLE9)
-      Connection:
-      - close
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1FbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbg==
+      !binary "RGF0ZQ==":
+      - !binary |-
+        V2VkLCAyNyBNYXIgMjAxMyAyMToyNDo1NyBHTVQ=
+      !binary "RXhwaXJlcw==":
+      - !binary |-
+        V2VkLCAyNyBNYXIgMjAxMyAyMToyNDo1NiBHTVQ=
+      !binary "TGFzdC1Nb2RpZmllZA==":
+      - !binary |-
+        V2VkLCAyNyBNYXIgMjAxMyAyMToyNDo1NyBHTVQ=
+      !binary "UDNw":
+      - !binary |-
+        Q1A9Ik5PTiBEU1AgQ09SIENVUmEgVElBIg==
+      !binary "U2VydmVy":
+      - !binary |-
+        bmdpbngvMC43LjY3
+      !binary "VmFyeQ==":
+      - !binary |-
+        QWNjZXB0LUVuY29kaW5n
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        NzIw
+      !binary "WC1DYWNoZQ==":
+      - !binary |-
+        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI=
+      !binary "WC1DYWNoZS1Mb29rdXA=":
+      - !binary |-
+        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEy
+        OA==
+      !binary "Vmlh":
+      - !binary |-
+        MS4xIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEyOCAoc3F1
+        aWQvMi43LlNUQUJMRTkp
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAHvFUVEC/41Q0U4CMRD8FdJnz0MEDTz5Eb4Z0+z1trixt720WwwS/t22
-        iJw88dJsZ6fTmTkoB1E0w4BqM1PqbqYoajBCuwJYcBEzxl7IkgEhzzHjB2V8
-        YsnTPG8dxTKq9h+thZFadcx7MJVdHr6953vEsCODJyHqkYVkr40j5JPO+UGV
-        +GU3xNa3K3xc2PXiuTFL6JrlfIkNrB9M0y2gM/MV2G711F5JnkwIDfjtuaTi
-        5FwJReZzGtxSmFTxilGQglfVMPd6hCCMQTN+xUk1KVFf+Lc4K1oOeJtgO/FR
-        s4b9BUhjD4K6BNYpuFrJGLwlh7WR25v4Mz/sbUA0fhiu/W/zGsO5g46CfOjy
-        /cUODkDVhJRKXup5n6XU8QdYO8YdPgIAAA==
+        H4sIAKljU1EC/62Wy27bMBBFfyXQulOLL5HsqkBX3XXRXVEIw5dLVKYMPZI6
+        Qf69pBI3TtACst2NQQ+pyzkz5AUfqg7HqU2489WHm6p6d1PFsUU7xdsSCNiN
+        PsdSP8UQLU6xT2OOP1S2n9OUR3We7eJYhtXm1bIN7uOmeszzaJfV5cNvD9W+
+        w9SO3bwtn4TB+7LpMYFPfZrwix/HHrsSH/rOL99V/V3yQ/U9x+ahW3brhy2m
+        eH+y23GjjQ2Mcd4o0FJp4MHXoCxtoKkt58pRITXdFH3/ax+HRSFLprnrltjk
+        h4RdG91LcJ6Xf9Ua5QJ9Bie9AtQYzTV1CFZ6BdzWDhSXCMo3lilaW8rUZaBr
+        lP8CusdxxH0/TP7OG7Bd9GmCYTaHf9GzK+gbgc742oCjRgJvGAX03AGnLjTE
+        5o5Ydhn9GuX/Qc+voGeUUK2YAOMlBU6UAU0Ch9raUMuAwtUX9n6N8opD/jnd
+        +nGKu1yEfnwNOo/rOZXQjglO8/lzDXBdazDE5F4EzixhhNaNuIxzjfIKTlsa
+        erO/2rUcqSVzyIDUaIE7dGBEI8EYERwq01B1oWutUT4X9Brbklpl59QUhCfZ
+        RalAQGQKPIpAgrNWaXsZ6Rrlc0mvsah8VwQLRIFDWQPn6AE5J2UktNIUpbrQ
+        otYon0t6jR05ZyWhQoO1ROQrpC0YJRtQonENY1ISNBee3hXK1WNJM7vKbbT+
+        6YkSXTaeOB3aJx9e8n/pS079eTXEFPqN8IwGTSVYjgZ4zXM5Nck7UTS2Fhjy
+        hdm8kXx63hSHu++Tf0k8Rfvz9EkV4nDyyPqaTdHHoa+WhJNr9zhMudBt8nfj
+        yaPriL8ms6KVu7ydcXuSx8I6HE4qunc4+bYAt8eWvirJM2D047qC/GHYHcrB
+        sv1u9xZjm6fzKXouhYnD9KMtWZw0f4dxyWUqlfm4/L7PUtXjb+Y1RCKfCgAA
     http_version: 
-  recorded_at: Tue, 26 Mar 2013 15:57:48 GMT
+  recorded_at: Wed, 27 Mar 2013 21:24:57 GMT
 - request:
     method: put
     uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/profile/api/info/5e32f927-c4ab-404e-a91c-b2abc05afb56/
@@ -74,7 +100,7 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.0.3
+      - PassaporteWeb Ruby Client v0.1.0
       Content-Length:
       - '130'
   response:
@@ -85,7 +111,7 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Date:
-      - Tue, 26 Mar 2013 15:57:48 GMT
+      - Wed, 27 Mar 2013 21:24:58 GMT
       P3p:
       - CP="NON DSP COR CURa TIA"
       Server:
@@ -105,5 +131,5 @@ http_interactions:
       string: ! '{"cpf": ["Certifique-se de que o valor tenha no m\u00ednimo 11 caracteres
         (ele possui 2)."]}'
     http_version: 
-  recorded_at: Tue, 26 Mar 2013 15:57:48 GMT
+  recorded_at: Wed, 27 Mar 2013 21:24:58 GMT
 recorded_with: VCR 2.4.0

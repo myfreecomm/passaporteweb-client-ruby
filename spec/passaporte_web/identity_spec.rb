@@ -95,7 +95,7 @@ describe PassaporteWeb::Identity do
       identity.should be_instance_of(PassaporteWeb::Identity)
       identity.uuid.should == '5e32f927-c4ab-404e-a91c-b2abc05afb56'
       identity.email.should == 'teste@teste.com'
-      identity.update_info_url.should == '/profile/api/info/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
+      identity.update_info_url.should == '/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
     end
     it "should raise an error if no profiles exist with that uuid" do
       expect {
@@ -110,7 +110,7 @@ describe PassaporteWeb::Identity do
       identity.should be_instance_of(PassaporteWeb::Identity)
       identity.uuid.should == '5e32f927-c4ab-404e-a91c-b2abc05afb56'
       identity.email.should == 'teste@teste.com'
-      identity.update_info_url.should == '/profile/api/info/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
+      identity.update_info_url.should == '/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
     end
     it "should raise an error if no profiles exist with that email" do
       expect {
@@ -125,7 +125,7 @@ describe PassaporteWeb::Identity do
       identity.should be_instance_of(PassaporteWeb::Identity)
       identity.uuid.should == '5e32f927-c4ab-404e-a91c-b2abc05afb56'
       identity.email.should == 'teste@teste.com'
-      identity.update_info_url.should == '/profile/api/info/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
+      identity.update_info_url.should == '/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
     end
     it "should raise an error if no profiles exist with that email" do
       expect {
@@ -161,7 +161,7 @@ describe PassaporteWeb::Identity do
       context "on success" do
         it "should save with password, password2 and must_change_password" do
           attributes = {
-            "email" => "lula_luis46@example.com",
+            "email" => "lula_luis98@example.com",
             "first_name" => "Luis Inácio",
             "last_name" => "da Silva",
             "password" => "rW5oHxYB",
@@ -175,7 +175,7 @@ describe PassaporteWeb::Identity do
 
         it "should sabe with all params" do
           attributes = {
-            "email" => "lula_luis75@example.com",
+            "email" => "lula_luis80@example.com",
             "first_name" => "Luis Inácio",
             "last_name" => "da Silva",
             "password" => "rW5oHxYB",
@@ -183,7 +183,7 @@ describe PassaporteWeb::Identity do
             "must_change_password" => true,
             "tos" => true,
             "inhibit_activation_message" => false,
-            "cpf" => "545.334.276-50",
+            "cpf" => "438.165.386-65",
             "send_partner_news" => false,
             "send_myfreecomm_news" => false
           }

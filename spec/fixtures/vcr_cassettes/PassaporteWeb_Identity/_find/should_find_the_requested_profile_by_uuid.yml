@@ -14,50 +14,77 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.0.3
+      - My Mocking App v1.1
   response:
     status:
       code: 200
-      message: OK
+      message: !binary |-
+        T0s=
     headers:
-      Cache-Control:
-      - no-cache
-      Content-Encoding:
-      - gzip
-      Content-Type:
-      - application/json
-      Date:
-      - Tue, 26 Mar 2013 15:57:45 GMT
-      Expires:
-      - Tue, 26 Mar 2013 15:57:44 GMT
-      Last-Modified:
-      - Tue, 26 Mar 2013 15:57:45 GMT
-      P3p:
-      - CP="NON DSP COR CURa TIA"
-      Server:
-      - nginx/0.7.67
-      Vary:
-      - Accept-Encoding
-      Content-Length:
-      - '295'
-      X-Cache:
-      - MISS from firewall.corp.myfreecomm.com.br
-      X-Cache-Lookup:
-      - MISS from firewall.corp.myfreecomm.com.br:3128
-      Via:
-      - 1.1 firewall.corp.myfreecomm.com.br:3128 (squid/2.7.STABLE9)
-      Connection:
-      - close
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1FbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbg==
+      !binary "RGF0ZQ==":
+      - !binary |-
+        V2VkLCAyNyBNYXIgMjAxMyAyMToxNjowMSBHTVQ=
+      !binary "RXhwaXJlcw==":
+      - !binary |-
+        V2VkLCAyNyBNYXIgMjAxMyAyMToxNjowMCBHTVQ=
+      !binary "TGFzdC1Nb2RpZmllZA==":
+      - !binary |-
+        V2VkLCAyNyBNYXIgMjAxMyAyMToxNjowMSBHTVQ=
+      !binary "UDNw":
+      - !binary |-
+        Q1A9Ik5PTiBEU1AgQ09SIENVUmEgVElBIg==
+      !binary "U2VydmVy":
+      - !binary |-
+        bmdpbngvMC43LjY3
+      !binary "VmFyeQ==":
+      - !binary |-
+        QWNjZXB0LUVuY29kaW5n
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        NzIx
+      !binary "WC1DYWNoZQ==":
+      - !binary |-
+        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI=
+      !binary "WC1DYWNoZS1Mb29rdXA=":
+      - !binary |-
+        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEy
+        OA==
+      !binary "Vmlh":
+      - !binary |-
+        MS4xIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEyOCAoc3F1
+        aWQvMi43LlNUQUJMRTkp
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAHnFUVEC/41Q0U4CMRD8FdJnz0MEDTz5Eb4Z0+z1trixt720WwwS/t22
-        iJw88dJsZ6fTmTkoB1E0w4BqM1PqbqYoajBCuwJYcBEzxl7IkgEhzzHjB2V8
-        YsnTPG8dxTKq9h+thZFadcx7MJVdHr6953vEsCODJyHqkYVkr40j5JPO+UGV
-        +GU3xNa3K3xc2PXiuTFL6JrlfIkNrB9M0y2gM/MV2G711F5JnkwIDfjtuaTi
-        5FwJReZzGtxSmFTxilGQglfVMPd6hCCMQTN+xUk1KVFf+Lc4K1oOeJtgO/FR
-        s4b9BUhjD4K6BNYpuFrJGLwlh7WR25v4Mz/sbUA0fhiu/W/zGsO5g46CfOjy
-        /cUODkDVhJRKXup5n6XU8QdYO8YdPgIAAA==
+        H4sIAJFhU1EC/62Wy27bMBBFfyXQulOLL5HsqkBX3XXRXVEIw5dLVKYEPZI6
+        Qf69lBI3TtACstyNQQ+pyzkz5AUfigaHsU548MWHm6J4d1PEoUY7xts5ELAZ
+        fI6ldowhWhxjm4YcfyhsO6Uxj8o828RhHha7V8t22MVd8Zjn0S6r5w+/PRRd
+        g6kemmk/fxJ67+dNTwl8atOIX/wwtNjM8b5t/PJd0d4l3xffc2zqm2W3tt9j
+        ivdnu5022tnAGOeVAi2VBh58CcrSCqrScq4cFVLT3azvf3WxXxSyZJqaZomN
+        vk/Y1NG9BKdp+VesUZ6hL+CkV4Aao7mmDsFKr4Db0oHiEkH5yjJFS0uZ2ga6
+        RvkvoB0OA3ZtP/o7b8A20acR+skc/0XPrqCvBDrjSwOOGgm8YhTQcweculAR
+        mzti2Tb6Ncr/g55fQc8ooVoxAcZLCpwoA5oEDqW1oZQBhSs39n6N8opD/jnd
+        +mGMh1yEdngNOg3rOZXQjglO8/lzFXBdajDE5F4EzixhhJaV2Ma5RnkFp50b
+        etNd7VqOlJI5ZEBKtMAdOjCikmCMCA6Vqaja6FprlC8Fvca2pFbZOTUF4Ul2
+        USoQEJkCjyKQ4KxV2m4jXaN8Kek1FpXvimCBKHAoS+AcPSDnZB4JrTRFqTZa
+        1BrlS0mvsSPnrCRUaLCWiHyFtAWjZAVKVK5iTEqCZuPpXaFcPM5pZle5jdY/
+        PVGiy8YTx2P95MNL/i99yak/r4aYQrsTntGgqQTL0QAveS6nJnknisaWAkO+
+        MLs3kk/Pm9nh7tvkXxJP0f48f1KF2J89sr5mU0TX9sWScHJ1h/2YC10nfzec
+        PbpO+Gsym7Vyl/cT7s/yWFj741lFO4ejr2fg+tTSVyV5Box+WFeQPwyH43yw
+        bHs4vMXY5+l8ip5LYWI//qjnLM6af8C45DLmyviPy+/7LFU8/gYzdqKpnwoA
+        AA==
     http_version: 
-  recorded_at: Tue, 26 Mar 2013 15:57:45 GMT
+  recorded_at: Wed, 27 Mar 2013 21:16:01 GMT
 recorded_with: VCR 2.4.0
