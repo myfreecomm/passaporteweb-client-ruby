@@ -114,4 +114,37 @@ describe PassaporteWeb::Account do
     end
   end
 
+  describe ".list_members", :vcr => true do
+    context "on success" do
+      it "should return hash with membership data" do
+        list_members = PassaporteWeb::Account.list_members("859d3542-84d6-4909-b1bd-4f43c1312065", "a5868d14-6529-477a-9c6b-a09dd42a7cd2")
+        list_members.should be_instance_of(Hash)
+        list_members["roles"].should be_instance_of(Array)
+        list_members["roles"].first.should == "user"
+        list_members["identity"]["first_name"].should == "Rodrigo"
+        list_members["identity"]["last_name"].should == "Tassinari"
+      end
+    end
+
+    context "on failed" do
+      it "should return RuntimeError with uuid param" do
+        expect{
+          PassaporteWeb::Account.list_members("859d3542-84d6-4909-b1bd-4f43c1312065", nil )
+        }.to raise_error(RuntimeError, "The member_uuid field is required.")
+      end
+
+      it "should return RuntimeError with member_uuid param" do
+        expect{
+          PassaporteWeb::Account.list_members(nil, "859d3542-84d6-4909-b1bd-4f43c1312065" )
+        }.to raise_error(RuntimeError, "The uuid field is required.")
+      end
+
+      it "should return RuntimeError without params" do
+        expect{
+          PassaporteWeb::Account.list_members
+        }.to raise_error
+      end
+    end
+  end
+
 end

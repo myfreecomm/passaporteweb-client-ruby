@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/a5868d14-6529-477a-9c6b-a09dd42a7cd2/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.1.0
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "QWxsb3c=":
+      - !binary |-
+        R0VULCBQVVQsIERFTEVURSwgSEVBRCwgT1BUSU9OUw==
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1FbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbg==
+      !binary "RGF0ZQ==":
+      - !binary |-
+        V2VkLCAyNyBNYXIgMjAxMyAxODo1MjozMSBHTVQ=
+      !binary "RXhwaXJlcw==":
+      - !binary |-
+        V2VkLCAyNyBNYXIgMjAxMyAxODo1MjozMCBHTVQ=
+      !binary "UDNw":
+      - !binary |-
+        Q1A9Ik5PTiBEU1AgQ09SIENVUmEgVElBIg==
+      !binary "U2VydmVy":
+      - !binary |-
+        bmdpbngvMC43LjY3
+      !binary "VmFyeQ==":
+      - !binary |-
+        QXV0aGVudGljYXRlLCBBY2NlcHQsIEFjY2VwdC1FbmNvZGluZw==
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        MjQz
+      !binary "WC1DYWNoZQ==":
+      - !binary |-
+        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI=
+      !binary "WC1DYWNoZS1Mb29rdXA=":
+      - !binary |-
+        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEy
+        OA==
+      !binary "Vmlh":
+      - !binary |-
+        MS4xIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEyOCAoc3F1
+        aWQvMi43LlNUQUJMRTkp
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAO8/U1EC/12QTU7EMAyFrzLKmlZQddopKy7ABrFDqHITt1jkBzkOqIzm
+        7iQaVVOxieTv2XnPPisOFqN6PLypFJHV+91BkUEvJGumZzUTRxk9OMylegmG
+        aQkqd1nY8VeIkTwwFSWiN+MXsHjk0eNP+X4GGzFrKZEpA3A8dSfz0FbdsRmq
+        tu+hGnQ3VXA/GNM20GvTXF38kmApJj5Zm4kOyQuvN0BxBC30XXqEE24J3Doz
+        og7O/Q+xZDnvmmM8F4+JWD5GA7JzEXL4G/yOeNKf27plCh2QLQVfb1LLdoOn
+        m3Odn3pidbn8AWP28GZqAQAA
+    http_version: 
+  recorded_at: Wed, 27 Mar 2013 18:52:31 GMT
+recorded_with: VCR 2.4.0

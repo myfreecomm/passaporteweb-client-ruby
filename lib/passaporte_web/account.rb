@@ -18,8 +18,7 @@ module PassaporteWeb
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts
     def self.find_all(page=1, limit=20)
       response = Http.get("/organizations/api/accounts/?page=#{page}&limit=#{limit}")
-      attributes_hash = MultiJson.decode(response.body)
-      attributes_hash
+      MultiJson.decode(response.body)
     end
 
     # GET /organizations/api/accounts/:uuid/
@@ -33,6 +32,11 @@ module PassaporteWeb
         [] << attributes_hash
       end
     end
+
+    # PUT /organizations/api/accounts/:uuid/
+    # https://app.passaporteweb.com.br/static/docs/account_manager.html#put-organizations-api-accounts-uuid
+    # def save
+    # end
 
     # POST /organizations/api/accounts/:uuid/members/
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#post-organizations-api-accounts-uuid-members
@@ -51,6 +55,15 @@ module PassaporteWeb
       p e
       @errors = MultiJson.decode(e.response.body)
       false
+    end
+
+    # GET /organizations/api/accounts/:uuid/members/:member_uuid/
+    # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid-members-member-uuid
+    def self.list_members(uuid=nil, member_uuid=nil)
+      raise "The uuid field is required." if uuid.nil?
+      raise "The member_uuid field is required." if member_uuid.nil?
+      response = Http.get("/organizations/api/accounts/#{uuid}/members/#{member_uuid}/")
+      MultiJson.decode(response.body)
     end
 
     def attributes
