@@ -86,6 +86,16 @@ module PassaporteWeb
       false
     end
 
+    # GET /organizations/api/identities/:uuid/accounts/
+    # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-identities-uuid-accounts
+    def self.list_accounts_user(uuid=nil, role=nil, include_expired_accounts=false)
+      raise "The uuid field is required."        if uuid.nil?
+      param = []
+      param << "role=#{role}" if role.nil?
+      param << "include_expired_accounts=#{include_expired_accounts}"
+      response = Http.get("/organizations/api/identities/#{uuid}/accounts/#{'?'+param.join('&')}")
+      MultiJson.decode(response.body)
+    end
 
     def attributes
       ATTRIBUTES.inject({}) do |hash, attribute|

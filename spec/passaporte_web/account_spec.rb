@@ -208,4 +208,23 @@ describe PassaporteWeb::Account do
     end
   end
 
+   describe ".list_accounts_user", :vcr => true do
+    context "on success" do
+      it "should listed and return hash with data of account user" do
+        list_accounts = PassaporteWeb::Account.list_accounts_user("5e32f927-c4ab-404e-a91c-b2abc05afb56")
+        list_accounts.should be_instance_of(Array)
+        list_accounts.first["roles"].should be_instance_of(Array)
+        list_accounts.first["roles"].first.should == "user"
+      end
+    end
+
+    context "on failed" do
+      it "should return RuntimeError without params" do
+        expect{
+          PassaporteWeb::Account.list_accounts_user
+        }.to raise_error(RuntimeError, "The uuid field is required.")
+      end
+    end
+  end
+
 end
