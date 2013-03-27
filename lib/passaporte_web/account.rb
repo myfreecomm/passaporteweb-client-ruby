@@ -17,6 +17,18 @@ module PassaporteWeb
       attributes_hash
     end
 
+    # GET /organizations/api/accounts/:uuid/
+    # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid
+    def self.find_by_uuid(uuid=nil)
+      if uuid.nil?
+        find_all
+      else
+        response = Http.get("/organizations/api/accounts/#{uuid}/")
+        attributes_hash = MultiJson.decode(response.body)
+        [] << attributes_hash
+      end
+    end
+
     def initialize(attributes={})
       set_attributes(attributes)
       @errors = {}
@@ -27,27 +39,6 @@ module PassaporteWeb
         hash[attribute] = self.send(attribute)
         hash
       end
-    end
-
-    # PUT  /profile/api/info/:uuid/
-    # https://app.passaporteweb.com.br/static/docs/perfil.html#put-profile-api-info-uuid
-    # POST /accounts/api/create/
-    # https://app.passaporteweb.com.br/static/docs/cadastro_e_auth.html#post-accounts-api-create
-    def save
-      # TODO validar atributos?
-      if !self.uuid.nil?
-        response = Http.put("/profile/api/info/#{uuid}/", update_body)
-      else
-        response = Http.post("/accounts/api/create/", body)
-      end
-      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
-      attributes_hash = MultiJson.decode(response.body)
-      set_attributes(attributes_hash)
-      @errors = {}
-      true
-    rescue *[RestClient::Conflict, RestClient::BadRequest] => e
-      @errors = MultiJson.decode(e.response.body)
-      false
     end
 
     private
