@@ -180,4 +180,32 @@ describe PassaporteWeb::Account do
     end
   end
 
+  describe ".delete_membership", :vcr => true do
+    context "on success" do
+      it "should update and return hash with membership data" do
+        PassaporteWeb::Account.delete_membership("859d3542-84d6-4909-b1bd-4f43c1312065", "a5868d14-6529-477a-9c6b-a09dd42a7cd2").should be_true
+      end
+    end
+
+    context "on failed" do
+      it "should return RuntimeError with uuid param" do
+        expect{
+          PassaporteWeb::Account.delete_membership("859d3542-84d6-4909-b1bd-4f43c1312065", nil )
+        }.to raise_error(RuntimeError, "The member_uuid field is required.")
+      end
+
+      it "should return RuntimeError with member_uuid param" do
+        expect{
+          PassaporteWeb::Account.delete_membership(nil, "859d3542-84d6-4909-b1bd-4f43c1312065" )
+        }.to raise_error(RuntimeError, "The uuid field is required.")
+      end
+
+      it "should return RuntimeError without params" do
+        expect{
+          PassaporteWeb::Account.delete_membership
+        }.to raise_error
+      end
+    end
+  end
+
 end

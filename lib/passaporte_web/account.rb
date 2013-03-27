@@ -76,6 +76,17 @@ module PassaporteWeb
       MultiJson.decode(response.body)
     end
 
+    # DELETE /organizations/api/accounts/:uuid/members/:member_uuid/
+    # https://app.passaporteweb.com.br/static/docs/account_manager.html#delete-organizations-api-accounts-uuid-members-member-uuid
+    def self.delete_membership(uuid=nil, member_uuid=nil)
+      raise "The uuid field is required."        if uuid.nil?
+      raise "The member_uuid field is required." if member_uuid.nil?
+      response = Http.delete("/organizations/api/accounts/#{uuid}/members/#{member_uuid}/")
+      return true if response.code == 204
+      false
+    end
+
+
     def attributes
       ATTRIBUTES.inject({}) do |hash, attribute|
         hash[attribute] = self.send(attribute)
