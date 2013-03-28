@@ -1,8 +1,8 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/accounts/?limit=20&page=4000000
+    method: delete
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/a5868d14-6529-477a-9c6b-a09dd42a7cd2/
     body:
       encoding: US-ASCII
       string: ''
@@ -14,26 +14,30 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.0.4
+      - My Mocking App v1.1
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 204
+      message: No Content
     headers:
       Allow:
-      - GET, HEAD, OPTIONS
+      - GET, PUT, DELETE, HEAD, OPTIONS
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '0'
       Content-Type:
       - application/json
       Date:
-      - Thu, 28 Mar 2013 18:09:57 GMT
+      - Thu, 28 Mar 2013 21:16:04 GMT
+      Expires:
+      - Thu, 28 Mar 2013 21:16:03 GMT
       P3p:
       - CP="NON DSP COR CURa TIA"
       Server:
       - nginx/0.7.67
       Vary:
       - Authenticate, Accept
-      Content-Length:
-      - '43'
       X-Cache:
       - MISS from firewall.corp.myfreecomm.com.br
       X-Cache-Lookup:
@@ -44,7 +48,7 @@ http_interactions:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{"detail": "That page contains no results"}'
+      string: ''
     http_version: 
-  recorded_at: Thu, 28 Mar 2013 18:09:57 GMT
+  recorded_at: Thu, 28 Mar 2013 21:16:04 GMT
 recorded_with: VCR 2.4.0

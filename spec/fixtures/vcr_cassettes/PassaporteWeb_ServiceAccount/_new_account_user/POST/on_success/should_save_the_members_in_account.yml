@@ -5,7 +5,7 @@ http_interactions:
     uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/accounts/
     body:
       encoding: UTF-8
-      string: ! '{"plan_slug":"passaporteweb-client-ruby","name":"ContaPessoal4"}'
+      string: ! '{"plan_slug":"passaporteweb-client-ruby","name":"ContaPessoal5"}'
     headers:
       Accept:
       - application/json
@@ -14,7 +14,7 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.1.0
+      - My Mocking App v1.1
       Content-Length:
       - '64'
   response:
@@ -27,9 +27,9 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 27 Mar 2013 20:52:36 GMT
+      - Thu, 28 Mar 2013 21:16:06 GMT
       Location:
-      - http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/32129835-be72-418b-91f4-0ccf07fa5d08/
+      - http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/427efc99-759b-4a0e-a600-315f653ab5e9/
       P3p:
       - CP="NON DSP COR CURa TIA"
       Server:
@@ -48,11 +48,11 @@ http_interactions:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{"membership_details_url": "/organizations/api/accounts/32129835-be72-418b-91f4-0ccf07fa5d08/members/5e32f927-c4ab-404e-a91c-b2abc05afb56/",
-        "plan_slug": "passaporteweb-client-ruby", "roles": ["owner"], "url": "/organizations/api/accounts/32129835-be72-418b-91f4-0ccf07fa5d08/",
+      string: ! '{"membership_details_url": "/organizations/api/accounts/427efc99-759b-4a0e-a600-315f653ab5e9/members/5e32f927-c4ab-404e-a91c-b2abc05afb56/",
+        "plan_slug": "passaporteweb-client-ruby", "roles": ["owner"], "url": "/organizations/api/accounts/427efc99-759b-4a0e-a600-315f653ab5e9/",
         "expiration": null, "service_data": {"name": "Identity Client", "slug": "identity_client"},
-        "account_data": {"name": "ContaPessoal4", "uuid": "32129835-be72-418b-91f4-0ccf07fa5d08"},
-        "add_member_url": "/organizations/api/accounts/32129835-be72-418b-91f4-0ccf07fa5d08/members/"}'
+        "account_data": {"name": "ContaPessoal5", "uuid": "427efc99-759b-4a0e-a600-315f653ab5e9"},
+        "add_member_url": "/organizations/api/accounts/427efc99-759b-4a0e-a600-315f653ab5e9/members/"}'
     http_version: 
-  recorded_at: Wed, 27 Mar 2013 20:52:36 GMT
+  recorded_at: Thu, 28 Mar 2013 21:16:06 GMT
 recorded_with: VCR 2.4.0

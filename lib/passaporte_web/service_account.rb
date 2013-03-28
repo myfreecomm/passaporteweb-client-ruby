@@ -1,7 +1,7 @@
 # encoding: utf-8
 module PassaporteWeb
 
-  class Account
+  class ServiceAccount
     ATTRIBUTES = [:plan_slug, :expiration, :identity, :roles, :member_uuid, :role, :include_expired_accounts, :name, :members_data, :url, :service_data, :account_data, :add_member_url]
     UPDATABLE_ATTRIBUTES = [:plan_slug, :expiration]
 
@@ -14,10 +14,10 @@ module PassaporteWeb
       @errors = {}
     end
 
-    # Finds all Accounts that the current authenticated application has access to, paginated. By default finds
-    # 20 Accounts per request, starting at "page" 1. Returns an OpenStruct object with two attributes
-    # <tt>accounts</tt> and <tt>meta</tt>. <tt>accounts</tt> is an array of Account instances or an empty array
-    # if no Accounts are found. <tt>meta</tt> is an OpenStruct object with information about limit and available
+    # Finds all ServiceAccounts that the current authenticated application has access to, paginated. By default finds
+    # 20 ServiceAccounts per request, starting at "page" 1. Returns an OpenStruct object with two attributes
+    # <tt>service_accounts</tt> and <tt>meta</tt>. <tt>service_accounts</tt> is an array of ServiceAccount instances or an empty array
+    # if no ServiceAccounts are found. <tt>meta</tt> is an OpenStruct object with information about limit and available
     # pagination values, to use in subsequent calls to <tt>.find_all</tt>. Raises a
     # <tt>RestClient::ResourceNotFound</tt> exception if the requested page does not exist.
     #
@@ -26,8 +26,8 @@ module PassaporteWeb
     # API documentation: https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts
     #
     # Example:
-    #   data = PassaporteWeb::Account.find_all
-    #   data.accounts # => [account1, account2, ...]
+    #   data = PassaporteWeb::ServiceAccount.find_all
+    #   data.service_accounts # => [account1, account2, ...]
     #   data.meta # => #<OpenStruct limit=20, next_page=2, prev_page=nil, first_page=1, last_page=123>
     #   data.meta.limit      # => 20
     #   data.meta.next_page  # => 2
@@ -38,14 +38,14 @@ module PassaporteWeb
       response = Http.get("/organizations/api/accounts/?page=#{Integer(page)}&limit=#{Integer(limit)}")
       raw_accounts = MultiJson.decode(response.body)
       result_hash = {}
-      result_hash[:accounts] = raw_accounts.map { |raw_account| self.new(raw_account) }
+      result_hash[:service_accounts] = raw_accounts.map { |raw_account| self.new(raw_account) }
       result_hash[:meta] = PassaporteWeb::Helpers.meta_links_from_header(response.headers[:link])
       PassaporteWeb::Helpers.convert_to_ostruct_recursive(result_hash)
     end
 
-    # Instanciates an Account identified by it's UUID, with all the details. Only accounts related to the current
-    # authenticated application are available. Returns the Account instance if successful, or raises a
-    # <tt>RestClient::ResourceNotFound</tt> exception if no Account exists with that UUID (or if it is not
+    # Instanciates an ServiceAccount identified by it's UUID, with all the details. Only service accounts related to the current
+    # authenticated application are available. Returns the ServiceAccount instance if successful, or raises a
+    # <tt>RestClient::ResourceNotFound</tt> exception if no ServiceAccount exists with that UUID (or if it is not
     # related to the current authenticated application).
     #
     # API method: <tt>GET /organizations/api/accounts/:uuid/</tt>

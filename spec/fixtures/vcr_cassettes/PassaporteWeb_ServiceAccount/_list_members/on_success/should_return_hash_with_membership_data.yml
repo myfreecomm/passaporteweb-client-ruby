@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: put
+    method: get
     uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/a5868d14-6529-477a-9c6b-a09dd42a7cd2/
     body:
-      encoding: UTF-8
-      string: ! '{"roles":"admin, user"}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept:
       - application/json
@@ -14,9 +14,7 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.1.0
-      Content-Length:
-      - '23'
+      - My Mocking App v1.1
   response:
     status:
       code: 200
@@ -31,9 +29,9 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 27 Mar 2013 19:16:37 GMT
+      - Thu, 28 Mar 2013 21:15:54 GMT
       Expires:
-      - Wed, 27 Mar 2013 19:16:36 GMT
+      - Thu, 28 Mar 2013 21:15:53 GMT
       P3p:
       - CP="NON DSP COR CURa TIA"
       Server:
@@ -41,7 +39,7 @@ http_interactions:
       Vary:
       - Authenticate, Accept, Accept-Encoding
       Content-Length:
-      - '247'
+      - '243'
       X-Cache:
       - MISS from firewall.corp.myfreecomm.com.br
       X-Cache-Lookup:
@@ -53,12 +51,12 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAJVFU1EC/12QwWrDMAyGXyX43IQtpEmz015gl7HbGEGJlUzUlodsb2Sl
-        7z6bEhp2Eej/Jb5fuihxBr16Kt4VaEt8KKJHUR+HQpFGDhTWZF7UTOLDwGAx
-        terVaaHFqTRlYKe/gffEIJQdj6yHL5DAKAPjT6bMYDwmL0bSeQGOp/akH5uy
-        PdZ92XQdlP3UjiU89Fo3NXSTrm8UXiIsGcLRmKRMLnKQ9S6QH2AK9J1ngkTc
-        Eth1FsTJWfs/xJLsdGuK8ZIZI0n4HDSEHSWQxV/HO4VpOm/n5i20QCY3cvtJ
-        FbYfPN/JVSrVKOp6/QMeEl5rcQEAAA==
+        H4sIAAqzVFEC/12QTU7EMAyFrzLKmlZQddopKy7ABrFDqHITt1jkBzkOqIzm
+        7iQaVVOxieTv2XnPPisOFqN6PLypFJHV+91BkUEvJGumZzUTRxk9OMylegmG
+        aQkqd1nY8VeIkTwwFSWiN+MXsHjk0eNP+X4GGzFrKZEpA3A8dSfz0FbdsRmq
+        tu+hGnQ3VXA/GNM20GvTXF38kmApJj5Zm4kOyQuvN0BxBC30XXqEE24J3Doz
+        og7O/Q+xZDnvmmM8F4+JWD5GA7JzEXL4G/yOeNKf27plCh2QLQVfb1LLdoOn
+        m3Odn3pidbn8AWP28GZqAQAA
     http_version: 
-  recorded_at: Wed, 27 Mar 2013 19:16:38 GMT
+  recorded_at: Thu, 28 Mar 2013 21:15:54 GMT
 recorded_with: VCR 2.4.0

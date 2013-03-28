@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/a5868d14-6529-477a-9c6b-a09dd42a7cd2/
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/accounts/?include_expired_accounts=false&role=
     body:
       encoding: US-ASCII
       string: ''
@@ -14,7 +14,7 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.1.0
+      - My Mocking App v1.1
   response:
     status:
       code: 200
@@ -23,7 +23,7 @@ http_interactions:
     headers:
       !binary "QWxsb3c=":
       - !binary |-
-        R0VULCBQVVQsIERFTEVURSwgSEVBRCwgT1BUSU9OUw==
+        R0VULCBQT1NULCBIRUFELCBPUFRJT05T
       !binary "Q2FjaGUtQ29udHJvbA==":
       - !binary |-
         bm8tY2FjaGU=
@@ -35,10 +35,10 @@ http_interactions:
         YXBwbGljYXRpb24vanNvbg==
       !binary "RGF0ZQ==":
       - !binary |-
-        V2VkLCAyNyBNYXIgMjAxMyAxODo1MjozMSBHTVQ=
+        VGh1LCAyOCBNYXIgMjAxMyAyMToxNjowNSBHTVQ=
       !binary "RXhwaXJlcw==":
       - !binary |-
-        V2VkLCAyNyBNYXIgMjAxMyAxODo1MjozMCBHTVQ=
+        VGh1LCAyOCBNYXIgMjAxMyAyMToxNjowNCBHTVQ=
       !binary "UDNw":
       - !binary |-
         Q1A9Ik5PTiBEU1AgQ09SIENVUmEgVElBIg==
@@ -50,7 +50,7 @@ http_interactions:
         QXV0aGVudGljYXRlLCBBY2NlcHQsIEFjY2VwdC1FbmNvZGluZw==
       !binary "Q29udGVudC1MZW5ndGg=":
       - !binary |-
-        MjQz
+        NjYw
       !binary "WC1DYWNoZQ==":
       - !binary |-
         TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI=
@@ -68,12 +68,21 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAO8/U1EC/12QTU7EMAyFrzLKmlZQddopKy7ABrFDqHITt1jkBzkOqIzm
-        7iQaVVOxieTv2XnPPisOFqN6PLypFJHV+91BkUEvJGumZzUTRxk9OMylegmG
-        aQkqd1nY8VeIkTwwFSWiN+MXsHjk0eNP+X4GGzFrKZEpA3A8dSfz0FbdsRmq
-        tu+hGnQ3VXA/GNM20GvTXF38kmApJj5Zm4kOyQuvN0BxBC30XXqEE24J3Doz
-        og7O/Q+xZDnvmmM8F4+JWD5GA7JzEXL4G/yOeNKf27plCh2QLQVfb1LLdoOn
-        m3Odn3pidbn8AWP28GZqAQAA
+        H4sIABWzVFEC/82Xy27bMBBFf8XQugPzKZLdZtVd90FgDF+tAFkS9EiaBvn3
+        UnUKxGgXlJRC3gmkPDzQPeCM71+Kczjb0A/fq+7kw4hVPZymvi4+H4pj23/D
+        pvqJY9U2wxG76ojOtVMzDkctjedSMNDClyAMMWCp9SCi4I5yykgpj2+ljzJw
+        Fg1T4ARaEEQEQEMdWIbWEYnRyvJYfDoUXY3Naainb/PxsQ9hXuzbOgxp4b6Y
+        htAXD2npowDn8uFHV/W/K6SSzVTXaS2d81i5cPI4Ylp9KRo8h/nELz40YzU+
+        H+7qKj3Nv/+DW71tndxl6zXtvdH8o07zGIaxOqcX22GuMk2VnzdysC+lvT9d
+        vu+HxzXXX+uFp0RxjxwoQQfCo4cUrgJrZfSobck0+3Av2qcmX4wswt3EcG0z
+        4qELw9Bi/V6MHOwVYizKa4sYyugYiGEgAzUgmERA5BoCykijd04bt68YWYS3
+        IQZ7b0YO9wozFgW2xQyUXvJINXhUBITAFLYQdH6SRhuGSvN9zcgivA0z+Hsz
+        crhXmLEosE3NxDtFmTTgHJWpV5mUs1YlaFn6knOlKNqdm0kO4W2YIa66SQb3
+        mm6yJLAtZrjIuRClBqN0upzSRQXasRJK4oTQnklldh4zsgh3M+NuNuPr31NG
+        DvUKLxbFtcULa40wzCM4FTQIR3yaeBWCDqXjmhHHuN7XiyzCm/DiasjIwV4h
+        xqK8tohRSvQ2EAueWQWi5AwwiPQHiPlYUpc0dFuHjA6HAbu2H8NTsHD52tBP
+        9nmDLVnYN2HL1eCRg73ClkUhbrGFM8qM5hJsUAwE1RYMjQKIc5GomAYgsvUa
+        +R+2ZGHfhC1Xw0gO9gpbFoVYvD78Agh/7OwMEwAA
     http_version: 
-  recorded_at: Wed, 27 Mar 2013 18:52:31 GMT
+  recorded_at: Thu, 28 Mar 2013 21:16:05 GMT
 recorded_with: VCR 2.4.0
