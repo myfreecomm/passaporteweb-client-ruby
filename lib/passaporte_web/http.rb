@@ -1,11 +1,11 @@
 # encoding: utf-8
 module PassaporteWeb
 
-  class Http
+  class Http # :nodoc:
 
     def self.get(path='/', params={})
       RestClient.get(
-        "#{PassaporteWeb.configuration.url}#{path}",
+        pw_url(path),
         {params: params}.merge(common_params)
       )
     end
@@ -13,7 +13,7 @@ module PassaporteWeb
     def self.put(path='/', body={}, params={})
       encoded_body = (body.is_a?(Hash) ? MultiJson.encode(body) : body)
       RestClient.put(
-        "#{PassaporteWeb.configuration.url}#{path}",
+        pw_url(path),
         encoded_body,
         {params: params}.merge(common_params)
       )
@@ -22,7 +22,7 @@ module PassaporteWeb
     def self.post(path='/', body={})
       encoded_body = (body.is_a?(Hash) ? MultiJson.encode(body) : body)
       RestClient.post(
-        "#{PassaporteWeb.configuration.url}#{path}",
+        pw_url(path),
         encoded_body,
         common_params
       )
@@ -30,12 +30,16 @@ module PassaporteWeb
 
     def self.delete(path='/', params={})
       RestClient.delete(
-        "#{PassaporteWeb.configuration.url}#{path}",
+        pw_url(path),
         {params: params}.merge(common_params)
       )
     end
 
     private
+
+    def self.pw_url(path)
+      "#{PassaporteWeb.configuration.url}#{path}"
+    end
 
     def self.common_params
       {
