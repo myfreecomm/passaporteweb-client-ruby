@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/accounts/?limit=20&page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.0.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Allow:
+      - GET, HEAD, OPTIONS
+      Cache-Control:
+      - no-cache
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 28 Mar 2013 18:05:09 GMT
+      Expires:
+      - Thu, 28 Mar 2013 18:05:08 GMT
+      Link:
+      - <http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/?limit=20&page=1>;
+        rel=last, <http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/?limit=20&page=1>;
+        rel=first
+      P3p:
+      - CP="NON DSP COR CURa TIA"
+      Server:
+      - nginx/0.7.67
+      Vary:
+      - Authenticate, Accept, Accept-Encoding
+      Content-Length:
+      - '908'
+      X-Cache:
+      - MISS from firewall.corp.myfreecomm.com.br
+      X-Cache-Lookup:
+      - MISS from firewall.corp.myfreecomm.com.br:3128
+      Via:
+      - 1.1 firewall.corp.myfreecomm.com.br:3128 (squid/2.7.STABLE9)
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAFWGVFEC/82YTW/bOBCG/4qhcwfmx/Crt0VPPRTYexEYww+1AhTJsOx2
+        06D/vVQcY22kC1BqVhHgg0CZ5Lx6H80M9fmx2rfU7Yb29KV6v6nqQ0rVu011
+        n+59Ogy7SEfK458fLyNfm/0upiM17bA7HdpxzrY/fKGu+UHHpu+GLe2bLYXQ
+        n7rjsLXKRalQgMWoAR1z4LmPgDXKwCUXTKvt89Jbwch6nzhIjwSYUANpR0Am
+        KIE+CvJ2O0bXxNQdm+PDuHvJpHHOoW/TMEqp+u9dOlR3P99tFlGlkhS1EwYC
+        kgdkmIAcD+BzZIEpqr3SL1SVTLpVdRqeRN3lwddSMG6Q/tk3h6cV8pLdqW3z
+        WN7pWxPSBY7HqqP7NO748VnB5kPb5Ktx/gWsi7hdON/KT796juY363Tf0nBs
+        7vMf+2Fc5XRq4nijJOzz0jHuzga8up/VEzj/61sTOTMykgTOKABGipD9NuC9
+        qmPGXQsrlubr8tYUAlYk4c0AC313pM0+DUNP7TVgJWHPAGySoQsAZpytE3MC
+        VOIOUKicL0laSKRqXscQrAsrB6xIwjoAE9eElcQ9g7BJji5AGKmoZM0tRDIM
+        ECn7j8jHK+WsE2SsXDlhRRLWQZi8Jqwk7hmETXJ0iSIZg+FCOQiBq1yqXbbe
+        Gg1W6ailNIaTXzlhRRLWQRjeVMmCuOdUySmOLkBYqKVE1BacsTmn5vwKNggN
+        mgVEG4Uybu1tWJGENyPsw0jY3y+7sJKoZ/A1yc8F+PLeoRORIJhkAQOL+QBi
+        CGzSQVrBgpB25XwVSVgFXzdNWEnYMwCbZOhvANvTMNC+PxzT9+ThrBAOJ//w
+        mtRpRdEn5iEKbwC1FEAJ82FXxFrzkF+FsPbOrEjCKqi7acxKwp5B3SRD34o6
+        KbhwVirwyQhAbj04XiOwEGpm6txcsrXnuiIJq6DuplkrCXsGdZMMXaCYOuNz
+        SDn3Uor1aL/KZR4FSB1cSIJcFP8Wd1JW28gRtBK5EzA5R7ugPRBzMWI+yoQo
+        XgBWMumPACuS8AKwSjA+flgCYTaMvX/6VUsQ99d+3zbhLOQauBIZM4CbZPAS
+        pwOfH7zmBpzPLSXazIRLxoMxaDDfiXUdVw5ckYT1APfpYfNfzJUomXNimOLx
+        Aswpy6RhBkGhJsCICDa6fKBJymDULKdht3LmiiSslblr5EqEzEBuksXVz7tf
+        f23PjMIdAAA=
+    http_version: 
+  recorded_at: Thu, 28 Mar 2013 18:05:10 GMT
+recorded_with: VCR 2.4.0

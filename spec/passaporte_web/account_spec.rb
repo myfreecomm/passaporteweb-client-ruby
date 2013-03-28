@@ -38,24 +38,26 @@ describe PassaporteWeb::Account do
   end
 
   describe ".find_all", :vcr => true do
-    context "without params" do
-      it "should return Array of Hash with accounts" do
-        accounts = PassaporteWeb::Account.find_all
-        accounts.size.should > 1
-        accounts.should be_instance_of(Array)
-        accounts.last["plan_slug"].should == "free"
-        accounts.last["add_member_url"].should == "/organizations/api/accounts/ddc71259-cc15-4f9c-b876-856d633771ab/members/"
-      end
+    let(:mock_response) { mock('response', body: [].to_json, code: 200) }
+    it "should find all accounts related to the authenticated application and return them as an array of Account instances" do
+      accounts = PassaporteWeb::Account.find_all
+      accounts.should be_instance_of(Array)
+      accounts.size.should == 12
+      accounts.map { |a| a.instance_of?(PassaporteWeb::Account) }.uniq.should == [true]
+      accounts.map(&:plan_slug).uniq.sort.should == ['free', 'passaporteweb-client-ruby']
     end
-
-    context "with params limit and page" do
-      it "should return Array of Hash with account" do
-        accounts = PassaporteWeb::Account.find_all(1,1)
-        accounts.size.should == 1
-        accounts.should be_instance_of(Array)
-        accounts.last["plan_slug"].should == "identity-client"
-        accounts.last["add_member_url"].should == "/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/"
-      end
+    it "should ask for page 1 and 20 accounts per page by default" do
+      PassaporteWeb::Http.should_receive(:get).with("/organizations/api/accounts/?page=1&limit=20").and_return(mock_response)
+      PassaporteWeb::Account.find_all.should == []
+    end
+    it "should ask for page and accounts per page as supplied" do
+      PassaporteWeb::Http.should_receive(:get).with("/organizations/api/accounts/?page=4&limit=100").and_return(mock_response)
+      PassaporteWeb::Account.find_all(4, 100).should == []
+    end
+    it "should raise an error if the page does not exist" do
+      expect {
+        PassaporteWeb::Account.find_all(4_000_000)
+      }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
     end
   end
 

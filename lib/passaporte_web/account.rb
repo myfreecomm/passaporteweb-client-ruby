@@ -14,13 +14,18 @@ module PassaporteWeb
       @errors = {}
     end
 
-    # GET /organizations/api/accounts/
-    # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts
+    # Finds all Accounts that the current authenticated application has access to, paginated. By default finds
+    # 20 Accounts per request, starting at "page" 1. Returns an array of Account instances or an empty array
+    # if no Accounts are found. Raises a <tt>RestClient::ResourceNotFound</tt> exception if the requested page
+    # does not exist.
+    #
+    # API method: <tt>GET /organizations/api/accounts/</tt>
+    #
+    # API documentation: https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts
     def self.find_all(page=1, limit=20)
-      response = Http.get("/organizations/api/accounts/?page=#{page}&limit=#{limit}")
-      binding.pry
+      response = Http.get("/organizations/api/accounts/?page=#{Integer(page)}&limit=#{Integer(limit)}")
       raw_accounts = MultiJson.decode(response.body)
-      raw_accounts.map { |raw| self.new(raw) }
+      raw_accounts.map { |raw_account| self.new(raw_account) }
     end
 
     # Instanciates an Account identified by it's UUID, with all the details. Only accounts related to the current
@@ -125,6 +130,10 @@ module PassaporteWeb
         hash[attribute] = self.send(attribute)
         hash
       end
+    end
+
+    def persisted?
+      @persisted == true
     end
 
     private
