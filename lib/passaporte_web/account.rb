@@ -59,11 +59,13 @@ module PassaporteWeb
 
     # PUT /organizations/api/accounts/:uuid/
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#put-organizations-api-accounts-uuid
+    # TODO review
     # def save
     # end
 
     # POST /organizations/api/accounts/:uuid/members/
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#post-organizations-api-accounts-uuid-members
+    # TODO review
     def self.save_user(uuid, identity, roles=nil)
       # TODO validar atributos?
       raise "The uuid field is required." if uuid.nil?
@@ -82,6 +84,7 @@ module PassaporteWeb
 
     # GET /organizations/api/accounts/:uuid/members/:member_uuid/
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid-members-member-uuid
+    # TODO review
     def self.list_members(uuid=nil, member_uuid=nil)
       raise "The uuid field is required." if uuid.nil?
       raise "The member_uuid field is required." if member_uuid.nil?
@@ -91,6 +94,7 @@ module PassaporteWeb
 
     # PUT /organizations/api/accounts/:uuid/members/:member_uuid/
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid-members-member-uuid
+    # TODO review
     def self.update_roles_members(uuid=nil, member_uuid=nil, roles=nil)
       raise "The uuid field is required."        if uuid.nil?
       raise "The member_uuid field is required." if member_uuid.nil?
@@ -101,6 +105,7 @@ module PassaporteWeb
 
     # DELETE /organizations/api/accounts/:uuid/members/:member_uuid/
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#delete-organizations-api-accounts-uuid-members-member-uuid
+    # TODO review
     def self.delete_membership(uuid=nil, member_uuid=nil)
       raise "The uuid field is required."        if uuid.nil?
       raise "The member_uuid field is required." if member_uuid.nil?
@@ -111,6 +116,7 @@ module PassaporteWeb
 
     # GET /organizations/api/identities/:uuid/accounts/
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-identities-uuid-accounts
+    # TODO review
     def self.list_accounts_user(uuid=nil, role=nil, include_expired_accounts=false)
       raise "The uuid field is required."        if uuid.nil?
       param = []
@@ -122,6 +128,7 @@ module PassaporteWeb
 
     # POST /organizations/api/identities/:uuid/accounts/
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#post-organizations-api-identities-uuid-accounts
+    # TODO review
     def self.new_account_user(uuid=nil, uuid_user=nil, name=nil, plan_slug='passaporteweb-client-ruby', expiration=nil)
       raise "The uuid field is required." if uuid.nil?
       raise "The fields uuid_user and name are required." if uuid_user.nil? and name.nil?
