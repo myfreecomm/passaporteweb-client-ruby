@@ -59,34 +59,28 @@ describe PassaporteWeb::Account do
     end
   end
 
-  describe ".find_by_uuid", :vcr => true do
-    context "with param" do
-      context "on success" do
-        it "should return Hash with account" do
-          accounts = PassaporteWeb::Account.find_by_uuid("859d3542-84d6-4909-b1bd-4f43c1312065")
-          accounts.size.should == 1
-          accounts.should be_instance_of(Array)
-          accounts.last["plan_slug"].should == "identity-client"
-          accounts.last["add_member_url"].should == "/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/"
-        end
-      end
-
-      context "on failed" do
-        it "should raise an error if no Account exist with that uuid" do
-          expect {
-            PassaporteWeb::Account.find_by_uuid("859d3542-84d6-4909-b1bd-4f43c1312062")
-          }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
-        end
+  describe ".find", :vcr => true do
+    context "on success" do
+      it "should return an instance of Account with all the details" do
+        account = PassaporteWeb::Account.find("859d3542-84d6-4909-b1bd-4f43c1312065")
+        account.should be_instance_of(PassaporteWeb::Account)
+        account.plan_slug.should == "free"
+        account.account_data.should == {"name" => "Investimentos", "uuid" => "859d3542-84d6-4909-b1bd-4f43c1312065"}
+        account.service_data.should == {"name" => "Identity Client", "slug" => "identity_client"}
+        account.members_data.should == [
+          {"membership_details_url"=>"/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/20a8bbe1-3b4a-4e46-a69a-a7c524bd2ab8/", "identity"=>"20a8bbe1-3b4a-4e46-a69a-a7c524bd2ab8", "roles"=>["owner"]},
+          {"membership_details_url"=>"/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/5e32f927-c4ab-404e-a91c-b2abc05afb56/", "identity"=>"5e32f927-c4ab-404e-a91c-b2abc05afb56", "roles"=>["user"]}
+        ]
+        account.expiration.should be_nil
+        account.url.should == "/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/"
+        account.add_member_url.should == "/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/"
       end
     end
-
-    context "without param" do
-      it "should return Array of Hash with accounts" do
-        accounts = PassaporteWeb::Account.find_by_uuid
-        accounts.size.should > 1
-        accounts.should be_instance_of(Array)
-        accounts.last["plan_slug"].should == "free"
-        accounts.last["add_member_url"].should == "/organizations/api/accounts/ddc71259-cc15-4f9c-b876-856d633771ab/members/"
+    context "on failure" do
+      it "should raise an error if no Account exist with that uuid" do
+        expect {
+          PassaporteWeb::Account.find("859d3542-84d6-4909-b1bd-4f43c1312062")
+        }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
       end
     end
   end

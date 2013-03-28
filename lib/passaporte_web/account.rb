@@ -18,19 +18,23 @@ module PassaporteWeb
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts
     def self.find_all(page=1, limit=20)
       response = Http.get("/organizations/api/accounts/?page=#{page}&limit=#{limit}")
-      MultiJson.decode(response.body)
+      binding.pry
+      raw_accounts = MultiJson.decode(response.body)
+      raw_accounts.map { |raw| self.new(raw) }
     end
 
-    # GET /organizations/api/accounts/:uuid/
-    # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid
-    def self.find_by_uuid(uuid=nil)
-      if uuid.nil?
-        find_all
-      else
-        response = Http.get("/organizations/api/accounts/#{uuid}/")
-        attributes_hash = MultiJson.decode(response.body)
-        [] << attributes_hash
-      end
+    # Instanciates an Account identified by it's UUID, with all the details. Only accounts related to the current
+    # authenticated application are available. Returns the Account instance if successful, or raises a
+    # <tt>RestClient::ResourceNotFound</tt> exception if no Account exists with that UUID (or if it is not
+    # related to the current authenticated application).
+    #
+    # API method: <tt>GET /organizations/api/accounts/:uuid/</tt>
+    #
+    # API documentation: https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid
+    def self.find(uuid)
+      response = Http.get("/organizations/api/accounts/#{uuid}/")
+      attributes_hash = MultiJson.decode(response.body)
+      self.new(attributes_hash)
     end
 
     # PUT /organizations/api/accounts/:uuid/
@@ -126,9 +130,15 @@ module PassaporteWeb
     private
 
     def set_attributes(hash)
+      # TODO @account_data é um hash
+      # TODO @service_data é um hash
+      # TODO @members_data é um array de hashes
       ATTRIBUTES.each do |attribute|
-        instance_variable_set("@#{attribute}".to_sym, hash[attribute.to_s])
+        value = hash[attribute.to_s] if hash.has_key?(attribute.to_s)
+        value = hash[attribute.to_sym] if hash.has_key?(attribute.to_sym)
+        instance_variable_set("@#{attribute}".to_sym, value)
       end
+      @persisted = true
     end
 
     def update_body
