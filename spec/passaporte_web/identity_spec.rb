@@ -3,6 +3,12 @@ require 'spec_helper'
 
 describe PassaporteWeb::Identity do
 
+  describe "constants" do
+    it { PassaporteWeb::Identity::ATTRIBUTES.should == [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos] }
+    it { PassaporteWeb::Identity::UPDATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone] }
+    it { PassaporteWeb::Identity::CREATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone, :email, :password, :password2, :must_change_password, :tos] }
+  end
+
   describe ".new" do
     it "should instanciate an empty object" do
       identity = PassaporteWeb::Identity.new
@@ -119,21 +125,6 @@ describe PassaporteWeb::Identity do
     end
   end
 
-  describe ".find_by_email", :vcr => true do
-    it "should find the requested profile by email" do
-      identity = PassaporteWeb::Identity.find_by_email("teste@teste.com")
-      identity.should be_instance_of(PassaporteWeb::Identity)
-      identity.uuid.should == '5e32f927-c4ab-404e-a91c-b2abc05afb56'
-      identity.email.should == 'teste@teste.com'
-      identity.update_info_url.should == '/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
-    end
-    it "should raise an error if no profiles exist with that email" do
-      expect {
-        PassaporteWeb::Identity.find("invalid@email.com")
-      }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
-    end
-  end
-
   describe "#save", :vcr => true do
     describe "PUT" do
       let(:identity) { PassaporteWeb::Identity.find("5e32f927-c4ab-404e-a91c-b2abc05afb56") }
@@ -156,7 +147,6 @@ describe PassaporteWeb::Identity do
         end
       end
     end
-
     describe "POST" do
       context "on success" do
         it "should save with password, password2 and must_change_password" do
@@ -172,7 +162,6 @@ describe PassaporteWeb::Identity do
           identity = PassaporteWeb::Identity.new(attributes)
           identity.save.should be_true
         end
-
         it "should sabe with all params" do
           attributes = {
             "email" => "lula_luis80@example.com",
@@ -191,7 +180,6 @@ describe PassaporteWeb::Identity do
           identity.save.should be_true
         end
       end
-
       context "on failure" do
         it "should save without password, password2 and must_change_password" do
           attributes = {
