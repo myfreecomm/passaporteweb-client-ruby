@@ -38,21 +38,44 @@ describe PassaporteWeb::Account do
   end
 
   describe ".find_all", :vcr => true do
-    let(:mock_response) { mock('response', body: [].to_json, code: 200) }
+    let(:mock_response) { mock('response', body: [].to_json, code: 200, headers: {link: "<http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/?page=3&limit=3>; rel=next, <http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/?page=1&limit=3>; rel=prev"}) }
     it "should find all accounts related to the authenticated application and return them as an array of Account instances" do
-      accounts = PassaporteWeb::Account.find_all
+      accounts_and_meta = PassaporteWeb::Account.find_all
+
+      accounts = accounts_and_meta.accounts
       accounts.should be_instance_of(Array)
       accounts.size.should == 12
       accounts.map { |a| a.instance_of?(PassaporteWeb::Account) }.uniq.should == [true]
       accounts.map(&:plan_slug).uniq.sort.should == ['free', 'passaporteweb-client-ruby']
+
+      meta = accounts_and_meta.meta
+      meta.limit.should == 20
+      meta.next_page.should == nil
+      meta.prev_page.should == nil
+      meta.first_page.should == 1
+      meta.last_page.should == 1
+    end
+    it "should return information about all possible pages" do
+      accounts_and_meta = PassaporteWeb::Account.find_all(3, 3)
+
+      accounts = accounts_and_meta.accounts
+      accounts.should be_instance_of(Array)
+      accounts.size.should == 3
+
+      meta = accounts_and_meta.meta
+      meta.limit.should == 3
+      meta.next_page.should == 4
+      meta.prev_page.should == 2
+      meta.first_page.should == 1
+      meta.last_page.should == 5
     end
     it "should ask for page 1 and 20 accounts per page by default" do
       PassaporteWeb::Http.should_receive(:get).with("/organizations/api/accounts/?page=1&limit=20").and_return(mock_response)
-      PassaporteWeb::Account.find_all.should == []
+      PassaporteWeb::Account.find_all
     end
     it "should ask for page and accounts per page as supplied" do
       PassaporteWeb::Http.should_receive(:get).with("/organizations/api/accounts/?page=4&limit=100").and_return(mock_response)
-      PassaporteWeb::Account.find_all(4, 100).should == []
+      PassaporteWeb::Account.find_all(4, 100)
     end
     it "should raise an error if the page does not exist" do
       expect {

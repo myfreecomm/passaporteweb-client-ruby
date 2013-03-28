@@ -15,17 +15,32 @@ module PassaporteWeb
     end
 
     # Finds all Accounts that the current authenticated application has access to, paginated. By default finds
-    # 20 Accounts per request, starting at "page" 1. Returns an array of Account instances or an empty array
-    # if no Accounts are found. Raises a <tt>RestClient::ResourceNotFound</tt> exception if the requested page
-    # does not exist.
+    # 20 Accounts per request, starting at "page" 1. Returns an OpenStruct object with two attributes
+    # <tt>accounts</tt> and <tt>meta</tt>. <tt>accounts</tt> is an array of Account instances or an empty array
+    # if no Accounts are found. <tt>meta</tt> is an OpenStruct object with information about limit and available
+    # pagination values, to use in subsequent calls to <tt>.find_all</tt>. Raises a
+    # <tt>RestClient::ResourceNotFound</tt> exception if the requested page does not exist.
     #
     # API method: <tt>GET /organizations/api/accounts/</tt>
     #
     # API documentation: https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts
+    #
+    # Example:
+    #   data = PassaporteWeb::Account.find_all
+    #   data.accounts # => [account1, account2, ...]
+    #   data.meta # => #<OpenStruct limit=20, next_page=2, prev_page=nil, first_page=1, last_page=123>
+    #   data.meta.limit      # => 20
+    #   data.meta.next_page  # => 2
+    #   data.meta.prev_page  # => nil
+    #   data.meta.first_page # => 1
+    #   data.meta.last_page  # => 123
     def self.find_all(page=1, limit=20)
       response = Http.get("/organizations/api/accounts/?page=#{Integer(page)}&limit=#{Integer(limit)}")
       raw_accounts = MultiJson.decode(response.body)
-      raw_accounts.map { |raw_account| self.new(raw_account) }
+      result_hash = {}
+      result_hash[:accounts] = raw_accounts.map { |raw_account| self.new(raw_account) }
+      result_hash[:meta] = PassaporteWeb::Helpers.meta_links_from_header(response.headers[:link])
+      PassaporteWeb::Helpers.convert_to_ostruct_recursive(result_hash)
     end
 
     # Instanciates an Account identified by it's UUID, with all the details. Only accounts related to the current
