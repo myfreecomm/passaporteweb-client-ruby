@@ -1,4 +1,4 @@
 # encoding: utf-8
 module PassaporteWeb
-  VERSION = "0.1.2"
+  VERSION = "0.0.4"
 end
