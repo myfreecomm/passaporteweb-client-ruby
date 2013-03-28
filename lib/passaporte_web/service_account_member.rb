@@ -1,4 +1,7 @@
 # encoding: utf-8
 module PassaporteWeb
-  VERSION = "0.0.5"
+
+  class ServiceAccountMember
+  end
+
 end

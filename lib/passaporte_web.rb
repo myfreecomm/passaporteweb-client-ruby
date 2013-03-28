@@ -9,6 +9,7 @@ require "passaporte_web/http"
 require "passaporte_web/helpers"
 require "passaporte_web/identity"
 require "passaporte_web/service_account"
+require "passaporte_web/service_account_member"
 
 module PassaporteWeb
 

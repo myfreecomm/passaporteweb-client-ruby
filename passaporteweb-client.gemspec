@@ -16,7 +16,9 @@ Gem::Specification.new do |spec|
   spec.license       = "Apache-v2"
   spec.has_rdoc      = true
 
-  spec.files         = `git ls-files`.split($/)
+  # VCR cassettes are too long for the gemspec, see http://stackoverflow.com/questions/14371686/building-rails-3-engine-throwing-gempackagetoolongfilename-error
+  # spec.files         = `git ls-files`.split($/)
+  spec.files         = `git ls-files`.split($/).reject { |f| f =~ %r{(vcr_cassettes)/} }
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
