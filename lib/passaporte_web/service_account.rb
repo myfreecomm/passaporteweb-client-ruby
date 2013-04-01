@@ -52,8 +52,8 @@ module PassaporteWeb
     #
     # API documentation: https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid
     def self.find(uuid)
-      response = Http.get("/organizations/api/accounts/#{uuid}/")
-      attributes_hash = MultiJson.decode(response.body)
+      require "passaporte_web/pw.rb"
+      attributes_hash = PW.find("/organizations/api/accounts/#{uuid}/", Http)
       self.new(attributes_hash)
     end
 
