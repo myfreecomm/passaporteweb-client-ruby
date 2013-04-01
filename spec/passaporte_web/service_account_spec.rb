@@ -118,6 +118,10 @@ describe PassaporteWeb::ServiceAccount do
         end
       end
       context "on failure" do
+        it "should return false" do
+          PassaporteWeb::ServiceAccount.save_user("859d3542-84d6-4909-b1bd-4f43c1312065", "a5868d14-6529-477a-9c6b-a09dd42a7cd4").should be_false
+        end
+
         it "should not save the members in account without identity params" do
           expect {
             PassaporteWeb::ServiceAccount.save_user("859d3542-84d6-4909-b1bd-4f43c1312062", nil)
@@ -201,12 +205,16 @@ describe PassaporteWeb::ServiceAccount do
 
   describe ".delete_membership", :vcr => true do
     context "on success" do
-      it "should update and return hash with membership data" do
+      it "should true with membership data" do
         PassaporteWeb::ServiceAccount.delete_membership("859d3542-84d6-4909-b1bd-4f43c1312065", "a5868d14-6529-477a-9c6b-a09dd42a7cd2").should be_true
       end
     end
 
     context "on failed" do
+      it "should false with membership data" do
+          PassaporteWeb::ServiceAccount.delete_membership("859d3542-84d6-4909-b1bd-4f43c1312065", "a5868d14-6529-477a-9c6b-a09dd42a7cd4").should be_false
+      end
+
       it "should return RuntimeError with uuid param" do
         expect{
           PassaporteWeb::ServiceAccount.delete_membership("859d3542-84d6-4909-b1bd-4f43c1312065", nil )
@@ -227,7 +235,7 @@ describe PassaporteWeb::ServiceAccount do
     end
   end
 
-   describe ".list_accounts_user", :vcr => true do
+  describe ".list_accounts_user", :vcr => true do
     context "on success" do
       it "should listed and return hash with data of account user" do
         list_service_accounts = PassaporteWeb::ServiceAccount.list_accounts_user("5e32f927-c4ab-404e-a91c-b2abc05afb56")
@@ -253,7 +261,12 @@ describe PassaporteWeb::ServiceAccount do
           PassaporteWeb::ServiceAccount.new_account_user("5e32f927-c4ab-404e-a91c-b2abc05afb56", nil, "ContaPessoal5").should be_true
         end
       end
+
       context "on failure" do
+        it "should false with membership data" do
+          PassaporteWeb::ServiceAccount.new_account_user("859d3542-84d6-4909-b1bd-4f43c1312065", "a5868d14-6529-477a-9c6b-a09dd42a7cd2").should be_false
+        end
+
         it "should not save the members in account without identity params" do
           expect {
             PassaporteWeb::ServiceAccount.new_account_user("859d3542-84d6-4909-b1bd-4f43c1312062")
@@ -266,6 +279,12 @@ describe PassaporteWeb::ServiceAccount do
           }.to raise_error(RuntimeError, "The uuid field is required.")
         end
       end
+    end
+  end
+
+  describe ".persisted?" do
+    it "should return true" do
+      PassaporteWeb::ServiceAccount.new.persisted?.should be_true
     end
   end
 

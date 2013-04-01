@@ -77,7 +77,7 @@ module PassaporteWeb
       raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
       @errors = {}
       true
-    rescue *[RestClient::Conflict, RestClient::BadRequest] => e
+    rescue *[RestClient::Conflict, RestClient::BadRequest, RestClient::ResourceNotFound] => e
       @errors = MultiJson.decode(e.response.body)
       false
     end
@@ -109,8 +109,10 @@ module PassaporteWeb
     def self.delete_membership(uuid=nil, member_uuid=nil)
       raise "The uuid field is required."        if uuid.nil?
       raise "The member_uuid field is required." if member_uuid.nil?
-      response = Http.delete("/organizations/api/accounts/#{uuid}/members/#{member_uuid}/")
-      return true if response.code == 204
+      Http.delete("/organizations/api/accounts/#{uuid}/members/#{member_uuid}/")
+      true
+    rescue *[RestClient::Conflict, RestClient::BadRequest, RestClient::ResourceNotFound] => e
+      @errors = MultiJson.decode(e.response.body)
       false
     end
 
@@ -141,8 +143,7 @@ module PassaporteWeb
       raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 201
       @errors = {}
       true
-    rescue *[RestClient::Conflict, RestClient::BadRequest] => e
-      p e
+    rescue *[RestClient::Conflict, RestClient::BadRequest, RestClient::ResourceNotFound] => e
       @errors = MultiJson.decode(e.response.body)
       false
     end
@@ -170,14 +171,6 @@ module PassaporteWeb
         instance_variable_set("@#{attribute}".to_sym, value)
       end
       @persisted = true
-    end
-
-    def update_body
-      self.attributes.select { |key, value| UPDATABLE_ATTRIBUTES.include?(key) && !value.nil? }
-    end
-
-    def body
-      self.attributes.select { |key, value| ATTRIBUTES.include?(key) && !value.nil? }
     end
 
   end
