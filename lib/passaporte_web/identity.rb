@@ -20,8 +20,8 @@ module PassaporteWeb
     #
     # API documentation: https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-uuid
     def self.find(uuid)
-      require "passaporte_web/pw.rb"
-      attributes_hash = PW.find("/profile/api/info/#{uuid}/", Http)
+      response = Http.get("/profile/api/info/#{uuid}/")
+      attributes_hash = MultiJson.decode(response.body)
       self.new(attributes_hash)
     end
 
