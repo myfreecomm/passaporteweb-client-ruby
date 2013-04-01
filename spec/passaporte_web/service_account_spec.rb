@@ -110,19 +110,6 @@ describe PassaporteWeb::ServiceAccount do
     end
   end
 
-  describe "#name", :vcr => true do
-    it "should return the name of the ServiceAccount" do
-      service_account = PassaporteWeb::ServiceAccount.find("859d3542-84d6-4909-b1bd-4f43c1312065")
-      service_account.account_data.should == {"name" => "Investimentos", "uuid" => "859d3542-84d6-4909-b1bd-4f43c1312065"}
-      service_account.name.should == 'Investimentos'
-    end
-    it "should return nil if the ServiceAccount has no name yet" do
-      service_account = PassaporteWeb::ServiceAccount.new
-      service_account.account_data.should be_nil
-      service_account.name.should be_nil
-    end
-  end
-
   describe "#uuid", :vcr => true do
     let(:service_account) { PassaporteWeb::ServiceAccount.find("859d3542-84d6-4909-b1bd-4f43c1312065") }
     it "should return the uuid of the ServiceAccount" do

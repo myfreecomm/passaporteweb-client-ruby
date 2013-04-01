@@ -14,10 +14,6 @@ module PassaporteWeb
       @errors = {}
     end
 
-    def name
-      self.account_data['name'] if self.account_data
-    end
-
     def uuid
       self.account_data['uuid'] if self.account_data
     end
