@@ -14,6 +14,14 @@ module PassaporteWeb
       @errors = {}
     end
 
+    def name
+      self.account_data['name'] if self.account_data
+    end
+
+    def uuid
+      self.account_data['uuid'] if self.account_data
+    end
+
     # Finds all ServiceAccounts that the current authenticated application has access to, paginated. By default finds
     # 20 ServiceAccounts per request, starting at "page" 1. Returns an OpenStruct object with two attributes
     # <tt>service_accounts</tt> and <tt>meta</tt>. <tt>service_accounts</tt> is an array of ServiceAccount instances or an empty array
@@ -57,11 +65,25 @@ module PassaporteWeb
       self.new(attributes_hash)
     end
 
-    # PUT /organizations/api/accounts/:uuid/
-    # https://app.passaporteweb.com.br/static/docs/account_manager.html#put-organizations-api-accounts-uuid
-    # TODO review
-    # def save
-    # end
+    # Updates an existing ServiceAccount, changing it's plan_slug and/or expiration date. Returns true
+    # if successfull or false if not. In case of failure, it will fill the <tt>errors</tt> attribute
+    # with the reason for the failure to save the object.
+    #
+    # API method: <tt>PUT /organizations/api/accounts/:uuid/</tt>
+    #
+    # API documentation: https://app.passaporteweb.com.br/static/docs/account_manager.html#put-organizations-api-accounts-uuid
+    def save
+      # TODO validar atributos?
+      response = update
+      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
+      attributes_hash = MultiJson.decode(response.body)
+      set_attributes(attributes_hash)
+      @errors = {}
+      true
+    rescue *[RestClient::Conflict, RestClient::BadRequest] => e
+      @errors = MultiJson.decode(e.response.body)
+      false
+    end
 
     # POST /organizations/api/accounts/:uuid/members/
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#post-organizations-api-accounts-uuid-members
@@ -171,6 +193,14 @@ module PassaporteWeb
         instance_variable_set("@#{attribute}".to_sym, value)
       end
       @persisted = true
+    end
+
+    def update
+      Http.put("/organizations/api/accounts/#{self.uuid}/", update_body)
+    end
+
+    def update_body
+      self.attributes.select { |key, value| UPDATABLE_ATTRIBUTES.include?(key) && !value.nil? }
     end
 
   end

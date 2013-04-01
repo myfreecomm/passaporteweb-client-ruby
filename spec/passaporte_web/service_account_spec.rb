@@ -110,6 +110,63 @@ describe PassaporteWeb::ServiceAccount do
     end
   end
 
+  describe "#name", :vcr => true do
+    it "should return the name of the ServiceAccount" do
+      service_account = PassaporteWeb::ServiceAccount.find("859d3542-84d6-4909-b1bd-4f43c1312065")
+      service_account.account_data.should == {"name" => "Investimentos", "uuid" => "859d3542-84d6-4909-b1bd-4f43c1312065"}
+      service_account.name.should == 'Investimentos'
+    end
+    it "should return nil if the ServiceAccount has no name yet" do
+      service_account = PassaporteWeb::ServiceAccount.new
+      service_account.account_data.should be_nil
+      service_account.name.should be_nil
+    end
+  end
+
+  describe "#uuid", :vcr => true do
+    let(:service_account) { PassaporteWeb::ServiceAccount.find("859d3542-84d6-4909-b1bd-4f43c1312065") }
+    it "should return the uuid of the ServiceAccount" do
+      service_account = PassaporteWeb::ServiceAccount.find("859d3542-84d6-4909-b1bd-4f43c1312065")
+      service_account.account_data.should == {"name" => "Investimentos", "uuid" => "859d3542-84d6-4909-b1bd-4f43c1312065"}
+      service_account.uuid.should == '859d3542-84d6-4909-b1bd-4f43c1312065'
+    end
+    it "should return nil if the ServiceAccount has no uuid yet" do
+      service_account = PassaporteWeb::ServiceAccount.new
+      service_account.account_data.should be_nil
+      service_account.uuid.should be_nil
+    end
+  end
+
+  describe "#save", :vcr => true do
+    let(:service_account) { PassaporteWeb::ServiceAccount.find("859d3542-84d6-4909-b1bd-4f43c1312065") }
+    context "on success" do
+      it "should update the ServiceAccount attributes on the server" do
+        service_account.plan_slug.should == 'free'
+        service_account.expiration.should == '2014-04-01 00:00:00'
+
+        service_account.plan_slug = 'basic'
+        service_account.expiration = '2014-05-01'
+
+        service_account.save.should be_true
+
+        service_account.plan_slug.should == 'basic'
+        service_account.expiration.should == '2014-05-01 00:00:00'
+
+        service_account = PassaporteWeb::ServiceAccount.find("859d3542-84d6-4909-b1bd-4f43c1312065")
+        service_account.plan_slug.should == 'basic'
+        service_account.expiration.should == '2014-05-01 00:00:00'
+      end
+    end
+    context "on failure" do
+      it "should return false and set the errors hash" do
+        service_account.plan_slug = nil # required
+        service_account.expiration = nil
+        service_account.save.should be_false
+        service_account.errors.should == {"field_errors"=>{"plan_slug"=>["Este campo é obrigatório."]}}
+      end
+    end
+  end
+
   describe ".save_user", :vcr => true do
     describe "POST" do
       context "on success" do
