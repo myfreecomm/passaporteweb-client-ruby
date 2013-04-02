@@ -10,7 +10,6 @@ describe PassaporteWeb::Http do
       c.application_token = 'some-app-token'
       c.application_secret = 'some-app-secret'
       c.user_token = 'some-user-token'
-      c.user_secret = 'some-user-secret'
     end
   end
 
