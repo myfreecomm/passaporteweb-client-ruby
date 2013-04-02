@@ -84,59 +84,6 @@ module PassaporteWeb
       false
     end
 
-    # POST /organizations/api/accounts/:uuid/members/
-    # https://app.passaporteweb.com.br/static/docs/account_manager.html#post-organizations-api-accounts-uuid-members
-    # TODO review
-    def self.save_user(uuid, identity, roles=nil)
-      # TODO validar atributos?
-      raise "The uuid field is required." if uuid.nil?
-      raise "The identity field is required." if identity.nil?
-      members = {}
-      members["identity"] = identity
-      members["roles"]    = roles unless roles.nil?
-      response = Http.post("/organizations/api/accounts/#{uuid}/members/", members)
-      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
-      @errors = {}
-      true
-    rescue *[RestClient::Conflict, RestClient::BadRequest, RestClient::ResourceNotFound] => e
-      @errors = MultiJson.decode(e.response.body)
-      false
-    end
-
-    # GET /organizations/api/accounts/:uuid/members/:member_uuid/
-    # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid-members-member-uuid
-    # TODO review
-    def self.list_members(uuid=nil, member_uuid=nil)
-      raise "The uuid field is required." if uuid.nil?
-      raise "The member_uuid field is required." if member_uuid.nil?
-      response = Http.get("/organizations/api/accounts/#{uuid}/members/#{member_uuid}/")
-      MultiJson.decode(response.body)
-    end
-
-    # PUT /organizations/api/accounts/:uuid/members/:member_uuid/
-    # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid-members-member-uuid
-    # TODO review
-    def self.update_roles_members(uuid=nil, member_uuid=nil, roles=nil)
-      raise "The uuid field is required."        if uuid.nil?
-      raise "The member_uuid field is required." if member_uuid.nil?
-      raise "The roles field is required."       if roles.nil?
-      response = Http.put("/organizations/api/accounts/#{uuid}/members/#{member_uuid}/", roles: roles)
-      MultiJson.decode(response.body)
-    end
-
-    # DELETE /organizations/api/accounts/:uuid/members/:member_uuid/
-    # https://app.passaporteweb.com.br/static/docs/account_manager.html#delete-organizations-api-accounts-uuid-members-member-uuid
-    # TODO review
-    def self.delete_membership(uuid=nil, member_uuid=nil)
-      raise "The uuid field is required."        if uuid.nil?
-      raise "The member_uuid field is required." if member_uuid.nil?
-      Http.delete("/organizations/api/accounts/#{uuid}/members/#{member_uuid}/")
-      true
-    rescue *[RestClient::Conflict, RestClient::BadRequest, RestClient::ResourceNotFound] => e
-      @errors = MultiJson.decode(e.response.body)
-      false
-    end
-
     # GET /organizations/api/identities/:uuid/accounts/
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-identities-uuid-accounts
     # TODO review
