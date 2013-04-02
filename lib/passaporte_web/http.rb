@@ -11,7 +11,6 @@ module PassaporteWeb
     end
 
     def self.put(path='/', body={}, params={})
-      encoded_body = (body.is_a?(Hash) ? MultiJson.encode(body) : body)
       RestClient.put(
         pw_url(path),
         encoded_body(body),
