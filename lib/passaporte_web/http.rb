@@ -21,7 +21,7 @@ module PassaporteWeb
 
     private
 
-    def self.put_or_post(method, path='/', body={}, params={}, type='application')
+    def self.put_or_post(method, path, body, params, type)
       RestClient.send(
         method,
         pw_url(path),
@@ -30,12 +30,7 @@ module PassaporteWeb
       )
     end
 
-    def self.get_or_delete(method, path='/', params={}, type='application')
-      p type
-      p method
-      p pw_url(path)
-      o = {params: params}.merge(common_params(type))
-      p o
+    def self.get_or_delete(method, path, params, type)
       RestClient.send(
         method,
         pw_url(path),
@@ -49,7 +44,7 @@ module PassaporteWeb
 
     def self.common_params(type)
       {
-        authorization: if type.eql? 'application' then PassaporteWeb.configuration.application_credentials else PassaporteWeb.configuration.user_credentials end,
+        authorization: (type == 'application' ? PassaporteWeb.configuration.application_credentials : PassaporteWeb.configuration.user_credentials),
         content_type: :json,
         accept: :json,
         user_agent: PassaporteWeb.configuration.user_agent

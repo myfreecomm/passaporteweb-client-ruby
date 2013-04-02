@@ -11,7 +11,6 @@ module PassaporteWeb
       @application_token = nil
       @application_secret = nil
       @user_token = nil
-      @user_secret = nil
     end
 
     def application_credentials
