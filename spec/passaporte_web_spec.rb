@@ -15,14 +15,12 @@ describe PassaporteWeb do
         c.application_token = 'some-app-token'
         c.application_secret = 'some-app-secret'
         c.user_token = nil
-        c.user_secret = nil
       end
       PassaporteWeb.configuration.url.should == 'http://some/where'
       PassaporteWeb.configuration.user_agent.should == 'My App v1.0'
       PassaporteWeb.configuration.application_token.should == 'some-app-token'
       PassaporteWeb.configuration.application_secret.should == 'some-app-secret'
       PassaporteWeb.configuration.user_token.should be_nil
-      PassaporteWeb.configuration.user_secret.should be_nil
     end
     it 'should use a singleton object for the configuration values' do
       config1 = PassaporteWeb.configuration
