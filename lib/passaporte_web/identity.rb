@@ -18,12 +18,15 @@ module PassaporteWeb
     # Raises a <tt>RestClient::ResourceNotFound</tt> exception if no Identity exists with the supplied
     # UUID.
     #
+    # If <tt>include_expired_accounts</tt> is passed as <tt>true</tt>, brings information about all
+    # accounts the Identity is related, regardless of the account's expiration date.
+    #
+    # If <tt>include_other_services</tt> is passed as <tt>true</tt>, brings information about accounts
+    # of all services the Identity is related to (not just the current logged in service / application).
+    #
     # API method: <tt>/accounts/api/identities/:uuid/</tt>
     #
     # API documentation: https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-identities-uuid
-    #
-    # TODO include_expired_accounts
-    # TODO include_other_services
     def self.find(uuid, include_expired_accounts=false, include_other_services=false)
       response = Http.get(
         "/accounts/api/identities/#{uuid}/",
@@ -37,12 +40,15 @@ module PassaporteWeb
     # with all fields set if successful. Raises a <tt>RestClient::ResourceNotFound</tt> exception if no
     # Identity exists with the supplied email.
     #
+    # If <tt>include_expired_accounts</tt> is passed as <tt>true</tt>, brings information about all
+    # accounts the Identity is related, regardless of the account's expiration date.
+    #
+    # If <tt>include_other_services</tt> is passed as <tt>true</tt>, brings information about accounts
+    # of all services the Identity is related to (not just the current logged in service / application).
+    #
     # API method: <tt>GET /accounts/api/identities/?email=:email</tt>
     #
     # API documentation: https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-identities-email-email
-    #
-    # TODO include_expired_accounts
-    # TODO include_other_services
     def self.find_by_email(email, include_expired_accounts=false, include_other_services=false)
       response = Http.get(
         "/accounts/api/identities/",
