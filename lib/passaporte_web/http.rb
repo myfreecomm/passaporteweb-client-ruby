@@ -31,6 +31,11 @@ module PassaporteWeb
     end
 
     def self.get_or_delete(method, path='/', params={}, type='application')
+      p type
+      p method
+      p pw_url(path)
+      o = {params: params}.merge(common_params(type))
+      p o
       RestClient.send(
         method,
         pw_url(path),
@@ -47,7 +52,6 @@ module PassaporteWeb
         authorization: if type.eql? 'application' then PassaporteWeb.configuration.application_credentials else PassaporteWeb.configuration.user_credentials end,
         content_type: :json,
         accept: :json,
-        authorization: PassaporteWeb.configuration.application_credentials,
         user_agent: PassaporteWeb.configuration.user_agent
       }
     end
