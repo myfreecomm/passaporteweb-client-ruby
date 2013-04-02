@@ -21,8 +21,14 @@ module PassaporteWeb
     # API method: <tt>/accounts/api/identities/:uuid/</tt>
     #
     # API documentation: https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-identities-uuid
-    def self.find(uuid)
-      response = Http.get("/accounts/api/identities/#{uuid}/")
+    #
+    # TODO include_expired_accounts
+    # TODO include_other_services
+    def self.find(uuid, include_expired_accounts=false, include_other_services=false)
+      response = Http.get(
+        "/accounts/api/identities/#{uuid}/",
+        {include_expired_accounts: include_expired_accounts, include_other_services: include_other_services}
+      )
       attributes_hash = MultiJson.decode(response.body)
       self.new(attributes_hash)
     end
@@ -34,8 +40,14 @@ module PassaporteWeb
     # API method: <tt>GET /accounts/api/identities/?email=:email</tt>
     #
     # API documentation: https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-identities-email-email
-    def self.find_by_email(email)
-      response = Http.get("/accounts/api/identities/", email: email)
+    #
+    # TODO include_expired_accounts
+    # TODO include_other_services
+    def self.find_by_email(email, include_expired_accounts=false, include_other_services=false)
+      response = Http.get(
+        "/accounts/api/identities/",
+        {email: email, include_expired_accounts: include_expired_accounts, include_other_services: include_other_services}
+      )
       attributes_hash = MultiJson.decode(response.body)
       self.new(attributes_hash)
     end

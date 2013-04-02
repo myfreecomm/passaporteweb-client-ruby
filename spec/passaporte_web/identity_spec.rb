@@ -103,6 +103,8 @@ describe PassaporteWeb::Identity do
       identity.email.should == 'teste@teste.com'
       identity.update_info_url.should == '/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
     end
+    it "should find the requested profile by uuid, including expired accounts"
+    it "should find the requested profile by uuid, including other services"
     it "should raise an error if no profiles exist with that uuid" do
       expect {
         PassaporteWeb::Identity.find("invalid-uuid")
@@ -118,6 +120,8 @@ describe PassaporteWeb::Identity do
       identity.email.should == 'teste@teste.com'
       identity.update_info_url.should == '/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
     end
+    it "should find the requested profile by email, including expired accounts"
+    it "should find the requested profile by email, including other services"
     it "should raise an error if no profiles exist with that email" do
       expect {
         PassaporteWeb::Identity.find("invalid@email.com")
