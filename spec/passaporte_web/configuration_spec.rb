@@ -45,7 +45,7 @@ describe PassaporteWeb::Configuration do
     let(:config) { PassaporteWeb::Configuration.new }
     it "should return the HTTP Basic Auth header value for the user login" do
       config.user_token = 'some-user-token'
-      config.user_credentials.should == 'Basic c29tZS11c2VyLXRva2Vu'
+      config.user_credentials.should == 'Basic OnNvbWUtdXNlci10b2tlbg=='
     end
     it "should require the user_token to be set" do
       expect { config.user_credentials }.to raise_error(ArgumentError, 'user_token not set')

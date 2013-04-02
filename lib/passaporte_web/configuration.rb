@@ -35,7 +35,7 @@ module PassaporteWeb
 
     def base64_credential(type, user, password=nil)
       return "Basic #{::Base64.strict_encode64("#{user}:#{password}")}" if type.eql? 'application'
-      return "Basic #{::Base64.strict_encode64("#{user}")}" if type.eql? 'user'
+      return "Basic #{::Base64.strict_encode64(":#{user}")}" if type.eql? 'user'
     end
   end
 
