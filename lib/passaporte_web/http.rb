@@ -4,38 +4,39 @@ module PassaporteWeb
   class Http # :nodoc:
 
     def self.get(path='/', params={}, type='application')
-      RestClient.get(
-        pw_url(path),
-        {params: params}.merge(common_params(type))
-      )
+      get_or_delete(:get, path, params, type)
     end
 
     def self.put(path='/', body={}, params={}, type='application')
-      encoded_body = (body.is_a?(Hash) ? MultiJson.encode(body) : body)
-      RestClient.put(
-        pw_url(path),
-        encoded_body,
-        {params: params}.merge(common_params(type))
-      )
+      put_or_post(:put, path, body, params, type)
     end
 
-    def self.post(path='/', body={}, type='application')
-      encoded_body = (body.is_a?(Hash) ? MultiJson.encode(body) : body)
-      RestClient.post(
-        pw_url(path),
-        encoded_body,
-        common_params(type)
-      )
+    def self.post(path='/', body={}, params={}, type='application')
+      put_or_post(:post, path, body, params, type)
     end
 
     def self.delete(path='/', params={}, type='application')
-      RestClient.delete(
+      get_or_delete(:delete, path, params, type)
+    end
+
+    private
+
+    def self.put_or_post(method, path='/', body={}, params={}, type='application')
+      RestClient.send(
+        method,
         pw_url(path),
+        encoded_body(body),
         {params: params}.merge(common_params(type))
       )
     end
 
-    private
+    def self.get_or_delete(method, path='/', params={}, type='application')
+      RestClient.send(
+        method,
+        pw_url(path),
+        {params: params}.merge(common_params(type))
+      )
+    end
 
     def self.pw_url(path)
       "#{PassaporteWeb.configuration.url}#{path}"
@@ -46,8 +47,13 @@ module PassaporteWeb
         authorization: if type.eql? 'application' then PassaporteWeb.configuration.application_credentials else PassaporteWeb.configuration.user_credentials end,
         content_type: :json,
         accept: :json,
+        authorization: PassaporteWeb.configuration.application_credentials,
         user_agent: PassaporteWeb.configuration.user_agent
       }
+    end
+
+    def self.encoded_body(body)
+      body.is_a?(Hash) ? MultiJson.encode(body) : body
     end
 
   end

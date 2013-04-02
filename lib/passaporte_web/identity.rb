@@ -4,6 +4,8 @@ module PassaporteWeb
   # Represents an Identity on PassaporteWeb, i.e. a person. When you sign up for PassaporteWeb, your 'account'
   # there is an Identity.
   class Identity
+    include Attributable
+
     ATTRIBUTES = [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos]
     UPDATABLE_ATTRIBUTES = [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone]
     CREATABLE_ATTRIBUTES = *(UPDATABLE_ATTRIBUTES + [:email, :password, :password2, :must_change_password, :tos])
@@ -16,11 +18,17 @@ module PassaporteWeb
     # Raises a <tt>RestClient::ResourceNotFound</tt> exception if no Identity exists with the supplied
     # UUID.
     #
-    # API method: <tt>GET /profile/api/info/:uuid/</tt>
+    # API method: <tt>/accounts/api/identities/:uuid/</tt>
     #
-    # API documentation: https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-uuid
-    def self.find(uuid)
-      response = Http.get("/profile/api/info/#{uuid}/")
+    # API documentation: https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-identities-uuid
+    #
+    # TODO include_expired_accounts
+    # TODO include_other_services
+    def self.find(uuid, include_expired_accounts=false, include_other_services=false)
+      response = Http.get(
+        "/accounts/api/identities/#{uuid}/",
+        {include_expired_accounts: include_expired_accounts, include_other_services: include_other_services}
+      )
       attributes_hash = MultiJson.decode(response.body)
       self.new(attributes_hash)
     end
@@ -29,11 +37,17 @@ module PassaporteWeb
     # with all fields set if successful. Raises a <tt>RestClient::ResourceNotFound</tt> exception if no
     # Identity exists with the supplied email.
     #
-    # API method: <tt>GET /profile/api/info/?email=:email</tt>
+    # API method: <tt>GET /accounts/api/identities/?email=:email</tt>
     #
-    # API documentation: https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-email-email
-    def self.find_by_email(email)
-      response = Http.get("/profile/api/info/", email: email)
+    # API documentation: https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-identities-email-email
+    #
+    # TODO include_expired_accounts
+    # TODO include_other_services
+    def self.find_by_email(email, include_expired_accounts=false, include_other_services=false)
+      response = Http.get(
+        "/accounts/api/identities/",
+        {email: email, include_expired_accounts: include_expired_accounts, include_other_services: include_other_services}
+      )
       attributes_hash = MultiJson.decode(response.body)
       self.new(attributes_hash)
     end
@@ -89,11 +103,13 @@ module PassaporteWeb
     # if successfull or false if not. In case of failure, it will fill the <tt>errors</tt> attribute
     # with the reason for the failure to save the object.
     #
-    # API methods: <tt>POST /accounts/api/create/</tt> (on create) and <tt>PUT /profile/api/info/:uuid/</tt> (on update)
+    # API methods:
+    # * <tt>POST /accounts/api/create/</tt> (on create)
+    # * <tt>PUT /accounts/api/identities/:uuid/</tt> (on update)
     #
-    # API documentation: https://app.passaporteweb.com.br/static/docs/cadastro_e_auth.html#post-accounts-api-create
-    #
-    # API documentation: https://app.passaporteweb.com.br/static/docs/perfil.html#put-profile-api-info-uuid
+    # API documentation:
+    # * https://app.passaporteweb.com.br/static/docs/usuarios.html#post-accounts-api-create
+    # * https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-identities-email-email
     #
     # Example:
     #
@@ -126,19 +142,7 @@ module PassaporteWeb
     end
 
     def update
-      Http.put("/profile/api/info/#{self.uuid}/", update_body)
-    end
-
-    def set_attributes(hash)
-      # TODO @accounts é um array de hashes
-      # TODO @services é um hash
-      # TODO @notifications é um hash
-      ATTRIBUTES.each do |attribute|
-        value = hash[attribute.to_s] if hash.has_key?(attribute.to_s)
-        value = hash[attribute.to_sym] if hash.has_key?(attribute.to_sym)
-        instance_variable_set("@#{attribute}".to_sym, value)
-      end
-      @persisted = true
+      Http.put("/accounts/api/identities/#{self.uuid}/", update_body)
     end
 
     def update_body

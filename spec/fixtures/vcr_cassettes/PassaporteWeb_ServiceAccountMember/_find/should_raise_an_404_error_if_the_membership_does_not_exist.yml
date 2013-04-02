@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/invalid-uuid/?include_expired_accounts=false&include_other_services=false
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/
     body:
       encoding: US-ASCII
       string: ''
@@ -14,7 +14,85 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.0.7
+      - PassaporteWeb Ruby Client v0.0.5
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "QWxsb3c=":
+      - !binary |-
+        R0VULCBQVVQsIEhFQUQsIE9QVElPTlM=
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1FbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbg==
+      !binary "RGF0ZQ==":
+      - !binary |-
+        VHVlLCAwMiBBcHIgMjAxMyAxNToxNzo1MCBHTVQ=
+      !binary "RXhwaXJlcw==":
+      - !binary |-
+        VHVlLCAwMiBBcHIgMjAxMyAxNToxNzo0OSBHTVQ=
+      !binary "UDNw":
+      - !binary |-
+        Q1A9Ik5PTiBEU1AgQ09SIENVUmEgVElBIg==
+      !binary "U2VydmVy":
+      - !binary |-
+        bmdpbngvMC43LjY3
+      !binary "VmFyeQ==":
+      - !binary |-
+        QXV0aGVudGljYXRlLCBBY2NlcHQsIEFjY2VwdC1FbmNvZGluZw==
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        MzMy
+      !binary "WC1DYWNoZQ==":
+      - !binary |-
+        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI=
+      !binary "WC1DYWNoZS1Mb29rdXA=":
+      - !binary |-
+        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEy
+        OA==
+      !binary "Vmlh":
+      - !binary |-
+        MS4xIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEyOCAoc3F1
+        aWQvMi43LlNUQUJMRTkp
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAJ72WlEC/72SyW6DMBCGXwX5HAvb2ARy7anPUEVovCQdCQzCJl2ivHsx
+        kEPVHnKoKvkwmuWf+TxzJUMLvgntdCaHjGgIaMguI53rtBtDYyHCHHi53j2v
+        ODTWRcA2NNPYpqK8H8/g8RMi9j7kMGAOxvSTjyGvVG0LJQWtpC2prFlNNdeW
+        ypMsDC+4YKXKN+lcMKi0dpwWWgKVTpYUyhoo7I0SUlsBusrTdGidjxg/UvdH
+        ilLN2LcuJBTSv3k3kuNtl/0LlXKFONViT40ETSWTjkLNDdXzZIYpOGlV/qB6
+        pOg7FdgOfXJNYaE7JvOPUJKsex9wXBTWX+eSMkUZzxg7LC8lza0vaNz9bK7E
+        Q+dS/vPGlj21OFtL7nZzd+zGrKF5L2Qb7xcdf3EhYjcn9mGhndCmwCMcq7S1
+        zbqaP980uX0B+4fSGk8DAAA=
+    http_version: 
+  recorded_at: Tue, 02 Apr 2013 15:17:50 GMT
+- request:
+    method: get
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/identity-uuid/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.0.5
   response:
     status:
       code: 404
@@ -23,13 +101,11 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Date:
-      - Tue, 02 Apr 2013 17:57:57 GMT
+      - Tue, 02 Apr 2013 15:17:50 GMT
       P3p:
       - CP="NON DSP COR CURa TIA"
       Server:
       - nginx/0.7.67
-      Vary:
-      - Cookie
       X-Cache:
       - MISS from firewall.corp.myfreecomm.com.br
       X-Cache-Lookup:
@@ -88,5 +164,5 @@ http_interactions:
         YSwgcyk7CiAgICAgICAgfSkoKTsKICAgIDwvc2NyaXB0PgoKPC9ib2R5Pgo8
         L2h0bWw+Cg==
     http_version: 
-  recorded_at: Tue, 02 Apr 2013 17:57:57 GMT
+  recorded_at: Tue, 02 Apr 2013 15:17:51 GMT
 recorded_with: VCR 2.4.0

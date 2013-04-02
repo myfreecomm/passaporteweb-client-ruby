@@ -1,7 +1,12 @@
 # encoding: utf-8
 module PassaporteWeb
 
+  # Represents a ServiceAccount on PassaporteWeb, which is the 'account' of an Identity within a Service. A
+  # Service may have many ServiceAccount s and many Identity ies via it's ServiceAccount s. A Identity may
+  # belong to serveral Service s via it's ServiceAccount s.
   class ServiceAccount
+    include Attributable
+
     ATTRIBUTES = [:plan_slug, :expiration, :identity, :roles, :member_uuid, :role, :include_expired_accounts, :name, :members_data, :url, :service_data, :account_data, :add_member_url]
     UPDATABLE_ATTRIBUTES = [:plan_slug, :expiration]
 
@@ -81,59 +86,6 @@ module PassaporteWeb
       false
     end
 
-    # POST /organizations/api/accounts/:uuid/members/
-    # https://app.passaporteweb.com.br/static/docs/account_manager.html#post-organizations-api-accounts-uuid-members
-    # TODO review
-    def self.save_user(uuid, identity, roles=nil)
-      # TODO validar atributos?
-      raise "The uuid field is required." if uuid.nil?
-      raise "The identity field is required." if identity.nil?
-      members = {}
-      members["identity"] = identity
-      members["roles"]    = roles unless roles.nil?
-      response = Http.post("/organizations/api/accounts/#{uuid}/members/", members)
-      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
-      @errors = {}
-      true
-    rescue *[RestClient::Conflict, RestClient::BadRequest, RestClient::ResourceNotFound] => e
-      @errors = MultiJson.decode(e.response.body)
-      false
-    end
-
-    # GET /organizations/api/accounts/:uuid/members/:member_uuid/
-    # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid-members-member-uuid
-    # TODO review
-    def self.list_members(uuid=nil, member_uuid=nil)
-      raise "The uuid field is required." if uuid.nil?
-      raise "The member_uuid field is required." if member_uuid.nil?
-      response = Http.get("/organizations/api/accounts/#{uuid}/members/#{member_uuid}/")
-      MultiJson.decode(response.body)
-    end
-
-    # PUT /organizations/api/accounts/:uuid/members/:member_uuid/
-    # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid-members-member-uuid
-    # TODO review
-    def self.update_roles_members(uuid=nil, member_uuid=nil, roles=nil)
-      raise "The uuid field is required."        if uuid.nil?
-      raise "The member_uuid field is required." if member_uuid.nil?
-      raise "The roles field is required."       if roles.nil?
-      response = Http.put("/organizations/api/accounts/#{uuid}/members/#{member_uuid}/", roles: roles)
-      MultiJson.decode(response.body)
-    end
-
-    # DELETE /organizations/api/accounts/:uuid/members/:member_uuid/
-    # https://app.passaporteweb.com.br/static/docs/account_manager.html#delete-organizations-api-accounts-uuid-members-member-uuid
-    # TODO review
-    def self.delete_membership(uuid=nil, member_uuid=nil)
-      raise "The uuid field is required."        if uuid.nil?
-      raise "The member_uuid field is required." if member_uuid.nil?
-      Http.delete("/organizations/api/accounts/#{uuid}/members/#{member_uuid}/")
-      true
-    rescue *[RestClient::Conflict, RestClient::BadRequest, RestClient::ResourceNotFound] => e
-      @errors = MultiJson.decode(e.response.body)
-      false
-    end
-
     # GET /organizations/api/identities/:uuid/accounts/
     # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-identities-uuid-accounts
     # TODO review
@@ -178,18 +130,6 @@ module PassaporteWeb
     end
 
     private
-
-    def set_attributes(hash)
-      # TODO @account_data é um hash
-      # TODO @service_data é um hash
-      # TODO @members_data é um array de hashes
-      ATTRIBUTES.each do |attribute|
-        value = hash[attribute.to_s] if hash.has_key?(attribute.to_s)
-        value = hash[attribute.to_sym] if hash.has_key?(attribute.to_sym)
-        instance_variable_set("@#{attribute}".to_sym, value)
-      end
-      @persisted = true
-    end
 
     def update
       Http.put("/organizations/api/accounts/#{self.uuid}/", update_body)

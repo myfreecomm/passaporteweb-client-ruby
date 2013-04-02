@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/profile/api/info/5e32f927-c4ab-404e-a91c-b2abc05afb56/
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/?include_expired_accounts=false&include_other_services=false
     body:
       encoding: US-ASCII
       string: ''
@@ -14,7 +14,7 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.1.0
+      - PassaporteWeb Ruby Client v0.0.6
   response:
     status:
       code: 200
@@ -32,13 +32,13 @@ http_interactions:
         YXBwbGljYXRpb24vanNvbg==
       !binary "RGF0ZQ==":
       - !binary |-
-        V2VkLCAyNyBNYXIgMjAxMyAyMToyNDo1NyBHTVQ=
+        VHVlLCAwMiBBcHIgMjAxMyAxNzoyODoxNSBHTVQ=
       !binary "RXhwaXJlcw==":
       - !binary |-
-        V2VkLCAyNyBNYXIgMjAxMyAyMToyNDo1NiBHTVQ=
+        VHVlLCAwMiBBcHIgMjAxMyAxNzoyODoxNCBHTVQ=
       !binary "TGFzdC1Nb2RpZmllZA==":
       - !binary |-
-        V2VkLCAyNyBNYXIgMjAxMyAyMToyNDo1NyBHTVQ=
+        VHVlLCAwMiBBcHIgMjAxMyAxNzoyODoxNSBHTVQ=
       !binary "UDNw":
       - !binary |-
         Q1A9Ik5PTiBEU1AgQ09SIENVUmEgVElBIg==
@@ -50,7 +50,7 @@ http_interactions:
         QWNjZXB0LUVuY29kaW5n
       !binary "Q29udGVudC1MZW5ndGg=":
       - !binary |-
-        NzIw
+        Nzgz
       !binary "WC1DYWNoZQ==":
       - !binary |-
         TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI=
@@ -68,30 +68,32 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAKljU1EC/62Wy27bMBBFfyXQulOLL5HsqkBX3XXRXVEIw5dLVKYMPZI6
-        Qf69pBI3TtACst2NQQ+pyzkz5AUfqg7HqU2489WHm6p6d1PFsUU7xdsSCNiN
-        PsdSP8UQLU6xT2OOP1S2n9OUR3We7eJYhtXm1bIN7uOmeszzaJfV5cNvD9W+
-        w9SO3bwtn4TB+7LpMYFPfZrwix/HHrsSH/rOL99V/V3yQ/U9x+ahW3brhy2m
-        eH+y23GjjQ2Mcd4o0FJp4MHXoCxtoKkt58pRITXdFH3/ax+HRSFLprnrltjk
-        h4RdG91LcJ6Xf9Ua5QJ9Bie9AtQYzTV1CFZ6BdzWDhSXCMo3lilaW8rUZaBr
-        lP8CusdxxH0/TP7OG7Bd9GmCYTaHf9GzK+gbgc742oCjRgJvGAX03AGnLjTE
-        5o5Ydhn9GuX/Qc+voGeUUK2YAOMlBU6UAU0Ch9raUMuAwtUX9n6N8opD/jnd
-        +nGKu1yEfnwNOo/rOZXQjglO8/lzDXBdazDE5F4EzixhhNaNuIxzjfIKTlsa
-        erO/2rUcqSVzyIDUaIE7dGBEI8EYERwq01B1oWutUT4X9Brbklpl59QUhCfZ
-        RalAQGQKPIpAgrNWaXsZ6Rrlc0mvsah8VwQLRIFDWQPn6AE5J2UktNIUpbrQ
-        otYon0t6jR05ZyWhQoO1ROQrpC0YJRtQonENY1ISNBee3hXK1WNJM7vKbbT+
-        6YkSXTaeOB3aJx9e8n/pS079eTXEFPqN8IwGTSVYjgZ4zXM5Nck7UTS2Fhjy
-        hdm8kXx63hSHu++Tf0k8Rfvz9EkV4nDyyPqaTdHHoa+WhJNr9zhMudBt8nfj
-        yaPriL8ms6KVu7ydcXuSx8I6HE4qunc4+bYAt8eWvirJM2D047qC/GHYHcrB
-        sv1u9xZjm6fzKXouhYnD9KMtWZw0f4dxyWUqlfm4/L7PUtXjb+Y1RCKfCgAA
-    http_version: 
-  recorded_at: Wed, 27 Mar 2013 21:24:57 GMT
+        H4sIAC8VW1EC/62WTW/UMBCG/8oqZ4b1Z2xzQuLEjQM3hKLx12KRdVZxtqVU
+        /e84aUsXKCLdRVqtknH8ep6x/dq3TY9l6jLuQ/Nm0zSvNk0qHbopXc2BiH0J
+        NZaHKcXkcEpDLjV+27jhmKf6RGprn8r82Gx/+WyLh7Rt7mo7uuXrueOn2+bQ
+        Y+5Kf9zNXeIYwjzoYwLvhjzhh1DKgP0cH4c+LP2a4TqHsflcY8exX0Ybxh3m
+        9P1ktMeBti5yLkSrwShtQMRAQDvWQkucENozqQzbzvrh2yGNi0KVzMe+X2JT
+        GDP2XfJPweNxeWvWKM/QL+BkF4Baa4RhHsGpoEE44kELhaBD67hmxDGuzwNd
+        o/wM6AFLwcMwTuE6WHB9CnmC8Whv/kbPL6BvJXobiAXPrALRcgYYhAfBfGyp
+        qzPi+Hn0a5T/B724gJ4zyozmEmxQDATVFgyNAohzkaiI0pMz536N8v+glxfQ
+        C6ZCdMaAksaCQBIAW0KAUxlbydHKYM6jX6O8You7GXRzuNjLPCWKe+RACToQ
+        Hj1Y2SqwVkaP2rZMn+lla5RfCnqJmSmjq58aBjLQ6q1MIiByDQFlpNE7p407
+        j3SN8ktJLzGuuoMkj1SDR0VACKxLTAg6P0mjDUOlzzSuNcovJb3EpLx3ijJp
+        wDkq63lpHFitWtCy9S3nSlG0Z67eFcrPkFosyZ2ivs9XoUxpX81qKM+R1lAc
+        hlcWV0NraTyXgtUT07cgDDFgqa2nRxTcUU4ZaeWf0A0jtHqsBEI3hLxZfs2/
+        qrBmqOZuzruE8Sq5cH99S77ipummu3fpBehpdVaWh68h5ThsZeAsGqbACayO
+        SERdVIbWejO0jkiM1Ta2v0neX/3mun4fcnhKPCf39fS6GdN4cgH9WKcC/TBu
+        Fh8pIfvugONUp6HL4bqcXEkfC7Amt1mrroHdEXcnmSy0481JTQ8ep9DNyN3j
+        LP9SlAfEFMq6kvxk2N/MG8wN+/3vGLvaXNfYQzFsGqcv3ZzFySbYY1pymWpt
+        wtvl/3WVau5+ALmed1i9CwAA
+    http_version:
+  recorded_at: Tue, 02 Apr 2013 17:28:16 GMT
 - request:
     method: put
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/profile/api/info/5e32f927-c4ab-404e-a91c-b2abc05afb56/
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/
     body:
       encoding: UTF-8
-      string: ! '{"cpf":42,"first_name":"Testeiro","gender":"","last_name":"","nickname":"","send_myfreecomm_news":false,"send_partner_news":false}'
+      string: ! '{"cpf":42,"first_name":"Testador 2","gender":"","last_name":"","nickname":"","send_myfreecomm_news":false,"send_partner_news":false}'
     headers:
       Accept:
       - application/json
@@ -100,9 +102,9 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.1.0
+      - PassaporteWeb Ruby Client v0.0.6
       Content-Length:
-      - '130'
+      - '132'
   response:
     status:
       code: 409
@@ -111,7 +113,7 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Date:
-      - Wed, 27 Mar 2013 21:24:58 GMT
+      - Tue, 02 Apr 2013 17:28:16 GMT
       P3p:
       - CP="NON DSP COR CURa TIA"
       Server:
@@ -130,6 +132,6 @@ http_interactions:
       encoding: US-ASCII
       string: ! '{"cpf": ["Certifique-se de que o valor tenha no m\u00ednimo 11 caracteres
         (ele possui 2)."]}'
-    http_version: 
-  recorded_at: Wed, 27 Mar 2013 21:24:58 GMT
+    http_version:
+  recorded_at: Tue, 02 Apr 2013 17:28:17 GMT
 recorded_with: VCR 2.4.0

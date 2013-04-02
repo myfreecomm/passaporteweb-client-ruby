@@ -103,6 +103,8 @@ describe PassaporteWeb::Identity do
       identity.email.should == 'teste@teste.com'
       identity.update_info_url.should == '/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
     end
+    it "should find the requested profile by uuid, including expired accounts"
+    it "should find the requested profile by uuid, including other services"
     it "should raise an error if no profiles exist with that uuid" do
       expect {
         PassaporteWeb::Identity.find("invalid-uuid")
@@ -118,6 +120,8 @@ describe PassaporteWeb::Identity do
       identity.email.should == 'teste@teste.com'
       identity.update_info_url.should == '/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
     end
+    it "should find the requested profile by email, including expired accounts"
+    it "should find the requested profile by email, including other services"
     it "should raise an error if no profiles exist with that email" do
       expect {
         PassaporteWeb::Identity.find("invalid@email.com")
@@ -130,13 +134,13 @@ describe PassaporteWeb::Identity do
       let(:identity) { PassaporteWeb::Identity.find("5e32f927-c4ab-404e-a91c-b2abc05afb56") }
       context "on success" do
         it "should update the profile attributes on the server" do
-          identity.first_name.should == 'Testeiro'
-          identity.first_name = 'Testador'
-          identity.save.should be_true
           identity.first_name.should == 'Testador'
+          identity.first_name = 'Testador 2'
+          identity.save.should be_true
+          identity.first_name.should == 'Testador 2'
 
           identity = PassaporteWeb::Identity.find("5e32f927-c4ab-404e-a91c-b2abc05afb56")
-          identity.first_name.should == 'Testador'
+          identity.first_name.should == 'Testador 2'
         end
       end
       context "on failure" do
@@ -151,7 +155,7 @@ describe PassaporteWeb::Identity do
       context "on success" do
         it "should save with password, password2 and must_change_password" do
           attributes = {
-            "email" => "lula_luis98@example.com",
+            "email" => "lula_luis2002@example.com",
             "first_name" => "Luis Inácio",
             "last_name" => "da Silva",
             "password" => "rW5oHxYB",
@@ -162,9 +166,9 @@ describe PassaporteWeb::Identity do
           identity = PassaporteWeb::Identity.new(attributes)
           identity.save.should be_true
         end
-        it "should sabe with all params" do
+        it "should save with all params" do
           attributes = {
-            "email" => "lula_luis80@example.com",
+            "email" => "lula_luis2006@example.com",
             "first_name" => "Luis Inácio",
             "last_name" => "da Silva",
             "password" => "rW5oHxYB",
@@ -172,7 +176,7 @@ describe PassaporteWeb::Identity do
             "must_change_password" => true,
             "tos" => true,
             "inhibit_activation_message" => false,
-            "cpf" => "438.165.386-65",
+            "cpf" => "613.862.250-29",
             "send_partner_news" => false,
             "send_myfreecomm_news" => false
           }
@@ -181,7 +185,7 @@ describe PassaporteWeb::Identity do
         end
       end
       context "on failure" do
-        it "should save without password, password2 and must_change_password" do
+        it "should not save" do
           attributes = {
             "email" => "lula_luis81@example.com",
             "first_name" => "Luis Inácio",
@@ -190,6 +194,7 @@ describe PassaporteWeb::Identity do
           }
           identity = PassaporteWeb::Identity.new(attributes)
           identity.save.should_not be_true
+          identity.errors.should == {"password2"=>["Este campo é obrigatório."], "password"=>["Este campo é obrigatório."]}
         end
       end
     end
