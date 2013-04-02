@@ -3,7 +3,7 @@ require 'base64'
 module PassaporteWeb
 
   class Configuration
-    attr_accessor :url, :user_agent, :application_token, :application_secret, :user_token, :user_secret
+    attr_accessor :url, :user_agent, :application_token, :application_secret, :user_token
 
     def initialize
       @url = 'https://app.passaporteweb.com.br'
@@ -16,12 +16,12 @@ module PassaporteWeb
 
     def application_credentials
       check_tokens! :application_token, :application_secret
-      base64_credential(@application_token, @application_secret)
+      base64_credential('application', @application_token, @application_secret)
     end
 
     def user_credentials
-      check_tokens! :user_token, :user_secret
-      base64_credential(@user_token, @user_secret)
+      check_tokens! :user_token
+      base64_credential('user', @user_token)
     end
 
     private
@@ -33,8 +33,9 @@ module PassaporteWeb
       end
     end
 
-    def base64_credential(user, password)
-      "Basic #{::Base64.strict_encode64("#{user}:#{password}")}"
+    def base64_credential(type, user, password=nil)
+      return "Basic #{::Base64.strict_encode64("#{user}:#{password}")}" if type.eql? 'application'
+      return "Basic #{::Base64.strict_encode64("#{user}")}" if type.eql? 'user'
     end
   end
 
