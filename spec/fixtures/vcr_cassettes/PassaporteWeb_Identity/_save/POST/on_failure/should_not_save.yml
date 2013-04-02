@@ -15,7 +15,7 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.1.0
+      - PassaporteWeb Ruby Client v0.0.6
       Content-Length:
       - '97'
   response:
@@ -26,7 +26,7 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Date:
-      - Wed, 27 Mar 2013 21:25:00 GMT
+      - Tue, 02 Apr 2013 17:28:20 GMT
       P3p:
       - CP="NON DSP COR CURa TIA"
       Server:
@@ -46,5 +46,5 @@ http_interactions:
       string: ! '{"password2": ["Este campo \u00e9 obrigat\u00f3rio."], "password":
         ["Este campo \u00e9 obrigat\u00f3rio."]}'
     http_version: 
-  recorded_at: Wed, 27 Mar 2013 21:25:00 GMT
+  recorded_at: Tue, 02 Apr 2013 17:28:20 GMT
 recorded_with: VCR 2.4.0

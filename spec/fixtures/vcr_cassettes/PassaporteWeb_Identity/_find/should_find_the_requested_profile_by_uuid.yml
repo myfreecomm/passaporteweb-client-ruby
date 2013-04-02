@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/profile/api/info/5e32f927-c4ab-404e-a91c-b2abc05afb56/
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/
     body:
       encoding: US-ASCII
       string: ''
@@ -14,7 +14,7 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - My Mocking App v1.1
+      - PassaporteWeb Ruby Client v0.0.6
   response:
     status:
       code: 200
@@ -32,13 +32,13 @@ http_interactions:
         YXBwbGljYXRpb24vanNvbg==
       !binary "RGF0ZQ==":
       - !binary |-
-        V2VkLCAyNyBNYXIgMjAxMyAyMToxNjowMSBHTVQ=
+        VHVlLCAwMiBBcHIgMjAxMyAxNzoyNjowNCBHTVQ=
       !binary "RXhwaXJlcw==":
       - !binary |-
-        V2VkLCAyNyBNYXIgMjAxMyAyMToxNjowMCBHTVQ=
+        VHVlLCAwMiBBcHIgMjAxMyAxNzoyNjowMyBHTVQ=
       !binary "TGFzdC1Nb2RpZmllZA==":
       - !binary |-
-        V2VkLCAyNyBNYXIgMjAxMyAyMToxNjowMSBHTVQ=
+        VHVlLCAwMiBBcHIgMjAxMyAxNzoyNjowNCBHTVQ=
       !binary "UDNw":
       - !binary |-
         Q1A9Ik5PTiBEU1AgQ09SIENVUmEgVElBIg==
@@ -50,7 +50,7 @@ http_interactions:
         QWNjZXB0LUVuY29kaW5n
       !binary "Q29udGVudC1MZW5ndGg=":
       - !binary |-
-        NzIx
+        Nzgx
       !binary "WC1DYWNoZQ==":
       - !binary |-
         TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI=
@@ -68,23 +68,24 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAJFhU1EC/62Wy27bMBBFfyXQulOLL5HsqkBX3XXRXVEIw5dLVKYEPZI6
-        Qf69lBI3TtACstyNQQ+pyzkz5AUfigaHsU548MWHm6J4d1PEoUY7xts5ELAZ
-        fI6ldowhWhxjm4YcfyhsO6Uxj8o828RhHha7V8t22MVd8Zjn0S6r5w+/PRRd
-        g6kemmk/fxJ67+dNTwl8atOIX/wwtNjM8b5t/PJd0d4l3xffc2zqm2W3tt9j
-        ivdnu5022tnAGOeVAi2VBh58CcrSCqrScq4cFVLT3azvf3WxXxSyZJqaZomN
-        vk/Y1NG9BKdp+VesUZ6hL+CkV4Aao7mmDsFKr4Db0oHiEkH5yjJFS0uZ2ga6
-        RvkvoB0OA3ZtP/o7b8A20acR+skc/0XPrqCvBDrjSwOOGgm8YhTQcweculAR
-        mzti2Tb6Ncr/g55fQc8ooVoxAcZLCpwoA5oEDqW1oZQBhSs39n6N8opD/jnd
-        +mGMh1yEdngNOg3rOZXQjglO8/lzFXBdajDE5F4EzixhhJaV2Ma5RnkFp50b
-        etNd7VqOlJI5ZEBKtMAdOjCikmCMCA6Vqaja6FprlC8Fvca2pFbZOTUF4Ul2
-        USoQEJkCjyKQ4KxV2m4jXaN8Kek1FpXvimCBKHAoS+AcPSDnZB4JrTRFqTZa
-        1BrlS0mvsSPnrCRUaLCWiHyFtAWjZAVKVK5iTEqCZuPpXaFcPM5pZle5jdY/
-        PVGiy8YTx2P95MNL/i99yak/r4aYQrsTntGgqQTL0QAveS6nJnknisaWAkO+
-        MLs3kk/Pm9nh7tvkXxJP0f48f1KF2J89sr5mU0TX9sWScHJ1h/2YC10nfzec
-        PbpO+Gsym7Vyl/cT7s/yWFj741lFO4ejr2fg+tTSVyV5Box+WFeQPwyH43yw
-        bHs4vMXY5+l8ip5LYWI//qjnLM6af8C45DLmyviPy+/7LFU8/gYzdqKpnwoA
-        AA==
+        H4sIAKwUW1EC/62WTW/UMBCG/0qVM8P6M7Y5IXHixoEbQtH4a7HIOqs429JW
+        /e84aUu3UES6i7RaJeP49Txj+7Vvmx7L1GXchebdRdO8uWhS6dBN6XIOROxL
+        qLE8TCkmh1Macqnx28YNhzzVJ1Jb+1Tmx2bz7LMN7tOmuavt6Jav545fbpt9
+        j7kr/WE7d4ljCPOgjwl8GPKEn0IpA/ZzfBz6sPRrhqscxuZrjR3GfhltGLeY
+        083RaI8DbVzkXIhWg1HagIiBgHashZY4IbRnUhm2mfXDj30aF4UqmQ99v8Sm
+        MGbsu+SfgofD8tasUZ6hX8HJzgC11gjDPIJTQYNwxIMWCkGH1nHNiGNcnwa6
+        RvkF0D2WgvthnMJVsOD6FPIE48Fe/42en0HfSvQ2EAueWQWi5QwwCA+C+dhS
+        V2fE8dPo1yj/D3pxBj1nlBnNJdigGAiqLRgaBRDnIlERpScnzv0a5f9BL8+g
+        F0yF6IwBJY0FgSQAtoQApzK2kqOVwZxGv0Z5xRZ3M+jF/mwv85Qo7pEDJehA
+        ePRgZavAWhk9atsyfaKXrVF+Leg5ZqaMrn5qGMhAq7cyiYDINQSUkUbvnDbu
+        NNI1yq8lPce46g6SPFINHhUBIbAuMSHo/CSNNgyVPtG41ii/lvQck/LeKcqk
+        AeeorOelcWC1akHL1recK0XRnrh6Vyi/QGqxJHeM+jFfhjKlXTWrobxEWkNx
+        GN5YXA2tpfFcClZPTN+CMMSApbaeHlFwRzllpJV/QjeM0OqxEgi9IOTd8mv+
+        VYU1QzV3c94ljJfJhfvrW/IVN03X3b1LL0BPq7OyPHwNKcdhIwNn0TAFTmB1
+        RCLqojK01puhdURirLax+U3y/uo31/VmyOEp8Zzc9+PrZkzj0QX0c50K9MNS
+        9BKy7/Y4TnUSuhyuytGF9BF/TWazVl0B2wNuj/JYWMfro4ruPU6hm4G7xzl+
+        VpIHwBTKuoL8Ythdz9vLDbvd7xjb2lxX2EMpbBqnb92cxdEW2GFacplqZcL7
+        5f9tlWrufgJaXjfOuwsAAA==
     http_version: 
-  recorded_at: Wed, 27 Mar 2013 21:16:01 GMT
+  recorded_at: Tue, 02 Apr 2013 17:26:04 GMT
 recorded_with: VCR 2.4.0

@@ -18,11 +18,11 @@ module PassaporteWeb
     # Raises a <tt>RestClient::ResourceNotFound</tt> exception if no Identity exists with the supplied
     # UUID.
     #
-    # API method: <tt>GET /profile/api/info/:uuid/</tt>
+    # API method: <tt>/accounts/api/identities/:uuid/</tt>
     #
     # API documentation: https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-uuid
     def self.find(uuid)
-      response = Http.get("/profile/api/info/#{uuid}/")
+      response = Http.get("/accounts/api/identities/#{uuid}/")
       attributes_hash = MultiJson.decode(response.body)
       self.new(attributes_hash)
     end
@@ -31,11 +31,11 @@ module PassaporteWeb
     # with all fields set if successful. Raises a <tt>RestClient::ResourceNotFound</tt> exception if no
     # Identity exists with the supplied email.
     #
-    # API method: <tt>GET /profile/api/info/?email=:email</tt>
+    # API method: <tt>GET /accounts/api/identities/?email=:email</tt>
     #
     # API documentation: https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-email-email
     def self.find_by_email(email)
-      response = Http.get("/profile/api/info/", email: email)
+      response = Http.get("/accounts/api/identities/", email: email)
       attributes_hash = MultiJson.decode(response.body)
       self.new(attributes_hash)
     end
@@ -91,11 +91,13 @@ module PassaporteWeb
     # if successfull or false if not. In case of failure, it will fill the <tt>errors</tt> attribute
     # with the reason for the failure to save the object.
     #
-    # API methods: <tt>POST /accounts/api/create/</tt> (on create) and <tt>PUT /profile/api/info/:uuid/</tt> (on update)
+    # API methods:
+    # * <tt>POST /accounts/api/create/</tt> (on create)
+    # * <tt>PUT /accounts/api/identities/:uuid/</tt> (on update)
     #
-    # API documentation: https://app.passaporteweb.com.br/static/docs/cadastro_e_auth.html#post-accounts-api-create
-    #
-    # API documentation: https://app.passaporteweb.com.br/static/docs/perfil.html#put-profile-api-info-uuid
+    # API documentation:
+    # * https://app.passaporteweb.com.br/static/docs/cadastro_e_auth.html#post-accounts-api-create
+    # * https://app.passaporteweb.com.br/static/docs/perfil.html#put-profile-api-info-uuid
     #
     # Example:
     #
@@ -128,7 +130,7 @@ module PassaporteWeb
     end
 
     def update
-      Http.put("/profile/api/info/#{self.uuid}/", update_body)
+      Http.put("/accounts/api/identities/#{self.uuid}/", update_body)
     end
 
     def update_body

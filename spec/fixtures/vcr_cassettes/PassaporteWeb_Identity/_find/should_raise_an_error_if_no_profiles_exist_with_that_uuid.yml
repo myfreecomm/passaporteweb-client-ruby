@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/profile/api/info/invalid-uuid/
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/invalid-uuid/
     body:
       encoding: US-ASCII
       string: ''
@@ -14,7 +14,7 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - My Mocking App v1.1
+      - PassaporteWeb Ruby Client v0.0.6
   response:
     status:
       code: 404
@@ -23,7 +23,7 @@ http_interactions:
       Content-Type:
       - text/html; charset=utf-8
       Date:
-      - Wed, 27 Mar 2013 21:16:02 GMT
+      - Tue, 02 Apr 2013 17:26:04 GMT
       P3p:
       - CP="NON DSP COR CURa TIA"
       Server:
@@ -88,5 +88,5 @@ http_interactions:
         YSwgcyk7CiAgICAgICAgfSkoKTsKICAgIDwvc2NyaXB0PgoKPC9ib2R5Pgo8
         L2h0bWw+Cg==
     http_version: 
-  recorded_at: Wed, 27 Mar 2013 21:16:02 GMT
+  recorded_at: Tue, 02 Apr 2013 17:26:04 GMT
 recorded_with: VCR 2.4.0
