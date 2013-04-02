@@ -20,7 +20,7 @@ module PassaporteWeb
     #
     # API method: <tt>/accounts/api/identities/:uuid/</tt>
     #
-    # API documentation: https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-uuid
+    # API documentation: https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-identities-uuid
     def self.find(uuid)
       response = Http.get("/accounts/api/identities/#{uuid}/")
       attributes_hash = MultiJson.decode(response.body)
@@ -33,7 +33,7 @@ module PassaporteWeb
     #
     # API method: <tt>GET /accounts/api/identities/?email=:email</tt>
     #
-    # API documentation: https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-email-email
+    # API documentation: https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-identities-email-email
     def self.find_by_email(email)
       response = Http.get("/accounts/api/identities/", email: email)
       attributes_hash = MultiJson.decode(response.body)
@@ -96,8 +96,8 @@ module PassaporteWeb
     # * <tt>PUT /accounts/api/identities/:uuid/</tt> (on update)
     #
     # API documentation:
-    # * https://app.passaporteweb.com.br/static/docs/cadastro_e_auth.html#post-accounts-api-create
-    # * https://app.passaporteweb.com.br/static/docs/perfil.html#put-profile-api-info-uuid
+    # * https://app.passaporteweb.com.br/static/docs/usuarios.html#post-accounts-api-create
+    # * https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-identities-email-email
     #
     # Example:
     #
