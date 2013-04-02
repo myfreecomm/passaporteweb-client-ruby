@@ -104,35 +104,25 @@ describe PassaporteWeb::Identity do
       identity.update_info_url.should == '/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
       identity.accounts.size.should == 9
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2014-05-01 00:00:00"]
-      identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] rescue nil }.sort.should == [nil] # FIXME não vem com o único serviço ?
-      identity.services.size.should == 1
-      identity.services.keys.should == ['identity_client']
+      identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] rescue nil }.sort.should == [nil]
     end
     it "should find the requested profile by uuid, including expired accounts" do
       identity = PassaporteWeb::Identity.find("5e32f927-c4ab-404e-a91c-b2abc05afb56", true)
       identity.accounts.size.should == 10
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2013-04-02 00:00:00", "2014-05-01 00:00:00"]
-      identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] rescue nil }.sort.should == [nil] # FIXME não vem com o único serviço ?
-      identity.services.size.should == 1
-      identity.services.keys.should == ['identity_client']
+      identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] rescue nil }.sort.should == [nil]
     end
     it "should find the requested profile by uuid, including other services" do
       identity = PassaporteWeb::Identity.find("5e32f927-c4ab-404e-a91c-b2abc05afb56", false, true)
       identity.accounts.size.should == 10
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2014-05-01 00:00:00"]
       identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] }.sort.should == ["identity_client", "vc-promove"]
-      # FIXME não está vindo com todos os serviços
-      # identity.services.size.should > 1
-      # identity.services.keys.sort.should == ['identity_client', 'vc-promove']
     end
     it "should find the requested profile by uuid, including other services and expired accounts" do
       identity = PassaporteWeb::Identity.find("5e32f927-c4ab-404e-a91c-b2abc05afb56", true, true)
       identity.accounts.size.should == 11
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2013-04-02 00:00:00", "2014-05-01 00:00:00"]
       identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] }.sort.should == ["identity_client", "vc-promove"]
-      # FIXME não está vindo com todos os serviços
-      # identity.services.size.should > 1
-      # identity.services.keys.sort.should == ['identity_client', 'vc-promove']
     end
     it "should raise an error if no profiles exist with that uuid" do
       expect {
@@ -150,7 +140,7 @@ describe PassaporteWeb::Identity do
       identity.update_info_url.should == '/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
       identity.accounts.size.should == 9
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2014-05-01 00:00:00"]
-      identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] rescue nil }.sort.should == [nil] # FIXME não vem com o único serviço ?
+      identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] rescue nil }.sort.should == [nil]
       identity.services.size.should == 1
       identity.services.keys.should == ['identity_client']
     end
@@ -158,7 +148,7 @@ describe PassaporteWeb::Identity do
       identity = PassaporteWeb::Identity.find_by_email("teste@teste.com", true)
       identity.accounts.size.should == 10
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2013-04-02 00:00:00", "2014-05-01 00:00:00"]
-      identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] rescue nil }.sort.should == [nil] # FIXME não vem com o único serviço ?
+      identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] rescue nil }.sort.should == [nil]
       identity.services.size.should == 1
       identity.services.keys.should == ['identity_client']
     end
@@ -167,18 +157,12 @@ describe PassaporteWeb::Identity do
       identity.accounts.size.should == 10
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2014-05-01 00:00:00"]
       identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] }.sort.should == ["identity_client", "vc-promove"]
-      # FIXME não está vindo com todos os serviços
-      # identity.services.size.should > 1
-      # identity.services.keys.sort.should == ['identity_client', 'vc-promove']
     end
     it "should find the requested profile by email, including other services and expired accounts" do
       identity = PassaporteWeb::Identity.find_by_email("teste@teste.com", true, true)
       identity.accounts.size.should == 11
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2013-04-02 00:00:00", "2014-05-01 00:00:00"]
       identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] }.sort.should == ["identity_client", "vc-promove"]
-      # FIXME não está vindo com todos os serviços
-      # identity.services.size.should > 1
-      # identity.services.keys.sort.should == ['identity_client', 'vc-promove']
     end
     it "should raise an error if no profiles exist with that email" do
       expect {
