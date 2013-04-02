@@ -33,7 +33,9 @@ module PassaporteWeb
         {include_expired_accounts: include_expired_accounts, include_other_services: include_other_services}
       )
       attributes_hash = MultiJson.decode(response.body)
-      self.new(attributes_hash)
+      identity = self.new(attributes_hash)
+      identity.instance_variable_set(:@persisted, true)
+      identity
     end
 
     # Finds an Identity by it's email (emails are unique on PassaporteWeb). Returns the Identity instance
@@ -55,7 +57,9 @@ module PassaporteWeb
         {email: email, include_expired_accounts: include_expired_accounts, include_other_services: include_other_services}
       )
       attributes_hash = MultiJson.decode(response.body)
-      self.new(attributes_hash)
+      identity = self.new(attributes_hash)
+      identity.instance_variable_set(:@persisted, true)
+      identity
     end
 
     # Instanciates a new Identity with the supplied attributes. Only the attributes listed
@@ -130,6 +134,7 @@ module PassaporteWeb
       raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
       attributes_hash = MultiJson.decode(response.body)
       set_attributes(attributes_hash)
+      @persisted = true
       @errors = {}
       true
     rescue *[RestClient::Conflict, RestClient::BadRequest] => e

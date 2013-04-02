@@ -47,6 +47,7 @@ describe PassaporteWeb::ServiceAccount do
       service_accounts.size.should == 15
       service_accounts.map { |a| a.instance_of?(PassaporteWeb::ServiceAccount) }.uniq.should == [true]
       service_accounts.map(&:plan_slug).uniq.sort.should == ['free', 'passaporteweb-client-ruby']
+      service_accounts.map(&:persisted?).uniq.sort.should == [true]
 
       meta = accounts_and_meta.meta
       meta.limit.should == 20
@@ -90,6 +91,7 @@ describe PassaporteWeb::ServiceAccount do
         service_account = PassaporteWeb::ServiceAccount.find("859d3542-84d6-4909-b1bd-4f43c1312065")
         service_account.should be_instance_of(PassaporteWeb::ServiceAccount)
         service_account.plan_slug.should == "free"
+        service_account.should be_persisted
         service_account.account_data.should == {"name" => "Investimentos", "uuid" => "859d3542-84d6-4909-b1bd-4f43c1312065"}
         service_account.service_data.should == {"name" => "Identity Client", "slug" => "identity_client"}
         service_account.members_data.should == [
@@ -134,7 +136,9 @@ describe PassaporteWeb::ServiceAccount do
         service_account.plan_slug = 'basic'
         service_account.expiration = '2014-05-01'
 
+        service_account.should be_persisted
         service_account.save.should be_true
+        service_account.should be_persisted
 
         service_account.plan_slug.should == 'basic'
         service_account.expiration.should == '2014-05-01 00:00:00'
@@ -148,62 +152,11 @@ describe PassaporteWeb::ServiceAccount do
       it "should return false and set the errors hash" do
         service_account.plan_slug = nil # required
         service_account.expiration = nil
+        service_account.should be_persisted
         service_account.save.should be_false
+        service_account.should be_persisted
         service_account.errors.should == {"field_errors"=>{"plan_slug"=>["Este campo é obrigatório."]}}
       end
-    end
-  end
-
-  describe ".list_accounts_user", :vcr => true do
-    context "on success" do
-      it "should listed and return hash with data of account user" do
-        list_service_accounts = PassaporteWeb::ServiceAccount.list_accounts_user("5e32f927-c4ab-404e-a91c-b2abc05afb56")
-        list_service_accounts.should be_instance_of(Array)
-        list_service_accounts.first["roles"].should be_instance_of(Array)
-        list_service_accounts.first["roles"].first.should == "user"
-      end
-    end
-
-    context "on failed" do
-      it "should return RuntimeError without params" do
-        expect{
-          PassaporteWeb::ServiceAccount.list_accounts_user
-        }.to raise_error(RuntimeError, "The uuid field is required.")
-      end
-    end
-  end
-
-  describe ".new_account_user", :vcr => true do
-    describe "POST" do
-      context "on success" do
-        it "should save the members in account" do
-          PassaporteWeb::ServiceAccount.new_account_user("5e32f927-c4ab-404e-a91c-b2abc05afb56", nil, "ContaPessoal5").should be_true
-        end
-      end
-
-      context "on failure" do
-        it "should false with membership data" do
-          PassaporteWeb::ServiceAccount.new_account_user("859d3542-84d6-4909-b1bd-4f43c1312065", "a5868d14-6529-477a-9c6b-a09dd42a7cd2").should be_false
-        end
-
-        it "should not save the members in account without identity params" do
-          expect {
-            PassaporteWeb::ServiceAccount.new_account_user("859d3542-84d6-4909-b1bd-4f43c1312062")
-          }.to raise_error(RuntimeError, "The fields uuid_user and name are required.")
-        end
-
-        it "should not save the members in account without uuid params" do
-          expect {
-            PassaporteWeb::ServiceAccount.new_account_user(nil)
-          }.to raise_error(RuntimeError, "The uuid field is required.")
-        end
-      end
-    end
-  end
-
-  describe ".persisted?" do
-    it "should return true" do
-      PassaporteWeb::ServiceAccount.new.persisted?.should be_true
     end
   end
 
