@@ -14,17 +14,16 @@ module PassaporteWeb
       encoded_body = (body.is_a?(Hash) ? MultiJson.encode(body) : body)
       RestClient.put(
         pw_url(path),
-        encoded_body,
+        encoded_body(body),
         {params: params}.merge(common_params)
       )
     end
 
-    def self.post(path='/', body={})
-      encoded_body = (body.is_a?(Hash) ? MultiJson.encode(body) : body)
+    def self.post(path='/', body={}, params={})
       RestClient.post(
         pw_url(path),
-        encoded_body,
-        common_params
+        encoded_body(body),
+        {params: params}.merge(common_params)
       )
     end
 
@@ -48,6 +47,10 @@ module PassaporteWeb
         accept: :json,
         user_agent: PassaporteWeb.configuration.user_agent
       }
+    end
+
+    def self.encoded_body(body)
+      body.is_a?(Hash) ? MultiJson.encode(body) : body
     end
 
   end

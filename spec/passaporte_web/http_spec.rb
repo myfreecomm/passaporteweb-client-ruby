@@ -76,6 +76,7 @@ describe PassaporteWeb::Http do
       RestClient.should_receive(:post).with(
         'https://some/where/foo',
         '{"hello":"world"}',
+        params: {},
         authorization: 'Basic c29tZS1hcHAtdG9rZW46c29tZS1hcHAtc2VjcmV0',
         content_type: :json,
         accept: :json,
@@ -87,6 +88,7 @@ describe PassaporteWeb::Http do
       RestClient.should_receive(:post).with(
         'https://some/where/foo',
         '{"hello":"world"}',
+        params: {},
         authorization: 'Basic c29tZS1hcHAtdG9rZW46c29tZS1hcHAtc2VjcmV0',
         content_type: :json,
         accept: :json,
