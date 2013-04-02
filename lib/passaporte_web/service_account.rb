@@ -1,6 +1,9 @@
 # encoding: utf-8
 module PassaporteWeb
 
+  # Represents a ServiceAccount on PassaporteWeb, which is the 'account' of an Identity within a Service. A
+  # Service may have many ServiceAccount s and many Identity ies via it's ServiceAccount s. A Identity may
+  # belong to serveral Service s via it's ServiceAccount s.
   class ServiceAccount
     ATTRIBUTES = [:plan_slug, :expiration, :identity, :roles, :member_uuid, :role, :include_expired_accounts, :name, :members_data, :url, :service_data, :account_data, :add_member_url]
     UPDATABLE_ATTRIBUTES = [:plan_slug, :expiration]
