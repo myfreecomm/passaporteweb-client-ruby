@@ -5,6 +5,8 @@ module PassaporteWeb
   # Service may have many ServiceAccount s and many Identity ies via it's ServiceAccount s. A Identity may
   # belong to serveral Service s via it's ServiceAccount s.
   class ServiceAccount
+    include Attributable
+
     ATTRIBUTES = [:plan_slug, :expiration, :identity, :roles, :member_uuid, :role, :include_expired_accounts, :name, :members_data, :url, :service_data, :account_data, :add_member_url]
     UPDATABLE_ATTRIBUTES = [:plan_slug, :expiration]
 
@@ -128,18 +130,6 @@ module PassaporteWeb
     end
 
     private
-
-    def set_attributes(hash)
-      # TODO @account_data é um hash
-      # TODO @service_data é um hash
-      # TODO @members_data é um array de hashes
-      ATTRIBUTES.each do |attribute|
-        value = hash[attribute.to_s] if hash.has_key?(attribute.to_s)
-        value = hash[attribute.to_sym] if hash.has_key?(attribute.to_sym)
-        instance_variable_set("@#{attribute}".to_sym, value)
-      end
-      @persisted = true
-    end
 
     def update
       Http.put("/organizations/api/accounts/#{self.uuid}/", update_body)

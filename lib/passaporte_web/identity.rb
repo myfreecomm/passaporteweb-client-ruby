@@ -4,6 +4,8 @@ module PassaporteWeb
   # Represents an Identity on PassaporteWeb, i.e. a person. When you sign up for PassaporteWeb, your 'account'
   # there is an Identity.
   class Identity
+    include Attributable
+
     ATTRIBUTES = [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos]
     UPDATABLE_ATTRIBUTES = [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone]
     CREATABLE_ATTRIBUTES = *(UPDATABLE_ATTRIBUTES + [:email, :password, :password2, :must_change_password, :tos])
@@ -127,18 +129,6 @@ module PassaporteWeb
 
     def update
       Http.put("/profile/api/info/#{self.uuid}/", update_body)
-    end
-
-    def set_attributes(hash)
-      # TODO @accounts é um array de hashes
-      # TODO @services é um hash
-      # TODO @notifications é um hash
-      ATTRIBUTES.each do |attribute|
-        value = hash[attribute.to_s] if hash.has_key?(attribute.to_s)
-        value = hash[attribute.to_sym] if hash.has_key?(attribute.to_sym)
-        instance_variable_set("@#{attribute}".to_sym, value)
-      end
-      @persisted = true
     end
 
     def update_body
