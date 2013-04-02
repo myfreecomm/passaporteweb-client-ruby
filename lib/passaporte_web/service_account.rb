@@ -47,7 +47,7 @@ module PassaporteWeb
       response = Http.get("/organizations/api/accounts/?page=#{Integer(page)}&limit=#{Integer(limit)}")
       raw_accounts = MultiJson.decode(response.body)
       result_hash = {}
-      result_hash[:service_accounts] = raw_accounts.map { |raw_account| self.new(raw_account) }
+      result_hash[:service_accounts] = raw_accounts.map { |raw_account| load_service_account(raw_account) }
       result_hash[:meta] = PassaporteWeb::Helpers.meta_links_from_header(response.headers[:link])
       PassaporteWeb::Helpers.convert_to_ostruct_recursive(result_hash)
     end
@@ -63,7 +63,7 @@ module PassaporteWeb
     def self.find(uuid)
       response = Http.get("/organizations/api/accounts/#{uuid}/")
       attributes_hash = MultiJson.decode(response.body)
-      self.new(attributes_hash)
+      load_service_account(attributes_hash)
     end
 
     # Updates an existing ServiceAccount, changing it's plan_slug and/or expiration date. Returns true
@@ -82,38 +82,6 @@ module PassaporteWeb
       @errors = {}
       true
     rescue *[RestClient::Conflict, RestClient::BadRequest] => e
-      @errors = MultiJson.decode(e.response.body)
-      false
-    end
-
-    # GET /organizations/api/identities/:uuid/accounts/
-    # https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-identities-uuid-accounts
-    # TODO review
-    def self.list_accounts_user(uuid=nil, role=nil, include_expired_accounts=false)
-      raise "The uuid field is required."        if uuid.nil?
-      param = []
-      param << "role=#{role}" if role.nil?
-      param << "include_expired_accounts=#{include_expired_accounts}"
-      response = Http.get("/organizations/api/identities/#{uuid}/accounts/#{'?'+param.join('&')}")
-      MultiJson.decode(response.body)
-    end
-
-    # POST /organizations/api/identities/:uuid/accounts/
-    # https://app.passaporteweb.com.br/static/docs/account_manager.html#post-organizations-api-identities-uuid-accounts
-    # TODO review
-    def self.new_account_user(uuid=nil, uuid_user=nil, name=nil, plan_slug='passaporteweb-client-ruby', expiration=nil)
-      raise "The uuid field is required." if uuid.nil?
-      raise "The fields uuid_user and name are required." if uuid_user.nil? and name.nil?
-      account = {}
-      account["plan_slug"]  = plan_slug
-      account["uuid_user"]  = uuid_user unless uuid_user.nil?
-      account["name"]       = name unless name.nil?
-      account["expiration"] = expiration unless expiration.nil?
-      response = Http.post("/organizations/api/identities/#{uuid}/accounts/", account)
-      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 201
-      @errors = {}
-      true
-    rescue *[RestClient::Conflict, RestClient::BadRequest, RestClient::ResourceNotFound] => e
       @errors = MultiJson.decode(e.response.body)
       false
     end
@@ -137,6 +105,12 @@ module PassaporteWeb
 
     def update_body
       self.attributes.select { |key, value| UPDATABLE_ATTRIBUTES.include?(key) && !value.nil? }
+    end
+
+    def self.load_service_account(attributes_hash)
+      service_account = self.new(attributes_hash)
+      service_account.instance_variable_set(:@persisted, true)
+      service_account
     end
 
   end

@@ -100,6 +100,7 @@ describe PassaporteWeb::Identity do
       identity = PassaporteWeb::Identity.find("5e32f927-c4ab-404e-a91c-b2abc05afb56")
       identity.should be_instance_of(PassaporteWeb::Identity)
       identity.uuid.should == '5e32f927-c4ab-404e-a91c-b2abc05afb56'
+      identity.should be_persisted
       identity.email.should == 'teste@teste.com'
       identity.update_info_url.should == '/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
       identity.accounts.size.should == 9
@@ -136,6 +137,7 @@ describe PassaporteWeb::Identity do
       identity = PassaporteWeb::Identity.find_by_email("teste@teste.com")
       identity.should be_instance_of(PassaporteWeb::Identity)
       identity.uuid.should == '5e32f927-c4ab-404e-a91c-b2abc05afb56'
+      identity.should be_persisted
       identity.email.should == 'teste@teste.com'
       identity.update_info_url.should == '/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
       identity.accounts.size.should == 9
@@ -177,8 +179,10 @@ describe PassaporteWeb::Identity do
       context "on success" do
         it "should update the profile attributes on the server" do
           identity.first_name.should == 'Testador'
+          identity.should be_persisted
           identity.first_name = 'Testador 2'
           identity.save.should be_true
+          identity.should be_persisted
           identity.first_name.should == 'Testador 2'
 
           identity = PassaporteWeb::Identity.find("5e32f927-c4ab-404e-a91c-b2abc05afb56")
@@ -188,7 +192,9 @@ describe PassaporteWeb::Identity do
       context "on failure" do
         it "should return false and set the errors hash" do
           identity.cpf = 42
+          identity.should be_persisted
           identity.save.should be_false
+          identity.should be_persisted
           identity.errors.should == {"cpf" => ["Certifique-se de que o valor tenha no mínimo 11 caracteres (ele possui 2)."]}
         end
       end
@@ -206,7 +212,9 @@ describe PassaporteWeb::Identity do
             "tos" => true
           }
           identity = PassaporteWeb::Identity.new(attributes)
+          identity.should_not be_persisted
           identity.save.should be_true
+          identity.should be_persisted
         end
         it "should save with all params" do
           attributes = {
@@ -223,7 +231,9 @@ describe PassaporteWeb::Identity do
             "send_myfreecomm_news" => false
           }
           identity = PassaporteWeb::Identity.new(attributes)
+          identity.should_not be_persisted
           identity.save.should be_true
+          identity.should be_persisted
         end
       end
       context "on failure" do
@@ -235,7 +245,9 @@ describe PassaporteWeb::Identity do
             "tos" => true
           }
           identity = PassaporteWeb::Identity.new(attributes)
+          identity.should_not be_persisted
           identity.save.should_not be_true
+          identity.should_not be_persisted
           identity.errors.should == {"password2"=>["Este campo é obrigatório."], "password"=>["Este campo é obrigatório."]}
         end
       end
