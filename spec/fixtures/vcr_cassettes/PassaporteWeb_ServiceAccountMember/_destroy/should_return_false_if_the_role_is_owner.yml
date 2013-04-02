@@ -59,11 +59,11 @@ http_interactions:
         SY+pDvPrqxBSBfwa3HhzWH5bSMoV5SLjfHc7SRRwPDuD93W5EA8dJv3bypTt
         Wzffbtp11+64jVlC8zzI2t4DH3/GEF03C/uQXKbJ2RR4hmOxtrZZRvLyCZPr
         L07Cc/dHAwAA
-    http_version: 
+    http_version:
   recorded_at: Tue, 02 Apr 2013 15:54:34 GMT
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/profile/api/info/5e32f927-c4ab-404e-a91c-b2abc05afb56/
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/
     body:
       encoding: US-ASCII
       string: ''
@@ -147,7 +147,7 @@ http_interactions:
         rXxb4s14dgt9xl+T2axVp31/wv1ZHgvrcHtW0WPAKbYzcPs8x69K8gSY47iu
         IP8zHG7nPeX7w+F7jH1trsvqqRQuD9O/7ZzF2bo/YF5ymWpl4vvl/+8qRR6+
         AU6BDsawCwAA
-    http_version: 
+    http_version:
   recorded_at: Tue, 02 Apr 2013 15:54:35 GMT
 - request:
     method: get
@@ -205,7 +205,7 @@ http_interactions:
         LkrWAmyEDiompz+gsBjphKfu6yFUFK01cn1vxvvRH8bHwU5ghmk/4QCHOzuY
         EYzdz+DN/PBjnpYGS/dOLQQhNrfEZf0DVDVYpk/cxFwrxNUXRJtj/N9iEVmO
         /O1rqPCbdsCbFKaIXzltSCL7vr0SI1DoA8tf4PH63kqYuly+AdVKaM1PAQAA
-    http_version: 
+    http_version:
   recorded_at: Tue, 02 Apr 2013 15:54:35 GMT
 - request:
     method: delete
@@ -252,7 +252,7 @@ http_interactions:
     body:
       encoding: US-ASCII
       string: ! '"Service owner cannot be removed from members list"'
-    http_version: 
+    http_version:
   recorded_at: Tue, 02 Apr 2013 15:54:35 GMT
 - request:
     method: get
@@ -310,6 +310,6 @@ http_interactions:
         LkrWAmyEDiompz+gsBjphKfu6yFUFK01cn1vxvvRH8bHwU5ghmk/4QCHOzuY
         EYzdz+DN/PBjnpYGS/dOLQQhNrfEZf0DVDVYpk/cxFwrxNUXRJtj/N9iEVmO
         /O1rqPCbdsCbFKaIXzltSCL7vr0SI1DoA8tf4PH63kqYuly+AdVKaM1PAQAA
-    http_version: 
+    http_version:
   recorded_at: Tue, 02 Apr 2013 15:54:36 GMT
 recorded_with: VCR 2.4.0

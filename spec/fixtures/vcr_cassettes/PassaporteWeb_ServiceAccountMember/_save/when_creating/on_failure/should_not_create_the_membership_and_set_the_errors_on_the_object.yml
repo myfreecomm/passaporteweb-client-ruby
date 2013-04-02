@@ -75,11 +75,11 @@ http_interactions:
         P/YYUhQ2fjn07HQ9rdVnRUgT8Hsif1PYfOWKy4rLPJPycHuJFNBfyOB9sQtz
         MGDiv+2ZsmNP6+/G3a9yj9uZDbqu2G7vHx13wRBpWIljSCrzTDYBj+TYpK3t
         tpM8/cLs+gcNpzNvcQIAAA==
-    http_version: 
+    http_version:
   recorded_at: Tue, 02 Apr 2013 15:35:49 GMT
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/profile/api/info/5e32f927-c4ab-404e-a91c-b2abc05afb56/
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/
     body:
       encoding: US-ASCII
       string: ''
@@ -161,7 +161,7 @@ http_interactions:
         9BJ4m/yv04dWTMPJ0+sbjROGbiiWgNtQ9zhMOdF1S3fjyVPsiL8mslkrV3m7
         x+1JHAvrcDjJaB9wonoGro8lfZWSZ8BE47qE/GXYHeaD5bvd7i3GNk/nU/Sc
         CpeG6Wc9R3FS/B2mJZYpZ4Y+L78fs1Tx+AclBLGhtQoAAA==
-    http_version: 
+    http_version:
   recorded_at: Tue, 02 Apr 2013 15:35:50 GMT
 - request:
     method: post
@@ -210,7 +210,7 @@ http_interactions:
     body:
       encoding: US-ASCII
       string: ! '"Adding a member as owner is not allowed"'
-    http_version: 
+    http_version:
   recorded_at: Tue, 02 Apr 2013 15:35:51 GMT
 - request:
     method: get
@@ -258,6 +258,6 @@ http_interactions:
       encoding: US-ASCII
       string: ! '"Identity 5e32f927-c4ab-404e-a91c-b2abc05afb56 is not member of service
         identity_client for account 859d3542-84d6-4909-b1bd-4f43c1312065"'
-    http_version: 
+    http_version:
   recorded_at: Tue, 02 Apr 2013 15:36:32 GMT
 recorded_with: VCR 2.4.0

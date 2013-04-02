@@ -59,11 +59,11 @@ http_interactions:
         pOg7FdgOfXJNYaE7JvOPUJKsex9wXBTWX+eSMkUZzxg7LC8lza0vaNz9bK7E
         Q+dS/vPGlj21OFtL7nZzd+zGrKF5L2Qb7xcdf3EhYjcn9mGhndCmwCMcq7S1
         zbqaP980uX0B+4fSGk8DAAA=
-    http_version: 
+    http_version:
   recorded_at: Tue, 02 Apr 2013 15:39:22 GMT
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/profile/api/info/5e32f927-c4ab-404e-a91c-b2abc05afb56/
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/
     body:
       encoding: US-ASCII
       string: ''
@@ -130,7 +130,7 @@ http_interactions:
         P4zNmnD23RHHufRal8PNdHIafcbfklnVKsu/X3B/ksfKOt6eVPTocQ5dBe6e
         1/hVSZ4AU5i2FeRfhsNt/bbccDj8jLEvw6Wtnkph0zj/1dUsTvr/gGnNZS6V
         CZ/W/w9Fqnn4AcXCzpS4CwAA
-    http_version: 
+    http_version:
   recorded_at: Tue, 02 Apr 2013 15:39:23 GMT
 - request:
     method: post
@@ -180,7 +180,7 @@ http_interactions:
       encoding: US-ASCII
       string: ! '"Identity with uuid=5e32f927-c4ab-404e-a91c-b2abc05afb56 is already
         in members list of service identity_client at account 859d3542-84d6-4909-b1bd-4f43c1312065"'
-    http_version: 
+    http_version:
   recorded_at: Tue, 02 Apr 2013 15:39:24 GMT
 - request:
     method: get
@@ -239,6 +239,6 @@ http_interactions:
         HcwIxu5n8Ga+/xHnpcLStbmG0BCbKkte/wAqGqzQB25srhHi6jOiTTH+T7E0
         uh35m9dQllftQDYuQhG/Em8QJvu2vRIjUOiDtF/g07XeNjN1uXwDTKFr41cB
         AAA=
-    http_version: 
+    http_version:
   recorded_at: Tue, 02 Apr 2013 15:39:51 GMT
 recorded_with: VCR 2.4.0
