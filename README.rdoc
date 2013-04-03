@@ -46,6 +46,7 @@ Or install it yourself as:
   * {PUT /notifications/api/:uuid/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#put-notifications-api-uuid] ==> (not implemented yet)
   * {DELETE /notifications/api/:uuid/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#delete-notifications-api-uuid] ==> (not implemented yet)
 * {Gerência de contas}[https://app.passaporteweb.com.br/static/docs/account_manager.html]
+  * {PUT /organizations/api/activate/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#put-organizations-api-activate] ==> (not implemented yet)
   * {GET /organizations/api/accounts/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts] ==> {PassaporteWeb::ServiceAccount.find_all}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/ServiceAccount.find_all]
   * {GET /organizations/api/accounts/:uuid/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid] ==> {PassaporteWeb::ServiceAccount.find}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/ServiceAccount.find]
   * {PUT /organizations/api/accounts/:uuid/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#put-organizations-api-accounts-uuid] ==> {PassaporteWeb::ServiceAccount#save}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/ServiceAccount:save]
