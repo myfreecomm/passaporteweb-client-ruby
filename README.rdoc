@@ -38,7 +38,7 @@ Or install it yourself as:
   * {GET /accounts/api/identities/?email=:email}[https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-identities-email-email] ==> {PassaporteWeb::Identity.find_by_email}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/Identity.find_by_email]
   * {PUT /accounts/api/identities/:uuid/}[https://app.passaporteweb.com.br/static/docs/usuarios.html#put-accounts-api-identities-uuid] ==> {PassaporteWeb::Identity#save}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/Identity:save]
 * {Autenticação de usuários}[https://app.passaporteweb.com.br/static/docs/usuarios.html#autenticacao-de-usuarios]
-  * {GET /accounts/api/auth/}[https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-auth] ==> (not implemented yet)
+  * {GET /accounts/api/auth/}[https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-auth] ==> {PassaporteWeb::Identity.authenticate}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/Identity.authenticate] or {PassaporteWeb::Identity#authenticate}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/Identity:authenticate]
 * {Notificações}[https://app.passaporteweb.com.br/static/docs/notificacao.html]
   * {GET /notifications/api/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#get-notifications-api] ==> (not implemented yet)
   * {POST /notifications/api/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#post-notifications-api] ==> (not implemented yet)

@@ -33,9 +33,7 @@ module PassaporteWeb
         {include_expired_accounts: include_expired_accounts, include_other_services: include_other_services}
       )
       attributes_hash = MultiJson.decode(response.body)
-      identity = self.new(attributes_hash)
-      identity.instance_variable_set(:@persisted, true)
-      identity
+      load_identity(attributes_hash)
     end
 
     # Finds an Identity by it's email (emails are unique on PassaporteWeb). Returns the Identity instance
@@ -57,9 +55,48 @@ module PassaporteWeb
         {email: email, include_expired_accounts: include_expired_accounts, include_other_services: include_other_services}
       )
       attributes_hash = MultiJson.decode(response.body)
-      identity = self.new(attributes_hash)
-      identity.instance_variable_set(:@persisted, true)
-      identity
+      load_identity(attributes_hash)
+    end
+
+    # Checks if an Identity exists on PassaporteWeb and if the password is correct. Returns an instance of
+    # Identity for the supplied email if the password is correct (although with only basic attributes set).
+    # Returns <tt>false</tt> if the password is wrong or if no Identity exists on PassaporteWeb with
+    # the supplied email. Use it to validate that a user is who he says he is.
+    #
+    # API method: <tt>GET /accounts/api/auth/</tt>
+    #
+    # API documentation: https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-auth
+    def self.authenticate(email, password)
+      response = Http.custom_auth_get(
+        email,
+        password,
+        "/accounts/api/auth/"
+      )
+      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
+      attributes_hash = MultiJson.decode(response.body)
+      load_identity(attributes_hash)
+    rescue *[RestClient::Unauthorized] => e
+      false
+    end
+
+    # Checks if the supplied password is correct for the current Identity. Returns <tt>true</tt> if the
+    # password matches or <tt>false</tt> if the password is wrong. Use it to validate that a user is who
+    # he says he is.
+    #
+    # API method: <tt>GET /accounts/api/auth/</tt>
+    #
+    # API documentation: https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-auth
+    def authenticate(password)
+      raise ArgumentError, "email must be set" if (self.email.nil? || self.email.to_s.empty?)
+      response = Http.custom_auth_get(
+        self.email,
+        password,
+        "/accounts/api/auth/"
+      )
+      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
+      true
+    rescue *[RestClient::Unauthorized] => e
+      false
     end
 
     # Instanciates a new Identity with the supplied attributes. Only the attributes listed
@@ -151,6 +188,12 @@ module PassaporteWeb
     end
 
     private
+
+    def self.load_identity(attributes)
+      identity = self.new(attributes)
+      identity.instance_variable_set(:@persisted, true)
+      identity
+    end
 
     def create
       Http.post("/accounts/api/create/", create_body)

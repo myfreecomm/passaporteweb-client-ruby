@@ -4,14 +4,14 @@ require 'spec_helper'
 describe PassaporteWeb::Identity do
 
   describe "constants" do
-    it { PassaporteWeb::Identity::ATTRIBUTES.should == [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos] }
-    it { PassaporteWeb::Identity::UPDATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone] }
-    it { PassaporteWeb::Identity::CREATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone, :email, :password, :password2, :must_change_password, :tos] }
+    it { described_class::ATTRIBUTES.should == [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos] }
+    it { described_class::UPDATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone] }
+    it { described_class::CREATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone, :email, :password, :password2, :must_change_password, :tos] }
   end
 
   describe ".new" do
     it "should instanciate an empty object" do
-      identity = PassaporteWeb::Identity.new
+      identity = described_class.new
       identity.attributes.should == {:accounts=>nil, :birth_date=>nil, :country=>nil, :cpf=>nil, :email=>nil, :first_name=>nil, :gender=>nil, :is_active=>nil, :language=>nil, :last_name=>nil, :nickname=>nil, :notifications=>nil, :send_myfreecomm_news=>nil, :send_partner_news=>nil, :services=>nil, :timezone=>nil, :update_info_url=>nil, :uuid=>nil, :password=>nil, :password2=>nil, :must_change_password=>nil, :inhibit_activation_message=>nil, :tos=>nil}
     end
     it "should instanciate an object with attributes set" do
@@ -45,7 +45,7 @@ describe PassaporteWeb::Identity do
         "inhibit_activation_message"=>nil,
         "tos"=>nil
       }
-      identity = PassaporteWeb::Identity.new(attributes)
+      identity = described_class.new(attributes)
       identity.attributes.should == {:accounts=>[], :birth_date=>"1945-10-27", :country=>"Brasil", :cpf=>nil, :email=>"lula@example.com", :first_name=>"Luis Inácio", :gender=>"M", :is_active=>true, :language=>"pt_BR", :last_name=>"da Silva", :nickname=>"Lula", :notifications=>{"count"=>0, "list"=>"/notifications/api/"}, :send_myfreecomm_news=>false, :send_partner_news=>false, :services=>{"myfinance"=>"/accounts/api/service-info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/myfinance/", "account_manager"=>"/accounts/api/service-info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/account_manager/"}, :timezone=>"GMT-3", :update_info_url=>"/profile/api/info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/", :uuid=>"a5868d14-6529-477a-9c6b-a09dd42a7cd2", :password=>nil, :password2=>nil, :must_change_password=>nil, :inhibit_activation_message=>nil, :tos=>nil}
       identity.last_name.should == "da Silva"
       identity.is_active.should == true
@@ -74,21 +74,21 @@ describe PassaporteWeb::Identity do
 
   describe "#== and #===" do
     it "should identify two profiles with the same uuid as equal" do
-      p1 = PassaporteWeb::Identity.new('uuid' => 'some-uuid')
-      p2 = PassaporteWeb::Identity.new('uuid' => 'some-uuid')
+      p1 = described_class.new('uuid' => 'some-uuid')
+      p2 = described_class.new('uuid' => 'some-uuid')
       p1.should == p2
       p1.should_not === p2
       p2.should == p1
       p2.should_not === p1
     end
     it "should identify two profiles with different uuids as different" do
-      p1 = PassaporteWeb::Identity.new('uuid' => 'some-uuid-1')
-      p2 = PassaporteWeb::Identity.new('uuid' => 'some-uuid-2')
+      p1 = described_class.new('uuid' => 'some-uuid-1')
+      p2 = described_class.new('uuid' => 'some-uuid-2')
       p1.should_not == p2
       p1.should_not === p2
       p2.should_not == p1
       p2.should_not === p1
-      p3 = PassaporteWeb::Identity.new
+      p3 = described_class.new
       p1.should_not == p3
       p3.should_not == p1
       p3.should_not === p1
@@ -97,8 +97,8 @@ describe PassaporteWeb::Identity do
 
   describe ".find", :vcr => true do
     it "should find the requested profile by uuid" do
-      identity = PassaporteWeb::Identity.find("5e32f927-c4ab-404e-a91c-b2abc05afb56")
-      identity.should be_instance_of(PassaporteWeb::Identity)
+      identity = described_class.find("5e32f927-c4ab-404e-a91c-b2abc05afb56")
+      identity.should be_instance_of(described_class)
       identity.uuid.should == '5e32f927-c4ab-404e-a91c-b2abc05afb56'
       identity.should be_persisted
       identity.email.should == 'teste@teste.com'
@@ -108,34 +108,34 @@ describe PassaporteWeb::Identity do
       identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] rescue nil }.sort.should == [nil]
     end
     it "should find the requested profile by uuid, including expired accounts" do
-      identity = PassaporteWeb::Identity.find("5e32f927-c4ab-404e-a91c-b2abc05afb56", true)
+      identity = described_class.find("5e32f927-c4ab-404e-a91c-b2abc05afb56", true)
       identity.accounts.size.should == 10
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2013-04-02 00:00:00", "2014-05-01 00:00:00"]
       identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] rescue nil }.sort.should == [nil]
     end
     it "should find the requested profile by uuid, including other services" do
-      identity = PassaporteWeb::Identity.find("5e32f927-c4ab-404e-a91c-b2abc05afb56", false, true)
+      identity = described_class.find("5e32f927-c4ab-404e-a91c-b2abc05afb56", false, true)
       identity.accounts.size.should == 10
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2014-05-01 00:00:00"]
       identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] }.sort.should == ["identity_client", "vc-promove"]
     end
     it "should find the requested profile by uuid, including other services and expired accounts" do
-      identity = PassaporteWeb::Identity.find("5e32f927-c4ab-404e-a91c-b2abc05afb56", true, true)
+      identity = described_class.find("5e32f927-c4ab-404e-a91c-b2abc05afb56", true, true)
       identity.accounts.size.should == 11
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2013-04-02 00:00:00", "2014-05-01 00:00:00"]
       identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] }.sort.should == ["identity_client", "vc-promove"]
     end
     it "should raise an error if no profiles exist with that uuid" do
       expect {
-        PassaporteWeb::Identity.find("invalid-uuid")
+        described_class.find("invalid-uuid")
       }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
     end
   end
 
   describe ".find_by_email", :vcr => true do
     it "should find the requested profile by email" do
-      identity = PassaporteWeb::Identity.find_by_email("teste@teste.com")
-      identity.should be_instance_of(PassaporteWeb::Identity)
+      identity = described_class.find_by_email("teste@teste.com")
+      identity.should be_instance_of(described_class)
       identity.uuid.should == '5e32f927-c4ab-404e-a91c-b2abc05afb56'
       identity.should be_persisted
       identity.email.should == 'teste@teste.com'
@@ -147,7 +147,7 @@ describe PassaporteWeb::Identity do
       identity.services.keys.should == ['identity_client']
     end
     it "should find the requested profile by email, including expired accounts" do
-      identity = PassaporteWeb::Identity.find_by_email("teste@teste.com", true)
+      identity = described_class.find_by_email("teste@teste.com", true)
       identity.accounts.size.should == 10
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2013-04-02 00:00:00", "2014-05-01 00:00:00"]
       identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] rescue nil }.sort.should == [nil]
@@ -155,27 +155,60 @@ describe PassaporteWeb::Identity do
       identity.services.keys.should == ['identity_client']
     end
     it "should find the requested profile by email, including other services" do
-      identity = PassaporteWeb::Identity.find_by_email("teste@teste.com", false, true)
+      identity = described_class.find_by_email("teste@teste.com", false, true)
       identity.accounts.size.should == 10
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2014-05-01 00:00:00"]
       identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] }.sort.should == ["identity_client", "vc-promove"]
     end
     it "should find the requested profile by email, including other services and expired accounts" do
-      identity = PassaporteWeb::Identity.find_by_email("teste@teste.com", true, true)
+      identity = described_class.find_by_email("teste@teste.com", true, true)
       identity.accounts.size.should == 11
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2013-04-02 00:00:00", "2014-05-01 00:00:00"]
       identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] }.sort.should == ["identity_client", "vc-promove"]
     end
     it "should raise an error if no profiles exist with that email" do
       expect {
-        PassaporteWeb::Identity.find("invalid@email.com")
+        described_class.find("invalid@email.com")
       }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+    end
+  end
+
+  describe ".authenticate", vcr: true do
+    it "should return an instance of Identity if the password is correct for the given email" do
+      identity = described_class.authenticate('teste@teste.com', '123456')
+      identity.should be_instance_of(described_class)
+      identity.should be_persisted
+      identity.uuid.should == '5e32f927-c4ab-404e-a91c-b2abc05afb56'
+      identity.email.should == 'teste@teste.com'
+      identity.update_info_url.should == '/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
+    end
+    it "should return false if the password is wrong for the given email" do
+      described_class.authenticate('teste@teste.com', 'wrong password').should be_false
+    end
+    it "should return false if no Identity exists on PassaporteWeb with that email" do
+      described_class.authenticate('non_existing_email@teste.com', 'some password')
+    end
+  end
+
+  describe "#authenticate", vcr: true do
+    let(:identity) { described_class.find("5e32f927-c4ab-404e-a91c-b2abc05afb56") }
+    it "should return true if the password is correct" do
+      identity.authenticate('123456').should be_true
+    end
+    it "should return false if the password is wrong" do
+      identity.authenticate('wrong password').should be_false
+    end
+    it "should raise an error if the email is not set" do
+      identity.instance_variable_set(:@email, nil)
+      expect {
+        identity.authenticate('some password')
+      }.to raise_error(ArgumentError, 'email must be set')
     end
   end
 
   describe "#save", :vcr => true do
     describe "PUT" do
-      let(:identity) { PassaporteWeb::Identity.find("5e32f927-c4ab-404e-a91c-b2abc05afb56") }
+      let(:identity) { described_class.find("5e32f927-c4ab-404e-a91c-b2abc05afb56") }
       context "on success" do
         it "should update the profile attributes on the server" do
           identity.first_name.should == 'Testador'
@@ -185,7 +218,7 @@ describe PassaporteWeb::Identity do
           identity.should be_persisted
           identity.first_name.should == 'Testador 2'
 
-          identity = PassaporteWeb::Identity.find("5e32f927-c4ab-404e-a91c-b2abc05afb56")
+          identity = described_class.find("5e32f927-c4ab-404e-a91c-b2abc05afb56")
           identity.first_name.should == 'Testador 2'
         end
       end
@@ -211,7 +244,7 @@ describe PassaporteWeb::Identity do
             "must_change_password" => true,
             "tos" => true
           }
-          identity = PassaporteWeb::Identity.new(attributes)
+          identity = described_class.new(attributes)
           identity.should_not be_persisted
           identity.save.should be_true
           identity.should be_persisted
@@ -230,7 +263,7 @@ describe PassaporteWeb::Identity do
             "send_partner_news" => false,
             "send_myfreecomm_news" => false
           }
-          identity = PassaporteWeb::Identity.new(attributes)
+          identity = described_class.new(attributes)
           identity.should_not be_persisted
           identity.save.should be_true
           identity.should be_persisted
@@ -244,7 +277,7 @@ describe PassaporteWeb::Identity do
             "last_name" => "da Silva",
             "tos" => true
           }
-          identity = PassaporteWeb::Identity.new(attributes)
+          identity = described_class.new(attributes)
           identity.should_not be_persisted
           identity.save.should_not be_true
           identity.should_not be_persisted
