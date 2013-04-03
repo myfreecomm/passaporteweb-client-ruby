@@ -1,4 +1,5 @@
 # encoding: utf-8
+require 'base64'
 module PassaporteWeb
 
   class Http # :nodoc:
@@ -17,6 +18,15 @@ module PassaporteWeb
 
     def self.delete(path='/', params={}, type='application')
       get_or_delete(:delete, path, params, type)
+    end
+
+    def self.custom_auth_get(user, password, path='/', params={})
+      credentials = "Basic #{::Base64.strict_encode64("#{user}:#{password}")}"
+      custom_params = common_params('application').merge({authorization: credentials})
+      RestClient.get(
+        pw_url(path),
+        {params: params}.merge(custom_params)
+      )
     end
 
     private

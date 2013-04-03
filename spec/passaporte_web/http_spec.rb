@@ -29,6 +29,20 @@ describe PassaporteWeb::Http do
     end
   end
 
+  describe ".custom_auth_get" do
+    it "should use RestClient.get with the supplied params and common options, but with the custom authorization" do
+      RestClient.should_receive(:get).with(
+        'https://some/where/foo',
+        params: {spam: 'eggs'},
+        authorization: 'Basic am9obkBkb2UuY29tOnRoZWJpcmRpc3RoZXdvcmQ=',
+        content_type: :json,
+        accept: :json,
+        user_agent: 'My Mocking App v1.1'
+      ).and_return(mock_response)
+      described_class.custom_auth_get('john@doe.com', 'thebirdistheword', '/foo', spam: 'eggs')
+    end
+  end
+
   describe ".delete" do
     it "should use RestClient.delete with the supplied params and common options" do
       RestClient.should_receive(:delete).with(
