@@ -113,6 +113,10 @@ module PassaporteWeb
     # if successfull or false if not. In case of failure, it will fill the <tt>errors</tt> attribute
     # with the reason for the failure to save the object.
     #
+    # The attributes <tt>first_name</tt>, <tt>last_name</tt>, <tt>cpf</tt> and <tt>inhibit_activation_message</tt>
+    # are optional. <tt>password2</tt> and <tt>password</tt> fields are required even if the parameter
+    # <tt>must_change_password</tt> is used.
+    #
     # API methods:
     # * <tt>POST /accounts/api/create/</tt> (on create)
     # * <tt>PUT /accounts/api/identities/:uuid/</tt> (on update)

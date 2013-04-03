@@ -2,19 +2,23 @@
 
 A Ruby client for the PassaporteWeb REST API
 
-PassaporteWeb API docs: https://app.passaporteweb.com.br/static/docs/
-
 {<img src="https://travis-ci.org/myfreecomm/passaporteweb-client-ruby.png?branch=master" alt="Build Status" />}[https://travis-ci.org/myfreecomm/passaporteweb-client-ruby]
 {<img src="https://coveralls.io/repos/myfreecomm/passaporteweb-client-ruby/badge.png?branch=master" alt="Coverage Status" />}[https://coveralls.io/r/myfreecomm/passaporteweb-client-ruby]
 {<img src="https://codeclimate.com/github/myfreecomm/passaporteweb-client-ruby.png" alt="Code Climate Status" />}[https://codeclimate.com/github/myfreecomm/passaporteweb-client-ruby]
 
-RDoc documentation: http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby
+PassaporteWeb API docs: https://app.passaporteweb.com.br/static/docs/
+
+passaporteweb-client-ruby RDoc documentation: http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby
+
+The RDoc is the best place to learn how to use this client. A few example uses are listed below. See the mapping of API endpoints to this client code below as well to find what you need.
+
+This client only uses the API of PassaporteWeb. To use the Single Sign-On (SSO) feature of PassaporteWeb via OAuth in Ruby, see the {omni_auth_passaporte_web gem}[https://rubygems.org/gems/omni_auth_passaporte_web] ({code}[https://github.com/myfreecomm/omni_auth_myfc_id] and {example of use}[https://github.com/myfreecomm/exemplo_passaporte_web_rails_3_2]).
 
 == Installation
 
 Add this line to your application's Gemfile:
 
-  gem 'passaporteweb-client'
+  gem 'passaporteweb-client', :require => 'passaporte_web'
 
 And then execute:
 
@@ -25,6 +29,39 @@ Or install it yourself as:
   $ gem install passaporteweb-client
 
 == Usage
+
+=== Mapping of API endpoints to this client
+
+* {Cadastro e informações de usuários}[https://app.passaporteweb.com.br/static/docs/usuarios.html]
+  * {POST /accounts/api/create/}[https://app.passaporteweb.com.br/static/docs/usuarios.html#post-accounts-api-create] ==> {PassaporteWeb::Identity#save}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/Identity:save]
+  * {GET /accounts/api/identities/:uuid/}[https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-identities-uuid] ==> {PassaporteWeb::Identity.find}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/Identity.find]
+  * {GET /accounts/api/identities/?email=:email}[https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-identities-email-email] ==> {PassaporteWeb::Identity.find_by_email}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/Identity.find_by_email]
+  * {PUT /accounts/api/identities/:uuid/}[https://app.passaporteweb.com.br/static/docs/usuarios.html#put-accounts-api-identities-uuid] ==> {PassaporteWeb::Identity#save}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/Identity:save]
+* {Autenticação de usuários}[https://app.passaporteweb.com.br/static/docs/usuarios.html#autenticacao-de-usuarios]
+  * {GET /accounts/api/auth/}[https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-auth] ==> (not implemented yet)
+* {Notificações}[https://app.passaporteweb.com.br/static/docs/notificacao.html]
+  * {GET /notifications/api/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#get-notifications-api] ==> (not implemented yet)
+  * {POST /notifications/api/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#post-notifications-api] ==> (not implemented yet)
+  * {GET /notifications/api/count/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#get-notifications-api-count] ==> (not implemented yet)
+  * {PUT /notifications/api/:uuid/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#put-notifications-api-uuid] ==> (not implemented yet)
+  * {DELETE /notifications/api/:uuid/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#delete-notifications-api-uuid] ==> (not implemented yet)
+* {Gerência de contas}[https://app.passaporteweb.com.br/static/docs/account_manager.html]
+  * {GET /organizations/api/accounts/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts] ==> {PassaporteWeb::ServiceAccount.find_all}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/ServiceAccount.find_all]
+  * {GET /organizations/api/accounts/:uuid/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid] ==> {PassaporteWeb::ServiceAccount.find}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/ServiceAccount.find]
+  * {PUT /organizations/api/accounts/:uuid/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#put-organizations-api-accounts-uuid] ==> {PassaporteWeb::ServiceAccount#save}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/ServiceAccount:save]
+  * {POST /organizations/api/accounts/:uuid/members/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#post-organizations-api-accounts-uuid-members] ==> {PassaporteWeb::ServiceAccountMember#save}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/ServiceAccountMember:save]
+  * {GET /organizations/api/accounts/:uuid/members/:member_uuid/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid-members-member-uuid] ==> {PassaporteWeb::ServiceAccountMember.find}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/ServiceAccountMember.find]
+  * {PUT /organizations/api/accounts/:uuid/members/:member_uuid/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#put-organizations-api-accounts-uuid-members-member-uuid] ==> {PassaporteWeb::ServiceAccountMember#save}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/ServiceAccountMember:save]
+  * {DELETE /organizations/api/accounts/:uuid/members/:member_uuid/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#delete-organizations-api-accounts-uuid-members-member-uuid] ==> {PassaporteWeb::ServiceAccountMember#destroy}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/ServiceAccountMember:destroy]
+  * {GET /organizations/api/identities/:uuid/accounts/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-identities-uuid-accounts] ==> {PassaporteWeb::IdentityServiceAccount.find_all}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/IdentityServiceAccount.find_all]
+  * {POST /organizations/api/identities/:uuid/accounts/}[https://app.passaporteweb.com.br/static/docs/servicos.html#put-accounts-api-service-info-uuid-service-slug] ==> {PassaporteWeb::IdentityServiceAccount.save}[http://rubydoc.info/github/myfreecomm/passaporteweb-client-ruby/PassaporteWeb/IdentityServiceAccount:save]
+* {Serviços do usuário}[https://app.passaporteweb.com.br/static/docs/servicos.html]
+  * {GET /accounts/api/service-info/:uuid/:service_slug/}[https://app.passaporteweb.com.br/static/docs/servicos.html#get-accounts-api-service-info-uuid-service-slug] ==> (not implemented yet)
+  * {PUT /accounts/api/service-info/:uuid/:service_slug/}[https://app.passaporteweb.com.br/static/docs/servicos.html#put-accounts-api-service-info-uuid-service-slug] ==> (not implemented yet)
+* {Perfil}[https://app.passaporteweb.com.br/static/docs/perfil.html]
+  * {GET /profile/api/info/:uuid/}[https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-uuid] ==> (deprecated, not going to be implemented)
+  * {GET /profile/api/info/?email=:email}[https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-email-email] ==> (deprecated, not going to be implemented)
+  * {PUT /profile/api/info/:uuid/}[https://app.passaporteweb.com.br/static/docs/perfil.html#put-profile-api-info-uuid] ==> (deprecated, not going to be implemented)
 
 === Configuration
 
@@ -38,7 +75,7 @@ Or install it yourself as:
     c.user_token = 'some-user-token'
   end
 
-=== Identity
+=== Examples
 
   identity1 = PassaporteWeb::Identity.find("a5868d14-6529-477a-9c6b-a09dd42a7cd2")
   identity1.email # "john@example.com"
@@ -54,37 +91,31 @@ Or install it yourself as:
   identity1.save # true
   identity1.gender # 'M'
 
-* Creates a new identity
-* Authentication token and secret using the application.
-* Fields <tt>first_name</tt>, <tt>last_name</tt>, <tt>cpf</tt> and <tt>inhibit_activation_message</tt> are optional.
-* <tt>password2</tt> and <tt>password</tt> fields are required even if the parameter <tt>must_change_password</tt> is used.
+  attributes = {
+    "email" => "lula_luis7@example.com",
+    "first_name" => "Luis Inácio",
+    "last_name" => "da Silva",
+    "password" => "rW5oHxYB",
+    "password2" => "rW5oHxYB",
+    "must_change_password" => true,
+    "tos" => true,
+    "inhibit_activation_message" => false,
+    "cpf" => "353.423.680-73",
+    "send_partner_news" => false,
+    "send_myfreecomm_news" => false
+  }
+  identity = PassaporteWeb::Identity.new(attributes)
+  identity.save # true
 
-    attributes = {
-      "email" => "lula_luis7@example.com",
-      "first_name" => "Luis Inácio",
-      "last_name" => "da Silva",
-      "password" => "rW5oHxYB",
-      "password2" => "rW5oHxYB",
-      "must_change_password" => true,
-      "tos" => true,
-      "inhibit_activation_message" => false,
-      "cpf" => "353.423.680-73",
-      "send_partner_news" => false,
-      "send_myfreecomm_news" => false
-    }
-    identity = PassaporteWeb::Identity.new(attributes)
-
-    identity.save # true
-
-    attributes = {
-      "email" => "lula_luis8@example.com",
-      "first_name" => "Luis Inácio",
-      "last_name" => "da Silva",
-      "tos" => true
-    }
-    identity = PassaporteWeb::Identity.new(attributes)
-
-    identity.save # false
+  attributes = {
+    "email" => "lula_luis8@example.com",
+    "first_name" => "Luis Inácio",
+    "last_name" => "da Silva",
+    "tos" => true
+  }
+  identity = PassaporteWeb::Identity.new(attributes)
+  identity.save # false
+  identity.errors # hash of errors
 
 == Contributing
 
