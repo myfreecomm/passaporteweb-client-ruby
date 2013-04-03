@@ -1,7 +1,8 @@
 # encoding: utf-8
 module PassaporteWeb
 
-  # TODOC
+  # Also represents a ServiceAccount, but uses diffetent API endpoints to list and create them
+  # from a existing Identity.
   class IdentityServiceAccount
     include Attributable
 
@@ -12,7 +13,8 @@ module PassaporteWeb
     attr_reader *(ATTRIBUTES - CREATABLE_ATTRIBUTES)
     attr_reader :identity, :errors
 
-    # TODOC
+    # Finds all service accounts of the supplied Identity on the current authenticated application.
+    # Returns an array of IdentityServiceAccount.
     #
     # API method: <tt>GET /organizations/api/identities/:uuid/accounts/</tt>
     #
@@ -25,7 +27,8 @@ module PassaporteWeb
       raw_accounts.map { |raw_account| load_identity_service_account(identity, raw_account) }
     end
 
-    # TODOC
+    # Instanciates a new ServiceAccount to be created for the supplied Identity on the current
+    # authenticated application. See #save
     def initialize(identity, attributes={})
       set_attributes(attributes)
       @identity = identity
@@ -33,7 +36,12 @@ module PassaporteWeb
       @errors = {}
     end
 
-    # TODOC
+    # Creates a new ServiceAccount for the supplied Identity on the current authenticated application.
+    # The supplied Identity will be the ServiceAccount's owner. You should supply either the <tt>name</tt>
+    # or the (service account's) <tt>uuid</tt> attribute. If the latter is supplied, the supplied Identity
+    # must already be owner of at least one other ServiceAccount on the same group / organization.
+    #
+    # Returns true in case of success, false otherwise (along with failure reasons on #errors).
     #
     # API method: <tt>POST /organizations/api/identities/:uuid/accounts/</tt>
     #
@@ -53,6 +61,7 @@ module PassaporteWeb
       false
     end
 
+    # Returns true if the IdentityServiceAccount exists on PassaporteWeb
     def persisted?
       @persisted == true
     end

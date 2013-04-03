@@ -94,6 +94,28 @@ describe PassaporteWeb::IdentityServiceAccount do
         account.membership_details_url.should_not be_nil
         account.add_member_url.should_not be_nil
       end
+      it "should create a new service account by uuid for the identity in the current authenticated application" do
+        pending 'pegar explicação com Vitor'
+        account_uuid = '92d52d25-c7a6-4d16-ae9e-c5f2b4f8fa43'
+        expiration_date = (Time.now + (15 * 60 * 60 * 24)).strftime('%Y-%m-%d')
+        attributes = {
+          plan_slug: 'basic',
+          expiration: expiration_date,
+          uuid: account_uuid
+        }
+        account = described_class.new(identity, attributes)
+        account.save.should be_true
+        account.should be_persisted
+
+        account.plan_slug.should == 'basic'
+        account.roles.should == ['owner']
+        account.service_data.should == {"name" => "Identity Client","slug" => "identity_client"}
+        account.account_data['name'].should_not be_nil
+        account.account_data['uuid'].should == account_uuid
+        account.url.should_not be_nil
+        account.membership_details_url.should_not be_nil
+        account.add_member_url.should_not be_nil
+      end
     end
     context "on failure" do
       it "should return false and populate #errors with the failure reasons" do
