@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://:f01d30c0a2e878fecc838735560253f9e9395932f5337f40@sandbox.app.passaporteweb.com.br/notifications/api/?limit=20&ordering=oldest-first&page=1&show_read=false&since=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Params:
+      - ''
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.0.9
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "QWxsb3c=":
+      - !binary |-
+        R0VULCBQT1NULCBIRUFELCBPUFRJT05T
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1FbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbg==
+      !binary "RGF0ZQ==":
+      - !binary |-
+        V2VkLCAwMyBBcHIgMjAxMyAxNDo0Nzo1MyBHTVQ=
+      !binary "RXhwaXJlcw==":
+      - !binary |-
+        V2VkLCAwMyBBcHIgMjAxMyAxNDo0Nzo1MiBHTVQ=
+      !binary "TGluaw==":
+      - !binary |-
+        PGh0dHA6Ly9zYW5kYm94LmFwcC5wYXNzYXBvcnRld2ViLmNvbS5ici9ub3Rp
+        ZmljYXRpb25zL2FwaS8/c2hvd19yZWFkPWZhbHNlJnNpbmNlPSZsaW1pdD0y
+        MCZvcmRlcmluZz1vbGRlc3QtZmlyc3QmcGFnZT0xPjsgcmVsPWxhc3QsIDxo
+        dHRwOi8vc2FuZGJveC5hcHAucGFzc2Fwb3J0ZXdlYi5jb20uYnIvbm90aWZp
+        Y2F0aW9ucy9hcGkvP3Nob3dfcmVhZD1mYWxzZSZzaW5jZT0mbGltaXQ9MjAm
+        b3JkZXJpbmc9b2xkZXN0LWZpcnN0JnBhZ2U9MT47IHJlbD1maXJzdA==
+      !binary "UDNw":
+      - !binary |-
+        Q1A9Ik5PTiBEU1AgQ09SIENVUmEgVElBIg==
+      !binary "U2VydmVy":
+      - !binary |-
+        bmdpbngvMC43LjY3
+      !binary "VmFyeQ==":
+      - !binary |-
+        QXV0aGVudGljYXRlLCBBY2NlcHQsIEFjY2VwdC1FbmNvZGluZw==
+      !binary "WC1UaHJvdHRsZQ==":
+      - !binary |-
+        c3RhdHVzPVNVQ0NFU1M7IG5leHQ9MC4yMCBzZWM=
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        MjE4
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        a2VlcC1hbGl2ZQ==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIABlBXFEC/42OQWrDMBBFr2K0rrBkq67jbVc9QxLEWDNNBYoU7NHChNy9
+        kptCl2U2n/8enznexZxwE1MjTiL5eichXhrBsFyIbV5CZbXJ2WPNnQNlhpmk
+        0m+jNHpEOSpwsoe+N64bjFKH6sO8ppCZfjfamNh/egfsU1xbuPn2P1Nt3Vrd
+        F2EOhJbT/oPSvVRGqq7Rw/R6mLTaNYpIi0VgKNZdRLhS1T+QInvemvfgS9rV
+        kC8V+Sey7gc9ClsI0AIXHHMIpfj7ueXtRk/0OH8DXkeW3EABAAA=
+    http_version: 
+  recorded_at: Wed, 03 Apr 2013 14:47:53 GMT
+recorded_with: VCR 2.4.0
