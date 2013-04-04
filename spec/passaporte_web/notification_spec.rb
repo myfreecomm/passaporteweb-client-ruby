@@ -153,6 +153,11 @@ describe PassaporteWeb::Notification do
         end
       end
       context "on failure" do
+        it "should return false an do nothing if the Notification is already persisted" do
+          PassaporteWeb.configuration.user_token = "f01d30c0a2e878fecc838735560253f9e9395932f5337f40"
+          notification = described_class.find_all(1,20,nil,true).notifications.last
+          notification.save.should be_false
+        end
         it "should return false and set the errors with the reason for the failure, authenticated as the user" do
           PassaporteWeb.configuration.user_token = "f01d30c0a2e878fecc838735560253f9e9395932f5337f40"
           notification.target_url = 'lalalala'
@@ -172,21 +177,42 @@ describe PassaporteWeb::Notification do
         end
       end
     end
-    context "on update" do
-      let(:notification) { described_class.find_all.notifications.last }
-      before(:each) do
-        PassaporteWeb.configuration.user_token = "f01d30c0a2e878fecc838735560253f9e9395932f5337f40"
+  end
+
+  describe "#read!", vcr: true do
+    let(:notification) { described_class.find_all.notifications.last }
+    before(:each) do
+      PassaporteWeb.configuration.user_token = "3e4470e59d76f748e0081b514da62ed621a893c87facd4a6"
+    end
+    context "on success" do
+      it "should mark the Notification as read" do
+        notification.read_at.should be_nil
+        notification.read!.should be_true
+        notification.read_at.should_not be_nil
       end
-      context "on success" do
-        it "should mark the Notification as read" do
-          notification.read_at.should be_nil
-          notification.save
-          notification.read_at.should_not be_nil
-        end
+    end
+    context "on failure" do
+      it "should return false if the notification is already read" do
+        read_notification = described_class.find_all(1,20,nil,true).notifications.detect { |n| !n.read_at.nil? }
+        read_notification.read_at.should_not be_nil
+        read_notification.read!.should be_false
+        read_notification.errors.should == {message: 'notification already read'}
       end
-      context "on failure" do
-        it "should return false and set the errors with the reason for the failure"
-      end
+    end
+  end
+
+  describe "#destroy" do
+    it "should return false if the record is not persisted" do
+      notification = described_class.new(body: 'novinha', destination: 'a5868d14-6529-477a-9c6b-a09dd42a7cd2')
+      notification.destroy.should be_false
+    end
+    it "should destroy the notification on PassaporteWeb", vcr: true do
+      PassaporteWeb.configuration.user_token = "3e4470e59d76f748e0081b514da62ed621a893c87facd4a6"
+      count = described_class.count(true)
+      notification = described_class.find_all(1,20,nil,true).notifications.last
+      notification.should_not be_nil
+      notification.destroy.should be_true
+      described_class.count(true).should == (count - 1)
     end
   end
 

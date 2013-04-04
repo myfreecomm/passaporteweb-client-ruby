@@ -84,17 +84,38 @@ module PassaporteWeb
 
     # TODOC
     #
-    # API methods:
-    # * <tt>POST /notifications/api/</tt> (on create)
-    # * <tt>PUT /notifications/api/:uuid/</tt> (on update)
+    # API method: <tt>POST /notifications/api/</tt>
     #
-    # API documentation:
-    # * https://app.passaporteweb.com.br/static/docs/notificacao.html#post-notifications-api
-    # * https://app.passaporteweb.com.br/static/docs/notificacao.html#put-notifications-api-uuid
-    # TOSPEC
-    # TOSPEC
+    # API documentation: https://app.passaporteweb.com.br/static/docs/notificacao.html#post-notifications-api
     def save(auth_type='user')
-      self.persisted? ? update : create(auth_type)
+      if self.persisted?
+        @errors = {message: 'notification already persisted, call #read! to mark it as read'}
+        false
+      else
+        create(auth_type)
+      end
+    end
+
+    # TODOC
+    #
+    # API method: <tt>PUT /notifications/api/:uuid/</tt>
+    #
+    # API documentation: https://app.passaporteweb.com.br/static/docs/notificacao.html#put-notifications-api-uuid
+    def read!
+      raise 'notification not persisted' unless self.persisted?
+      unless self.read_at.nil?
+        @errors = {message: 'notification already read'}
+        return false
+      end
+      response = Http.put("/notifications/api/#{self.uuid}/", {}, {}, 'user')
+      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
+      attributes_hash = MultiJson.decode(response.body)
+      set_attributes(attributes_hash)
+      @errors = {}
+      true
+    rescue *[RestClient::BadRequest] => e
+      @errors = MultiJson.decode(e.response.body)
+      false
     end
 
     # TODOC
@@ -102,10 +123,9 @@ module PassaporteWeb
     # API method: <tt>DELETE /notifications/api/:uuid/</tt>
     #
     # API documentation: https://app.passaporteweb.com.br/static/docs/notificacao.html#delete-notifications-api-uuid
-    # TOSPEC
     def destroy
       return false unless self.persisted?
-      response = Http.delete('/notifications/api/:uuid/')
+      response = Http.delete("/notifications/api/#{self.uuid}/", {}, 'application')
       raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 204
       @errors = {}
       @persisted = false
@@ -147,24 +167,6 @@ module PassaporteWeb
       true
     rescue *[RestClient::BadRequest] => e
       @persisted = false
-      @errors = MultiJson.decode(e.response.body)
-      false
-    end
-
-    def update
-      # TODO validar atributos?
-      response = Http.put(
-        "/notifications/api/#{self.uuid}/",
-        {},
-        {},
-        'user'
-      )
-      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
-      attributes_hash = MultiJson.decode(response.body)
-      set_attributes(attributes_hash)
-      @errors = {}
-      true
-    rescue *[RestClient::BadRequest] => e
       @errors = MultiJson.decode(e.response.body)
       false
     end

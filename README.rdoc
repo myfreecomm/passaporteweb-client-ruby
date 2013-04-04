@@ -43,7 +43,7 @@ Or install it yourself as:
   * {GET /notifications/api/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#get-notifications-api] ==> PassaporteWeb::Notification.find_all
   * {POST /notifications/api/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#post-notifications-api] ==> PassaporteWeb::Notification#save
   * {GET /notifications/api/count/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#get-notifications-api-count] ==> PassaporteWeb::Notification.count
-  * {PUT /notifications/api/:uuid/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#put-notifications-api-uuid] ==> PassaporteWeb::Notification#save
+  * {PUT /notifications/api/:uuid/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#put-notifications-api-uuid] ==> PassaporteWeb::Notification#read!
   * {DELETE /notifications/api/:uuid/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#delete-notifications-api-uuid] ==> PassaporteWeb::Notification#destroy
 * {Gerência de contas}[https://app.passaporteweb.com.br/static/docs/account_manager.html]
   * {PUT /organizations/api/activate/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#put-organizations-api-activate] ==> (not implemented yet)
