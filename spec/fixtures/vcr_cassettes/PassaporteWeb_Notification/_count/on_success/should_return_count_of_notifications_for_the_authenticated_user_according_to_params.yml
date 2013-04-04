@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://:f01d30c0a2e878fecc838735560253f9e9395932f5337f43@sandbox.app.passaporteweb.com.br/notifications/api/count/?show_read=false&since=
+    uri: http://:f01d30c0a2e878fecc838735560253f9e9395932f5337f40@sandbox.app.passaporteweb.com.br/notifications/api/count/?show_read=true&since=2013-04-02
     body:
       encoding: US-ASCII
       string: ''
@@ -11,36 +11,40 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
-      Params:
-      - ''
       Content-Type:
       - application/json
       User-Agent:
-      - PassaporteWeb Ruby Client v0.0.9
+      - PassaporteWeb Ruby Client v0.0.10
   response:
     status:
-      code: 401
-      message: UNAUTHORIZED
+      code: 200
+      message: OK
     headers:
       Allow:
       - GET, HEAD, OPTIONS
+      Cache-Control:
+      - no-cache
       Content-Type:
       - application/json
       Date:
-      - Wed, 03 Apr 2013 17:13:58 GMT
+      - Thu, 04 Apr 2013 02:54:15 GMT
+      Expires:
+      - Thu, 04 Apr 2013 02:54:14 GMT
       P3p:
       - CP="NON DSP COR CURa TIA"
       Server:
       - nginx/0.7.67
       Vary:
       - Authenticate, Accept
+      X-Throttle:
+      - status=SUCCESS; next=0.20 sec
       Content-Length:
-      - '70'
+      - '67'
       Connection:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! '{"detail": "You need to login or otherwise authenticate the request."}'
+      string: ! '{"count": 2, "destination": "385f5f3c-8d33-4b95-9e0d-e87962985244"}'
     http_version: 
-  recorded_at: Wed, 03 Apr 2013 17:13:58 GMT
+  recorded_at: Thu, 04 Apr 2013 02:54:19 GMT
 recorded_with: VCR 2.4.0

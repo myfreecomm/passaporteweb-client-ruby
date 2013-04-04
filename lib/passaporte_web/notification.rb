@@ -5,8 +5,8 @@ module PassaporteWeb
   class Notification
     include Attributable
 
-    ATTRIBUTES = [:uuid, :destination, :body, :target_url, :scheduled_to]
-    CREATABLE_ATTRIBUTES = [:destination, :body, :target_url, :scheduled_to]
+    ATTRIBUTES = [:body, :target_url, :uuid, :absolute_url, :scheduled_to, :sender_data, :read_at, :notification_type, :destination]
+    CREATABLE_ATTRIBUTES = [:body, :target_url, :scheduled_to, :destination]
     UPDATEABLE_ATTRIBUTES = []
 
     attr_accessor *(CREATABLE_ATTRIBUTES + UPDATEABLE_ATTRIBUTES)
@@ -33,7 +33,6 @@ module PassaporteWeb
     #   data.meta.prev_page  # => nil
     #   data.meta.first_page # => 1
     #   data.meta.last_page  # => 123
-    # TOSPEC
     def self.find_all(page=1, limit=20, since=nil, show_read=false, ordering="oldest-first")
       since = since.strftime('%Y-%m-%d') if since && since.respond_to?(:strftime)
       params = {
@@ -55,15 +54,14 @@ module PassaporteWeb
     # API method: <tt>GET /notifications/api/count/</tt>
     #
     # API documentation: https://app.passaporteweb.com.br/static/docs/notificacao.html#get-notifications-api-count
-    # TOSPEC
     def self.count(show_read=false, since=nil)
       since = since.strftime('%Y-%m-%d') if since && since.respond_to?(:strftime)
       params = {
         since: since, show_read: show_read
       }.reject { |k,v| v.nil? || v.to_s.empty? }
       response = Http.get("/notifications/api/count/", params, 'user')
-      MultiJson.decode(response.body)
-      # TODO ver como vem a resposta
+      data = MultiJson.decode(response.body)
+      Integer(data['count'])
     rescue *[RestClient::BadRequest] => e
       MultiJson.decode(e.response.body)
     end
@@ -94,6 +92,7 @@ module PassaporteWeb
     # * https://app.passaporteweb.com.br/static/docs/notificacao.html#post-notifications-api
     # * https://app.passaporteweb.com.br/static/docs/notificacao.html#put-notifications-api-uuid
     # TOSPEC
+    # TOSPEC
     def save(auth_type='user')
       self.persisted? ? update : create(auth_type)
     end
@@ -123,7 +122,7 @@ module PassaporteWeb
     end
 
     def persisted?
-      @persisted == true
+      @persisted == true && !self.uuid.nil?
     end
 
     def destroyed?
