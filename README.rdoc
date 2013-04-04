@@ -40,11 +40,11 @@ Or install it yourself as:
 * {Autenticação de usuários}[https://app.passaporteweb.com.br/static/docs/usuarios.html#autenticacao-de-usuarios]
   * {GET /accounts/api/auth/}[https://app.passaporteweb.com.br/static/docs/usuarios.html#get-accounts-api-auth] ==> PassaporteWeb::Identity.authenticate or PassaporteWeb::Identity#authenticate
 * {Notificações}[https://app.passaporteweb.com.br/static/docs/notificacao.html]
-  * {GET /notifications/api/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#get-notifications-api] ==> (not implemented yet)
-  * {POST /notifications/api/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#post-notifications-api] ==> (not implemented yet)
-  * {GET /notifications/api/count/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#get-notifications-api-count] ==> (not implemented yet)
-  * {PUT /notifications/api/:uuid/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#put-notifications-api-uuid] ==> (not implemented yet)
-  * {DELETE /notifications/api/:uuid/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#delete-notifications-api-uuid] ==> (not implemented yet)
+  * {GET /notifications/api/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#get-notifications-api] ==> PassaporteWeb::Notification.find_all
+  * {POST /notifications/api/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#post-notifications-api] ==> PassaporteWeb::Notification#save
+  * {GET /notifications/api/count/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#get-notifications-api-count] ==> PassaporteWeb::Notification.count
+  * {PUT /notifications/api/:uuid/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#put-notifications-api-uuid] ==> PassaporteWeb::Notification#save
+  * {DELETE /notifications/api/:uuid/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#delete-notifications-api-uuid] ==> PassaporteWeb::Notification#destroy
 * {Gerência de contas}[https://app.passaporteweb.com.br/static/docs/account_manager.html]
   * {PUT /organizations/api/activate/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#put-organizations-api-activate] ==> (not implemented yet)
   * {GET /organizations/api/accounts/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts] ==> PassaporteWeb::ServiceAccount.find_all
