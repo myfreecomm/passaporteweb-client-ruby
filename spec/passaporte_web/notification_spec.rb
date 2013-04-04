@@ -12,7 +12,7 @@ describe PassaporteWeb::Notification do
     it "should instanciate an empty object" do
       notification = PassaporteWeb::Notification.new
       notification.should_not be_persisted
-      notification.attributes.should == {}
+      notification.attributes.should == {:body=>nil, :target_url=>nil, :uuid=>nil, :absolute_url=>nil, :scheduled_to=>nil, :sender_data=>nil, :read_at=>nil, :notification_type=>nil, :destination=>nil}
       notification.uuid.should be_nil
       notification.destination.should be_nil
       notification.body.should be_nil
@@ -33,7 +33,7 @@ describe PassaporteWeb::Notification do
       notification = PassaporteWeb::Notification.new(attributes)
       notification.should_not be_persisted
       notification.uuid.should be_nil
-      notification.attributes.should == {}
+      notification.attributes.should == {:body=>"Feliz ano novo!", :target_url=>"https://app.passaporteweb.com.br", :uuid=>nil, :absolute_url=>nil, :scheduled_to=>"2012-01-01 00:00:00", :sender_data=>nil, :read_at=>nil, :notification_type=>nil, :destination=>"ac3540c7-5453-424d-bdfd-8ef2d9ff78df"}
       notification.destination.should == "ac3540c7-5453-424d-bdfd-8ef2d9ff78df"
       notification.body.should == "Feliz ano novo!"
       notification.target_url.should == "https://app.passaporteweb.com.br"
