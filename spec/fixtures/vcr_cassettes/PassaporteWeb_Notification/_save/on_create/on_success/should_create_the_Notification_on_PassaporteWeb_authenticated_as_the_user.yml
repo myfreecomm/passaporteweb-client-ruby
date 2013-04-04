@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://:f01d30c0a2e878fecc838735560253f9e9395932f5337f40@sandbox.app.passaporteweb.com.br/notifications/api/
+    body:
+      encoding: UTF-8
+      string: ! '{"body":"feliz aniversário!","target_url":"http://pittlandia.net","scheduled_to":"2013-04-19
+        10:50:19","destination":"a5868d14-6529-477a-9c6b-a09dd42a7cd2"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.0.10
+      Content-Length:
+      - '157'
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 04 Apr 2013 03:25:08 GMT
+      Location:
+      - http://sandbox.app.passaporteweb.com.br/notifications/api/b5c97ac9-5ee4-42d2-b0d7-f67e47be0a89/
+      P3p:
+      - CP="NON DSP COR CURa TIA"
+      Server:
+      - nginx/0.7.67
+      Vary:
+      - Authenticate, Accept
+      X-Throttle:
+      - status=SUCCESS; next=0.20 sec
+      Content-Length:
+      - '374'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"body": "feliz anivers\u00e1rio!", "target_url": "http://pittlandia.net/",
+        "uuid": "b5c97ac9-5ee4-42d2-b0d7-f67e47be0a89", "absolute_url": "/notifications/api/b5c97ac9-5ee4-42d2-b0d7-f67e47be0a89/",
+        "scheduled_to": "2013-04-19 00:00:00", "sender_data": {"name": "Rodrigo Martins",
+        "uuid": "385f5f3c-8d33-4b95-9e0d-e87962985244"}, "read_at": null, "notification_type":
+        null}'
+    http_version: 
+  recorded_at: Thu, 04 Apr 2013 03:25:08 GMT
+recorded_with: VCR 2.4.0

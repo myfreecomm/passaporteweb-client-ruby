@@ -118,4 +118,76 @@ describe PassaporteWeb::Notification do
     end
   end
 
+  describe "#save", vcr: true do
+    context "on create" do
+      let(:notification) { described_class.new(body: 'feliz aniversário!', target_url: 'http://pittlandia.net', scheduled_to: '2013-04-19 10:50:19', destination: 'a5868d14-6529-477a-9c6b-a09dd42a7cd2') }
+      context "on success" do
+        it "should create the Notification on PassaporteWeb, authenticated as the user" do
+          PassaporteWeb.configuration.user_token = "f01d30c0a2e878fecc838735560253f9e9395932f5337f40"
+          notification.should_not be_persisted
+          notification.save.should be_true # by default authenticates as the user
+          notification.should be_persisted
+          notification.uuid.should_not be_nil
+          notification.absolute_url.should_not be_nil
+          notification.destination.should be_nil # FIXME is this right? shouldn't it be a5868d14-6529-477a-9c6b-a09dd42a7cd2 ???
+          notification.scheduled_to.should == '2013-04-19 00:00:00' # FIXME is this right? shouldn't it be 2013-04-19 10:50:19 ???
+          notification.body.should == 'feliz aniversário!'
+          notification.target_url.should == 'http://pittlandia.net/' # PW added the trailing slash, WTF?
+          notification.sender_data.should == {"name" => "Rodrigo Martins", "uuid" => "385f5f3c-8d33-4b95-9e0d-e87962985244"}
+          notification.read_at.should be_nil
+          notification.notification_type.should be_nil
+        end
+        it "should create the Notification on PassaporteWeb, authenticated as the application" do
+          notification.should_not be_persisted
+          notification.save('application').should be_true
+          notification.should be_persisted
+          notification.uuid.should_not be_nil
+          notification.absolute_url.should_not be_nil
+          notification.destination.should be_nil # FIXME is this right? shouldn't it be a5868d14-6529-477a-9c6b-a09dd42a7cd2 ???
+          notification.scheduled_to.should == '2013-04-19 00:00:00' # FIXME is this right? shouldn't it be 2013-04-19 10:50:19 ???
+          notification.body.should == 'feliz aniversário!'
+          notification.target_url.should == 'http://pittlandia.net/' # PW added the trailing slash, WTF?
+          notification.sender_data.should == {"name" => "Identity Client", "slug" => "identity_client"}
+          notification.read_at.should be_nil
+          notification.notification_type.should be_nil
+        end
+      end
+      context "on failure" do
+        it "should return false and set the errors with the reason for the failure, authenticated as the user" do
+          PassaporteWeb.configuration.user_token = "f01d30c0a2e878fecc838735560253f9e9395932f5337f40"
+          notification.target_url = 'lalalala'
+          notification.should_not be_persisted
+          notification.save('user').should be_false
+          notification.should_not be_persisted
+          notification.uuid.should be_nil
+          notification.errors.should == {"field_errors"=>{"target_url"=>["Informe uma URL válida."]}}
+        end
+        it "should return false and set the errors with the reason for the failure, authenticated as the application" do
+          notification.destination = nil # required field
+          notification.should_not be_persisted
+          notification.save('application').should be_false
+          notification.should_not be_persisted
+          notification.uuid.should be_nil
+          notification.errors.should == {"field_errors"=>{"destination"=>["Este campo é obrigatório."]}}
+        end
+      end
+    end
+    context "on update" do
+      let(:notification) { described_class.find_all.notifications.last }
+      before(:each) do
+        PassaporteWeb.configuration.user_token = "f01d30c0a2e878fecc838735560253f9e9395932f5337f40"
+      end
+      context "on success" do
+        it "should mark the Notification as read" do
+          notification.read_at.should be_nil
+          notification.save
+          notification.read_at.should_not be_nil
+        end
+      end
+      context "on failure" do
+        it "should return false and set the errors with the reason for the failure"
+      end
+    end
+  end
+
 end

@@ -145,7 +145,7 @@ module PassaporteWeb
       @persisted = true
       @errors = {}
       true
-    rescue *[RestClient::Conflict, RestClient::BadRequest] => e
+    rescue *[RestClient::BadRequest] => e
       @persisted = false
       @errors = MultiJson.decode(e.response.body)
       false
@@ -164,7 +164,7 @@ module PassaporteWeb
       set_attributes(attributes_hash)
       @errors = {}
       true
-    rescue *[RestClient::Conflict, RestClient::BadRequest] => e
+    rescue *[RestClient::BadRequest] => e
       @errors = MultiJson.decode(e.response.body)
       false
     end
