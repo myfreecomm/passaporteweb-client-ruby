@@ -76,13 +76,15 @@ module PassaporteWeb
     #     target_url: "https://app.passaporteweb.com.br",
     #     scheduled_to: "2012-01-01 00:00:00"
     #   )
-    # TOSPEC
     def initialize(attributes={})
       set_attributes(attributes)
       @errors = {}
     end
 
-    # TODOC
+    # Creates the notification on PassaporteWeb. The +body+ and +destination+ attributes are required. The
+    # +auth_type+ parameter defaults to 'user', meaning the notification is sent by the authenticated
+    # Identity. If +auth_type+ is 'application', than the notification is sent by the authenticated
+    # application.
     #
     # API method: <tt>POST /notifications/api/</tt>
     #
@@ -96,7 +98,7 @@ module PassaporteWeb
       end
     end
 
-    # TODOC
+    # Marks a notification as read.
     #
     # API method: <tt>PUT /notifications/api/:uuid/</tt>
     #
@@ -118,19 +120,27 @@ module PassaporteWeb
       false
     end
 
-    # TODOC
+    # Excludes a newly created notification. Only notifications scheduled for the future can be deleted.
     #
     # API method: <tt>DELETE /notifications/api/:uuid/</tt>
     #
     # API documentation: https://app.passaporteweb.com.br/static/docs/notificacao.html#delete-notifications-api-uuid
     def destroy
-      return false unless self.persisted?
+      unless self.persisted?
+        @errors = {message: 'notification not persisted yet'}
+        return false
+      end
       response = Http.delete("/notifications/api/#{self.uuid}/", {}, 'application')
       raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 204
       @errors = {}
       @persisted = false
       @destroyed = true
       true
+    rescue *[RestClient::Forbidden] => e
+      @persisted = true
+      @destroyed = false
+      @errors = MultiJson.decode(e.response.body)
+      false
     end
 
     # Returns a hash with all attribures of the Notification.

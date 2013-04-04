@@ -202,17 +202,22 @@ describe PassaporteWeb::Notification do
   end
 
   describe "#destroy" do
+    let(:notification) { described_class.new(body: 'novinha', destination: 'a5868d14-6529-477a-9c6b-a09dd42a7cd2', scheduled_to: '2013-04-06') } # 2.days.from_now
     it "should return false if the record is not persisted" do
-      notification = described_class.new(body: 'novinha', destination: 'a5868d14-6529-477a-9c6b-a09dd42a7cd2')
       notification.destroy.should be_false
+      notification.errors.should == {message: 'notification not persisted yet'}
     end
-    it "should destroy the notification on PassaporteWeb", vcr: true do
-      PassaporteWeb.configuration.user_token = "3e4470e59d76f748e0081b514da62ed621a893c87facd4a6"
-      count = described_class.count(true)
-      notification = described_class.find_all(1,20,nil,true).notifications.last
-      notification.should_not be_nil
+    it "should destroy the notification on PassaporteWeb if the notification has not been read and is scheduled", vcr: true do
+      notification.save('application').should be_true
+      notification.read_at.should be_nil
+      notification.scheduled_to.should == "2013-04-06 00:00:00"
       notification.destroy.should be_true
-      described_class.count(true).should == (count - 1)
+    end
+    it "should not exclude non-scheduled notification", vcr: true do
+      notification.scheduled_to = nil
+      notification.save('application').should be_true
+      notification.destroy.should be_false
+      notification.errors.should == "Only scheduled notifications can be deleted via API"
     end
   end
 
