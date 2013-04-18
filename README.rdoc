@@ -58,8 +58,8 @@ Or install it yourself as:
   * {GET /organizations/api/identities/:uuid/accounts/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-identities-uuid-accounts] ==> PassaporteWeb::IdentityServiceAccount.find_all
   * {POST /organizations/api/identities/:uuid/accounts/}[https://app.passaporteweb.com.br/static/docs/servicos.html#put-accounts-api-service-info-uuid-service-slug] ==> PassaporteWeb::IdentityServiceAccount.save
 * {Serviços do usuário}[https://app.passaporteweb.com.br/static/docs/servicos.html]
-  * {GET /accounts/api/service-info/:uuid/:service_slug/}[https://app.passaporteweb.com.br/static/docs/servicos.html#get-accounts-api-service-info-uuid-service-slug] ==> (not implemented yet)
-  * {PUT /accounts/api/service-info/:uuid/:service_slug/}[https://app.passaporteweb.com.br/static/docs/servicos.html#put-accounts-api-service-info-uuid-service-slug] ==> (not implemented yet)
+  * {GET /accounts/api/service-info/:uuid/:service_slug/}[https://app.passaporteweb.com.br/static/docs/servicos.html#get-accounts-api-service-info-uuid-service-slug] ==> PassaporteWeb::IdentityService.find
+  * {PUT /accounts/api/service-info/:uuid/:service_slug/}[https://app.passaporteweb.com.br/static/docs/servicos.html#put-accounts-api-service-info-uuid-service-slug] ==> PassaporteWeb::IdentityService#save
 * {Perfil}[https://app.passaporteweb.com.br/static/docs/perfil.html]
   * {GET /profile/api/info/:uuid/}[https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-uuid] ==> (deprecated, not going to be implemented)
   * {GET /profile/api/info/?email=:email}[https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-email-email] ==> (deprecated, not going to be implemented)

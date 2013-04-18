@@ -13,6 +13,7 @@ require "passaporte_web/service_account"
 require "passaporte_web/service_account_member"
 require "passaporte_web/identity_service_account"
 require "passaporte_web/notification"
+require "passaporte_web/identity_service"
 
 module PassaporteWeb
 

@@ -1,0 +1,190 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/840df3bd-8414-4085-9920-1937f4b37dd3/?include_expired_accounts=false&include_other_services=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.0.13
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1FbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbg==
+      !binary "RGF0ZQ==":
+      - !binary |-
+        VGh1LCAxOCBBcHIgMjAxMyAxODo0NzozMyBHTVQ=
+      !binary "RXhwaXJlcw==":
+      - !binary |-
+        VGh1LCAxOCBBcHIgMjAxMyAxODo0NzozMiBHTVQ=
+      !binary "TGFzdC1Nb2RpZmllZA==":
+      - !binary |-
+        VGh1LCAxOCBBcHIgMjAxMyAxODo0NzozMyBHTVQ=
+      !binary "UDNw":
+      - !binary |-
+        Q1A9Ik5PTiBEU1AgQ09SIENVUmEgVElBIg==
+      !binary "U2VydmVy":
+      - !binary |-
+        bmdpbngvMC43LjY3
+      !binary "VmFyeQ==":
+      - !binary |-
+        QWNjZXB0LUVuY29kaW5n
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        Mzg1
+      !binary "WC1DYWNoZQ==":
+      - !binary |-
+        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI=
+      !binary "WC1DYWNoZS1Mb29rdXA=":
+      - !binary |-
+        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEy
+        OA==
+      !binary "Vmlh":
+      - !binary |-
+        MS4xIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEyOCAoc3F1
+        aWQvMi43LlNUQUJMRTkp
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAMU/cFEC/62Tz26DMAzGX6XKeRQ6mNrutPeYJmQS01kDw/KnW1f13ZeE
+        Frpqhx64oOA4v9jO9x1FA8aWDC2K54UQDwtBpgRpaR8CVjv0Ie4s1STBUsfG
+        h49Cdo6tX2V+tyETliL9k5ZCT6k4+X2QMTscfH3z/wb1niReQGyhoqbjWEB6
+        SY7Hz5kJcd2lmyJTdV6pZFOsiqTINk/JdvuYJattvq6LKl8rladXuDQ0UztW
+        nZmDPJAiVGPbaZgDOpAi9EwqW2DYoZ6DfoOM1zT+YaXHWWjmuOIKF/EWvr0K
+        ZpnNGRWx7aEmBpazaGSERfRFMXOqL4JRdm2Lep6aR9hgKUst/gyWYdc0waIk
+        P65dXJO+8bVBVmUP2jLqkvEruKKGxgSDO0cq5N1TS1QR8M55TU33x+70YQq4
+        XoHFMrRYOv3PeEkhW7KE5r4RjD3499MYB3Lbxs5vD9YJyRVp+16GKqaqsIXh
+        qfHTUY+jFF4m6NJ/lpUWp18aW3apHAUAAA==
+    http_version: 
+  recorded_at: Thu, 18 Apr 2013 18:47:33 GMT
+- request:
+    method: put
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/service-info/840df3bd-8414-4085-9920-1937f4b37dd3/identity_client/
+    body:
+      encoding: UTF-8
+      string: ! '{"is_active":true,"service_data":{"foo":"bar","spam":"eggs","integer":2,"float":3.456,"array":[1,2.0,"three","four"],"hash":{"oba":"eba"}}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.0.13
+      Content-Length:
+      - '139'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Allow:
+      - GET, PUT, HEAD, OPTIONS
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 18 Apr 2013 18:47:37 GMT
+      Expires:
+      - Thu, 18 Apr 2013 18:47:36 GMT
+      P3p:
+      - CP="NON DSP COR CURa TIA"
+      Server:
+      - nginx/0.7.67
+      Vary:
+      - Authenticate, Accept
+      Content-Length:
+      - '184'
+      X-Cache:
+      - MISS from firewall.corp.myfreecomm.com.br
+      X-Cache-Lookup:
+      - MISS from firewall.corp.myfreecomm.com.br:3128
+      Via:
+      - 1.1 firewall.corp.myfreecomm.com.br:3128 (squid/2.7.STABLE9)
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"service_data": {"foo": "bar", "hash": {"oba": "eba"}, "spam": "eggs",
+        "integer": 2, "array": [1, 2.0, "three", "four"], "float": 3.456}, "is_active":
+        true, "slug": "identity_client"}'
+    http_version: 
+  recorded_at: Thu, 18 Apr 2013 18:47:38 GMT
+- request:
+    method: get
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/service-info/840df3bd-8414-4085-9920-1937f4b37dd3/identity_client/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.0.13
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Allow:
+      - GET, PUT, HEAD, OPTIONS
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 18 Apr 2013 18:47:38 GMT
+      Expires:
+      - Thu, 18 Apr 2013 18:47:37 GMT
+      P3p:
+      - CP="NON DSP COR CURa TIA"
+      Server:
+      - nginx/0.7.67
+      Vary:
+      - Authenticate, Accept
+      Content-Length:
+      - '184'
+      X-Cache:
+      - MISS from firewall.corp.myfreecomm.com.br
+      X-Cache-Lookup:
+      - MISS from firewall.corp.myfreecomm.com.br:3128
+      Via:
+      - 1.1 firewall.corp.myfreecomm.com.br:3128 (squid/2.7.STABLE9)
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"service_data": {"foo": "bar", "hash": {"oba": "eba"}, "spam": "eggs",
+        "integer": 2, "array": [1, 2.0, "three", "four"], "float": 3.456}, "is_active":
+        true, "slug": "identity_client"}'
+    http_version: 
+  recorded_at: Thu, 18 Apr 2013 18:47:38 GMT
+recorded_with: VCR 2.4.0
