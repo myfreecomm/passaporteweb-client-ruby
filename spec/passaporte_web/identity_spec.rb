@@ -6,7 +6,7 @@ describe PassaporteWeb::Identity do
   describe "constants" do
     it { described_class::ATTRIBUTES.should == [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos] }
     it { described_class::UPDATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone] }
-    it { described_class::CREATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone, :email, :password, :password2, :must_change_password, :tos] }
+    it { described_class::CREATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone, :email, :password, :password2, :must_change_password, :tos, :inhibit_activation_message] }
   end
 
   describe ".new" do
