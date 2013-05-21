@@ -268,6 +268,22 @@ describe PassaporteWeb::Identity do
           identity.save.should be_true
           identity.should be_persisted
         end
+        # REGRESSION
+        it "should send the inhibit_activation_message information" do
+          attributes = {
+            email: 'obiwan88@suremail.info',
+            password: 'theforce',
+            password2: 'theforce',
+            tos: true,
+            inhibit_activation_message: true,
+            send_partner_news: false,
+            send_myfreecomm_news: true
+          }
+          identity = described_class.new(attributes)
+          mock_response = mock('response', code: 200, body: MultiJson.encode(attributes))
+          PassaporteWeb::Http.should_receive(:post).with("/accounts/api/create/", attributes).and_return(mock_response)
+          identity.save.should be_true
+        end
       end
       context "on failure" do
         it "should not save" do
