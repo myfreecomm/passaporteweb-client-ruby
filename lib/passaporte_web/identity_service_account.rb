@@ -36,6 +36,14 @@ module PassaporteWeb
       @errors = {}
     end
 
+    def name
+      @name || (@account_data.nil? ? nil : @account_data['name'])
+    end
+
+    def uuid
+      @uuid || (@account_data.nil? ? nil : @account_data['uuid'])
+    end
+
     # Creates a new ServiceAccount for the supplied Identity on the current authenticated application.
     # The supplied Identity will be the ServiceAccount's owner. You should supply either the <tt>name</tt>
     # or the (service account's) <tt>uuid</tt> attribute. If the latter is supplied, the supplied Identity

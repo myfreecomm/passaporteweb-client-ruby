@@ -56,8 +56,8 @@ describe PassaporteWeb::IdentityServiceAccount do
       account.service_data.should == {"name" => "Identity Client","slug" => "identity_client"}
       account.account_data.should == {"name" => "Investimentos","uuid" => "859d3542-84d6-4909-b1bd-4f43c1312065"}
       account.add_member_url.should == '/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/'
-      # account.name.should == 'Investimentos' # TODO ???
-      # account.uuid.should == '859d3542-84d6-4909-b1bd-4f43c1312065' # TODO ???
+      account.name.should == 'Investimentos'
+      account.uuid.should == '859d3542-84d6-4909-b1bd-4f43c1312065'
     end
     it "should include expired service accounts if asked to" do
       accounts = described_class.find_all(identity, true)
@@ -90,6 +90,8 @@ describe PassaporteWeb::IdentityServiceAccount do
         account.service_data.should == {"name" => "Identity Client","slug" => "identity_client"}
         account.account_data['name'].should == 'Conta Nova em Folha'
         account.account_data['uuid'].should_not be_nil
+        account.name.should == 'Conta Nova em Folha'
+        account.uuid.should_not be_nil
         account.url.should_not be_nil
         account.membership_details_url.should_not be_nil
         account.add_member_url.should_not be_nil
@@ -112,6 +114,8 @@ describe PassaporteWeb::IdentityServiceAccount do
         account.service_data.should == {"name" => "Identity Client","slug" => "identity_client"}
         account.account_data['name'].should_not be_nil
         account.account_data['uuid'].should == account_uuid
+        account.name.should_not be_nil
+        account.uuid.should == account_uuid
         account.url.should_not be_nil
         account.membership_details_url.should_not be_nil
         account.add_member_url.should_not be_nil
