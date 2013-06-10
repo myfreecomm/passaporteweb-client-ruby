@@ -4,7 +4,7 @@ require 'spec_helper'
 describe PassaporteWeb::Identity do
 
   describe "constants" do
-    it { described_class::ATTRIBUTES.should == [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos] }
+    it { described_class::ATTRIBUTES.should == [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :id_token, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos] }
     it { described_class::UPDATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone] }
     it { described_class::CREATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone, :email, :password, :password2, :must_change_password, :tos, :inhibit_activation_message] }
   end
@@ -12,7 +12,7 @@ describe PassaporteWeb::Identity do
   describe ".new" do
     it "should instanciate an empty object" do
       identity = described_class.new
-      identity.attributes.should == {:accounts=>nil, :birth_date=>nil, :country=>nil, :cpf=>nil, :email=>nil, :first_name=>nil, :gender=>nil, :is_active=>nil, :language=>nil, :last_name=>nil, :nickname=>nil, :notifications=>nil, :send_myfreecomm_news=>nil, :send_partner_news=>nil, :services=>nil, :timezone=>nil, :update_info_url=>nil, :uuid=>nil, :password=>nil, :password2=>nil, :must_change_password=>nil, :inhibit_activation_message=>nil, :tos=>nil}
+      identity.attributes.should == {:accounts=>nil, :birth_date=>nil, :country=>nil, :cpf=>nil, :email=>nil, :first_name=>nil, :gender=>nil, :id_token => nil, :is_active=>nil, :language=>nil, :last_name=>nil, :nickname=>nil, :notifications=>nil, :send_myfreecomm_news=>nil, :send_partner_news=>nil, :services=>nil, :timezone=>nil, :update_info_url=>nil, :uuid=>nil, :password=>nil, :password2=>nil, :must_change_password=>nil, :inhibit_activation_message=>nil, :tos=>nil}
     end
     it "should instanciate an object with attributes set" do
       attributes = {
@@ -46,7 +46,7 @@ describe PassaporteWeb::Identity do
         "tos"=>nil
       }
       identity = described_class.new(attributes)
-      identity.attributes.should == {:accounts=>[], :birth_date=>"1945-10-27", :country=>"Brasil", :cpf=>nil, :email=>"lula@example.com", :first_name=>"Luis Inácio", :gender=>"M", :is_active=>true, :language=>"pt_BR", :last_name=>"da Silva", :nickname=>"Lula", :notifications=>{"count"=>0, "list"=>"/notifications/api/"}, :send_myfreecomm_news=>false, :send_partner_news=>false, :services=>{"myfinance"=>"/accounts/api/service-info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/myfinance/", "account_manager"=>"/accounts/api/service-info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/account_manager/"}, :timezone=>"GMT-3", :update_info_url=>"/profile/api/info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/", :uuid=>"a5868d14-6529-477a-9c6b-a09dd42a7cd2", :password=>nil, :password2=>nil, :must_change_password=>nil, :inhibit_activation_message=>nil, :tos=>nil}
+      identity.attributes.should == {:accounts=>[], :birth_date=>"1945-10-27", :country=>"Brasil", :cpf=>nil, :email=>"lula@example.com", :first_name=>"Luis Inácio", :gender=>"M", :id_token => nil, :is_active=>true, :language=>"pt_BR", :last_name=>"da Silva", :nickname=>"Lula", :notifications=>{"count"=>0, "list"=>"/notifications/api/"}, :send_myfreecomm_news=>false, :send_partner_news=>false, :services=>{"myfinance"=>"/accounts/api/service-info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/myfinance/", "account_manager"=>"/accounts/api/service-info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/account_manager/"}, :timezone=>"GMT-3", :update_info_url=>"/profile/api/info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/", :uuid=>"a5868d14-6529-477a-9c6b-a09dd42a7cd2", :password=>nil, :password2=>nil, :must_change_password=>nil, :inhibit_activation_message=>nil, :tos=>nil}
       identity.last_name.should == "da Silva"
       identity.is_active.should == true
       identity.timezone.should == "GMT-3"
@@ -125,6 +125,12 @@ describe PassaporteWeb::Identity do
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2013-04-02 00:00:00", "2014-05-01 00:00:00"]
       identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] }.sort.should == ["identity_client", "vc-promove"]
     end
+    # REGRSSION
+    it "should return the is_active and id_token fields" do
+      identity = described_class.find('13b972ab-0946-4a5b-8217-60255a9cbee7', true, true)
+      identity.is_active.should be_true
+      identity.id_token.should be_nil # não mostra token pois não foi autenticado com a senha do usuário
+    end
     it "should raise an error if no profiles exist with that uuid" do
       expect {
         described_class.find("invalid-uuid")
@@ -166,6 +172,12 @@ describe PassaporteWeb::Identity do
       identity.accounts.map { |a| a['expiration'] }.uniq.should == [nil, "2013-04-02 00:00:00", "2014-05-01 00:00:00"]
       identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] }.sort.should == ["identity_client", "vc-promove"]
     end
+    # REGRSSION
+    it "should return the is_active and id_token fields" do
+      identity = described_class.find_by_email('mobileteste269@mailinator.com', true, true)
+      identity.is_active.should be_true
+      identity.id_token.should be_nil # não mostra token pois não foi autenticado com a senha do usuário
+    end
     it "should raise an error if no profiles exist with that email" do
       expect {
         described_class.find("invalid@email.com")
@@ -181,6 +193,12 @@ describe PassaporteWeb::Identity do
       identity.uuid.should == '5e32f927-c4ab-404e-a91c-b2abc05afb56'
       identity.email.should == 'teste@teste.com'
       identity.update_info_url.should == '/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
+    end
+    # REGRSSION
+    it "should return the is_active and id_token fields" do
+      identity = described_class.authenticate('mobileteste269@mailinator.com', 'vivalasvegas')
+      identity.is_active.should be_true
+      identity.id_token.should == '9864ec27fb4fd866f6fad5bc041d0363d0bc0fd2945858a1'
     end
     it "should return false if the password is wrong for the given email" do
       described_class.authenticate('teste@teste.com', 'wrong password').should be_false

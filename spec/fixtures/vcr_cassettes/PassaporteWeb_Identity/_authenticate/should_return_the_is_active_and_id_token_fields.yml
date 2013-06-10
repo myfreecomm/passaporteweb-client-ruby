@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://mobileteste269%40mailinator.com:vivalasvegas@sandbox.app.passaporteweb.com.br/accounts/api/auth/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - My Mocking App v1.1
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1FbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbg==
+      !binary "RGF0ZQ==":
+      - !binary |-
+        TW9uLCAxMCBKdW4gMjAxMyAyMjowOToyOCBHTVQ=
+      !binary "RXhwaXJlcw==":
+      - !binary |-
+        TW9uLCAxMCBKdW4gMjAxMyAyMjowOToyNyBHTVQ=
+      !binary "TGFzdC1Nb2RpZmllZA==":
+      - !binary |-
+        TW9uLCAxMCBKdW4gMjAxMyAyMjowOToyOCBHTVQ=
+      !binary "UDNw":
+      - !binary |-
+        Q1A9Ik5PTiBEU1AgQ09SIENVUmEgVElBIg==
+      !binary "U2VydmVy":
+      - !binary |-
+        bmdpbngvMC43LjY3
+      !binary "VmFyeQ==":
+      - !binary |-
+        QWNjZXB0LUVuY29kaW5n
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        MzU0
+      !binary "WC1DYWNoZQ==":
+      - !binary |-
+        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI=
+      !binary "WC1DYWNoZS1Mb29rdXA=":
+      - !binary |-
+        TUlTUyBmcm9tIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEy
+        OA==
+      !binary "Vmlh":
+      - !binary |-
+        MS4xIGZpcmV3YWxsLmNvcnAubXlmcmVlY29tbS5jb20uYnI6MzEyOCAoc3F1
+        aWQvMi43LlNUQUJMRTkp
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAJhOtlEC/62Qy07DQAxFfwVFXdLm0WSasELiIRDQQpdsIifjUQzJTDTj
+        UJWKfycT6AJWLNhZ9vX18T0EiqzjUkOHwdlJEJyeBC38ajjUsuzBskZbaty5
+        caCgdTjOhoGk18XLqlglUM2jIhXzFLJqnifxai6iJMugqCvElfciWbJ5Re13
+        ilykWCcrVaVK5kIooUBmVR2lsYyWYimjsVYyKdIsz3KIp31XQs305uHYDhNC
+        L4GxJK1MOdjWO4dQ12bQ7ELoKSSJmokJXfgXzNDf0YZJUQ1MRvt/D8FkOFaR
+        j4gcT3d+yKZjwccxsW6vLGJtuu4Y2jcwDNx4oq+18hX33muWwCxOZu7Obnh7
+        u3vcqsudbBf79GF9tYnl88tNZm5F2K7feXvdXOyGpif3ct8sxNPGE2MHND3f
+        mYpaZHSMiSjOfZs0sLGLkcUre2vUqPifsL7Nxr8/AbiMY75MAgAA
+    http_version: 
+  recorded_at: Mon, 10 Jun 2013 22:09:29 GMT
+recorded_with: VCR 2.4.0
