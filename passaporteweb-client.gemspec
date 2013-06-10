@@ -27,14 +27,14 @@ Gem::Specification.new do |spec|
   spec.add_dependency "multi_json", "~> 1.7.1"
 
   spec.add_development_dependency "bundler", "~> 1.3.2"
-  spec.add_development_dependency "rake", "~> 10.0.4"
-  spec.add_development_dependency 'rdoc', '~> 4.0.1'
-  spec.add_development_dependency "rspec", "~> 2.13.0"
-  spec.add_development_dependency "vcr", "~> 2.4.0"
+  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency 'rdoc', '~> 4.0'
+  spec.add_development_dependency "rspec", "~> 2.13"
+  spec.add_development_dependency "vcr", "~> 2.4"
   spec.add_development_dependency "webmock", "~> 1.9.3"
-  spec.add_development_dependency "pry", "~> 0.9.12"
-  spec.add_development_dependency "pry-nav", "~> 0.2.3"
-  spec.add_development_dependency "awesome_print", "~> 1.1.0"
-  spec.add_development_dependency "simplecov", "~> 0.7.1"
-  spec.add_development_dependency "coveralls", "~> 0.6.3"
+  spec.add_development_dependency "pry", "~> 0.9"
+  spec.add_development_dependency "pry-nav", "~> 0.2"
+  spec.add_development_dependency "awesome_print", "~> 1.1"
+  spec.add_development_dependency "simplecov", "~> 0.7"
+  spec.add_development_dependency "coveralls", "~> 0.6"
 end
