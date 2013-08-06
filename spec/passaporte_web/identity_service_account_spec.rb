@@ -45,7 +45,7 @@ describe PassaporteWeb::IdentityServiceAccount do
       accounts.map { |a| a.instance_of?(described_class) }.uniq.should == [true]
       accounts.map { |a| a.persisted? }.uniq.should == [true]
 
-      account = accounts.first
+      account = accounts[4]
       account.errors.should be_empty
       account.identity.should == identity
       account.membership_details_url.should == '/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
@@ -61,14 +61,19 @@ describe PassaporteWeb::IdentityServiceAccount do
     end
     it "should include expired service accounts if asked to" do
       accounts = described_class.find_all(identity, true)
-      accounts.size.should == 10
-      accounts.map { |a| a.expiration }.uniq.should == ["2014-05-01 00:00:00", nil, "2013-04-02 00:00:00"]
+      accounts.size.should == 12
+      accounts.map { |a| a.expiration }.uniq.should == [nil, "2013-04-02 00:00:00", "2014-05-01 00:00:00", "2013-04-18 00:00:00"]
     end
     it "should find only service accounts in which the identity has the supplied role" do
       role = 'foo,bar'
       accounts = described_class.find_all(identity, false, role)
       accounts.size.should == 1
       accounts.map { |a| a.roles.include?(role) }.uniq.should == [true]
+    end
+    it "should include other services is asked to" do
+      accounts = described_class.find_all(identity, false, nil, true)
+      accounts.size.should == 9
+      accounts.map { |a| a.expiration }.uniq.should == [nil, "2014-05-01 00:00:00"]
     end
   end
 
