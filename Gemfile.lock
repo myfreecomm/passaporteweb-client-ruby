@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    passaporteweb-client (0.0.16)
+    passaporteweb-client (0.0.17)
       multi_json (~> 1.7.1)
       rest-client (~> 1.6.7)
 
