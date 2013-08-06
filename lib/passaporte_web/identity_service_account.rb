@@ -19,8 +19,8 @@ module PassaporteWeb
     # API method: <tt>GET /organizations/api/identities/:uuid/accounts/</tt>
     #
     # API documentation: https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-identities-uuid-accounts
-    def self.find_all(identity, include_expired_accounts=false, role=nil)
-      params = {include_expired_accounts: include_expired_accounts}
+    def self.find_all(identity, include_expired_accounts=false, role=nil, include_other_services=false)
+      params = {include_expired_accounts: include_expired_accounts, include_other_services: include_other_services}
       params[:role] = role unless (role.nil? || role.to_s.empty?)
       response = Http.get("/organizations/api/identities/#{identity.uuid}/accounts/", params)
       raw_accounts = MultiJson.decode(response.body)
