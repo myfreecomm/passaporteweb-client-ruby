@@ -172,7 +172,7 @@ module PassaporteWeb
     def save
       # TODO validar atributos?
       response = (persisted? ? update : create)
-      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
+      raise "unexpected response: #{response.code} - #{response.body}" unless [200,201].include?(response.code)
       attributes_hash = MultiJson.decode(response.body)
       set_attributes(attributes_hash)
       @persisted = true
