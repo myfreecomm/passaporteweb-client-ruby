@@ -298,7 +298,7 @@ describe PassaporteWeb::Identity do
             send_myfreecomm_news: true
           }
           identity = described_class.new(attributes)
-          mock_response = mock('response', code: 200, body: MultiJson.encode(attributes))
+          mock_response = mock('response', code: 201, body: MultiJson.encode(attributes))
           PassaporteWeb::Http.should_receive(:post).with("/accounts/api/create/", attributes).and_return(mock_response)
           identity.save.should be_true
         end

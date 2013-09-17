@@ -103,7 +103,7 @@ module PassaporteWeb
         "/organizations/api/accounts/#{self.service_account.uuid}/members/",
         {identity: self.identity.uuid, roles: self.roles}
       )
-      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200 # doc says 201
+      raise "unexpected response: #{response.code} - #{response.body}" unless [200,201].include?(response.code)
       attributes_hash = MultiJson.decode(response.body)
       @membership_details_url = attributes_hash['membership_details_url']
       @errors = {}
