@@ -39,7 +39,7 @@ module PassaporteWeb
     def save
       # TODO validar atributos?
       response = Http.put("/accounts/api/service-info/#{identity.uuid}/#{slug}/", save_body)
-      raise "unexpected response: #{response.code} - #{response.body}" unless [200,201].include?(response.code)
+      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
       attributes_hash = MultiJson.decode(response.body)
       set_attributes(attributes_hash)
       @errors = {}
