@@ -138,7 +138,9 @@ module PassaporteWeb
 
     # Compares one Identity with another, returns true if they have the same UUID.
     def ==(other)
-      self.uuid == other.uuid
+      if self.respond_to?(:uuid) && other.respond_to?(:uuid)
+        self.uuid == other.uuid
+      end
     end
 
     # Returns true if both Identity are the same object.
