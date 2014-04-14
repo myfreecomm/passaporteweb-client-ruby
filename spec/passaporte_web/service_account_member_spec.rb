@@ -136,7 +136,6 @@ describe PassaporteWeb::ServiceAccountMember do
           member.roles.should == ['admin', 'user']
           member.roles = ['owner']
           member.save.should be_false
-          binding.pry
           member.errors.should_not be_empty
           member.roles.should == ['owner']
 
