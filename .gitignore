@@ -3,6 +3,9 @@
 .bundle
 .config
 .DS_Store
+.envrc
+.env
+.ruby-version
 .rvmrc
 coverage
 InstalledFiles
