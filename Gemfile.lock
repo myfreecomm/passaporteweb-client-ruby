@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     passaporteweb-client (0.0.18)
-      multi_json (~> 1.7.1)
+      multi_json (~> 1.9.0)
       rest-client (~> 1.6.7)
 
 GEM
@@ -23,7 +23,7 @@ GEM
     json (1.7.7)
     method_source (0.8.1)
     mime-types (1.21)
-    multi_json (1.7.2)
+    multi_json (1.9.2)
     pry (0.9.12)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -59,7 +59,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print (~> 1.1)
-  bundler (~> 1.3.2)
+  bundler (~> 1.5.3)
   coveralls (~> 0.6)
   passaporteweb-client!
   pry (~> 0.9)
