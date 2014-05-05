@@ -6,8 +6,8 @@ module PassaporteWeb
   class Identity
     include Attributable
 
-    ATTRIBUTES = [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :id_token, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos]
-    UPDATABLE_ATTRIBUTES = [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone]
+    ATTRIBUTES = [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :id_token, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos, :bio, :position, :city, :company, :profession, :identity_info_url, :state, :email_list]
+    UPDATABLE_ATTRIBUTES = [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone, :bio, :position, :city, :company, :profession, :state]
     CREATABLE_ATTRIBUTES = *(UPDATABLE_ATTRIBUTES + [:email, :password, :password2, :must_change_password, :tos, :inhibit_activation_message])
 
     attr_accessor *UPDATABLE_ATTRIBUTES
@@ -54,6 +54,20 @@ module PassaporteWeb
         "/accounts/api/identities/",
         {email: email, include_expired_accounts: include_expired_accounts, include_other_services: include_other_services}
       )
+      attributes_hash = MultiJson.decode(response.body)
+      load_identity(attributes_hash)
+    end
+
+    # Finds an Identity Profile by it's UUID (UUIDs are unique on PassaporteWeb). Returns the Identity instance
+    # with all fields set if successful, including the email list (in case user has more than one email activated).
+    # Raises a <tt>RestClient::ResourceNotFound</tt> exception if no
+    # Identity exists with the supplied UUID.
+    #
+    # API method: <tt>GET /accounts/api/identities/:uuid/profile</tt>
+    #
+    # API documentation: http://myfreecomm.github.io/passaporte-web/pweb/api/usuarios.html#get-accounts-api-identities-uuid-profile
+    def self.profile(uuid)
+      response = Http.get("/accounts/api/identities/#{uuid}/profile")
       attributes_hash = MultiJson.decode(response.body)
       load_identity(attributes_hash)
     end

@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/8923199e-6c43-415a-bbd1-2e302fdf8d96/profile
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.0.19
+  response:
+    status:
+      code: 301
+      message: MOVED PERMANENTLY
+    headers:
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Mon, 05 May 2014 19:47:03 GMT
+      Location:
+      - http://sandbox.app.passaporteweb.com.br/accounts/api/identities/8923199e-6c43-415a-bbd1-2e302fdf8d96/profile/
+      P3p:
+      - CP="NON DSP COR CURa TIA"
+      Server:
+      - nginx/1.4.7
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 05 May 2014 19:47:03 GMT
+- request:
+    method: get
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/8923199e-6c43-415a-bbd1-2e302fdf8d96/profile/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.0.19
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Allow:
+      - GET, PUT, HEAD, OPTIONS
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 05 May 2014 19:47:03 GMT
+      P3p:
+      - CP="NON DSP COR CURa TIA"
+      Server:
+      - nginx/1.4.7
+      Vary:
+      - Authenticate, Accept, Accept-Encoding
+      X-Oauth-Consumer:
+      - identity_client
+      Content-Length:
+      - '372'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIALfqZ1MC/4VRuW7cMBD9FZlNGkta7WFYrhy48QkEaVIEhjAiR9rxSiRB
+        jrLZLPzv4cgXkBQG1Oi9h3cMj6olpy4ydfNlzHiL2R3ZPg5wwHCiTjPlXSQm
+        Z0VyZ6nfsqAD2H6CHgWdgiCa+CB/VxAZw3DIvju9E6JHazAI9TDr3OjBztJ7
+        sJZEnV27KeKcFlyHMb7lvVcRjgxaTikN2c41UxhEsmX2F2UZwZrW/S7A+8JD
+        jOBdYNxjW6S8og0laO0my7EET+WrE2Esz+vlqqprzM/0epWvqw3kbWuqfImr
+        xbIz3bmpz0pJxxFoaIbUN8X+PCqKjQ80QpApHCaUhrEBzfQLPyAwJqRBUvUJ
+        aMRieBt9KYZkgV2Qkur5NPvHtYMhfm67ez/Sf46PSRkZeH6mr1cv509XmN3V
+        D5QaLgrcUuBtY16lVb1Z5IsqfcJxqv3H2Zn5Bpo60uUDmT0chLWkdxbGmb2V
+        her5LxaOTI9TAgAA
+    http_version: 
+  recorded_at: Mon, 05 May 2014 19:47:03 GMT
+recorded_with: VCR 2.4.0

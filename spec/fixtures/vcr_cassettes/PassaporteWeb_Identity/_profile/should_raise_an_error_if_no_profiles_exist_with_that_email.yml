@@ -1,0 +1,85 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/invalid-uuid/profile
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.0.19
+  response:
+    status:
+      code: 301
+      message: MOVED PERMANENTLY
+    headers:
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Mon, 05 May 2014 19:57:28 GMT
+      Location:
+      - http://sandbox.app.passaporteweb.com.br/accounts/api/identities/invalid-uuid/profile/
+      P3p:
+      - CP="NON DSP COR CURa TIA"
+      Server:
+      - nginx/1.4.7
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 05 May 2014 19:57:28 GMT
+- request:
+    method: get
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/invalid-uuid/profile/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.0.19
+  response:
+    status:
+      code: 404
+      message: NOT FOUND
+    headers:
+      Allow:
+      - GET, PUT, HEAD, OPTIONS
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 05 May 2014 19:57:28 GMT
+      P3p:
+      - CP="NON DSP COR CURa TIA"
+      Server:
+      - nginx/1.4.7
+      Vary:
+      - Authenticate, Accept
+      X-Oauth-Consumer:
+      - identity_client
+      Content-Length:
+      - '48'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '"Identity with uuid=invalid-uuid does not exist"'
+    http_version: 
+  recorded_at: Mon, 05 May 2014 19:57:29 GMT
+recorded_with: VCR 2.4.0
