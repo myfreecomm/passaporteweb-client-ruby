@@ -4,15 +4,15 @@ require 'spec_helper'
 describe PassaporteWeb::Identity do
 
   describe "constants" do
-    it { described_class::ATTRIBUTES.should == [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :id_token, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos] }
-    it { described_class::UPDATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone] }
-    it { described_class::CREATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone, :email, :password, :password2, :must_change_password, :tos, :inhibit_activation_message] }
+    it { described_class::ATTRIBUTES.should == [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :id_token, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos, :bio, :position, :city, :company, :profession, :identity_info_url, :state, :email_list] }
+    it { described_class::UPDATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone, :bio, :position, :city, :company, :profession, :state] }
+    it { described_class::CREATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone, :bio, :position, :city, :company, :profession, :state, :email, :password, :password2, :must_change_password, :tos, :inhibit_activation_message] }
   end
 
   describe ".new" do
     it "should instanciate an empty object" do
       identity = described_class.new
-      identity.attributes.should == {:accounts=>nil, :birth_date=>nil, :country=>nil, :cpf=>nil, :email=>nil, :first_name=>nil, :gender=>nil, :id_token => nil, :is_active=>nil, :language=>nil, :last_name=>nil, :nickname=>nil, :notifications=>nil, :send_myfreecomm_news=>nil, :send_partner_news=>nil, :services=>nil, :timezone=>nil, :update_info_url=>nil, :uuid=>nil, :password=>nil, :password2=>nil, :must_change_password=>nil, :inhibit_activation_message=>nil, :tos=>nil}
+      identity.attributes.should == {:accounts=>nil, :birth_date=>nil, :country=>nil, :cpf=>nil, :email=>nil, :first_name=>nil, :gender=>nil, :id_token=>nil, :is_active=>nil, :language=>nil, :last_name=>nil, :nickname=>nil, :notifications=>nil, :send_myfreecomm_news=>nil, :send_partner_news=>nil, :services=>nil, :timezone=>nil, :update_info_url=>nil, :uuid=>nil, :password=>nil, :password2=>nil, :must_change_password=>nil, :inhibit_activation_message=>nil, :tos=>nil, :bio=>nil, :position=>nil, :city=>nil, :company=>nil, :profession=>nil, :identity_info_url=>nil, :state=>nil, :email_list=>nil}
     end
     it "should instanciate an object with attributes set" do
       attributes = {
@@ -46,7 +46,7 @@ describe PassaporteWeb::Identity do
         "tos"=>nil
       }
       identity = described_class.new(attributes)
-      identity.attributes.should == {:accounts=>[], :birth_date=>"1945-10-27", :country=>"Brasil", :cpf=>nil, :email=>"lula@example.com", :first_name=>"Luis Inácio", :gender=>"M", :id_token => nil, :is_active=>true, :language=>"pt_BR", :last_name=>"da Silva", :nickname=>"Lula", :notifications=>{"count"=>0, "list"=>"/notifications/api/"}, :send_myfreecomm_news=>false, :send_partner_news=>false, :services=>{"myfinance"=>"/accounts/api/service-info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/myfinance/", "account_manager"=>"/accounts/api/service-info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/account_manager/"}, :timezone=>"GMT-3", :update_info_url=>"/profile/api/info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/", :uuid=>"a5868d14-6529-477a-9c6b-a09dd42a7cd2", :password=>nil, :password2=>nil, :must_change_password=>nil, :inhibit_activation_message=>nil, :tos=>nil}
+      identity.attributes.should == {:accounts=>[], :birth_date=>"1945-10-27", :country=>"Brasil", :cpf=>nil, :email=>"lula@example.com", :first_name=>"Luis Inácio", :gender=>"M", :id_token=>nil, :is_active=>true, :language=>"pt_BR", :last_name=>"da Silva", :nickname=>"Lula", :notifications=>{"count"=>0, "list"=>"/notifications/api/"}, :send_myfreecomm_news=>false, :send_partner_news=>false, :services=>{"myfinance"=>"/accounts/api/service-info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/myfinance/", "account_manager"=>"/accounts/api/service-info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/account_manager/"}, :timezone=>"GMT-3", :update_info_url=>"/profile/api/info/a5868d14-6529-477a-9c6b-a09dd42a7cd2/", :uuid=>"a5868d14-6529-477a-9c6b-a09dd42a7cd2", :password=>nil, :password2=>nil, :must_change_password=>nil, :inhibit_activation_message=>nil, :tos=>nil, :bio=>nil, :position=>nil, :city=>nil, :company=>nil, :profession=>nil, :identity_info_url=>nil, :state=>nil, :email_list=>nil}
       identity.last_name.should == "da Silva"
       identity.is_active.should == true
       identity.timezone.should == "GMT-3"
@@ -181,6 +181,40 @@ describe PassaporteWeb::Identity do
     it "should raise an error if no profiles exist with that email" do
       expect {
         described_class.find("invalid@email.com")
+      }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+    end
+  end
+
+  describe ".profile", :vcr => true do
+    it "should find the requested profile by email" do
+      identity = described_class.profile('8923199e-6c43-415a-bbd1-2e302fdf8d96')
+      identity.should be_instance_of(described_class)
+      identity.bio.should == 'I\'m the Kingslayer!'
+      identity.position.should == 'Knight'
+      identity.language.should == 'ur'
+      identity.city.should == 'Casterly Rock'
+      identity.gender.should == 'M'
+      identity.company.should == 'Lannister House'
+      identity.profession.should == 'Kingslayer'
+      identity.identity_info_url.should == 'http://sandbox.app.passaporteweb.com.br/accounts/api/identities/8923199e-6c43-415a-bbd1-2e302fdf8d96/'
+      identity.state.should == 'AC'
+      identity.country.should == 'Westeros'
+      identity.birth_date.should == '1950-01-01'
+      identity.timezone.should == 'Pacific/Midway'
+      identity.nickname.should == 'Jaime'
+      identity.email_list.count.should == 2
+      # Primary e-mail
+      identity.email_list[0]['address'].should == 'jaime.lannister@mailinator.com'
+      identity.email_list[0]['is_primary'].should be_true
+      identity.email_list[0]['is_active'].should be_true
+      # Secondary email
+      identity.email_list[1]['address'].should == 'kingslayer@mailinator.com'
+      identity.email_list[1]['is_primary'].should be_false
+      identity.email_list[1]['is_active'].should be_true
+    end
+    it "should raise an error if no profiles exist with that email" do
+      expect {
+        described_class.profile("invalid-uuid")
       }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
     end
   end

@@ -61,6 +61,7 @@ Or install it yourself as:
   * {GET /accounts/api/service-info/:uuid/:service_slug/}[https://app.passaporteweb.com.br/static/docs/servicos.html#get-accounts-api-service-info-uuid-service-slug] ==> PassaporteWeb::IdentityService.find
   * {PUT /accounts/api/service-info/:uuid/:service_slug/}[https://app.passaporteweb.com.br/static/docs/servicos.html#put-accounts-api-service-info-uuid-service-slug] ==> PassaporteWeb::IdentityService#save
 * {Perfil}[https://app.passaporteweb.com.br/static/docs/perfil.html]
+  * {GET /accounts/api/identities/:uuid/profile/}[http://myfreecomm.github.io/passaporte-web/pweb/api/usuarios.html#get-accounts-api-identities-uuid-profile] ==> PassaporteWeb::Identity#profile
   * {GET /profile/api/info/:uuid/}[https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-uuid] ==> (deprecated, not going to be implemented)
   * {GET /profile/api/info/?email=:email}[https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-email-email] ==> (deprecated, not going to be implemented)
   * {PUT /profile/api/info/:uuid/}[https://app.passaporteweb.com.br/static/docs/perfil.html#put-profile-api-info-uuid] ==> (deprecated, not going to be implemented)
