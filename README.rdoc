@@ -6,6 +6,7 @@ A Ruby client for the PassaporteWeb REST API
 {<img src="https://travis-ci.org/myfreecomm/passaporteweb-client-ruby.png?branch=master" alt="Build Status" />}[https://travis-ci.org/myfreecomm/passaporteweb-client-ruby]
 {<img src="https://coveralls.io/repos/myfreecomm/passaporteweb-client-ruby/badge.png?branch=master" alt="Coverage Status" />}[https://coveralls.io/r/myfreecomm/passaporteweb-client-ruby]
 {<img src="https://codeclimate.com/github/myfreecomm/passaporteweb-client-ruby.png" alt="Code Climate Status" />}[https://codeclimate.com/github/myfreecomm/passaporteweb-client-ruby]
+{<img src="http://inch-ci.org/github/myfreecomm/passaporteweb-client-ruby.svg" alt="Inline docs" />}[http://inch-ci.org/github/myfreecomm/passaporteweb-client-ruby]
 
 PassaporteWeb API docs: https://app.passaporteweb.com.br/static/docs/
 
