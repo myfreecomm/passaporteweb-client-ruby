@@ -38,7 +38,7 @@ describe PassaporteWeb::ServiceAccount do
   end
 
   describe ".find_all", :vcr => true do
-    let(:mock_response) { mock('response', body: MultiJson.encode([]), code: 200, headers: {link: "<http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/?page=3&limit=3>; rel=next, <http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/?page=1&limit=3>; rel=prev"}) }
+    let(:mock_response) { double('response', body: MultiJson.encode([]), code: 200, headers: {link: "<http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/?page=3&limit=3>; rel=next, <http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/?page=1&limit=3>; rel=prev"}) }
     it "should find all accounts related to the authenticated application and return them as an array of Account instances" do
       accounts_and_meta = PassaporteWeb::ServiceAccount.find_all
 
@@ -137,7 +137,7 @@ describe PassaporteWeb::ServiceAccount do
         service_account.expiration = '2014-05-01'
 
         service_account.should be_persisted
-        service_account.save.should be_true
+        expect(service_account.save).to be_truthy
         service_account.should be_persisted
 
         service_account.plan_slug.should == 'basic'
@@ -153,7 +153,7 @@ describe PassaporteWeb::ServiceAccount do
         service_account.plan_slug = nil # required
         service_account.expiration = nil
         service_account.should be_persisted
-        service_account.save.should be_false
+        expect(service_account.save).to be_falsy
         service_account.should be_persisted
         service_account.errors.should == {"field_errors"=>{"plan_slug"=>["Este campo é obrigatório."]}}
       end

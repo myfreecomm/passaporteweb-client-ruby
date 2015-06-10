@@ -30,6 +30,7 @@ RSpec.configure do |c|
   c.before(:vcr => true) do
     PassaporteWeb.configure do |c|
       c.url = 'http://sandbox.app.passaporteweb.com.br' # TODO trocar para https
+      # Those credentials are from Identity Client App
       c.application_token = '8ab29iwKFI'
       c.application_secret = 'VnWYenOqYsHtcFowrdJlwdJNALq5Go9v'
     end

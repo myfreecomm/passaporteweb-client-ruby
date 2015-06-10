@@ -5,8 +5,8 @@ describe PassaporteWeb::ServiceAccountMember do
   let(:service_account) { PassaporteWeb::ServiceAccount.find('859d3542-84d6-4909-b1bd-4f43c1312065') }
   let(:identity) { PassaporteWeb::Identity.find('5e32f927-c4ab-404e-a91c-b2abc05afb56') }
 
-  let(:mock_service_account) { mock('ServiceAccount', uuid: 'service-account-uuid') }
-  let(:mock_identity) { mock('Identity', uuid: 'identity-uuid') }
+  let(:mock_service_account) { double('ServiceAccount', uuid: 'service-account-uuid') }
+  let(:mock_identity) { double('Identity', uuid: 'identity-uuid') }
 
   describe ".new" do
     it "should instanciate a minumum object" do
@@ -38,7 +38,7 @@ describe PassaporteWeb::ServiceAccountMember do
     end
     it "should raise an 404 error if the membership does not exist" do
       expect {
-        described_class.find(service_account, mock('Identity', uuid: 'identity-uuid'))
+        described_class.find(service_account, double('Identity', uuid: 'identity-uuid'))
       }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
     end
   end
@@ -46,7 +46,7 @@ describe PassaporteWeb::ServiceAccountMember do
   describe "#destroy", vcr: true do
     it "should destroy the membership, removing the association between service_account and identity" do
       member = described_class.find(service_account, identity)
-      member.destroy.should be_true
+      expect(member.destroy).to be_truthy
       member.should_not be_persisted
       member.should be_destroyed
       member.errors.should be_empty
@@ -57,7 +57,7 @@ describe PassaporteWeb::ServiceAccountMember do
     it "should return false if the role is owner" do
       member = described_class.find(service_account, identity)
       member.roles.should include('owner')
-      member.destroy.should be_false
+      expect(member.destroy).to be_falsy
       member.should be_persisted
       member.should_not be_destroyed
       member.errors.should == "Service owner cannot be removed from members list"
@@ -73,7 +73,7 @@ describe PassaporteWeb::ServiceAccountMember do
       let(:member) { described_class.new(service_account, identity, ['admin','user']) }
       context "on success" do
         it "should create the membership between the service_account and the identity" do
-          member.save.should be_true
+          expect(member.save).to be_truthy
           member.service_account.should == service_account
           member.identity.should == identity
           member.roles.should == ['admin','user']
@@ -95,7 +95,7 @@ describe PassaporteWeb::ServiceAccountMember do
       context "on failure" do
         it "should not create the membership and set the errors on the object" do
           member.roles = ['owner'] # can't create membership for the owner
-          member.save.should be_false
+          expect(member.save).to be_falsy
           member.errors.should == "Adding a member as owner is not allowed"
           member.should_not be_persisted
           member.should_not be_destroyed
@@ -105,7 +105,7 @@ describe PassaporteWeb::ServiceAccountMember do
           }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
         end
         it "should return false if the membership already exists" do
-          member.save.should be_false
+          expect(member.save).to be_falsy
           member.errors.should == "Identity with uuid=5e32f927-c4ab-404e-a91c-b2abc05afb56 is already in members list of service identity_client at account 859d3542-84d6-4909-b1bd-4f43c1312065"
           member.should_not be_persisted
           member.should_not be_destroyed
@@ -122,7 +122,7 @@ describe PassaporteWeb::ServiceAccountMember do
         it "should update the member roles" do
           member.roles.should == ['admin', 'user']
           member.roles = ['user']
-          member.save.should be_true
+          expect(member.save).to be_truthy
           member.errors.should be_empty
           member.roles.should == ['user']
 
@@ -135,7 +135,7 @@ describe PassaporteWeb::ServiceAccountMember do
           pending "está deixando setar como owner e não deixa setar sem nenhum role, como fazer?"
           member.roles.should == ['admin', 'user']
           member.roles = ['owner']
-          member.save.should be_false
+          expect(member.save).to be_falsy
           member.errors.should_not be_empty
           member.roles.should == ['owner']
 

@@ -128,7 +128,7 @@ describe PassaporteWeb::Identity do
     # REGRSSION
     it "should return the is_active and id_token fields" do
       identity = described_class.find('13b972ab-0946-4a5b-8217-60255a9cbee7', true, true)
-      identity.is_active.should be_true
+      expect(identity.is_active).to be_truthy
       identity.id_token.should be_nil # não mostra token pois não foi autenticado com a senha do usuário
     end
     it "should raise an error if no profiles exist with that uuid" do
@@ -175,7 +175,7 @@ describe PassaporteWeb::Identity do
     # REGRSSION
     it "should return the is_active and id_token fields" do
       identity = described_class.find_by_email('mobileteste269@mailinator.com', true, true)
-      identity.is_active.should be_true
+      expect(identity.is_active).to be_truthy
       identity.id_token.should be_nil # não mostra token pois não foi autenticado com a senha do usuário
     end
     it "should raise an error if no profiles exist with that email" do
@@ -205,12 +205,12 @@ describe PassaporteWeb::Identity do
       identity.email_list.count.should == 2
       # Primary e-mail
       identity.email_list[0]['address'].should == 'jaime.lannister@mailinator.com'
-      identity.email_list[0]['is_primary'].should be_true
-      identity.email_list[0]['is_active'].should be_true
+      expect(identity.email_list[0]['is_primary']).to be_truthy
+      expect(identity.email_list[0]['is_active']).to be_truthy
       # Secondary email
       identity.email_list[1]['address'].should == 'kingslayer@mailinator.com'
-      identity.email_list[1]['is_primary'].should be_false
-      identity.email_list[1]['is_active'].should be_true
+      expect(identity.email_list[1]['is_primary']).to be_falsy
+      expect(identity.email_list[1]['is_active']).to be_truthy
     end
     it "should raise an error if no profiles exist with that email" do
       expect {
@@ -231,11 +231,11 @@ describe PassaporteWeb::Identity do
     # REGRSSION
     it "should return the is_active and id_token fields" do
       identity = described_class.authenticate('mobileteste269@mailinator.com', 'vivalasvegas')
-      identity.is_active.should be_true
+      expect(identity.is_active).to be_truthy
       identity.id_token.should == '9864ec27fb4fd866f6fad5bc041d0363d0bc0fd2945858a1'
     end
     it "should return false if the password is wrong for the given email" do
-      described_class.authenticate('teste@teste.com', 'wrong password').should be_false
+      expect(described_class.authenticate('teste@teste.com', 'wrong password')).to be_falsy
     end
     it "should return false if no Identity exists on PassaporteWeb with that email" do
       described_class.authenticate('non_existing_email@teste.com', 'some password')
@@ -245,10 +245,10 @@ describe PassaporteWeb::Identity do
   describe "#authenticate", vcr: true do
     let(:identity) { described_class.find("5e32f927-c4ab-404e-a91c-b2abc05afb56") }
     it "should return true if the password is correct" do
-      identity.authenticate('123456').should be_true
+      expect(identity.authenticate('123456')).to be_truthy
     end
     it "should return false if the password is wrong" do
-      identity.authenticate('wrong password').should be_false
+      expect(identity.authenticate('wrong password')).to be_falsy
     end
     it "should raise an error if the email is not set" do
       identity.instance_variable_set(:@email, nil)
@@ -266,7 +266,7 @@ describe PassaporteWeb::Identity do
           identity.first_name.should == 'Testador'
           identity.should be_persisted
           identity.first_name = 'Testador 2'
-          identity.save.should be_true
+          expect(identity.save).to be_truthy
           identity.should be_persisted
           identity.first_name.should == 'Testador 2'
 
@@ -278,7 +278,7 @@ describe PassaporteWeb::Identity do
         it "should return false and set the errors hash" do
           identity.cpf = 42
           identity.should be_persisted
-          identity.save.should be_false
+          expect(identity.save).to be_falsy
           identity.should be_persisted
           identity.errors.should == {"cpf" => ["Certifique-se de que o valor tenha no mínimo 11 caracteres (ele possui 2)."]}
         end
@@ -298,7 +298,7 @@ describe PassaporteWeb::Identity do
           }
           identity = described_class.new(attributes)
           identity.should_not be_persisted
-          identity.save.should be_true
+          expect(identity.save).to be_truthy
           identity.should be_persisted
         end
         it "should save with all params" do
@@ -317,7 +317,7 @@ describe PassaporteWeb::Identity do
           }
           identity = described_class.new(attributes)
           identity.should_not be_persisted
-          identity.save.should be_true
+          expect(identity.save).to be_truthy
           identity.should be_persisted
         end
         # REGRESSION
@@ -332,9 +332,9 @@ describe PassaporteWeb::Identity do
             send_myfreecomm_news: true
           }
           identity = described_class.new(attributes)
-          mock_response = mock('response', code: 201, body: MultiJson.encode(attributes))
+          mock_response = double('response', code: 201, body: MultiJson.encode(attributes))
           PassaporteWeb::Http.should_receive(:post).with("/accounts/api/create/", attributes).and_return(mock_response)
-          identity.save.should be_true
+          expect(identity.save).to be_truthy
         end
       end
       context "on failure" do
@@ -347,7 +347,7 @@ describe PassaporteWeb::Identity do
           }
           identity = described_class.new(attributes)
           identity.should_not be_persisted
-          identity.save.should_not be_true
+          expect(identity.save).to_not be_truthy
           identity.should_not be_persisted
           identity.errors.should == {"password2"=>["Este campo é obrigatório."], "password"=>["Este campo é obrigatório."]}
         end

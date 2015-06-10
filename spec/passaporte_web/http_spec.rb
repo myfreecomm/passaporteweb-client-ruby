@@ -13,7 +13,7 @@ describe PassaporteWeb::Http do
     end
   end
 
-  let(:mock_response) { mock('restclient http response') }
+  let(:mock_response) { 'restclient http response' }
 
   describe ".get" do
     it "should use RestClient.get with the supplied params and common options" do
