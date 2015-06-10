@@ -97,6 +97,16 @@ module PassaporteWeb
       @persisted == true
     end
 
+    def activate(identity)
+      response = Http.put("/organizations/api/activate/", {slug: self.plan_slug, identity: identity, global_account: self.uuid})
+      raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
+      @errors = {}
+      true
+    rescue *[RestClient::Conflict, RestClient::BadRequest] => e
+      @errors = MultiJson.decode(e.response.body)
+      false
+    end
+
     private
 
     def update

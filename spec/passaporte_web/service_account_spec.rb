@@ -160,4 +160,20 @@ describe PassaporteWeb::ServiceAccount do
     end
   end
 
+  describe '#activate', vcr: true do
+    let(:service_account) { PassaporteWeb::ServiceAccount.find("019a3450-8107-4832-8321-de4e6580c06b") }
+    let(:responsible_identity) { "20a8bbe1-3b4a-4e46-a69a-a7c524bd2ab8" }
+
+    context "on success" do
+      it 'activates the service account' do
+        expect(service_account.activate(responsible_identity)).to be_truthy
+        service_account.errors.should == {}
+      end
+    end
+
+    context "on failure" do
+      context "when service account not found"
+    end
+  end
+
 end
