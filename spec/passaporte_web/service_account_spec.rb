@@ -165,14 +165,30 @@ describe PassaporteWeb::ServiceAccount do
     let(:responsible_identity) { "20a8bbe1-3b4a-4e46-a69a-a7c524bd2ab8" }
 
     context "on success" do
-      it 'activates the service account' do
+      it "activates the service account an returns true" do
         expect(service_account.activate(responsible_identity)).to be_truthy
-        service_account.errors.should == {}
+      end
+
+      it "assigns no errors" do
+        service_account.activate(responsible_identity)
+        expect(service_account.errors).to eq({})
       end
     end
 
     context "on failure" do
-      context "when service account not found"
+      context "when given wrong identity" do
+        let(:service_account) { PassaporteWeb::ServiceAccount.find("bc4bb967-e5b2-4925-813c-4d1e5418247a") }
+        let(:responsible_identity) { 'wrong-idendity' }
+
+        it "returns false" do
+          expect(service_account.activate(responsible_identity)).to be_falsy
+        end
+
+        it "assigns errors" do
+          service_account.activate(responsible_identity)
+          expect(service_account.errors).to eq({"field_errors" => {"identity"=>["Informe um valor v\u00E1lido."]}})
+        end
+      end
     end
   end
 
