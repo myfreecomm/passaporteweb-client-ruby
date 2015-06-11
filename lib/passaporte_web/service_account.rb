@@ -97,6 +97,12 @@ module PassaporteWeb
       @persisted == true
     end
 
+    # Activates an existing ServiceAccount. Returns true if successfull or false if not. In case of failure,
+    # it will fill the <tt>errors</tt> attribute with the reason for the failure to save the object.
+    #
+    # API method: <tt>PUT /organizations/api/activate/</tt>
+    #
+    # API documentation: http://myfreecomm.github.io/passaporte-web/pweb/api/account_manager.html#put-organizations-api-activate
     def activate(identity)
       response = Http.put("/organizations/api/activate/", {slug: self.plan_slug, identity: identity, global_account: self.uuid})
       raise "unexpected response: #{response.code} - #{response.body}" unless response.code == 200
