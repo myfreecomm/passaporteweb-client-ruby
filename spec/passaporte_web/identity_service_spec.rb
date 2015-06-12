@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe PassaporteWeb::IdentityService do
   let(:identity) { PassaporteWeb::Identity.find('5e32f927-c4ab-404e-a91c-b2abc05afb56') }
-  let(:mock_identity) { mock('Identity', uuid: 'identity-uuid') }
+  let(:mock_identity) { double('Identity', uuid: 'identity-uuid') }
   let(:identity_service_data_hash) { {:foo => 'bar', 'spam' => :eggs, 'integer' => 2, :float => 3.456, :array => [1, 2.0, 'three', :four], :hash => {oba: 'eba'}} }
   let(:identity_service_data_hash_as_strings) { {"foo"=>"bar", "hash"=>{"oba"=>"eba"}, "spam"=>"eggs", "integer"=>2, "array"=>[1, 2.0, "three", "four"], "float"=>3.456} }
 
@@ -14,7 +14,7 @@ describe PassaporteWeb::IdentityService do
       identity_service.identity.should == mock_identity
       identity_service.slug.should be_nil
       identity_service.is_active.should be_nil
-      identity_service.is_active?.should be_false
+      expect(identity_service.is_active?).to be_falsy
       identity_service.service_data.should be_nil
       identity_service.errors.should be_empty
       identity_service.should_not be_persisted
@@ -31,7 +31,7 @@ describe PassaporteWeb::IdentityService do
       identity_service.identity.should == mock_identity
       identity_service.slug.should == 'identity_client'
       identity_service.is_active.should == true
-      identity_service.is_active?.should be_true
+      expect(identity_service.is_active?).to be_truthy
       identity_service.service_data.should == identity_service_data_hash
       identity_service.errors.should be_empty
       identity_service.should_not be_persisted
@@ -44,8 +44,8 @@ describe PassaporteWeb::IdentityService do
       identity_service.should be_instance_of(described_class)
       identity_service.identity.should == identity
       identity_service.slug.should == 'identity_client'
-      identity_service.is_active.should == true
-      identity_service.is_active?.should be_true
+      expect(identity_service.is_active).to be_truthy
+      expect(identity_service.is_active?).to be_truthy
       identity_service.service_data.should be_nil
       identity_service.errors.should be_empty
       identity_service.should be_persisted
@@ -65,7 +65,7 @@ describe PassaporteWeb::IdentityService do
         'service_data' => identity_service_data_hash
       }
       identity_service = described_class.new(other_identity, attributes)
-      identity_service.save.should be_true
+      expect(identity_service.save).to be_truthy
       identity_service.service_data.should == identity_service_data_hash_as_strings
 
       identity_service = described_class.find(other_identity, 'identity_client')
@@ -75,7 +75,7 @@ describe PassaporteWeb::IdentityService do
       identity_service = described_class.find(identity, 'identity_client')
       identity_service.service_data.should be_empty
       identity_service.service_data = identity_service_data_hash
-      identity_service.save.should be_true
+      expect(identity_service.save).to be_truthy
       identity_service.service_data.should == identity_service_data_hash_as_strings
 
       identity_service = described_class.find(identity, 'identity_client')

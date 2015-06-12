@@ -55,7 +55,7 @@ describe PassaporteWeb::Notification do
 
         notifications = data.notifications
         notifications.size.should == 2
-        notifications.map { |n| n.instance_of?(described_class) }.uniq.should be_true
+        expect(notifications.map { |n| n.instance_of?(described_class) }.uniq).to be_truthy
         n1, n2 = notifications
         n1.body.should == '"oioioi"' # TODO why? was it created like this?
         n2.body.should == '"oioioisss"'
@@ -74,7 +74,7 @@ describe PassaporteWeb::Notification do
 
         notifications = data.notifications
         notifications.size.should == 1
-        notifications.map { |n| n.instance_of?(described_class) }.uniq.should be_true
+        expect(notifications.map { |n| n.instance_of?(described_class) }.uniq). to be_truthy
         n1 = notifications.first
         n1.body.should == '"oioioi"' # TODO why? was it created like this?
         n1.uuid.should == "2ca046be-0178-418d-80ac-3a334c264009"
@@ -125,7 +125,7 @@ describe PassaporteWeb::Notification do
         it "should create the Notification on PassaporteWeb, authenticated as the user" do
           PassaporteWeb.configuration.user_token = "f01d30c0a2e878fecc838735560253f9e9395932f5337f40"
           notification.should_not be_persisted
-          notification.save.should be_true # by default authenticates as the user
+          expect(notification.save).to be_truthy # by default authenticates as the user
           notification.should be_persisted
           notification.uuid.should_not be_nil
           notification.absolute_url.should_not be_nil
@@ -139,7 +139,7 @@ describe PassaporteWeb::Notification do
         end
         it "should create the Notification on PassaporteWeb, authenticated as the application" do
           notification.should_not be_persisted
-          notification.save('application').should be_true
+          expect(notification.save('application')).to be_truthy
           notification.should be_persisted
           notification.uuid.should_not be_nil
           notification.absolute_url.should_not be_nil
@@ -156,13 +156,13 @@ describe PassaporteWeb::Notification do
         it "should return false an do nothing if the Notification is already persisted" do
           PassaporteWeb.configuration.user_token = "f01d30c0a2e878fecc838735560253f9e9395932f5337f40"
           notification = described_class.find_all(1,20,nil,true).notifications.last
-          notification.save.should be_false
+          expect(notification.save).to be_falsy
         end
         it "should return false and set the errors with the reason for the failure, authenticated as the user" do
           PassaporteWeb.configuration.user_token = "f01d30c0a2e878fecc838735560253f9e9395932f5337f40"
           notification.target_url = 'lalalala'
           notification.should_not be_persisted
-          notification.save('user').should be_false
+          expect(notification.save('user')).to be_falsy
           notification.should_not be_persisted
           notification.uuid.should be_nil
           notification.errors.should == {"field_errors"=>{"target_url"=>["Informe uma URL válida."]}}
@@ -170,7 +170,7 @@ describe PassaporteWeb::Notification do
         it "should return false and set the errors with the reason for the failure, authenticated as the application" do
           notification.destination = nil # required field
           notification.should_not be_persisted
-          notification.save('application').should be_false
+          expect(notification.save('application')).to be_falsy
           notification.should_not be_persisted
           notification.uuid.should be_nil
           notification.errors.should == {"field_errors"=>{"destination"=>["Este campo é obrigatório."]}}
@@ -187,7 +187,7 @@ describe PassaporteWeb::Notification do
     context "on success" do
       it "should mark the Notification as read" do
         notification.read_at.should be_nil
-        notification.read!.should be_true
+        expect(notification.read!).to be_truthy
         notification.read_at.should_not be_nil
       end
     end
@@ -195,7 +195,7 @@ describe PassaporteWeb::Notification do
       it "should return false if the notification is already read" do
         read_notification = described_class.find_all(1,20,nil,true).notifications.detect { |n| !n.read_at.nil? }
         read_notification.read_at.should_not be_nil
-        read_notification.read!.should be_false
+        expect(read_notification.read!).to be_falsy
         read_notification.errors.should == {message: 'notification already read'}
       end
     end
@@ -204,19 +204,19 @@ describe PassaporteWeb::Notification do
   describe "#destroy" do
     let(:notification) { described_class.new(body: 'novinha', destination: 'a5868d14-6529-477a-9c6b-a09dd42a7cd2', scheduled_to: '2013-04-06') } # 2.days.from_now
     it "should return false if the record is not persisted" do
-      notification.destroy.should be_false
+      expect(notification.destroy).to be_falsy
       notification.errors.should == {message: 'notification not persisted yet'}
     end
     it "should destroy the notification on PassaporteWeb if the notification has not been read and is scheduled", vcr: true do
-      notification.save('application').should be_true
+      expect(notification.save('application')).to be_truthy
       notification.read_at.should be_nil
       notification.scheduled_to.should == "2013-04-06 00:00:00"
-      notification.destroy.should be_true
+      expect(notification.destroy).to be_truthy
     end
     it "should not exclude non-scheduled notification", vcr: true do
       notification.scheduled_to = nil
-      notification.save('application').should be_true
-      notification.destroy.should be_false
+      expect(notification.save('application')).to be_truthy
+      expect(notification.destroy).to be_falsy
       notification.errors.should == "Only scheduled notifications can be deleted via API"
     end
   end

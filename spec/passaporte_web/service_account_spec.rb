@@ -38,7 +38,7 @@ describe PassaporteWeb::ServiceAccount do
   end
 
   describe ".find_all", :vcr => true do
-    let(:mock_response) { mock('response', body: MultiJson.encode([]), code: 200, headers: {link: "<http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/?page=3&limit=3>; rel=next, <http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/?page=1&limit=3>; rel=prev"}) }
+    let(:mock_response) { double('response', body: MultiJson.encode([]), code: 200, headers: {link: "<http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/?page=3&limit=3>; rel=next, <http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/?page=1&limit=3>; rel=prev"}) }
     it "should find all accounts related to the authenticated application and return them as an array of Account instances" do
       accounts_and_meta = PassaporteWeb::ServiceAccount.find_all
 
@@ -137,7 +137,7 @@ describe PassaporteWeb::ServiceAccount do
         service_account.expiration = '2014-05-01'
 
         service_account.should be_persisted
-        service_account.save.should be_true
+        expect(service_account.save).to be_truthy
         service_account.should be_persisted
 
         service_account.plan_slug.should == 'basic'
@@ -153,9 +153,41 @@ describe PassaporteWeb::ServiceAccount do
         service_account.plan_slug = nil # required
         service_account.expiration = nil
         service_account.should be_persisted
-        service_account.save.should be_false
+        expect(service_account.save).to be_falsy
         service_account.should be_persisted
         service_account.errors.should == {"field_errors"=>{"plan_slug"=>["Este campo é obrigatório."]}}
+      end
+    end
+  end
+
+  describe '#activate', vcr: true do
+    let(:service_account) { PassaporteWeb::ServiceAccount.find("019a3450-8107-4832-8321-de4e6580c06b") }
+    let(:responsible_identity) { "20a8bbe1-3b4a-4e46-a69a-a7c524bd2ab8" }
+
+    context "on success" do
+      it "activates the service account an returns true" do
+        expect(service_account.activate(responsible_identity)).to be_truthy
+      end
+
+      it "assigns no errors" do
+        service_account.activate(responsible_identity)
+        expect(service_account.errors).to eq({})
+      end
+    end
+
+    context "on failure" do
+      context "when given wrong identity" do
+        let(:service_account) { PassaporteWeb::ServiceAccount.find("bc4bb967-e5b2-4925-813c-4d1e5418247a") }
+        let(:responsible_identity) { 'wrong-idendity' }
+
+        it "returns false" do
+          expect(service_account.activate(responsible_identity)).to be_falsy
+        end
+
+        it "assigns errors" do
+          service_account.activate(responsible_identity)
+          expect(service_account.errors).to eq({"field_errors" => {"identity"=>["Informe um valor v\u00E1lido."]}})
+        end
       end
     end
   end

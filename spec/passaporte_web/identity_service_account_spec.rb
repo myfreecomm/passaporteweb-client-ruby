@@ -87,7 +87,7 @@ describe PassaporteWeb::IdentityServiceAccount do
           name: 'Conta Nova em Folha'
         }
         account = described_class.new(identity, attributes)
-        account.save.should be_true
+        expect(account.save).to be_truthy
         account.should be_persisted
 
         account.plan_slug.should == 'basic'
@@ -135,7 +135,7 @@ describe PassaporteWeb::IdentityServiceAccount do
           name: 'Conta Nova em Folha 2: A missão'
         }
         account = described_class.new(identity, attributes)
-        account.save.should be_false
+        expect(account.save).to be_falsy
         account.should_not be_persisted
         account.errors.should == {"field_errors"=>{"expiration"=>["Cannot set the expiration to the past."]}}
       end
