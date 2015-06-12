@@ -26,16 +26,15 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rest-client", "~> 1.8.0"
   spec.add_dependency "multi_json", "~> 1.9.0"
 
-  spec.add_development_dependency "bundler", "~> 1.9.4"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency 'rdoc', '~> 4.0'
-  spec.add_development_dependency "rspec", "~> 3.2.0"
+  spec.add_development_dependency "bundler", "~> 1.9"
+  spec.add_development_dependency "rake", "~> 10.4"
+  spec.add_development_dependency 'rdoc', '~> 4.2'
+  spec.add_development_dependency "rspec", "~> 3.3.0"
   spec.add_development_dependency "vcr", "~> 2.4"
   spec.add_development_dependency "webmock", "~> 1.9.3"
-  spec.add_development_dependency "pry", "~> 0.10.1"
-  spec.add_development_dependency "pry-byebug", "~> 3.1.0"
-  spec.add_development_dependency "awesome_print", "~> 1.1"
-  spec.add_development_dependency "simplecov", "~> 0.7"
-  spec.add_development_dependency "coveralls", "~> 0.6"
+  spec.add_development_dependency "pry-byebug", "~> 3.1"
+  spec.add_development_dependency "awesome_print", "~> 1.6"
+  spec.add_development_dependency "simplecov", "~> 0.10"
+  spec.add_development_dependency "coveralls", "~> 0.8"
   spec.add_development_dependency "json", "1.8.3"
 end
