@@ -52,7 +52,7 @@ This gem supports Ruby 2.1 and Ruby 2.2.
   * {PUT /notifications/api/:uuid/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#put-notifications-api-uuid] ==> PassaporteWeb::Notification#read!
   * {DELETE /notifications/api/:uuid/}[https://app.passaporteweb.com.br/static/docs/notificacao.html#delete-notifications-api-uuid] ==> PassaporteWeb::Notification#destroy
 * {Gerência de contas}[https://app.passaporteweb.com.br/static/docs/account_manager.html]
-  * {PUT /organizations/api/activate/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#put-organizations-api-activate] ==> (not implemented yet)
+  * {PUT /organizations/api/activate/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#put-organizations-api-activate] ==> PassaporteWeb::ServiceAccount#activate
   * {GET /organizations/api/accounts/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts] ==> PassaporteWeb::ServiceAccount.find_all
   * {GET /organizations/api/accounts/:uuid/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#get-organizations-api-accounts-uuid] ==> PassaporteWeb::ServiceAccount.find
   * {PUT /organizations/api/accounts/:uuid/}[https://app.passaporteweb.com.br/static/docs/account_manager.html#put-organizations-api-accounts-uuid] ==> PassaporteWeb::ServiceAccount#save
