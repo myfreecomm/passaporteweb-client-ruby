@@ -2,15 +2,15 @@ PATH
   remote: .
   specs:
     passaporteweb-client (0.2.0)
-      multi_json (~> 1.9.0)
-      rest-client (~> 1.8.0)
+      multi_json (~> 1.11.2)
+      rest-client (~> 1.6.9)
 
 GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.3)
     awesome_print (1.6.1)
-    byebug (4.0.5)
+    byebug (5.0.0)
       columnize (= 0.9.0)
     coderay (1.1.0)
     columnize (0.9.0)
@@ -23,28 +23,21 @@ GEM
     crack (0.3.2)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    domain_name (0.5.24)
-      unf (>= 0.0.5, < 1.0.0)
-    http-cookie (1.0.2)
-      domain_name (~> 0.5)
     json (1.8.3)
     method_source (0.8.2)
-    mime-types (2.6.1)
-    multi_json (1.9.2)
-    netrc (0.10.3)
-    pry (0.10.1)
+    mime-types (1.25.1)
+    multi_json (1.11.2)
+    pry (0.10.2)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (3.1.0)
-      byebug (~> 4.0)
+    pry-byebug (3.2.0)
+      byebug (~> 5.0)
       pry (~> 0.10)
     rake (10.4.2)
     rdoc (4.2.0)
-    rest-client (1.8.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 3.0)
-      netrc (~> 0.7)
+    rest-client (1.6.9)
+      mime-types (~> 1.16)
     rspec (3.3.0)
       rspec-core (~> 3.3.0)
       rspec-expectations (~> 3.3.0)
@@ -68,9 +61,6 @@ GEM
       tins (~> 1.0)
     thor (0.19.1)
     tins (1.5.2)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.7.1)
     vcr (2.4.0)
     webmock (1.9.3)
       addressable (>= 2.2.7)
@@ -92,3 +82,6 @@ DEPENDENCIES
   simplecov (~> 0.10)
   vcr (~> 2.4)
   webmock (~> 1.9.3)
+
+BUNDLED WITH
+   1.10.6
