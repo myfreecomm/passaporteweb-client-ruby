@@ -17,7 +17,7 @@ describe PassaporteWeb::Http do
 
   describe ".get" do
     it "should use RestClient.get with the supplied params and common options" do
-      RestClient.should_receive(:get).with(
+      expect(RestClient).to receive(:get).with(
         'https://some/where/foo',
         params: {spam: 'eggs'},
         authorization: 'Basic c29tZS1hcHAtdG9rZW46c29tZS1hcHAtc2VjcmV0',
@@ -31,7 +31,7 @@ describe PassaporteWeb::Http do
 
   describe ".custom_auth_get" do
     it "should use RestClient.get with the supplied params and common options, but with the custom authorization" do
-      RestClient.should_receive(:get).with(
+      expect(RestClient).to receive(:get).with(
         'https://some/where/foo',
         params: {spam: 'eggs'},
         authorization: 'Basic am9obkBkb2UuY29tOnRoZWJpcmRpc3RoZXdvcmQ=',
@@ -45,7 +45,7 @@ describe PassaporteWeb::Http do
 
   describe ".delete" do
     it "should use RestClient.delete with the supplied params and common options" do
-      RestClient.should_receive(:delete).with(
+      expect(RestClient).to receive(:delete).with(
         'https://some/where/foo',
         params: {spam: 'eggs'},
         authorization: 'Basic c29tZS1hcHAtdG9rZW46c29tZS1hcHAtc2VjcmV0',
@@ -59,7 +59,7 @@ describe PassaporteWeb::Http do
 
   describe ".put" do
     it "should use RestClient.get with the supplied params and common options, encoding body as json" do
-      RestClient.should_receive(:put).with(
+      expect(RestClient).to receive(:put).with(
         'https://some/where/foo',
         '{"hello":"world"}',
         params: {spam: 'eggs'},
@@ -71,7 +71,7 @@ describe PassaporteWeb::Http do
       described_class.put('/foo', {hello: 'world'}, {spam: 'eggs'})
     end
     it "should use RestClient.get with the supplied params and common options, with body already as json" do
-      RestClient.should_receive(:put).with(
+      expect(RestClient).to receive(:put).with(
         'https://some/where/foo',
         '{"hello":"world"}',
         params: {spam: 'eggs'},
@@ -86,7 +86,7 @@ describe PassaporteWeb::Http do
 
   describe ".post" do
     it "should use RestClient.post with the supplied params and common options, encoding body as json" do
-      RestClient.should_receive(:post).with(
+      expect(RestClient).to receive(:post).with(
         'https://some/where/foo',
         '{"hello":"world"}',
         params: {},
@@ -98,7 +98,7 @@ describe PassaporteWeb::Http do
       described_class.post('/foo', {hello: 'world'})
     end
     it "should use RestClient.post with the supplied params and common options, with body already as json" do
-      RestClient.should_receive(:post).with(
+      expect(RestClient).to receive(:post).with(
         'https://some/where/foo',
         '{"hello":"world"}',
         params: {},

@@ -20,60 +20,60 @@ describe PassaporteWeb::IdentityServiceAccount do
       }
       account = described_class.new(identity, attributes)
 
-      account.should be_instance_of(described_class)
-      account.should_not be_persisted
-      account.errors.should be_empty
-      account.identity.should == identity
+      expect(account).to be_instance_of(described_class)
+      expect(account).not_to be_persisted
+      expect(account.errors).to be_empty
+      expect(account.identity).to eq(identity)
 
-      account.membership_details_url.should == '/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
-      account.plan_slug.should == 'basic'
-      account.roles.should == ['user', 'admin']
-      account.url.should == '/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/'
-      account.expiration.should == '2014-05-01 00:00:00'
-      account.service_data.should == {"name" => "Identity Client","slug" => "identity_client"}
-      account.account_data.should == {"name" => "Investimentos","uuid" => "859d3542-84d6-4909-b1bd-4f43c1312065"}
-      account.add_member_url.should == '/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/'
-      account.name.should == 'Investimentos' # TODO ???
-      account.uuid.should == '859d3542-84d6-4909-b1bd-4f43c1312065' # TODO ???
+      expect(account.membership_details_url).to eq('/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/5e32f927-c4ab-404e-a91c-b2abc05afb56/')
+      expect(account.plan_slug).to eq('basic')
+      expect(account.roles).to eq(['user', 'admin'])
+      expect(account.url).to eq('/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/')
+      expect(account.expiration).to eq('2014-05-01 00:00:00')
+      expect(account.service_data).to eq({"name" => "Identity Client","slug" => "identity_client"})
+      expect(account.account_data).to eq({"name" => "Investimentos","uuid" => "859d3542-84d6-4909-b1bd-4f43c1312065"})
+      expect(account.add_member_url).to eq('/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/')
+      expect(account.name).to eq('Investimentos') # TODO ???
+      expect(account.uuid).to eq('859d3542-84d6-4909-b1bd-4f43c1312065') # TODO ???
     end
   end
 
   describe ".find_all", vcr: true do
     it "should find all service accounts the identity is associted to in the current authenticated application" do
       accounts = described_class.find_all(identity)
-      accounts.size.should == 9
-      accounts.map { |a| a.instance_of?(described_class) }.uniq.should == [true]
-      accounts.map { |a| a.persisted? }.uniq.should == [true]
+      expect(accounts.size).to eq(9)
+      expect(accounts.map { |a| a.instance_of?(described_class) }.uniq).to eq([true])
+      expect(accounts.map { |a| a.persisted? }.uniq).to eq([true])
 
       account = accounts[4]
-      account.errors.should be_empty
-      account.identity.should == identity
-      account.membership_details_url.should == '/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
-      account.plan_slug.should == 'basic'
-      account.roles.should == ['owner', 'foo,bar']
-      account.url.should == '/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/'
-      account.expiration.should == '2014-05-01 00:00:00'
-      account.service_data.should == {"name" => "Identity Client","slug" => "identity_client"}
-      account.account_data.should == {"name" => "Investimentos","uuid" => "859d3542-84d6-4909-b1bd-4f43c1312065"}
-      account.add_member_url.should == '/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/'
-      account.name.should == 'Investimentos'
-      account.uuid.should == '859d3542-84d6-4909-b1bd-4f43c1312065'
+      expect(account.errors).to be_empty
+      expect(account.identity).to eq(identity)
+      expect(account.membership_details_url).to eq('/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/5e32f927-c4ab-404e-a91c-b2abc05afb56/')
+      expect(account.plan_slug).to eq('basic')
+      expect(account.roles).to eq(['owner', 'foo,bar'])
+      expect(account.url).to eq('/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/')
+      expect(account.expiration).to eq('2014-05-01 00:00:00')
+      expect(account.service_data).to eq({"name" => "Identity Client","slug" => "identity_client"})
+      expect(account.account_data).to eq({"name" => "Investimentos","uuid" => "859d3542-84d6-4909-b1bd-4f43c1312065"})
+      expect(account.add_member_url).to eq('/organizations/api/accounts/859d3542-84d6-4909-b1bd-4f43c1312065/members/')
+      expect(account.name).to eq('Investimentos')
+      expect(account.uuid).to eq('859d3542-84d6-4909-b1bd-4f43c1312065')
     end
     it "should include expired service accounts if asked to" do
       accounts = described_class.find_all(identity, true)
-      accounts.size.should == 12
-      accounts.map { |a| a.expiration }.uniq.should == [nil, "2013-04-02 00:00:00", "2014-05-01 00:00:00", "2013-04-18 00:00:00"]
+      expect(accounts.size).to eq(12)
+      expect(accounts.map { |a| a.expiration }.uniq).to eq([nil, "2013-04-02 00:00:00", "2014-05-01 00:00:00", "2013-04-18 00:00:00"])
     end
     it "should find only service accounts in which the identity has the supplied role" do
       role = 'foo,bar'
       accounts = described_class.find_all(identity, false, role)
-      accounts.size.should == 1
-      accounts.map { |a| a.roles.include?(role) }.uniq.should == [true]
+      expect(accounts.size).to eq(1)
+      expect(accounts.map { |a| a.roles.include?(role) }.uniq).to eq([true])
     end
     it "should include other services is asked to" do
       accounts = described_class.find_all(identity, false, nil, true)
-      accounts.size.should == 9
-      accounts.map { |a| a.expiration }.uniq.should == [nil, "2014-05-01 00:00:00"]
+      expect(accounts.size).to eq(9)
+      expect(accounts.map { |a| a.expiration }.uniq).to eq([nil, "2014-05-01 00:00:00"])
     end
   end
 
@@ -88,18 +88,18 @@ describe PassaporteWeb::IdentityServiceAccount do
         }
         account = described_class.new(identity, attributes)
         expect(account.save).to be_truthy
-        account.should be_persisted
+        expect(account).to be_persisted
 
-        account.plan_slug.should == 'basic'
-        account.roles.should == ['owner']
-        account.service_data.should == {"name" => "Identity Client","slug" => "identity_client"}
-        account.account_data['name'].should == 'Conta Nova em Folha'
-        account.account_data['uuid'].should_not be_nil
-        account.name.should == 'Conta Nova em Folha'
-        account.uuid.should_not be_nil
-        account.url.should_not be_nil
-        account.membership_details_url.should_not be_nil
-        account.add_member_url.should_not be_nil
+        expect(account.plan_slug).to eq('basic')
+        expect(account.roles).to eq(['owner'])
+        expect(account.service_data).to eq({"name" => "Identity Client","slug" => "identity_client"})
+        expect(account.account_data['name']).to eq('Conta Nova em Folha')
+        expect(account.account_data['uuid']).not_to be_nil
+        expect(account.name).to eq('Conta Nova em Folha')
+        expect(account.uuid).not_to be_nil
+        expect(account.url).not_to be_nil
+        expect(account.membership_details_url).not_to be_nil
+        expect(account.add_member_url).not_to be_nil
       end
       it "should create a new service account by uuid for the identity in the current authenticated application" do
         pending 'pegar explicação com Vitor'
@@ -111,19 +111,19 @@ describe PassaporteWeb::IdentityServiceAccount do
           uuid: account_uuid
         }
         account = described_class.new(identity, attributes)
-        account.save.should be_true
-        account.should be_persisted
+        expect(account.save).to be_truthy
+        expect(account).to be_persisted
 
-        account.plan_slug.should == 'basic'
-        account.roles.should == ['owner']
-        account.service_data.should == {"name" => "Identity Client","slug" => "identity_client"}
-        account.account_data['name'].should_not be_nil
-        account.account_data['uuid'].should == account_uuid
-        account.name.should_not be_nil
-        account.uuid.should == account_uuid
-        account.url.should_not be_nil
-        account.membership_details_url.should_not be_nil
-        account.add_member_url.should_not be_nil
+        expect(account.plan_slug).to eq('basic')
+        expect(account.roles).to eq(['owner'])
+        expect(account.service_data).to eq({"name" => "Identity Client","slug" => "identity_client"})
+        expect(account.account_data['name']).not_to be_nil
+        expect(account.account_data['uuid']).to eq(account_uuid)
+        expect(account.name).not_to be_nil
+        expect(account.uuid).to eq(account_uuid)
+        expect(account.url).not_to be_nil
+        expect(account.membership_details_url).not_to be_nil
+        expect(account.add_member_url).not_to be_nil
       end
     end
     context "on failure" do
@@ -136,8 +136,8 @@ describe PassaporteWeb::IdentityServiceAccount do
         }
         account = described_class.new(identity, attributes)
         expect(account.save).to be_falsy
-        account.should_not be_persisted
-        account.errors.should == {"field_errors"=>{"expiration"=>["Cannot set the expiration to the past."]}}
+        expect(account).not_to be_persisted
+        expect(account.errors).to eq({"field_errors"=>{"expiration"=>["Cannot set the expiration to the past."]}})
       end
     end
   end
