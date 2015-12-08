@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     passaporteweb-client (0.2.0)
-      multi_json (~> 1.9.0)
+      multi_json (~> 1.11)
       rest-client (~> 1.8.0)
 
 GEM
@@ -30,7 +30,7 @@ GEM
     json (1.8.3)
     method_source (0.8.2)
     mime-types (2.6.1)
-    multi_json (1.9.2)
+    multi_json (1.11.2)
     netrc (0.10.3)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -92,3 +92,6 @@ DEPENDENCIES
   simplecov (~> 0.10)
   vcr (~> 2.4)
   webmock (~> 1.9.3)
+
+BUNDLED WITH
+   1.10.6

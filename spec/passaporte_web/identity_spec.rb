@@ -4,15 +4,15 @@ require 'spec_helper'
 describe PassaporteWeb::Identity do
 
   describe "constants" do
-    it { described_class::ATTRIBUTES.should == [:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :id_token, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos, :bio, :position, :city, :company, :profession, :identity_info_url, :state, :email_list] }
-    it { described_class::UPDATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone, :bio, :position, :city, :company, :profession, :state] }
-    it { described_class::CREATABLE_ATTRIBUTES.should == [:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone, :bio, :position, :city, :company, :profession, :state, :email, :password, :password2, :must_change_password, :tos, :inhibit_activation_message] }
+    it { expect(described_class::ATTRIBUTES).to eq([:accounts, :birth_date, :country, :cpf, :email, :first_name, :gender, :id_token, :is_active, :language, :last_name, :nickname, :notifications, :send_myfreecomm_news, :send_partner_news, :services, :timezone, :update_info_url, :uuid, :password, :password2, :must_change_password, :inhibit_activation_message, :tos, :bio, :position, :city, :company, :profession, :identity_info_url, :state, :email_list]) }
+    it { expect(described_class::UPDATABLE_ATTRIBUTES).to eq([:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone, :bio, :position, :city, :company, :profession, :state]) }
+    it { expect(described_class::CREATABLE_ATTRIBUTES).to eq([:first_name, :last_name, :nickname, :cpf, :birth_date, :gender, :send_myfreecomm_news, :send_partner_news, :country, :language, :timezone, :bio, :position, :city, :company, :profession, :state, :email, :password, :password2, :must_change_password, :tos, :inhibit_activation_message]) }
   end
 
   describe ".new" do
     it "should instanciate an empty object" do
       identity = described_class.new
-      identity.attributes.should == {:accounts=>nil, :birth_date=>nil, :country=>nil, :cpf=>nil, :email=>nil, :first_name=>nil, :gender=>nil, :id_token=>nil, :is_active=>nil, :language=>nil, :last_name=>nil, :nickname=>nil, :notifications=>nil, :send_myfreecomm_news=>nil, :send_partner_news=>nil, :services=>nil, :timezone=>nil, :update_info_url=>nil, :uuid=>nil, :password=>nil, :password2=>nil, :must_change_password=>nil, :inhibit_activation_message=>nil, :tos=>nil, :bio=>nil, :position=>nil, :city=>nil, :company=>nil, :profession=>nil, :identity_info_url=>nil, :state=>nil, :email_list=>nil}
+      expect(identity.attributes).to eq({:accounts=>nil, :birth_date=>nil, :country=>nil, :cpf=>nil, :email=>nil, :first_name=>nil, :gender=>nil, :id_token=>nil, :is_active=>nil, :language=>nil, :last_name=>nil, :nickname=>nil, :notifications=>nil, :send_myfreecomm_news=>nil, :send_partner_news=>nil, :services=>nil, :timezone=>nil, :update_info_url=>nil, :uuid=>nil, :password=>nil, :password2=>nil, :must_change_password=>nil, :inhibit_activation_message=>nil, :tos=>nil, :bio=>nil, :position=>nil, :city=>nil, :company=>nil, :profession=>nil, :identity_info_url=>nil, :state=>nil, :email_list=>nil})
     end
     it "should instanciate an object with attributes set" do
       attributes = {
@@ -333,7 +333,7 @@ describe PassaporteWeb::Identity do
           }
           identity = described_class.new(attributes)
           mock_response = double('response', code: 201, body: MultiJson.encode(attributes))
-          PassaporteWeb::Http.should_receive(:post).with("/accounts/api/create/", attributes).and_return(mock_response)
+          expect(PassaporteWeb::Http).to receive(:post).with("/accounts/api/create/", attributes).and_return(mock_response)
           expect(identity.save).to be_truthy
         end
       end
@@ -346,10 +346,10 @@ describe PassaporteWeb::Identity do
             "tos" => true
           }
           identity = described_class.new(attributes)
-          identity.should_not be_persisted
+          expect(identity).to_not be_persisted
           expect(identity.save).to_not be_truthy
-          identity.should_not be_persisted
-          identity.errors.should == {"password2"=>["Este campo é obrigatório."], "password"=>["Este campo é obrigatório."]}
+          expect(identity).to_not be_persisted
+          expect(identity.errors).to eq({"password2"=>["Este campo é obrigatório."], "password"=>["Este campo é obrigatório."]})
         end
       end
     end
