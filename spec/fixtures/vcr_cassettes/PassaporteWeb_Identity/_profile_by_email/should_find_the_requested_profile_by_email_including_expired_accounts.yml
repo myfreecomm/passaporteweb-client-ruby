@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/profile/api/info/?email=teste@teste.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - PassaporteWeb Ruby Client v0.3.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Allow:
+      - GET, HEAD, OPTIONS
+      Content-Encoding:
+      - gzip
+      Content-Language:
+      - pt-br
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 13 Jul 2017 21:12:54 GMT
+      P3p:
+      - CP="NON DSP COR CURa TIA"
+      Server:
+      - nginx/1.8.0
+      Vary:
+      - Authenticate, Accept, Accept-Language, Cookie, Accept-Encoding
+      Content-Length:
+      - '846'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAFbiZ1kC/8WX0W6lNhCGXyXiOnMAY8DsVau+wErtXbVCY3ucWOJgZEyy
+        2WjfvTZJ2iRtj2C1IjcI2Yd/fs9nH888ZpNVYfGUfbrKbkOY5k957mk+qcEt
+        2o7oH07KnfMJ5xkn5wPBPcncnvGG8mUaHOpc9eF2Octr3WsyuAyhxzsM6K9v
+        +5KJ6/v0zN9OnabxJru+yoz1c+hHPK/x/6A5oHb+iqW5AV9NpYGZRt1P6MNI
+        vh/pfo4TBoeZ4tyyWJ1+V1PFTMdaUBwl8IITYFcqkAylKmo0sm6exMebJa4h
+        fTMFkD4N2rlHFewdvRaeNAbq7Whcv/jhdZpmHLV0X084Tad/8hPTkzJ2kj5H
+        pdwyhjnHyeZW0xhssDTnW0zmydDogjVWYbBuTKt9zFbB+FakNdg57PLzRm41
+        lX2POi82o9afj9kUU9PPw3KTpI0nWo08Y/jNjQE/0zw7HNK4dwOt32XuPlLJ
+        vqSM7cyS8zc42m+vXP2dN2WqivNGQNeKDrihAoRiDTSF4lxoVrcdWxNFXyfr
+        V4UYelyG4X3ydrP7d65+xFUgP+LQr3vz2dbLTt2ikvDsIMIOQCJlxzumEVRL
+        ArgqNAjeIghqVCVYoVgljkeyw9UFJFtU/gPJG7OgBhsPOvhFPvwfp+oATk2N
+        WlIhQTPZAm8qBkhcA2faNKWKe0xVx3Pa4eoCpy0qP4MTP4BTxUrWiaoGSS0D
+        XgoJXWk4FEqZojVY6+IDztMOVxc4bVH5GZzqAzhx1pJRXQdt3cU7G4t4ZzdF
+        AVVZm6auUNbUHc9ph6sLnLaobLiKVEJyNR1WHeiyaCuNFZQFKuAaNcTCqQUp
+        a6NRyIaJD6gOdri6gGSLyl4kR5QHbSdiJdMxqKmMVQ2rERArAYS1KY1WSnTq
+        eCY7XF1gskVlL5MjSoH4P1tXphSgsS2Ac4zHm/MyvdWd6Bi24gNKgR2uLjDZ
+        opJ9//LSPZ4fEo1o7vy+gZzJ31lFT13Wc6/20D9dPj/e9D2rQmoft7V970I/
+        dWjBnumbG9ft8+uZfMxo/ju6/nNsqd2aozPalUyILTT9sj6ToTQ3eWfsQMd2
+        r89BV4DReJ9W0Kcw987rY63E8JDCw0v4mNO/ACHq0VL3EAAA
+    http_version: 
+  recorded_at: Thu, 13 Jul 2017 21:12:54 GMT
+recorded_with: VCR 2.9.3
