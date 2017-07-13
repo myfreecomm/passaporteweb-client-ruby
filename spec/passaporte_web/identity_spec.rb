@@ -234,24 +234,6 @@ describe PassaporteWeb::Identity do
       expect(identity.services.size).to eq(1)
       expect(identity.services.keys).to eq(['identity_client'])
     end
-    it "should find the requested profile by email, including expired accounts" do
-      identity = described_class.profile_by_email("teste@teste.com")
-      expect(identity.accounts.size).to eq(8)
-      expect(identity.accounts.map { |a| a['expiration'] }.uniq).to eq([nil])
-      expect(identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] rescue nil }.sort).to eq([nil])
-      expect(identity.services.size).to eq(1)
-      expect(identity.services.keys).to eq(['identity_client'])
-    end
-    it "should find the requested profile by email, including other services" do
-      identity = described_class.profile_by_email("teste@teste.com")
-      expect(identity.accounts.size).to eq(8)
-      expect(identity.accounts.map { |a| a['expiration'] }.uniq).to eq([nil])
-    end
-    it "should find the requested profile by email, including other services and expired accounts" do
-      identity = described_class.profile_by_email("teste@teste.com")
-      expect(identity.accounts.size).to eq(8)
-      expect(identity.accounts.map { |a| a['expiration'] }.uniq).to eq([nil])
-    end
     it "should raise an error if no profiles exist with that email" do
       expect {
         described_class.find("invalid@email.com")
