@@ -220,24 +220,24 @@ describe PassaporteWeb::Identity do
   end
 
   # DEPRECATED
-  describe ".profile_by_email", :vcr => true do
+  describe ".profile_by_email", vcr: true do
     it "should find the requested profile by email" do
       identity = described_class.profile_by_email("teste@teste.com")
       expect(identity).to be_instance_of(described_class)
-      expect(identity.uuid).to eq('5e32f927-c4ab-404e-a91c-b2abc05afb56')
+      expect(identity.uuid).to eq("5e32f927-c4ab-404e-a91c-b2abc05afb56")
       expect(identity).to be_persisted
-      expect(identity.email).to eq('teste@teste.com')
-      expect(identity.update_info_url).to eq('https://sandbox.app.passaporteweb.com.br/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/')
+      expect(identity.email).to eq("teste@teste.com")
+      expect(identity.update_info_url).to eq("https://sandbox.app.passaporteweb.com.br/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/")
       expect(identity.accounts.size).to eq(8)
-      expect(identity.accounts.map { |a| a['expiration'] }.uniq).to eq([nil])
-      expect(identity.accounts.map { |a| a['services'] }.flatten.uniq.map { |s| s['slug'] rescue nil }.sort).to eq([nil])
+      expect(identity.accounts.map { |a| a["expiration"] }.uniq).to eq([nil])
+      expect(identity.accounts.map { |a| a["services"] }.flatten.uniq.map { |s| s["slug"] rescue nil }.sort).to eq([nil])
       expect(identity.services.size).to eq(1)
-      expect(identity.services.keys).to eq(['identity_client'])
+      expect(identity.services.keys).to eq(["identity_client"])
     end
     it "should raise an error if no profiles exist with that email" do
       expect {
         described_class.find("invalid@email.com")
-      }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+      }.to raise_error(RestClient::ResourceNotFound, "404 Resource Not Found")
     end
   end
 

@@ -72,16 +72,16 @@ module PassaporteWeb
       load_identity(attributes_hash)
     end
 
-    # Finds an Profile by it's email using the ***DEPRECATED*** profile endpoint. Returns the Identity instance,
-    # with the pramary email used by the Identity.
+    # Finds an Profile by it's email (primary or secondary) using the ***DEPRECATED*** profile endpoint. Returns
+    # the Identity instance, with the primary email used by the Identity.
     # Raises a <tt>RestClient::ResourceNotFound</tt> exception if no
-    # Identity exists with the supplied UUID.
+    # Identity exists with the supplied email.
     #
     # API method: <tt>GET /profile/api/info/?email=:email</tt>
     #
     # API documentation: http://myfreecomm.github.io/passaporte-web/pweb/api/perfil.html#get-profile-api-info-email-email
     def self.profile_by_email(email)
-      response = Http.get("/profile/api/info/", { email: email })
+      response = Http.get("/profile/api/info/", email: email)
       attributes_hash = MultiJson.decode(response.body)
       load_identity(attributes_hash)
     end
