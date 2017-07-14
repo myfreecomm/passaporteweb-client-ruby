@@ -220,9 +220,9 @@ describe PassaporteWeb::Identity do
   end
 
   # DEPRECATED
-  describe ".profile_by_email", :vcr => true do
+  describe ".profile_by_email", vcr: true do
     let(:update_info_url) do
-      'https://sandbox.app.passaporteweb.com.br/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/'
+      "https://sandbox.app.passaporteweb.com.br/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/"
     end
 
     it "should find the requested profile by email" do
@@ -234,14 +234,14 @@ describe PassaporteWeb::Identity do
       expect(identity.update_info_url).to eq(update_info_url)
       expect(identity.accounts.size).to eq(8)
       expect(identity.accounts.map { |a| a["expiration"] }.uniq).to eq([nil])
-      expect(identity.accounts.map { |a| a["services"] }.flatten.uniq.map { |s| s["slug"] rescue nil }.sort).to eq([nil])
+      expect(identity.accounts.map { |a| a["services"] }.flatten.uniq.map { |s| s["slug"] }.sort).to eq([nil])
       expect(identity.services.size).to eq(1)
       expect(identity.services.keys).to eq(["identity_client"])
     end
     it "should raise an error if no profiles exist with that email" do
-      expect {
+      expect do
         described_class.find("invalid@email.com")
-      }.to raise_error(RestClient::ResourceNotFound, "404 Resource Not Found")
+      end.to raise_error(RestClient::ResourceNotFound, "404 Resource Not Found")
     end
   end
 
