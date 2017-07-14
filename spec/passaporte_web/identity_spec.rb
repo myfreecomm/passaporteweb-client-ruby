@@ -234,7 +234,6 @@ describe PassaporteWeb::Identity do
       expect(identity.update_info_url).to eq(update_info_url)
       expect(identity.accounts.size).to eq(8)
       expect(identity.accounts.map { |a| a["expiration"] }.uniq).to eq([nil])
-      expect(identity.accounts.map { |a| a["services"] }.flatten.uniq.map { |s| s["slug"] }.sort).to eq([nil])
       expect(identity.services.size).to eq(1)
       expect(identity.services.keys).to eq(["identity_client"])
     end
