@@ -68,7 +68,7 @@ This gem supports Ruby 2.1 and Ruby 2.2.
 * {Perfil}[https://app.passaporteweb.com.br/static/docs/perfil.html]
   * {GET /accounts/api/identities/:uuid/profile/}[http://myfreecomm.github.io/passaporte-web/pweb/api/usuarios.html#get-accounts-api-identities-uuid-profile] ==> PassaporteWeb::Identity#profile
   * {GET /profile/api/info/:uuid/}[https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-uuid] ==> (deprecated, not going to be implemented)
-  * {GET /profile/api/info/?email=:email}[https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-email-email] ==> (deprecated, not going to be implemented)
+  * {GET /profile/api/info/?email=:email}[https://app.passaporteweb.com.br/static/docs/perfil.html#get-profile-api-info-email-email] ==> PassaporteWeb::Identity.profile_by_email (deprecated)
   * {PUT /profile/api/info/:uuid/}[https://app.passaporteweb.com.br/static/docs/perfil.html#put-profile-api-info-uuid] ==> (deprecated, not going to be implemented)
 
 === Configuration
