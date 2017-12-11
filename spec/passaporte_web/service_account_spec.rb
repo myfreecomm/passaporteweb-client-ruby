@@ -81,7 +81,7 @@ describe PassaporteWeb::ServiceAccount do
     it "should raise an error if the page does not exist" do
       expect {
         PassaporteWeb::ServiceAccount.find_all(4_000_000)
-      }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+      }.to raise_error(RestClient::ResourceNotFound)
     end
   end
 
@@ -107,7 +107,7 @@ describe PassaporteWeb::ServiceAccount do
       it "should raise an error if no Account exist with that uuid" do
         expect {
           PassaporteWeb::ServiceAccount.find("859d3542-84d6-4909-b1bd-4f43c1312062")
-        }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+        }.to raise_error(RestClient::ResourceNotFound)
       end
     end
   end

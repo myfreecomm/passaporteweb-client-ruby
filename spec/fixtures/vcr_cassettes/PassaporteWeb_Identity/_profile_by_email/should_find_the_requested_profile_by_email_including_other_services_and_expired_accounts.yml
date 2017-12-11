@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/profile/api/info/?email=teste@teste.com
+    uri: http://sandbox.app.passaporteweb.com.br/profile/api/info/?email=teste@teste.com
     body:
       encoding: US-ASCII
       string: ''

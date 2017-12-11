@@ -134,7 +134,7 @@ describe PassaporteWeb::Identity do
     it "should raise an error if no profiles exist with that uuid" do
       expect {
         described_class.find("invalid-uuid")
-      }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+      }.to raise_error(RestClient::ResourceNotFound)
     end
   end
 
@@ -181,7 +181,7 @@ describe PassaporteWeb::Identity do
     it "should raise an error if no profiles exist with that email" do
       expect {
         described_class.find("invalid@email.com")
-      }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+      }.to raise_error(RestClient::ResourceNotFound)
     end
   end
 
@@ -215,7 +215,7 @@ describe PassaporteWeb::Identity do
     it "should raise an error if no profiles exist with that email" do
       expect {
         described_class.profile("invalid-uuid")
-      }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+      }.to raise_error(RestClient::ResourceNotFound)
     end
   end
 
@@ -240,7 +240,7 @@ describe PassaporteWeb::Identity do
     it "should raise an error if no profiles exist with that email" do
       expect do
         described_class.find("invalid@email.com")
-      end.to raise_error(RestClient::ResourceNotFound, "404 Resource Not Found")
+      end.to raise_error(RestClient::ResourceNotFound)
     end
   end
 

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://mobileteste269%40mailinator.com:vivalasvegas@sandbox.app.passaporteweb.com.br/accounts/api/auth/
+    uri: http://sandbox.app.passaporteweb.com.br/accounts/api/auth/
     body:
       encoding: US-ASCII
       string: ''
@@ -76,6 +76,6 @@ http_interactions:
         j4gcT3d+yKZjwccxsW6vLGJtuu4Y2jcwDNx4oq+18hX33muWwCxOZu7Obnh7
         u3vcqsudbBf79GF9tYnl88tNZm5F2K7feXvdXOyGpif3ct8sxNPGE2MHND3f
         mYpaZHSMiSjOfZs0sLGLkcUre2vUqPifsL7Nxr8/AbiMY75MAgAA
-    http_version: 
+    http_version:
   recorded_at: Mon, 10 Jun 2013 22:09:29 GMT
 recorded_with: VCR 2.4.0

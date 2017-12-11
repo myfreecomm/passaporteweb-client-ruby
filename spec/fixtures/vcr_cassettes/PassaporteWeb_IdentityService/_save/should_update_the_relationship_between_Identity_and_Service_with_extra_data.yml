@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/?include_expired_accounts=false&include_other_services=false
+    uri: http://sandbox.app.passaporteweb.com.br/accounts/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/?include_expired_accounts=false&include_other_services=false
     body:
       encoding: US-ASCII
       string: ''
@@ -89,7 +89,7 @@ http_interactions:
   recorded_at: Thu, 18 Apr 2013 18:44:23 GMT
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/service-info/5e32f927-c4ab-404e-a91c-b2abc05afb56/identity_client/
+    uri: http://sandbox.app.passaporteweb.com.br/accounts/api/service-info/5e32f927-c4ab-404e-a91c-b2abc05afb56/identity_client/
     body:
       encoding: US-ASCII
       string: ''
@@ -140,7 +140,7 @@ http_interactions:
   recorded_at: Thu, 18 Apr 2013 18:44:23 GMT
 - request:
     method: put
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/service-info/5e32f927-c4ab-404e-a91c-b2abc05afb56/identity_client/
+    uri: http://sandbox.app.passaporteweb.com.br/accounts/api/service-info/5e32f927-c4ab-404e-a91c-b2abc05afb56/identity_client/
     body:
       encoding: UTF-8
       string: ! '{"is_active":true,"service_data":{"foo":"bar","spam":"eggs","integer":2,"float":3.456,"array":[1,2.0,"three","four"],"hash":{"oba":"eba"}}}'
@@ -195,7 +195,7 @@ http_interactions:
   recorded_at: Thu, 18 Apr 2013 18:44:24 GMT
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/service-info/5e32f927-c4ab-404e-a91c-b2abc05afb56/identity_client/
+    uri: http://sandbox.app.passaporteweb.com.br/accounts/api/service-info/5e32f927-c4ab-404e-a91c-b2abc05afb56/identity_client/
     body:
       encoding: US-ASCII
       string: ''

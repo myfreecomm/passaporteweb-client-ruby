@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/invalid-uuid/?include_expired_accounts=false&include_other_services=false
+    uri: http://sandbox.app.passaporteweb.com.br/accounts/api/identities/invalid-uuid/?include_expired_accounts=false&include_other_services=false
     body:
       encoding: US-ASCII
       string: ''

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/840df3bd-8414-4085-9920-1937f4b37dd3/?include_expired_accounts=false&include_other_services=false
+    uri: http://sandbox.app.passaporteweb.com.br/accounts/api/identities/840df3bd-8414-4085-9920-1937f4b37dd3/?include_expired_accounts=false&include_other_services=false
     body:
       encoding: US-ASCII
       string: ''
@@ -81,7 +81,7 @@ http_interactions:
   recorded_at: Thu, 18 Apr 2013 18:47:33 GMT
 - request:
     method: put
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/service-info/840df3bd-8414-4085-9920-1937f4b37dd3/identity_client/
+    uri: http://sandbox.app.passaporteweb.com.br/accounts/api/service-info/840df3bd-8414-4085-9920-1937f4b37dd3/identity_client/
     body:
       encoding: UTF-8
       string: ! '{"is_active":true,"service_data":{"foo":"bar","spam":"eggs","integer":2,"float":3.456,"array":[1,2.0,"three","four"],"hash":{"oba":"eba"}}}'
@@ -136,7 +136,7 @@ http_interactions:
   recorded_at: Thu, 18 Apr 2013 18:47:38 GMT
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/service-info/840df3bd-8414-4085-9920-1937f4b37dd3/identity_client/
+    uri: http://sandbox.app.passaporteweb.com.br/accounts/api/service-info/840df3bd-8414-4085-9920-1937f4b37dd3/identity_client/
     body:
       encoding: US-ASCII
       string: ''

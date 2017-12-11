@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://:3e4470e59d76f748e0081b514da62ed621a893c87facd4a6@sandbox.app.passaporteweb.com.br/notifications/api/?limit=20&ordering=oldest-first&page=1&show_read=false
+    uri: http://sandbox.app.passaporteweb.com.br/notifications/api/?limit=20&ordering=oldest-first&page=1&show_read=false
     body:
       encoding: US-ASCII
       string: ''
@@ -62,11 +62,11 @@ http_interactions:
         KtNZozrTWtUf6Wonra2B3QDjmkJmejmamNhf/QTsU1wbmH3zH1VTXev0TZgD
         oeNUXe1BH9XBlBG6HT71oM1eo4i0OASG0rrLCD9U62ekyJ43cQq+XHs15FtF
         /onc9IcehS0E6IALjjmEErx/7nib6YkeX7/OU2JbPQEAAA==
-    http_version: 
+    http_version:
   recorded_at: Thu, 04 Apr 2013 15:51:47 GMT
 - request:
     method: put
-    uri: http://:3e4470e59d76f748e0081b514da62ed621a893c87facd4a6@sandbox.app.passaporteweb.com.br/notifications/api/97a9bde9-8deb-4874-8427-93ef7c1174aa/
+    uri: http://sandbox.app.passaporteweb.com.br/notifications/api/97a9bde9-8deb-4874-8427-93ef7c1174aa/
     body:
       encoding: UTF-8
       string: ! '{}'
@@ -139,6 +139,6 @@ http_interactions:
         TGeN6kxrVX+ki520tgZ2A4xrCpnpz9HExP7iJ2Cf4trA7JtPVE11rdONMAdC
         x6m62oM+qoMpT+h2OOlBmz1GEWlxCAwldZcRfqjGv5Eie97EOfjS7dGQrxX5
         F3LTEz0KWwjQAb9dZGz9/f8Ux9tct8QcwuMXFAiDukwBAAA=
-    http_version: 
+    http_version:
   recorded_at: Thu, 04 Apr 2013 15:51:48 GMT
 recorded_with: VCR 2.4.0

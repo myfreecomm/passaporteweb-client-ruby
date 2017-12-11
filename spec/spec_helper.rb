@@ -11,6 +11,7 @@ require 'passaporte_web'
 
 require 'vcr'
 require 'pry'
+require 'webmock/rspec'
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'

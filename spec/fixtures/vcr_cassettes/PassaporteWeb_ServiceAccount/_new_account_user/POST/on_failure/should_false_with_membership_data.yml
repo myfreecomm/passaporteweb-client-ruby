@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/identities/859d3542-84d6-4909-b1bd-4f43c1312065/accounts/
+    uri: http://sandbox.app.passaporteweb.com.br/organizations/api/identities/859d3542-84d6-4909-b1bd-4f43c1312065/accounts/
     body:
       encoding: UTF-8
       string: ! '{"plan_slug":"passaporteweb-client-ruby","uuid_user":"a5868d14-6529-477a-9c6b-a09dd42a7cd2"}'

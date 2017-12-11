@@ -39,7 +39,7 @@ describe PassaporteWeb::ServiceAccountMember do
     it "should raise an 404 error if the membership does not exist" do
       expect {
         described_class.find(service_account, double('Identity', uuid: 'identity-uuid'))
-      }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+      }.to raise_error(RestClient::ResourceNotFound)
     end
   end
 
@@ -52,7 +52,7 @@ describe PassaporteWeb::ServiceAccountMember do
       expect(member.errors).to be_empty
       expect {
         described_class.find(service_account, identity)
-      }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+      }.to raise_error(RestClient::ResourceNotFound)
     end
     it "should return false if the role is owner" do
       member = described_class.find(service_account, identity)
@@ -102,7 +102,7 @@ describe PassaporteWeb::ServiceAccountMember do
 
           expect {
             described_class.find(service_account, identity)
-          }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+          }.to raise_error(RestClient::ResourceNotFound)
         end
         it "should return false if the membership already exists" do
           expect(member.save).to be_falsy

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/accounts/?limit=20&page=1
+    uri: http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/?limit=20&page=1
     body:
       encoding: US-ASCII
       string: ''
@@ -100,6 +100,6 @@ http_interactions:
         c3g25oc6H4d/ZiIvq6O0nCwvHLkqCYtC7tdjdz68Bl6NnCm5bozRM4Bns4tI
         SkMmj4BZ5aGVFzC8GeBKySeR2cKfuVdJeB08zuYF74/Un65e7qgIf8rLHWOM
         bX7c/ANodCP4EyUAAA==
-    http_version: 
+    http_version:
   recorded_at: Thu, 28 Mar 2013 21:15:31 GMT
 recorded_with: VCR 2.4.0

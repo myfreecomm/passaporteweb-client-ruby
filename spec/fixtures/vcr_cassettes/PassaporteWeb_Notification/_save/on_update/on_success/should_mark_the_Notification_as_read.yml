@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://:f01d30c0a2e878fecc838735560253f9e9395932f5337f40@sandbox.app.passaporteweb.com.br/notifications/api/?limit=20&ordering=oldest-first&page=1&show_read=false
+    uri: http://sandbox.app.passaporteweb.com.br/notifications/api/?limit=20&ordering=oldest-first&page=1&show_read=false
     body:
       encoding: US-ASCII
       string: ''
@@ -77,7 +77,7 @@ http_interactions:
   recorded_at: Thu, 04 Apr 2013 03:37:21 GMT
 - request:
     method: put
-    uri: http://:f01d30c0a2e878fecc838735560253f9e9395932f5337f40@sandbox.app.passaporteweb.com.br/notifications/api/2ca046be-0178-418d-80ac-3a334c264009/
+    uri: http://sandbox.app.passaporteweb.com.br/notifications/api/2ca046be-0178-418d-80ac-3a334c264009/
     body:
       encoding: UTF-8
       string: ! '{}'

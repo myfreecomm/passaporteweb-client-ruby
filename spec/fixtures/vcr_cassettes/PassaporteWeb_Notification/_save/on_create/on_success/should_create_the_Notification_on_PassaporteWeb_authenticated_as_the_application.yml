@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/notifications/api/
+    uri: http://sandbox.app.passaporteweb.com.br/notifications/api/
     body:
       encoding: UTF-8
       string: ! '{"body":"feliz aniversário!","target_url":"http://pittlandia.net","scheduled_to":"2013-04-19

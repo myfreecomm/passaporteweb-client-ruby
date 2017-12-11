@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/accounts/?limit=20&page=4000000
+    uri: http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/?limit=20&page=4000000
     body:
       encoding: US-ASCII
       string: ''
@@ -45,6 +45,6 @@ http_interactions:
     body:
       encoding: US-ASCII
       string: ! '{"detail": "That page contains no results"}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 28 Mar 2013 21:15:33 GMT
 recorded_with: VCR 2.4.0
