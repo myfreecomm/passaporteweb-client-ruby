@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/create/
+    uri: http://sandbox.app.passaporteweb.com.br/accounts/api/create/
     body:
       encoding: UTF-8
       string: ! '{"email":"lula_luis81@example.com","first_name":"Luis Inácio","last_name":"da

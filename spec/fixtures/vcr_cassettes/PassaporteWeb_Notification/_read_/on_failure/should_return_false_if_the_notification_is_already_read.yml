@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://:3e4470e59d76f748e0081b514da62ed621a893c87facd4a6@sandbox.app.passaporteweb.com.br/notifications/api/?limit=20&ordering=oldest-first&page=1&show_read=true
+    uri: http://sandbox.app.passaporteweb.com.br/notifications/api/?limit=20&ordering=oldest-first&page=1&show_read=true
     body:
       encoding: US-ASCII
       string: ''
@@ -91,6 +91,6 @@ http_interactions:
         UNXJmkoJjFbeWIqOO9DANYLZyHCL1BWGZ6vLRlUvVr8vw3gCkr9/zb10rzZQ
         W491vihaKisjaSWFoXWJnXGcGwmw0b0tUlfck3kQLhrF33jGPnscUkhP5K4P
         eXVhYBFejlp3PvqvmxeNpLnq5rc/k4IbaDoIAAA=
-    http_version: 
+    http_version:
   recorded_at: Thu, 04 Apr 2013 15:51:48 GMT
 recorded_with: VCR 2.4.0

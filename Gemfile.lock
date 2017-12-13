@@ -1,15 +1,15 @@
 PATH
   remote: .
   specs:
-    passaporteweb-client (0.4.0)
+    passaporteweb-client (0.4.1)
       multi_json (~> 1.11)
-      rest-client (~> 1.8.0)
+      rest-client (~> 2.0, >= 2.0.2)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.5.1)
-      public_suffix (~> 2.0, >= 2.0.2)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     awesome_print (1.8.0)
     byebug (9.0.6)
     coderay (1.1.1)
@@ -25,12 +25,15 @@ GEM
     docile (1.1.5)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
+    hashdiff (0.3.7)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     json (2.1.0)
     method_source (0.8.2)
-    mime-types (2.99.3)
-    multi_json (1.12.1)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
+    multi_json (1.12.2)
     netrc (0.11.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -39,13 +42,13 @@ GEM
     pry-byebug (3.4.2)
       byebug (~> 9.0)
       pry (~> 0.10)
-    public_suffix (2.0.5)
+    public_suffix (3.0.1)
     rake (12.0.0)
     rdoc (5.1.0)
-    rest-client (1.8.0)
+    rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 3.0)
-      netrc (~> 0.7)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
       rspec-expectations (~> 3.6.0)
@@ -74,9 +77,10 @@ GEM
       unf_ext
     unf_ext (0.0.7.4)
     vcr (2.9.3)
-    webmock (1.9.3)
-      addressable (>= 2.2.7)
+    webmock (3.1.1)
+      addressable (>= 2.3.6)
       crack (>= 0.3.2)
+      hashdiff
 
 PLATFORMS
   ruby
@@ -93,7 +97,7 @@ DEPENDENCIES
   rspec (~> 3.6)
   simplecov (~> 0.14)
   vcr (~> 2.4)
-  webmock (~> 1.9.3)
+  webmock (~> 3.1.0, >= 3.1.1)
 
 BUNDLED WITH
-   1.15.1
+   1.16.0

@@ -94,7 +94,7 @@ describe PassaporteWeb::Notification do
       it "404 Not Found" do
         expect {
           PassaporteWeb::Notification.find_all(1_000_000)
-        }.to raise_error(RestClient::ResourceNotFound, '404 Resource Not Found')
+        }.to raise_error(RestClient::ResourceNotFound)
       end
     end
   end

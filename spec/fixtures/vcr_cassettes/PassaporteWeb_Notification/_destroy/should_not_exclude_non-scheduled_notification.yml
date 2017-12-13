@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/notifications/api/
+    uri: http://sandbox.app.passaporteweb.com.br/notifications/api/
     body:
       encoding: UTF-8
       string: ! '{"body":"novinha","destination":"a5868d14-6529-477a-9c6b-a09dd42a7cd2"}'
@@ -58,7 +58,7 @@ http_interactions:
   recorded_at: Thu, 04 Apr 2013 18:32:25 GMT
 - request:
     method: delete
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/notifications/api/649fdd61-9dab-4bad-80c8-c58de9037b97/
+    uri: http://sandbox.app.passaporteweb.com.br/notifications/api/649fdd61-9dab-4bad-80c8-c58de9037b97/
     body:
       encoding: US-ASCII
       string: ''

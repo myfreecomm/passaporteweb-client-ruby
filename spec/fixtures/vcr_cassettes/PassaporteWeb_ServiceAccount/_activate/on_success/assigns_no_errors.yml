@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/accounts/019a3450-8107-4832-8321-de4e6580c06b/
+    uri: http://sandbox.app.passaporteweb.com.br/organizations/api/accounts/019a3450-8107-4832-8321-de4e6580c06b/
     body:
       encoding: US-ASCII
       string: ''
@@ -58,7 +58,7 @@ http_interactions:
   recorded_at: Thu, 11 Jun 2015 14:52:59 GMT
 - request:
     method: put
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/activate/
+    uri: http://sandbox.app.passaporteweb.com.br/organizations/api/activate/
     body:
       encoding: UTF-8
       string: '{"slug":"basic","identity":"20a8bbe1-3b4a-4e46-a69a-a7c524bd2ab8","global_account":"019a3450-8107-4832-8321-de4e6580c06b"}'

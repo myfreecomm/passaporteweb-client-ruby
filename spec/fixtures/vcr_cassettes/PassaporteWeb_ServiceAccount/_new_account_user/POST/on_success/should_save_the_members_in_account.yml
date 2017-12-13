@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/organizations/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/accounts/
+    uri: http://sandbox.app.passaporteweb.com.br/organizations/api/identities/5e32f927-c4ab-404e-a91c-b2abc05afb56/accounts/
     body:
       encoding: UTF-8
       string: ! '{"plan_slug":"passaporteweb-client-ruby","name":"ContaPessoal5"}'

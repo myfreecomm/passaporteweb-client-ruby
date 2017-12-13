@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/13b972ab-0946-4a5b-8217-60255a9cbee7/?include_expired_accounts=true&include_other_services=true
+    uri: http://sandbox.app.passaporteweb.com.br/accounts/api/identities/13b972ab-0946-4a5b-8217-60255a9cbee7/?include_expired_accounts=true&include_other_services=true
     body:
       encoding: US-ASCII
       string: ''

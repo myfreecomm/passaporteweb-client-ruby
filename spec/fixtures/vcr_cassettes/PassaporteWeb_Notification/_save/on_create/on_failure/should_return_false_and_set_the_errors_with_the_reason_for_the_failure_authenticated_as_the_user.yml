@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://:f01d30c0a2e878fecc838735560253f9e9395932f5337f40@sandbox.app.passaporteweb.com.br/notifications/api/
+    uri: http://sandbox.app.passaporteweb.com.br/notifications/api/
     body:
       encoding: UTF-8
       string: ! '{"body":"feliz aniversário!","target_url":"lalalala","scheduled_to":"2013-04-19

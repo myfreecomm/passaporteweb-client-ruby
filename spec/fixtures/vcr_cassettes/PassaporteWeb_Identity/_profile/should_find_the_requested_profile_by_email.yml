@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/8923199e-6c43-415a-bbd1-2e302fdf8d96/profile
+    uri: http://sandbox.app.passaporteweb.com.br/accounts/api/identities/8923199e-6c43-415a-bbd1-2e302fdf8d96/profile
     body:
       encoding: US-ASCII
       string: ''
@@ -41,7 +41,7 @@ http_interactions:
   recorded_at: Mon, 05 May 2014 19:47:03 GMT
 - request:
     method: get
-    uri: http://8ab29iwKFI:VnWYenOqYsHtcFowrdJlwdJNALq5Go9v@sandbox.app.passaporteweb.com.br/accounts/api/identities/8923199e-6c43-415a-bbd1-2e302fdf8d96/profile/
+    uri: http://sandbox.app.passaporteweb.com.br/accounts/api/identities/8923199e-6c43-415a-bbd1-2e302fdf8d96/profile/
     body:
       encoding: US-ASCII
       string: ''
