@@ -8,8 +8,12 @@ require File.join([File.dirname(__FILE__),'lib','passaporte_web','version.rb'])
 Gem::Specification.new do |spec|
   spec.name          = "passaporteweb-client"
   spec.version       = PassaporteWeb::VERSION
-  spec.authors       = ["Rodrigo Tassinari de Oliveira", "Eduardo Hertz", "Rafael B. Tauil"]
-  spec.email         = ["rodrigo@pittlandia.net", "rodrigo.tassinari@myfreecomm.com.br", "eduardo.hertz@myfreecomm.com.br", "rafael@tauil.com.br"]
+  spec.authors       = ["Rodrigo Tassinari de Oliveira", "Eduardo Hertz", "Rafael B. Tauil", "Luiz Carlos Buiatte"]
+  spec.email         = %w[ rodrigo@pittlandia.net
+                           rodrigo.tassinari@myfreecomm.com.br
+                           eduardo.hertz@myfreecomm.com.br
+                           rafael@tauil.com.br
+                           luiz.buiatte@nexaas.com ]
   spec.description   = %q{A Ruby client for the PassaporteWeb REST API}
   spec.summary       = %q{A Ruby client for the PassaporteWeb REST API: https://app.passaporteweb.com.br/static/docs/}
   spec.homepage      = "https://github.com/myfreecomm/passaporteweb-client-ruby"
@@ -23,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'rest-client', '~> 2.0', '>= 2.0.2'
+  spec.add_dependency "typhoeus", "~> 0.8"
   spec.add_dependency "multi_json", "~> 1.11"
 
   spec.add_development_dependency "bundler", "~> 1.9"
