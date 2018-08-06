@@ -18,11 +18,10 @@ require "passaporte_web/identity_service"
 module PassaporteWeb
 
   def self.configuration
-    @configuration ||=  Configuration.new
+    @configuration ||= Configuration.new
   end
 
   def self.configure
     yield(configuration) if block_given?
   end
-
 end
