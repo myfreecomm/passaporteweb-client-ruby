@@ -25,12 +25,13 @@ RSpec.configure do |c|
   c.mock_with :rspec
   c.example_status_persistence_file_path = '.rspec_persistence'
 
-  c.before(:vcr => true) do
-    PassaporteWeb.configure do |c|
-      c.url = 'https://sandbox.v2.passaporteweb.com.br'
-      # Those credentials are from Identity Client App
-      c.application_token = '8ab29iwKFI'
-      c.application_secret = 'VnWYenOqYsHtcFowrdJlwdJNALq5Go9v'
+  c.before do
+    PassaporteWeb.configure do |config|
+      config.url = 'https://sandbox.v2.passaporteweb.com.br'
+      config.application_token = 'HOR5XXLN5VCERCPDHYL2C24AEM'
+      config.application_secret = 'QGS6B5YRNRD3TPC75VCTWOKGBQ'
+      #0db7d4569b9a3b248f0bf3b19bea775afdc2ccdbda935e1fc1087c15823d8574
+      #token = client.auth_code.get_token('0db7d4569b9a3b248f0bf3b19bea775afdc2ccdbda935e1fc1087c15823d8574', :redirect_uri => 'https://contabilone.com.br/auth/passaporte_web/callback')
     end
   end
 end

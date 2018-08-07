@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.v2.passaporteweb.com.br/api/v1/profile
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Authorization:
+      - Bearer d4716d6b8ec62d7de27d768042e76f389eca19146bf81c1449a824f85fe9e6a8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Tue, 07 Aug 2018 21:55:15 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"2cbbd2854ffe4a00a9011ff9be083230"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 305a3fd3-74eb-47b7-b1d3-1a75711cbcf4
+      X-Runtime:
+      - '0.029349'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6ImUzYTM0ZTRmLTY0NDQtNGVmOC1hZTcyLTRhNGZlZTdhYWUyNiIsIm5hbWUiOiJMdWl6IENhcmxvcyBCdWlhdHRlIiwibmlja25hbWUiOiJsdWl6LmJ1aWF0dGUiLCJlbWFpbCI6Imx1aXouYnVpYXR0ZUBuZXhhYXMuY29tIiwiYmlydGgiOiIiLCJnZW5kZXIiOiJtYWxlIiwibGFuZ3VhZ2UiOiJlbiIsInBpY3R1cmUiOiJodHRwczovL3NhbmRib3gudjIucGFzc2Fwb3J0ZXdlYi5jb20uYnIvaW1hZ2VzL2F2YXRhci9lM2EzNGU0Zi02NDQ0LTRlZjgtYWU3Mi00YTRmZWU3YWFlMjY/c2l6ZT0xNDAiLCJ0aW1lem9uZSI6IkFtZXJpY2EvU2FvX1BhdWxvIiwiY291bnRyeSI6IkJSIiwiY2l0eSI6IlViZXJsw6JuZGlhIC0gTUciLCJiaW8iOiJXYXJwIGZpZWxkIHN0YWJpbGl6ZWQuIn0=
+    http_version: 
+  recorded_at: Tue, 07 Aug 2018 21:55:13 GMT
+recorded_with: VCR 2.9.3

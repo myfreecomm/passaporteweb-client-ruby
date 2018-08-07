@@ -1,0 +1,2 @@
+module PassaporteWeb::Entities
+end

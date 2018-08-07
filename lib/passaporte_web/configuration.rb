@@ -1,6 +1,6 @@
 class PassaporteWeb::Configuration
 
-  attr_accessor :url, :user_agent, :application_id, :application_secret
+  attr_accessor :url, :user_agent, :application_token, :application_secret
 
   def initialize
     @url = 'https://v2.passaporteweb.com.br'

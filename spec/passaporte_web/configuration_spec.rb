@@ -15,11 +15,11 @@ describe PassaporteWeb::Configuration do
     config = PassaporteWeb::Configuration.new
 
     config.url = 'http://sandbox.v2.passaporteweb.com.br'
-    config.application_id = '58ca7acc-9479-4671-8b7c-745c5a65ce08'
+    config.application_token = '58ca7acc-9479-4671-8b7c-745c5a65ce08'
     config.application_secret = '8da0d1a5-961d-461f-8ae6-1922db172340'
 
     expect(config.url).to eq('http://sandbox.v2.passaporteweb.com.br')
-    expect(config.application_id).to eq('58ca7acc-9479-4671-8b7c-745c5a65ce08')
+    expect(config.application_token).to eq('58ca7acc-9479-4671-8b7c-745c5a65ce08')
     expect(config.application_secret).to eq('8da0d1a5-961d-461f-8ae6-1922db172340')
   end
 
