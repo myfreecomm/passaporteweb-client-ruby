@@ -1,22 +1,17 @@
 require "spec_helper"
 
 describe PassaporteWeb::Client::Identity do
-  let(:credentials) do
-    OpenStruct.new(
-      access_token: 'd4716d6b8ec62d7de27d768042e76f389eca19146bf81c1449a824f85fe9e6a8',
-      refresh_token: 'd4716d6b8ec62d7de27d768042e76f389eca19146bf81c1449a824f85fe9e6a8',
-      expires_in: 7200,
-      expires_at: 1533685159)
-  end
-
-  subject { described_class.new(credentials) }
+  subject { described_class.new(@user_credentials) }
 
   describe '#profile' do
-    it 'returns the profile resource' do
-      VCR.use_cassette("identity/profile/success") do
-        profile = subject.profile.get
-        expect(profile.email).to eq('luiz.buiatte@nexaas.com')
-      end
+    it 'provides the profile resource' do
+      expect(subject.profile).to be_a(PassaporteWeb::Resources::Profile)
+    end
+  end
+
+  describe '#sign_up' do
+    it 'provides the signup resource' do
+      expect(subject.sign_up).to be_a(PassaporteWeb::Resources::SignUp)
     end
   end
 end
