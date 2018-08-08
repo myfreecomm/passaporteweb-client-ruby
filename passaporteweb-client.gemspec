@@ -38,4 +38,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "simplecov", "~> 0.14"
   spec.add_development_dependency "coveralls", "~> 0.8"
   spec.add_development_dependency "json", "~> 2.1"
+  spec.add_development_dependency "faraday-cookie_jar", "~> 0.0.6"
 end

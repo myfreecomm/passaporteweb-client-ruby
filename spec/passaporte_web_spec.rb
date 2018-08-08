@@ -14,13 +14,11 @@ describe PassaporteWeb do
         c.user_agent = 'My App v1.0'
         c.application_token = 'some-app-token'
         c.application_secret = 'some-app-secret'
-        c.user_token = nil
       end
       expect(PassaporteWeb.configuration.url).to eq('http://some/where')
       expect(PassaporteWeb.configuration.user_agent).to eq('My App v1.0')
       expect(PassaporteWeb.configuration.application_token).to eq('some-app-token')
       expect(PassaporteWeb.configuration.application_secret).to eq('some-app-secret')
-      expect(PassaporteWeb.configuration.user_token).to be_nil
     end
     it 'should use a singleton object for the configuration values' do
       config1 = PassaporteWeb.configuration

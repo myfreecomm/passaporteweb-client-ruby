@@ -15,7 +15,10 @@ class PassaporteWeb::Client::Identity
 
   private
 
-  attr_reader :token, :credentials
+  attr_reader :credentials
+  attr_accessor :token
+
+  ATTRIBUTES = [:access_token, :refresh_token, :expires_at, :expires_in].freeze
 
   def api
     token.expired? ? refresh_token : token
@@ -26,14 +29,14 @@ class PassaporteWeb::Client::Identity
   end
 
   def hash
-    hash = [:access_token, :refresh_token, :expires_at, :expires_in].map do |attribute|
-      [attribute, credentials.send(attribute)]
-    end.to_h
+    ATTRIBUTES.map { |attr| [attr, credentials.send(attr)] }.to_h
   end
 
   def refresh_token
-    token.refresh!
-    credentials.access_token = token.access_token
-    token
+    token.refresh!.tap do |token|
+      self.token = token
+      credentials.access_token = token.token
+      (ATTRIBUTES - [:access_token]).each { |attr| credentials.send("#{attr}=", token.send(attr)) }
+    end
   end
 end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:3000/api/v1/profile
+    uri: http://localhost:3000/api/v1/profile/contacts
     body:
       encoding: US-ASCII
       string: ''
@@ -23,19 +23,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"9fe90400ed890c2bf472fe574e3f0356"
+      - W/"97fd682a03579909edb3d53c143774d3"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - b9cd7f21-114c-4088-a91b-20ef3c5ec192
+      - a4664e9e-4c09-43ae-85a6-71ac9a93d5ab
       X-Runtime:
-      - '0.018825'
+      - '0.037739'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"id":"1dba9218-62f6-40bc-aebc-e965be915736","name":"Luiz Carlos Buiatte","nickname":"luiz.buiatte","email":"luiz.buiatte@nexaas.com","birth":"1976-05-29","gender":"other","language":"en","picture":"http://localhost:3000/images/avatar/1dba9218-62f6-40bc-aebc-e965be915736?size=140","timezone":"America/Sao_Paulo","country":"BR","city":"","bio":"I
-        code"}'
+      string: '{"id":"1dba9218-62f6-40bc-aebc-e965be915736","phone_numbers":["+55-34991440948","+55-34991440947"]}'
     http_version: 
-  recorded_at: Wed, 08 Aug 2018 22:13:07 GMT
+  recorded_at: Wed, 08 Aug 2018 22:16:55 GMT
 recorded_with: VCR 2.9.3
