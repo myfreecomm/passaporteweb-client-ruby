@@ -18,4 +18,12 @@ describe PassaporteWeb::Client::Identity do
       end
     end
   end
+
+  describe '#sign_up' do
+    it 'provides the widget resource' do
+      VCR.use_cassette('identity/refresh_token') do
+        expect(subject.widget).to be_a(PassaporteWeb::Resources::Widget)
+      end
+    end
+  end
 end

@@ -13,6 +13,10 @@ class PassaporteWeb::Client::Identity
     PassaporteWeb::Resources::SignUp.new(api)
   end
 
+  def widget
+    PassaporteWeb::Resources::Widget.new(api)
+  end
+
   private
 
   attr_reader :credentials

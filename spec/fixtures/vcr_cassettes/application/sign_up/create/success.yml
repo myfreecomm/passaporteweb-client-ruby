@@ -1,0 +1,101 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.v2.passaporteweb.com.br/oauth/token
+    body:
+      encoding: UTF-8
+      string: client_id=QMKAZVAZ6NBR3IO2MCEHOGKVCY&client_secret=HXKQYGAQ4JHR5HR73SKOQ5NI6E&grant_type=client_credentials&scope=invite
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Thu, 09 Aug 2018 21:58:16 GMT
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"e654976e44b3680d4ff55241434086c9"
+      X-Request-Id:
+      - 95f3ae67-6a95-460c-9620-928cd2243e19
+      X-Runtime:
+      - '0.030852'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"b2748e6d931678d6c852bcbbe632bd432f0886bdea739f6deac4e218586d9cd5","token_type":"bearer","expires_in":7200,"scope":"invite","created_at":1533851896}'
+    http_version: 
+  recorded_at: Thu, 09 Aug 2018 21:58:16 GMT
+- request:
+    method: post
+    uri: https://sandbox.v2.passaporteweb.com.br/api/v1/sign_up
+    body:
+      encoding: UTF-8
+      string: '{"invited":"demurtas@mailinator.com"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.12.2
+      Authorization:
+      - Bearer b2748e6d931678d6c852bcbbe632bd432f0886bdea739f6deac4e218586d9cd5
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Thu, 09 Aug 2018 21:58:17 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"f60f4edaee5100aaa04c99901967a370"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - b50797c0-d5f6-44f9-99dd-cb67d0ac7f63
+      X-Runtime:
+      - '0.044240'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"id":"d8e03dea-e859-4442-a06d-c11405d5e807","email":"demurtas@mailinator.com","requester":null}'
+    http_version: 
+  recorded_at: Thu, 09 Aug 2018 21:58:17 GMT
+recorded_with: VCR 2.9.3

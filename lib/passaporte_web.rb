@@ -25,11 +25,11 @@ require "passaporte_web/resources"
 require "passaporte_web/resources/base"
 require "passaporte_web/resources/profile"
 require "passaporte_web/resources/sign_up"
+require "passaporte_web/resources/widget"
 
 module PassaporteWeb
-
   def self.configuration
-    @configuration ||=  Configuration.new
+    @configuration ||= Configuration.new
   end
 
   def self.configure

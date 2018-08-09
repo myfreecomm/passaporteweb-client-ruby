@@ -10,7 +10,7 @@ describe PassaporteWeb::Resources::SignUp do
       subject { resource.create(invited: 'demurtas@mailinator.com') }
 
       it 'invites an user' do
-        VCR.use_cassette('sign_up/application/success') do
+        VCR.use_cassette('application/sign_up/create/success') do
           expect(subject.id).not_to be_nil
           expect(subject.email).to eq('demurtas@mailinator.com')
           expect(subject.requester).to be_nil
@@ -23,7 +23,7 @@ describe PassaporteWeb::Resources::SignUp do
       subject { resource.create(invited: 'demurtas@mailinator.com') }
 
       it 'invites an user' do
-        VCR.use_cassette('sign_up/identity/success') do
+        VCR.use_cassette('identity/sign_up/create/success') do
           expect(subject.id).not_to be_nil
           expect(subject.email).to eq('demurtas@mailinator.com')
           expect(subject.requester).not_to be_nil
