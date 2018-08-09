@@ -39,4 +39,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "coveralls", "~> 0.8"
   spec.add_development_dependency "json", "~> 2.1"
   spec.add_development_dependency "faraday-cookie_jar", "~> 0.0.6"
+  spec.add_development_dependency "dotenv", "~> 2.5.0"
 end

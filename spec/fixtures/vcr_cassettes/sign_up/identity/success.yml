@@ -2,41 +2,51 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:3000/api/v1/sign_up
+    uri: https://sandbox.v2.passaporteweb.com.br/api/v1/sign_up
     body:
       encoding: UTF-8
-      string: invited=demurtas%40mailinator.com
+      string: '{"invited":"demurtas@mailinator.com"}'
     headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
       User-Agent:
       - Faraday v0.12.2
       Authorization:
-      - Bearer 22c3326bf852516bdaad985779a0db5189bbed4a877a0601667612e6086c6f49
-      Content-Type:
-      - application/x-www-form-urlencoded
+      - Bearer 936628a86ee808238e52d3909afb92e654c6cd4dbe4df8b99cd064d6f00cf7d0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
   response:
     status:
       code: 200
       message: OK
     headers:
+      Server:
+      - Cowboy
+      Date:
+      - Thu, 09 Aug 2018 20:18:58 GMT
+      Connection:
+      - keep-alive
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"27affbd7881c3be24068d39675e46d2a"
+      - W/"270bb73ec3f4288cd55d31e38d2177c6"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 172f6a72-3d8a-4581-b38a-db3e787e706e
+      - 4840c54e-0e16-4a2e-a362-7c9d63fbdd62
       X-Runtime:
-      - '0.034241'
+      - '0.024436'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
       Transfer-Encoding:
       - chunked
+      Via:
+      - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"id":"01c1ced6-9003-42e3-960c-748dc7b3ef6d","email":"demurtas@mailinator.com","requester":"1dba9218-62f6-40bc-aebc-e965be915736"}'
+      string: '{"id":"d8e03dea-e859-4442-a06d-c11405d5e807","email":"demurtas@mailinator.com","requester":"57bb5938-d0c5-439a-9986-e5c565124beb"}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 14:31:21 GMT
+  recorded_at: Thu, 09 Aug 2018 20:18:59 GMT
 recorded_with: VCR 2.9.3

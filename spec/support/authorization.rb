@@ -9,12 +9,10 @@ module Authorization
     end
 
     response = connection.get('/sign_in')
-    auth_token = response.body.match(%r(name="authenticity_token" value="(.+?)")).captures.first
-
     data = {
-      'session[email]': 'luiz.buiatte@nexaas.com',
-      'session[password]': '123456',
-      'authenticity_token': auth_token
+      'session[email]': ENV['USER_NAME'],
+      'session[password]': ENV['USER_PASSWORD'],
+      'authenticity_token': authenticity_token(response)
     }
 
     connection.post('/sign_in', URI.encode_www_form(data))
@@ -26,14 +24,12 @@ module Authorization
       scope: 'profile invite')
 
     if(response.headers['location'].nil? || response.headers['location'] == '')
-      auth_token = response.body.match(%r(name="authenticity_token" value="(.+?)")).captures.first
-
       data = {
         client_id: PassaporteWeb.configuration.application_token,
         commit: 'Authorize',
         redirect_uri: 'urn:ietf:wg:oauth:2.0:oob',
         response_type: 'code',
-        authenticity_token: auth_token,
+        authenticity_token: authenticity_token(response),
         scope: 'profile invite'
       }
 
@@ -41,6 +37,10 @@ module Authorization
     end
 
     response.headers['location'].match(%r(code=(.+?)$)).captures.first
+  end
+
+  def authenticity_token(response)
+    response.body.match(%r(name="authenticity_token" value="(.+?)")).captures.first
   end
 
   def access_token

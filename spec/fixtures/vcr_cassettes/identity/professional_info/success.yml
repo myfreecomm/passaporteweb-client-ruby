@@ -2,40 +2,52 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:3000/api/v1/profile/professional_info
+    uri: https://sandbox.v2.passaporteweb.com.br/api/v1/profile/professional_info
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
       User-Agent:
       - Faraday v0.12.2
       Authorization:
-      - Bearer 22c3326bf852516bdaad985779a0db5189bbed4a877a0601667612e6086c6f49
+      - Bearer 936628a86ee808238e52d3909afb92e654c6cd4dbe4df8b99cd064d6f00cf7d0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
   response:
     status:
       code: 200
       message: OK
     headers:
+      Server:
+      - Cowboy
+      Date:
+      - Thu, 09 Aug 2018 20:18:53 GMT
+      Connection:
+      - keep-alive
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"677bbdf943a39848e64fb80f563fd1b0"
+      - W/"f10313b66b732f80f0108da5d8a4e388"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 353ffe49-adb5-4087-879f-c488ce47bfbf
+      - f744724c-b029-4d37-aee3-dc3c1c531e1e
       X-Runtime:
-      - '0.019416'
+      - '0.007580'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
       Transfer-Encoding:
       - chunked
+      Via:
+      - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"id":"1dba9218-62f6-40bc-aebc-e965be915736","profession":"Systems
-        Analyst","company":"Nexaas","position":"Developer"}'
+      string: '{"id":"57bb5938-d0c5-439a-9986-e5c565124beb","profession":"Systems
+        Integrator","company":"Nexaas","position":"API"}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 14:31:21 GMT
+  recorded_at: Thu, 09 Aug 2018 20:18:54 GMT
 recorded_with: VCR 2.9.3

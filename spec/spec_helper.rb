@@ -1,5 +1,9 @@
 require 'simplecov'
 require 'coveralls'
+require 'dotenv'
+
+Dotenv.load('.env.test')
+
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::HTMLFormatter,
   Coveralls::SimpleCov::Formatter
@@ -18,7 +22,7 @@ VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   c.hook_into :webmock
   c.ignore_localhost = false
-  c.default_cassette_options = { :record => :once }
+  c.default_cassette_options = { record: :once }
   c.configure_rspec_metadata!
 end
 
@@ -29,12 +33,11 @@ RSpec.configure do |c|
 
   c.before do
     PassaporteWeb.configure do |config|
-      #config.url = 'https://sandbox.v2.passaporteweb.com.br'
-      #config.application_token = 'HOR5XXLN5VCERCPDHYL2C24AEM'
-      #config.application_secret = 'QGS6B5YRNRD3TPC75VCTWOKGBQ'
-      config.url = 'http://localhost:3000'
-      config.application_token = 'P6LYSYEIBBCUDEUU3MN77FPIIE'
-      config.application_secret = 'ROPHZ7JTVNFE5MDPNMPAK7XK7A'
+      # https://sandbox.v2.passaporteweb.com.br/applications/89e9d504-e2a8-476e-ac94-c33e68399c7e
+      # Test application - luiz.buiatte+pw.api.test@nexaas.com
+      config.url = ENV['PASSAPORTE_WEB_URL']
+      config.application_token = ENV['APPLICATION_TOKEN']
+      config.application_secret = ENV['APPLICATION_SECRET']
     end
   end
 end

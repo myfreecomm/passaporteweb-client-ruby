@@ -10,9 +10,8 @@ describe PassaporteWeb::Resources::Profile do
     it 'returns the profile for the user' do
       VCR.use_cassette('identity/profile/success') do
         expect(subject).to be_a(PassaporteWeb::Entities::Profile)
-        expect(subject.id).to eq('1dba9218-62f6-40bc-aebc-e965be915736')
-        expect(subject.email).to eq('luiz.buiatte@nexaas.com')
-        expect(subject.birth.to_s).to eq('1976-05-29')
+        expect(subject.id).to eq('57bb5938-d0c5-439a-9986-e5c565124beb')
+        expect(subject.email).to eq('luiz.buiatte+pw.api.test@nexaas.com')
       end
     end
   end
@@ -21,9 +20,9 @@ describe PassaporteWeb::Resources::Profile do
     subject { resource.professional_info }
 
     it 'returns the professional info for the user' do
-       VCR.use_cassette('identity/professional_info/success') do
+      VCR.use_cassette('identity/professional_info/success') do
         expect(subject).to be_a(PassaporteWeb::Entities::Profile::ProfessionalInfo)
-        expect(subject.id).to eq('1dba9218-62f6-40bc-aebc-e965be915736')
+        expect(subject.id).to eq('57bb5938-d0c5-439a-9986-e5c565124beb')
         expect(subject.company).to eq('Nexaas')
       end
     end
@@ -33,9 +32,9 @@ describe PassaporteWeb::Resources::Profile do
     subject { resource.contacts }
 
     it 'returns the contacts for the user' do
-       VCR.use_cassette('identity/contacts/success') do
+      VCR.use_cassette('identity/contacts/success') do
         expect(subject).to be_a(PassaporteWeb::Entities::Profile::Contacts)
-        expect(subject.id).to eq('1dba9218-62f6-40bc-aebc-e965be915736')
+        expect(subject.id).to eq('57bb5938-d0c5-439a-9986-e5c565124beb')
         expect(subject.phone_numbers).not_to be_empty
       end
     end
@@ -45,9 +44,9 @@ describe PassaporteWeb::Resources::Profile do
     subject { resource.emails }
 
     it 'returns the contacts for the user' do
-       VCR.use_cassette('identity/emails/success') do
+      VCR.use_cassette('identity/emails/success') do
         expect(subject).to be_a(PassaporteWeb::Entities::Profile::Emails)
-        expect(subject.id).to eq('1dba9218-62f6-40bc-aebc-e965be915736')
+        expect(subject.id).to eq('57bb5938-d0c5-439a-9986-e5c565124beb')
         expect(subject.emails).not_to be_empty
       end
     end
