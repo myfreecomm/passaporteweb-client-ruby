@@ -2,13 +2,15 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:3000/oauth/token
+    uri: http://localhost:3000/api/v1/sign_up
     body:
       encoding: UTF-8
-      string: client_id=P6LYSYEIBBCUDEUU3MN77FPIIE&client_secret=ROPHZ7JTVNFE5MDPNMPAK7XK7A&grant_type=client_credentials&scope=invite
+      string: invited=demurtas%40mailinator.com
     headers:
       User-Agent:
       - Faraday v0.12.2
+      Authorization:
+      - Bearer 22c3326bf852516bdaad985779a0db5189bbed4a877a0601667612e6086c6f49
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -20,23 +22,21 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Cache-Control:
-      - private, no-store
-      Pragma:
-      - no-cache
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"f480909605ecfbec6c939d2483aff5b9"
+      - W/"27affbd7881c3be24068d39675e46d2a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 25e882a8-f3c6-4734-a123-d883a2975f48
+      - 172f6a72-3d8a-4581-b38a-db3e787e706e
       X-Runtime:
-      - '0.027565'
+      - '0.034241'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"access_token":"84255cfbf46fec1d960c1450ef0d6acf4b964f70e9f29eeaab6ac63e8e182b76","token_type":"bearer","expires_in":7200,"scope":"invite","created_at":1533825080}'
+      string: '{"id":"01c1ced6-9003-42e3-960c-748dc7b3ef6d","email":"demurtas@mailinator.com","requester":"1dba9218-62f6-40bc-aebc-e965be915736"}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 14:31:20 GMT
+  recorded_at: Thu, 09 Aug 2018 14:31:21 GMT
 recorded_with: VCR 2.9.3

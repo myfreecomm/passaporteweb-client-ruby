@@ -13,10 +13,13 @@ require "passaporte_web/client/oauth"
 
 require "passaporte_web/entities"
 require "passaporte_web/entities/base"
+
 require "passaporte_web/entities/profile"
 require "passaporte_web/entities/profile/professional_info"
 require "passaporte_web/entities/profile/contacts"
 require "passaporte_web/entities/profile/emails"
+
+require "passaporte_web/entities/sign_up"
 
 require "passaporte_web/resources"
 require "passaporte_web/resources/base"

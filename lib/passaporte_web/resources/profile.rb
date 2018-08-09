@@ -21,5 +21,4 @@ class PassaporteWeb::Resources::Profile < PassaporteWeb::Resources::Base
       api.get('/api/v1/profile/emails'),
       PassaporteWeb::Entities::Profile::Emails)
   end
-
 end

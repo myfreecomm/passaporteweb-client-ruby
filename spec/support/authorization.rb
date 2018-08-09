@@ -22,7 +22,8 @@ module Authorization
     response = connection.get('oauth/authorize',
       client_id: PassaporteWeb.configuration.application_token,
       redirect_uri: 'urn:ietf:wg:oauth:2.0:oob',
-      response_type: 'code')
+      response_type: 'code',
+      scope: 'profile invite')
 
     if(response.headers['location'].nil? || response.headers['location'] == '')
       auth_token = response.body.match(%r(name="authenticity_token" value="(.+?)")).captures.first
@@ -32,7 +33,8 @@ module Authorization
         commit: 'Authorize',
         redirect_uri: 'urn:ietf:wg:oauth:2.0:oob',
         response_type: 'code',
-        authenticity_token: auth_token
+        authenticity_token: auth_token,
+        scope: 'profile invite'
       }
 
       response = connection.post('/oauth/authorize', URI.encode_www_form(data))

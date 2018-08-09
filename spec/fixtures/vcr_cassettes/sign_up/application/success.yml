@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3000/oauth/token
+    body:
+      encoding: UTF-8
+      string: client_id=P6LYSYEIBBCUDEUU3MN77FPIIE&client_secret=ROPHZ7JTVNFE5MDPNMPAK7XK7A&grant_type=client_credentials&scope=invite
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"9f4e9bd1d362b1904d2ebfbdbcb46757"
+      X-Request-Id:
+      - 41b75826-5967-48f6-ac0c-906f81127584
+      X-Runtime:
+      - '0.023369'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"5a2f5c2ddd39e5f2c242de4cc01b1685496ad475e4c50e57781aa7df331f39de","token_type":"bearer","expires_in":7200,"scope":"invite","created_at":1533825081}'
+    http_version: 
+  recorded_at: Thu, 09 Aug 2018 14:31:21 GMT
+- request:
+    method: post
+    uri: http://localhost:3000/api/v1/sign_up
+    body:
+      encoding: UTF-8
+      string: invited=demurtas%40mailinator.com
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Authorization:
+      - Bearer 5a2f5c2ddd39e5f2c242de4cc01b1685496ad475e4c50e57781aa7df331f39de
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"b2e6cec17ecca92c297346aee196abfd"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - a2fc827f-9579-41d4-b183-dd29bd9d9657
+      X-Runtime:
+      - '0.032911'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":"01c1ced6-9003-42e3-960c-748dc7b3ef6d","email":"demurtas@mailinator.com","requester":null}'
+    http_version: 
+  recorded_at: Thu, 09 Aug 2018 14:31:21 GMT
+recorded_with: VCR 2.9.3

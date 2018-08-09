@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.12.2
       Authorization:
-      - Bearer 23f79f298a11a644f4586e2edc26682282496a19a52d65aa1d518c3532136650
+      - Bearer 22c3326bf852516bdaad985779a0db5189bbed4a877a0601667612e6086c6f49
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,14 +27,14 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - '012885be-e439-49b0-bf85-0a195e81b990'
+      - 3961106d-76c1-4013-bd38-b5e8144fb66d
       X-Runtime:
-      - '0.029599'
+      - '0.028682'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"id":"1dba9218-62f6-40bc-aebc-e965be915736","emails":["luiz.buiatte@nexaas.com"]}'
     http_version: 
-  recorded_at: Wed, 08 Aug 2018 22:16:55 GMT
+  recorded_at: Thu, 09 Aug 2018 14:31:21 GMT
 recorded_with: VCR 2.9.3
