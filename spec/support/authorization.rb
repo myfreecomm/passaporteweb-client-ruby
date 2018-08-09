@@ -36,11 +36,11 @@ module Authorization
       response = connection.post('/oauth/authorize', URI.encode_www_form(data))
     end
 
-    response.headers['location'].match(%r(code=(.+?)$)).captures.first
+    response.headers['location'].match(%r{code=(.+?)$}).captures.first
   end
 
   def authenticity_token(response)
-    response.body.match(%r(name="authenticity_token" value="(.+?)")).captures.first
+    response.body.match(%r{name="authenticity_token" value="(.+?)"}).captures.first
   end
 
   def access_token
