@@ -44,7 +44,7 @@ module Authorization
   end
 
   def access_token
-    VCR.use_cassette('access_token', record: :new_episodes, re_record_interval: 2 * 3600) do
+    VCR.use_cassette('access_token') do
       client = PassaporteWeb::Client::OAuth.build
       client.auth_code.get_token(authorization_code, redirect_uri: 'urn:ietf:wg:oauth:2.0:oob')
     end

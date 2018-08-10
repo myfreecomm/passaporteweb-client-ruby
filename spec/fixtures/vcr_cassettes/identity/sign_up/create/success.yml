@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.12.2
       Authorization:
-      - Bearer 936628a86ee808238e52d3909afb92e654c6cd4dbe4df8b99cd064d6f00cf7d0
+      - Bearer 3a4163fd0000aa30790e08767d7f7a5c478862eb4192aceaae7f4933a43268b3
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Thu, 09 Aug 2018 21:58:18 GMT
+      - Fri, 10 Aug 2018 12:28:51 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -35,9 +35,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 91cec888-5368-4733-a6b0-7c06d74aac66
+      - c28493c3-7a16-418f-a3f4-35fe3121f4e8
       X-Runtime:
-      - '0.072289'
+      - '0.032719'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Transfer-Encoding:
@@ -48,5 +48,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"id":"d8e03dea-e859-4442-a06d-c11405d5e807","email":"demurtas@mailinator.com","requester":"57bb5938-d0c5-439a-9986-e5c565124beb"}'
     http_version: 
-  recorded_at: Thu, 09 Aug 2018 21:58:18 GMT
+  recorded_at: Fri, 10 Aug 2018 12:28:51 GMT
 recorded_with: VCR 2.9.3
