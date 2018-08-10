@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.12.2
       Authorization:
-      - Bearer 3a4163fd0000aa30790e08767d7f7a5c478862eb4192aceaae7f4933a43268b3
+      - Bearer 4aac465f25df54637d4a50bb9e44c17ec52e4a761fd6a68bfe185681f54b65e9
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Fri, 10 Aug 2018 12:28:45 GMT
+      - Fri, 10 Aug 2018 17:35:41 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -35,9 +35,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 43bdb4ff-a1ca-47ae-9442-4bc98844f709
+      - ff34fd29-b2d5-4acf-8004-66f9c8b105ee
       X-Runtime:
-      - '0.021838'
+      - '0.020110'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Transfer-Encoding:
@@ -49,5 +49,5 @@ http_interactions:
       string: '{"id":"57bb5938-d0c5-439a-9986-e5c565124beb","profession":"Systems
         Integrator","company":"Nexaas","position":"API"}'
     http_version: 
-  recorded_at: Fri, 10 Aug 2018 12:28:45 GMT
+  recorded_at: Fri, 10 Aug 2018 17:35:40 GMT
 recorded_with: VCR 2.9.3

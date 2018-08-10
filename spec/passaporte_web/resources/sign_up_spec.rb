@@ -7,7 +7,7 @@ describe PassaporteWeb::Resources::SignUp do
 
     describe 'with application client' do
       let(:client) { PassaporteWeb::Client::Application.new }
-      subject { resource.create(invited: 'demurtas@mailinator.com') }
+      subject { resource.create('demurtas@mailinator.com') }
 
       it 'invites an user' do
         VCR.use_cassette('application/sign_up/create/success') do
@@ -20,7 +20,7 @@ describe PassaporteWeb::Resources::SignUp do
 
     describe 'with identity client' do
       let(:client) { PassaporteWeb::Client::Identity.new(user_credentials) }
-      subject { resource.create(invited: 'demurtas@mailinator.com') }
+      subject { resource.create('demurtas@mailinator.com') }
 
       it 'invites an user' do
         VCR.use_cassette('identity/sign_up/create/success') do

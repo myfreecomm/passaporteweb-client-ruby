@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Fri, 10 Aug 2018 12:28:48 GMT
+      - Fri, 10 Aug 2018 17:35:43 GMT
       Connection:
       - keep-alive
       Cache-Control:
@@ -33,11 +33,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"7f3570659367b99e210b38b650b06054"
+      - W/"871bcafc07ba0b3eeb71d75883e0afe6"
       X-Request-Id:
-      - f2bfb1cb-fba7-46f2-a601-d6a7fa8a4c68
+      - 7c454ebe-1542-4ee6-a85e-f37d619d6023
       X-Runtime:
-      - '0.030750'
+      - '0.010729'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Transfer-Encoding:
@@ -46,9 +46,9 @@ http_interactions:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"access_token":"b39eba4c2ef036d0a74a99c56e220a18be2c2de3e28b38c69c351ca13a3f0c9f","token_type":"bearer","expires_in":7200,"scope":"invite","created_at":1533904129}'
+      string: '{"access_token":"c90f07b0708fe1864f62c5d71f7e6f906ac0b478bc8e5b070d7fd998f3080ec1","token_type":"bearer","expires_in":7200,"scope":"invite","created_at":1533922544}'
     http_version: 
-  recorded_at: Fri, 10 Aug 2018 12:28:49 GMT
+  recorded_at: Fri, 10 Aug 2018 17:35:43 GMT
 - request:
     method: post
     uri: https://sandbox.v2.passaporteweb.com.br/api/v1/sign_up
@@ -63,7 +63,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.12.2
       Authorization:
-      - Bearer b39eba4c2ef036d0a74a99c56e220a18be2c2de3e28b38c69c351ca13a3f0c9f
+      - Bearer c90f07b0708fe1864f62c5d71f7e6f906ac0b478bc8e5b070d7fd998f3080ec1
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -74,7 +74,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Fri, 10 Aug 2018 12:28:50 GMT
+      - Fri, 10 Aug 2018 17:35:44 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -84,9 +84,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 3e5db637-6e08-4839-8d03-039914082aae
+      - 0a5f5ec3-a02a-4e32-82e9-ce5df803a26a
       X-Runtime:
-      - '0.042786'
+      - '0.035057'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Transfer-Encoding:
@@ -97,5 +97,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"id":"d8e03dea-e859-4442-a06d-c11405d5e807","email":"demurtas@mailinator.com","requester":null}'
     http_version: 
-  recorded_at: Fri, 10 Aug 2018 12:28:50 GMT
+  recorded_at: Fri, 10 Aug 2018 17:35:44 GMT
 recorded_with: VCR 2.9.3

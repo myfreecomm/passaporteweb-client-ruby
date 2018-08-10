@@ -67,7 +67,7 @@ GEM
     public_suffix (3.0.1)
     rack (2.0.5)
     rake (12.0.0)
-    rdoc (5.1.0)
+    rdoc (6.0.4)
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
       rspec-expectations (~> 3.6.0)
@@ -120,7 +120,7 @@ DEPENDENCIES
   passaporteweb-client!
   pry-byebug (~> 3.4)
   rake (~> 12.0)
-  rdoc (~> 5.1)
+  rdoc (~> 6.0)
   rspec (~> 3.6)
   simplecov (~> 0.14)
   vcr (~> 2.4)
