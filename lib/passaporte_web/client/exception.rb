@@ -15,16 +15,16 @@ class PassaporteWeb::Client::Exception < StandardError
 
   # @return [Integer] HTTP response's status.
   def status
-    @response&.status
+    @response.status if @response
   end
 
   # @return [Integer] HTTP response's headers.
   def headers
-    @response&.headers
+    @response.headers if @response
   end
 
   # @return [Integer] HTTP response's body.
   def body
-    @response&.body || ''
+    @response ? @response.body : ''
   end
 end
