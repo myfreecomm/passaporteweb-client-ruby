@@ -17,7 +17,7 @@ class PassaporteWeb::Client::Identity
   #   #expires_in, #expires_in=] The user credentials, obtained through the OAuth2 authorization flow.
   def initialize(credentials)
     @credentials = credentials
-    @token = OAuth2::AccessToken.from_hash(client, hash)
+    @token = PassaporteWeb::Client::ExceptionWrapper.new(OAuth2::AccessToken.from_hash(client, hash))
   end
 
   # Provides a Profile resource.
@@ -59,7 +59,7 @@ class PassaporteWeb::Client::Identity
 
   def refresh_token
     token.refresh!.tap do |token|
-      self.token = token
+      self.token = PassaporteWeb::Client::ExceptionWrapper.new(token)
       credentials.access_token = token.token
       (ATTRIBUTES - [:access_token]).each { |attr| credentials.send("#{attr}=", token.send(attr)) }
     end

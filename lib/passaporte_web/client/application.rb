@@ -30,6 +30,6 @@ class PassaporteWeb::Client::Application
   def token(scope = nil)
     token = tokens[scope]
     return token unless token.nil? || token.expired?
-    tokens[scope] = client.client_credentials.get_token(scope: scope)
+    tokens[scope] = PassaporteWeb::Client::ExceptionWrapper.new(client.client_credentials.get_token(scope: scope))
   end
 end

@@ -8,6 +8,8 @@ require "passaporte_web/configuration"
 
 require "passaporte_web/client"
 require "passaporte_web/client/application"
+require "passaporte_web/client/exception"
+require "passaporte_web/client/exception_wrapper"
 require "passaporte_web/client/identity"
 require "passaporte_web/client/oauth"
 

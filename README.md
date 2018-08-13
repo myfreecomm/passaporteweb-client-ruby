@@ -143,6 +143,11 @@ sign_up.email     # 'another.john@example.com'
 sign_up.requester # nil
 ```
 
+### Error handling
+
+In case of a transport or OAuth error, an instance of PassaporteWeb::Client::Exception will be raised by the client.
+This exception can be inspected using the methods `status`, `headers` and `body`.
+
 ## Contributing
 
 1. Fork it

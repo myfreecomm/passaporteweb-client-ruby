@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Fri, 10 Aug 2018 17:35:43 GMT
+      - Mon, 13 Aug 2018 18:11:00 GMT
       Connection:
       - keep-alive
       Cache-Control:
@@ -33,11 +33,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"871bcafc07ba0b3eeb71d75883e0afe6"
+      - W/"56f020ed65473ab8a40742357ea50b1f"
       X-Request-Id:
-      - 7c454ebe-1542-4ee6-a85e-f37d619d6023
+      - 4808e2a5-14d6-4822-8590-d4fecb4dda57
       X-Runtime:
-      - '0.010729'
+      - '0.040585'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Transfer-Encoding:
@@ -46,9 +46,9 @@ http_interactions:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"access_token":"c90f07b0708fe1864f62c5d71f7e6f906ac0b478bc8e5b070d7fd998f3080ec1","token_type":"bearer","expires_in":7200,"scope":"invite","created_at":1533922544}'
+      string: '{"access_token":"498e146cc20644d5cdd252f7eb48b1146b19cf3bef8833066ef139ee8ecd428a","token_type":"bearer","expires_in":7200,"scope":"invite","created_at":1534183861}'
     http_version: 
-  recorded_at: Fri, 10 Aug 2018 17:35:43 GMT
+  recorded_at: Mon, 13 Aug 2018 18:11:01 GMT
 - request:
     method: post
     uri: https://sandbox.v2.passaporteweb.com.br/api/v1/sign_up
@@ -63,7 +63,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.12.2
       Authorization:
-      - Bearer c90f07b0708fe1864f62c5d71f7e6f906ac0b478bc8e5b070d7fd998f3080ec1
+      - Bearer 498e146cc20644d5cdd252f7eb48b1146b19cf3bef8833066ef139ee8ecd428a
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -74,19 +74,19 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Fri, 10 Aug 2018 17:35:44 GMT
+      - Mon, 13 Aug 2018 18:11:02 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"f60f4edaee5100aaa04c99901967a370"
+      - W/"ed5147c554a8139f288875111fa84458"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 0a5f5ec3-a02a-4e32-82e9-ce5df803a26a
+      - fff85a49-1a60-4ecf-b5a0-363a1db4db0d
       X-Runtime:
-      - '0.035057'
+      - '0.050860'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Transfer-Encoding:
@@ -95,7 +95,7 @@ http_interactions:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"id":"d8e03dea-e859-4442-a06d-c11405d5e807","email":"demurtas@mailinator.com","requester":null}'
+      string: '{"id":"d54d41c0-4d0f-4270-97fa-140b076f5c34","email":"demurtas@mailinator.com","requester":null}'
     http_version: 
-  recorded_at: Fri, 10 Aug 2018 17:35:44 GMT
+  recorded_at: Mon, 13 Aug 2018 18:11:02 GMT
 recorded_with: VCR 2.9.3
