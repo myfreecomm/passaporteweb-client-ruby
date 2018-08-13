@@ -11,19 +11,6 @@ class PassaporteWeb::Resources::Base
 
   attr_reader :api
 
-  # Builds a collection of entities from the OAuth2 response.
-  #
-  # @param [OAuth2::Response] response The response from any OAuth2::AccessToken method.
-  # @param [PassaporteWeb::Entities::Base] naked_klass The class which the collection's members will be
-  #   deserialized into (must be a subtype of PassaporteWeb::Entities::Base).
-  #   Optional if the entity name is the same as the resource name.
-  #
-  # @return [Array<PassaporteWeb::Entities::Base>] an array of instances of naked_class
-  def respond_with_collection(response, naked_klass = entity_klass)
-    # response.parsed is an Array
-    PassaporteWeb::Entities::Collection.build(response.parsed, naked_klass)
-  end
-
   # Builds an entity from the OAuth2 response.
   #
   # @param [OAuth2::Response] response The response from any OAuth2::AccessToken method
