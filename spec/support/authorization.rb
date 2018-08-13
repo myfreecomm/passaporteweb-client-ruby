@@ -18,10 +18,10 @@ module Authorization
     connection.post('/sign_in', URI.encode_www_form(data))
 
     response = connection.get('oauth/authorize',
-      client_id: PassaporteWeb.configuration.application_token,
-      redirect_uri: 'urn:ietf:wg:oauth:2.0:oob',
-      response_type: 'code',
-      scope: 'profile invite')
+                              client_id: PassaporteWeb.configuration.application_token,
+                              redirect_uri: 'urn:ietf:wg:oauth:2.0:oob',
+                              response_type: 'code',
+                              scope: 'profile invite')
 
     if(response.headers['location'].nil? || response.headers['location'] == '')
       data = {

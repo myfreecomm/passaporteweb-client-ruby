@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.12.2
       Authorization:
-      - Bearer 80f401056b3493cf9dee19f74d1d6fdcf614cb4761563118d1b39b7108baad87
+      - Bearer af086644fd91bf2f2365110f74ff02187fe3fd79686312f702af7f45d988154b
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Mon, 13 Aug 2018 18:10:59 GMT
+      - Mon, 13 Aug 2018 20:30:19 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -35,9 +35,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 4ae33c76-b6f6-4721-b899-9c2515448e1c
+      - 26251e68-98c0-4bbe-87ac-3d3477e9d7e7
       X-Runtime:
-      - '0.021357'
+      - '0.013379'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Transfer-Encoding:
@@ -48,5 +48,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"id":"57bb5938-d0c5-439a-9986-e5c565124beb","emails":["luiz.buiatte+pw.api.test@nexaas.com"]}'
     http_version: 
-  recorded_at: Mon, 13 Aug 2018 18:11:00 GMT
+  recorded_at: Mon, 13 Aug 2018 20:30:19 GMT
 recorded_with: VCR 2.9.3

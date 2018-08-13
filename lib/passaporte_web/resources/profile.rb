@@ -35,9 +35,8 @@ class PassaporteWeb::Resources::Profile < PassaporteWeb::Resources::Base
   #
   # @return [PassaporteWeb::Entities::Profile::ProfessionalInfo] user's professional info
   def professional_info
-    respond_with_entity(
-      api.get('/api/v1/profile/professional_info'),
-      PassaporteWeb::Entities::Profile::ProfessionalInfo)
+    respond_with_entity(api.get('/api/v1/profile/professional_info'),
+                        PassaporteWeb::Entities::Profile::ProfessionalInfo)
   end
 
   # Retrieves the user's contacts
@@ -49,9 +48,8 @@ class PassaporteWeb::Resources::Profile < PassaporteWeb::Resources::Base
   #
   # @return [PassaporteWeb::Entities::Profile::Contacts] user's contacts
   def contacts
-    respond_with_entity(
-      api.get('/api/v1/profile/contacts'),
-      PassaporteWeb::Entities::Profile::Contacts)
+    respond_with_entity(api.get('/api/v1/profile/contacts'),
+                        PassaporteWeb::Entities::Profile::Contacts)
   end
 
   # Retrieves the user's emails
@@ -63,8 +61,7 @@ class PassaporteWeb::Resources::Profile < PassaporteWeb::Resources::Base
   #
   # @return [PassaporteWeb::Entities::Profile::Emails] user's emails
   def emails
-    respond_with_entity(
-      api.get('/api/v1/profile/emails'),
-      PassaporteWeb::Entities::Profile::Emails)
+    respond_with_entity(api.get('/api/v1/profile/emails'),
+                        PassaporteWeb::Entities::Profile::Emails)
   end
 end

@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe PassaporteWeb::Client::ExceptionWrapper do
   let(:token) { instance_double('OAuth::AccessToken') }

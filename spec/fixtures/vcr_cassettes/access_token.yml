@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Mon, 13 Aug 2018 18:10:44 GMT
+      - Mon, 13 Aug 2018 20:30:13 GMT
       Connection:
       - keep-alive
       X-Frame-Options:
@@ -41,15 +41,15 @@ http_interactions:
       Content-Language:
       - pt
       Etag:
-      - W/"4b0a72d1210acc1a3e8d13dded903288"
+      - W/"00cff45b8d4bfb3289ff06b9afc49dee"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - _pw2_session=3c8f7a6695d9338eb2114b80bca3582a; path=/; secure; HttpOnly; SameSite=Strict
+      - _pw2_session=2f5dad0fd791c3ab1b6a92e954e2d59b; path=/; secure; HttpOnly; SameSite=Strict
       X-Request-Id:
-      - bd2ba035-1013-419c-9e9e-bdafae169435
+      - dd3c525f-f0fd-41ab-8c22-2e8dcf4fbc53
       X-Runtime:
-      - '0.302649'
+      - '0.080730'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Transfer-Encoding:
@@ -59,20 +59,20 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPHRpdGxlPlBhc3NhcG9ydGVXZWI8L3RpdGxlPgogICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiPgogICAgPG1ldGEgbmFtZT0iY3NyZi1wYXJhbSIgY29udGVudD0iYXV0aGVudGljaXR5X3Rva2VuIiAvPgo8bWV0YSBuYW1lPSJjc3JmLXRva2VuIiBjb250ZW50PSJBTWozRWdMU0hQdGtTSTlreTdzeUNUcFNpNXRpWk9IN2FvaE1ETWFqMk1TSk5qTmlZVWh0N0Jjd2FXZWxHQklTMTh6R0pjeUpUWGxFOFdSTXoyMXIvUT09IiAvPgoKICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgbWVkaWE9ImFsbCIgaHJlZj0iaHR0cHM6Ly9kY3A5M2U0ZG9pYjFyLmNsb3VkZnJvbnQubmV0L2Fzc2V0cy9hcHBsaWNhdGlvbi00ZGE3NGZkYTEyYWQ0NjViNjFhMjY4MTkwNTRiZDE3ZjI5ODdlNThlYWU5M2RiNDg2ZGFlMmFlZTk1ZTA0N2FkLmNzcyIgZGF0YS10dXJib2xpbmtzLXRyYWNrPSJyZWxvYWQiIC8+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9kY3A5M2U0ZG9pYjFyLmNsb3VkZnJvbnQubmV0L2Fzc2V0cy9hcHBsaWNhdGlvbi1iZmJkYmUzYjFkNTBhMWM2OWM4OWJiZDFmOTA1MTZiYjFmZjFmZGJhODgzMzcyNzllMjg0MDdkYWVmMjVlYTAzLmpzIiBkYXRhLXR1cmJvbGlua3MtdHJhY2s9InJlbG9hZCI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9kY3A5M2U0ZG9pYjFyLmNsb3VkZnJvbnQubmV0L3BhY2tzL2FwcGxpY2F0aW9uLTM0MjFjNTFkZmU4ZWVlZmZlNTM0LmpzIiBkYXRhLXR1cmJvbGlua3MtdHJhY2s9InJlbG9hZCI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9kY3A5M2U0ZG9pYjFyLmNsb3VkZnJvbnQubmV0L2Fzc2V0cy9pMThuLTRhOGY4OTI5ZTgyZmY4YmM3NjQ5NzViMTBkOWIyODA1MjM5OGIzNThiZWNiYzc3ZWMwZDUxNzExYjA5NDNiNmIuanMiPjwvc2NyaXB0PgoKICAgIDxzY3JpcHQ+CiAgICAgIHdpbmRvdy5sb2NhbGUgPSAicHQiCiAgICAgIHdpbmRvdy5kZWZhdWx0X2xvY2FsZSA9ICJwdCIKICAgIDwvc2NyaXB0PgogIDwvaGVhZD4KCiAgPGJvZHkgZGF0YS10aGVtZT0icGFzc2Fwb3J0ZVdlYiI+CiAgICAKICAgIDxkaXYgY2xhc3M9ImNoLWxvZ2luIj4KICAgICAgPGRpdiBjbGFzcz0iY2gtbG9naW4tY29udGFpbmVyICI+CiAgICAgICAgPGRpdiBjbGFzcz0iY2gtbG9naW4taGVhZGVyIj4KICAgICAgICAgIDxpbWcgYWx0PSJQYXNzYXBvcnRlV2ViIiB0aXRsZT0iUGFzc2Fwb3J0ZVdlYiIgY2xhc3M9ImxvZ28iIHNyYz0iaHR0cHM6Ly9kY3A5M2U0ZG9pYjFyLmNsb3VkZnJvbnQubmV0L2Fzc2V0cy9sb2dvLXB3LTc3Y2Q3YTA2YjUwZDVjMDI1MWQyMGNhZWU5NzMzZWRiMzJlZDBlZmNlNDQyODEwMzhmYzJjMmRkMzM4MTJiNTIuc3ZnIiAvPgogICAgICAgICAgPGgxIGNsYXNzPSJ1aSBoZWFkZXIiPjxzcGFuPkZhemVyIGxvZ2luPC9zcGFuPjxzcGFuIGNsYXNzPSJ1aSBzdWIgaGVhZGVyIj5lIHByb3NzZWd1aXIgcGFyYSBNaW5oYSBDb250YTwvc3Bhbj48L2gxPgogICAgICAgICAgCiAgICAgICAgPC9kaXY+CgogICAgICAgIDxkaXYgY2xhc3M9ImNoLWxvZ2luLWNvbnRlbnQiPgogICAgICAgICAgCjxkaXYgY2xhc3M9ImNoLWxvZ2luLWZvcm0iPgogIDxmb3JtIGNsYXNzPSJzaW1wbGVfZm9ybSB1aSBmb3JtIiBpZD0ibmV3X3Nlc3Npb24iIGFjdGlvbj0iL3NpZ25faW4iIGFjY2VwdC1jaGFyc2V0PSJVVEYtOCIgbWV0aG9kPSJwb3N0Ij48aW5wdXQgbmFtZT0idXRmOCIgdHlwZT0iaGlkZGVuIiB2YWx1ZT0iJiN4MjcxMzsiIC8+PGlucHV0IHR5cGU9ImhpZGRlbiIgbmFtZT0iYXV0aGVudGljaXR5X3Rva2VuIiB2YWx1ZT0ieVNVc0pWY1FTL0ovOEtZVzNMZEE1cUhQTHlFKzhHYUlTUythRHd2eDRUY0o2L3hEdldGekJzeWtUTmhmUG5Hb3ZwZDlLOEdnd3Zibk9xQkdibVNOaVE9PSIgLz4KICAgIDxkaXYgY2xhc3M9ImZpZWxkIj4KICAgICAgPGRpdiBjbGFzcz0iZmllbGQgZW1haWwgcmVxdWlyZWQgc2Vzc2lvbl9lbWFpbCI+PGlucHV0IGNsYXNzPSJzdHJpbmcgZW1haWwgcmVxdWlyZWQiIGF1dG9mb2N1cz0iYXV0b2ZvY3VzIiByZXF1aXJlZD0icmVxdWlyZWQiIGFyaWEtcmVxdWlyZWQ9InRydWUiIHBsYWNlaG9sZGVyPSJFLW1haWwiIHR5cGU9ImVtYWlsIiBuYW1lPSJzZXNzaW9uW2VtYWlsXSIgaWQ9InNlc3Npb25fZW1haWwiIC8+PC9kaXY+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9ImZpZWxkIj4KICAgICAgPGRpdiBjbGFzcz0iZmllbGQgcGFzc3dvcmQgcmVxdWlyZWQgc2Vzc2lvbl9wYXNzd29yZCI+PGlucHV0IGNsYXNzPSJwYXNzd29yZCByZXF1aXJlZCIgcmVxdWlyZWQ9InJlcXVpcmVkIiBhcmlhLXJlcXVpcmVkPSJ0cnVlIiBwbGFjZWhvbGRlcj0iU2VuaGEiIHR5cGU9InBhc3N3b3JkIiBuYW1lPSJzZXNzaW9uW3Bhc3N3b3JkXSIgaWQ9InNlc3Npb25fcGFzc3dvcmQiIC8+PC9kaXY+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9ImZpZWxkIj4KICAgICAgPGRpdiBjbGFzcz0idWkgY2hlY2tib3giPgogICAgICAgIDxkaXYgY2xhc3M9ImZpZWxkIGJvb2xlYW4gb3B0aW9uYWwgc2Vzc2lvbl9yZW1lbWJlcl9tZSI+PGlucHV0IG5hbWU9InNlc3Npb25bcmVtZW1iZXJfbWVdIiB0eXBlPSJoaWRkZW4iIHZhbHVlPSIwIiAvPjxpbnB1dCBjbGFzcz0iYm9vbGVhbiBvcHRpb25hbCIgdHlwZT0iY2hlY2tib3giIHZhbHVlPSIxIiBjaGVja2VkPSJjaGVja2VkIiBuYW1lPSJzZXNzaW9uW3JlbWVtYmVyX21lXSIgaWQ9InNlc3Npb25fcmVtZW1iZXJfbWUiIC8+PGxhYmVsIGNsYXNzPSJib29sZWFuIG9wdGlvbmFsIiBmb3I9InNlc3Npb25fcmVtZW1iZXJfbWUiPkNvbmZpYXIgbmVzdGUgbmF2ZWdhZG9yCiAgICAgICAgICAgIDxzcGFuIGRhdGEtdG9vbHRpcD0iQW8gZGVzbWFyY2FyIGVzdGEgb3DDp8Ojbywgc3VhIHNlc3PDo28gbm8gUGFzc2Fwb3J0ZVdlYiBpcsOhIGV4cGlyYXIgYXNzaW0gcXVlIHZvY8OqIGZlY2hhciBhIGphbmVsYSBkbyBzZXUgbmF2ZWdhZG9yLCBwYXJhIHN1YSBzZWd1cmFuw6dhLgoiIGRhdGEtaW52ZXJ0ZWQ9IiI+CiAgICAgICAgICAgICAgPGkgY2xhc3M9Imljb24gcXVlc3Rpb24gY2lyY2xlIHNtYWxsIGdyZXkiPjwvaT4KICAgICAgICAgICAgPC9zcGFuPjwvbGFiZWw+PC9kaXY+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJ1aSBkaXZpZGVyIGhpZGRlbiI+PC9kaXY+CiAgICA8aW5wdXQgdHlwZT0ic3VibWl0IiBuYW1lPSJjb21taXQiIHZhbHVlPSJFbnRyYXIiIGNsYXNzPSJ1aSBwcmltYXJ5IHN1Ym1pdCBidXR0b24gdWkgZmx1aWQgYnV0dG9uIiBkYXRhLWRpc2FibGUtd2l0aD0iRW50cmFyIiAvPgo8L2Zvcm0+ICA8ZGl2IGNsYXNzPSJjaC1sb2dpbi1oZWxwZXJzIj4KICAgIDxzcGFuPjxhIGhyZWY9Ii9yZWNvdmVyX3Bhc3N3b3JkIj5Fc3F1ZWNldSBzdWEgc2VuaGE/PC9hPjwvc3Bhbj4KICAgIDxzcGFuPkFpbmRhIG7Do28gcG9zc3VpIGNvbnRhPyA8YSBocmVmPSIvc3RhcnRfc2lnbl91cCI+Q3JpZSBhZ29yYTwvYT48L3NwYW4+CiAgPC9kaXY+CjwvZGl2PgoKICAgICAgICA8L2Rpdj4KCiAgICAgICAgPGRpdiBjbGFzcz0iY2gtbG9naW4tZm9vdGVyIj4KICAgICAgICAgIDx1bD4KICAgICAgICAgICAgPGxpPjxhIGhyZWY9Imh0dHBzOi8vd3d3LnBhc3NhcG9ydGV3ZWIuY29tLmJyL3Rlcm1vc19kZV9zZXJ2aWNvIj5UZXJtb3MgZGUgc2VydmnDp288L2E+PC9saT4KICAgICAgICAgICAgPGxpPjxhIGhyZWY9Imh0dHBzOi8vbXlmcmVlY29tbS5naXRodWIuaW8vcGFzc2Fwb3J0ZS13ZWIiPkRvY3VtZW50YcOnw6NvIGRhIEFQSTwvYT48L2xpPgogICAgICAgICAgPC91bD4KICAgICAgICA8L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KICA8L2JvZHk+CjwvaHRtbD4K
+        PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPHRpdGxlPlBhc3NhcG9ydGVXZWI8L3RpdGxlPgogICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiPgogICAgPG1ldGEgbmFtZT0iY3NyZi1wYXJhbSIgY29udGVudD0iYXV0aGVudGljaXR5X3Rva2VuIiAvPgo8bWV0YSBuYW1lPSJjc3JmLXRva2VuIiBjb250ZW50PSJGa3ZNNGFFV1M3dGEwLzN1N2ZRME43ZThLRWxSQ3NJRnNGc3UyMi91UDRFNHZOYnd2OUZJNk5RV3ZWOGpXUUhZc3pBNWNqN0Mvem9ZTmM5RjdCTm16QT09IiAvPgoKICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgbWVkaWE9ImFsbCIgaHJlZj0iaHR0cHM6Ly9kY3A5M2U0ZG9pYjFyLmNsb3VkZnJvbnQubmV0L2Fzc2V0cy9hcHBsaWNhdGlvbi00ZGE3NGZkYTEyYWQ0NjViNjFhMjY4MTkwNTRiZDE3ZjI5ODdlNThlYWU5M2RiNDg2ZGFlMmFlZTk1ZTA0N2FkLmNzcyIgZGF0YS10dXJib2xpbmtzLXRyYWNrPSJyZWxvYWQiIC8+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9kY3A5M2U0ZG9pYjFyLmNsb3VkZnJvbnQubmV0L2Fzc2V0cy9hcHBsaWNhdGlvbi1iZmJkYmUzYjFkNTBhMWM2OWM4OWJiZDFmOTA1MTZiYjFmZjFmZGJhODgzMzcyNzllMjg0MDdkYWVmMjVlYTAzLmpzIiBkYXRhLXR1cmJvbGlua3MtdHJhY2s9InJlbG9hZCI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9kY3A5M2U0ZG9pYjFyLmNsb3VkZnJvbnQubmV0L3BhY2tzL2FwcGxpY2F0aW9uLTM0MjFjNTFkZmU4ZWVlZmZlNTM0LmpzIiBkYXRhLXR1cmJvbGlua3MtdHJhY2s9InJlbG9hZCI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9kY3A5M2U0ZG9pYjFyLmNsb3VkZnJvbnQubmV0L2Fzc2V0cy9pMThuLTRhOGY4OTI5ZTgyZmY4YmM3NjQ5NzViMTBkOWIyODA1MjM5OGIzNThiZWNiYzc3ZWMwZDUxNzExYjA5NDNiNmIuanMiPjwvc2NyaXB0PgoKICAgIDxzY3JpcHQ+CiAgICAgIHdpbmRvdy5sb2NhbGUgPSAicHQiCiAgICAgIHdpbmRvdy5kZWZhdWx0X2xvY2FsZSA9ICJwdCIKICAgIDwvc2NyaXB0PgogIDwvaGVhZD4KCiAgPGJvZHkgZGF0YS10aGVtZT0icGFzc2Fwb3J0ZVdlYiI+CiAgICAKICAgIDxkaXYgY2xhc3M9ImNoLWxvZ2luIj4KICAgICAgPGRpdiBjbGFzcz0iY2gtbG9naW4tY29udGFpbmVyICI+CiAgICAgICAgPGRpdiBjbGFzcz0iY2gtbG9naW4taGVhZGVyIj4KICAgICAgICAgIDxpbWcgYWx0PSJQYXNzYXBvcnRlV2ViIiB0aXRsZT0iUGFzc2Fwb3J0ZVdlYiIgY2xhc3M9ImxvZ28iIHNyYz0iaHR0cHM6Ly9kY3A5M2U0ZG9pYjFyLmNsb3VkZnJvbnQubmV0L2Fzc2V0cy9sb2dvLXB3LTc3Y2Q3YTA2YjUwZDVjMDI1MWQyMGNhZWU5NzMzZWRiMzJlZDBlZmNlNDQyODEwMzhmYzJjMmRkMzM4MTJiNTIuc3ZnIiAvPgogICAgICAgICAgPGgxIGNsYXNzPSJ1aSBoZWFkZXIiPjxzcGFuPkZhemVyIGxvZ2luPC9zcGFuPjxzcGFuIGNsYXNzPSJ1aSBzdWIgaGVhZGVyIj5lIHByb3NzZWd1aXIgcGFyYSBNaW5oYSBDb250YTwvc3Bhbj48L2gxPgogICAgICAgICAgCiAgICAgICAgPC9kaXY+CgogICAgICAgIDxkaXYgY2xhc3M9ImNoLWxvZ2luLWNvbnRlbnQiPgogICAgICAgICAgCjxkaXYgY2xhc3M9ImNoLWxvZ2luLWZvcm0iPgogIDxmb3JtIGNsYXNzPSJzaW1wbGVfZm9ybSB1aSBmb3JtIiBpZD0ibmV3X3Nlc3Npb24iIGFjdGlvbj0iL3NpZ25faW4iIGFjY2VwdC1jaGFyc2V0PSJVVEYtOCIgbWV0aG9kPSJwb3N0Ij48aW5wdXQgbmFtZT0idXRmOCIgdHlwZT0iaGlkZGVuIiB2YWx1ZT0iJiN4MjcxMzsiIC8+PGlucHV0IHR5cGU9ImhpZGRlbiIgbmFtZT0iYXV0aGVudGljaXR5X3Rva2VuIiB2YWx1ZT0iS2xoM3dmL3lmY2RVVGMxMzZuZVZPUXY1Mml0NWxPU0ROSDNTeGU4VStra2pGenRUTGsybUg4cXl4NjhOZDVlTDM2N0Y1N3NMWi9NQ051aXFJOWxjM3c9PSIgLz4KICAgIDxkaXYgY2xhc3M9ImZpZWxkIj4KICAgICAgPGRpdiBjbGFzcz0iZmllbGQgZW1haWwgcmVxdWlyZWQgc2Vzc2lvbl9lbWFpbCI+PGlucHV0IGNsYXNzPSJzdHJpbmcgZW1haWwgcmVxdWlyZWQiIGF1dG9mb2N1cz0iYXV0b2ZvY3VzIiByZXF1aXJlZD0icmVxdWlyZWQiIGFyaWEtcmVxdWlyZWQ9InRydWUiIHBsYWNlaG9sZGVyPSJFLW1haWwiIHR5cGU9ImVtYWlsIiBuYW1lPSJzZXNzaW9uW2VtYWlsXSIgaWQ9InNlc3Npb25fZW1haWwiIC8+PC9kaXY+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9ImZpZWxkIj4KICAgICAgPGRpdiBjbGFzcz0iZmllbGQgcGFzc3dvcmQgcmVxdWlyZWQgc2Vzc2lvbl9wYXNzd29yZCI+PGlucHV0IGNsYXNzPSJwYXNzd29yZCByZXF1aXJlZCIgcmVxdWlyZWQ9InJlcXVpcmVkIiBhcmlhLXJlcXVpcmVkPSJ0cnVlIiBwbGFjZWhvbGRlcj0iU2VuaGEiIHR5cGU9InBhc3N3b3JkIiBuYW1lPSJzZXNzaW9uW3Bhc3N3b3JkXSIgaWQ9InNlc3Npb25fcGFzc3dvcmQiIC8+PC9kaXY+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9ImZpZWxkIj4KICAgICAgPGRpdiBjbGFzcz0idWkgY2hlY2tib3giPgogICAgICAgIDxkaXYgY2xhc3M9ImZpZWxkIGJvb2xlYW4gb3B0aW9uYWwgc2Vzc2lvbl9yZW1lbWJlcl9tZSI+PGlucHV0IG5hbWU9InNlc3Npb25bcmVtZW1iZXJfbWVdIiB0eXBlPSJoaWRkZW4iIHZhbHVlPSIwIiAvPjxpbnB1dCBjbGFzcz0iYm9vbGVhbiBvcHRpb25hbCIgdHlwZT0iY2hlY2tib3giIHZhbHVlPSIxIiBjaGVja2VkPSJjaGVja2VkIiBuYW1lPSJzZXNzaW9uW3JlbWVtYmVyX21lXSIgaWQ9InNlc3Npb25fcmVtZW1iZXJfbWUiIC8+PGxhYmVsIGNsYXNzPSJib29sZWFuIG9wdGlvbmFsIiBmb3I9InNlc3Npb25fcmVtZW1iZXJfbWUiPkNvbmZpYXIgbmVzdGUgbmF2ZWdhZG9yCiAgICAgICAgICAgIDxzcGFuIGRhdGEtdG9vbHRpcD0iQW8gZGVzbWFyY2FyIGVzdGEgb3DDp8Ojbywgc3VhIHNlc3PDo28gbm8gUGFzc2Fwb3J0ZVdlYiBpcsOhIGV4cGlyYXIgYXNzaW0gcXVlIHZvY8OqIGZlY2hhciBhIGphbmVsYSBkbyBzZXUgbmF2ZWdhZG9yLCBwYXJhIHN1YSBzZWd1cmFuw6dhLgoiIGRhdGEtaW52ZXJ0ZWQ9IiI+CiAgICAgICAgICAgICAgPGkgY2xhc3M9Imljb24gcXVlc3Rpb24gY2lyY2xlIHNtYWxsIGdyZXkiPjwvaT4KICAgICAgICAgICAgPC9zcGFuPjwvbGFiZWw+PC9kaXY+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJ1aSBkaXZpZGVyIGhpZGRlbiI+PC9kaXY+CiAgICA8aW5wdXQgdHlwZT0ic3VibWl0IiBuYW1lPSJjb21taXQiIHZhbHVlPSJFbnRyYXIiIGNsYXNzPSJ1aSBwcmltYXJ5IHN1Ym1pdCBidXR0b24gdWkgZmx1aWQgYnV0dG9uIiBkYXRhLWRpc2FibGUtd2l0aD0iRW50cmFyIiAvPgo8L2Zvcm0+ICA8ZGl2IGNsYXNzPSJjaC1sb2dpbi1oZWxwZXJzIj4KICAgIDxzcGFuPjxhIGhyZWY9Ii9yZWNvdmVyX3Bhc3N3b3JkIj5Fc3F1ZWNldSBzdWEgc2VuaGE/PC9hPjwvc3Bhbj4KICAgIDxzcGFuPkFpbmRhIG7Do28gcG9zc3VpIGNvbnRhPyA8YSBocmVmPSIvc3RhcnRfc2lnbl91cCI+Q3JpZSBhZ29yYTwvYT48L3NwYW4+CiAgPC9kaXY+CjwvZGl2PgoKICAgICAgICA8L2Rpdj4KCiAgICAgICAgPGRpdiBjbGFzcz0iY2gtbG9naW4tZm9vdGVyIj4KICAgICAgICAgIDx1bD4KICAgICAgICAgICAgPGxpPjxhIGhyZWY9Imh0dHBzOi8vd3d3LnBhc3NhcG9ydGV3ZWIuY29tLmJyL3Rlcm1vc19kZV9zZXJ2aWNvIj5UZXJtb3MgZGUgc2VydmnDp288L2E+PC9saT4KICAgICAgICAgICAgPGxpPjxhIGhyZWY9Imh0dHBzOi8vbXlmcmVlY29tbS5naXRodWIuaW8vcGFzc2Fwb3J0ZS13ZWIiPkRvY3VtZW50YcOnw6NvIGRhIEFQSTwvYT48L2xpPgogICAgICAgICAgPC91bD4KICAgICAgICA8L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KICA8L2JvZHk+CjwvaHRtbD4K
     http_version: 
-  recorded_at: Mon, 13 Aug 2018 18:10:44 GMT
+  recorded_at: Mon, 13 Aug 2018 20:30:13 GMT
 - request:
     method: post
     uri: https://sandbox.v2.passaporteweb.com.br/sign_in
     body:
       encoding: US-ASCII
-      string: session%5Bemail%5D=luiz.buiatte%2Bpw.api.test%40nexaas.com&session%5Bpassword%5D=6VVsa8H6YtRJ&authenticity_token=ySUsJVcQS%2FJ%2F8KYW3LdA5qHPLyE%2B8GaISS%2BaDwvx4TcJ6%2FxDvWFzBsykTNhfPnGovpd9K8GgwvbnOqBGbmSNiQ%3D%3D
+      string: session%5Bemail%5D=luiz.buiatte%2Bpw.api.test%40nexaas.com&session%5Bpassword%5D=6VVsa8H6YtRJ&authenticity_token=Klh3wf%2FyfcdUTc136neVOQv52it5lOSDNH3Sxe8U%2BkkjFztTLk2mH8qyx68Nd5eL367F57sLZ%2FMCNuiqI9lc3w%3D%3D
     headers:
       User-Agent:
       - Faraday v0.12.2
       Cookie:
-      - _pw2_session=3c8f7a6695d9338eb2114b80bca3582a
+      - _pw2_session=2f5dad0fd791c3ab1b6a92e954e2d59b
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -85,7 +85,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Mon, 13 Aug 2018 18:10:45 GMT
+      - Mon, 13 Aug 2018 20:30:13 GMT
       Connection:
       - keep-alive
       X-Frame-Options:
@@ -109,11 +109,11 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - _pw2_session=a9f9377a64f0786a31aeeea28167dd91; path=/; secure; HttpOnly; SameSite=Strict
+      - _pw2_session=5318d90897787cf6badd3466f0f23097; path=/; secure; HttpOnly; SameSite=Strict
       X-Request-Id:
-      - aa3172e9-c95b-4a74-9737-444f1ab4acbf
+      - ac238478-194f-40d8-8fab-11f5ee56d5b4
       X-Runtime:
-      - '0.211762'
+      - '0.147508'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Transfer-Encoding:
@@ -124,7 +124,7 @@ http_interactions:
       encoding: UTF-8
       string: <html><body>You are being <a href="https://sandbox.v2.passaporteweb.com.br/profile">redirected</a>.</body></html>
     http_version: 
-  recorded_at: Mon, 13 Aug 2018 18:10:45 GMT
+  recorded_at: Mon, 13 Aug 2018 20:30:14 GMT
 - request:
     method: get
     uri: https://sandbox.v2.passaporteweb.com.br/oauth/authorize?client_id=QMKAZVAZ6NBR3IO2MCEHOGKVCY&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&scope=profile%20invite
@@ -135,7 +135,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.12.2
       Cookie:
-      - _pw2_session=a9f9377a64f0786a31aeeea28167dd91
+      - _pw2_session=5318d90897787cf6badd3466f0f23097
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -148,7 +148,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Mon, 13 Aug 2018 18:10:46 GMT
+      - Mon, 13 Aug 2018 20:30:15 GMT
       Connection:
       - keep-alive
       X-Frame-Options:
@@ -164,7 +164,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       Location:
-      - https://sandbox.v2.passaporteweb.com.br/oauth/authorize/native?code=95c44da8ad9043adad2be1ddffcb974a2a4e5ce257251c1b1a9c19760385f062
+      - https://sandbox.v2.passaporteweb.com.br/oauth/authorize/native?code=8561134d57043c840a348f091a8b7f09764e79107cfb3965d965dd7a9e400a1f
       Content-Language:
       - pt
       Content-Type:
@@ -172,9 +172,9 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - fe373d80-4fda-43b3-968a-a15dc1a085a2
+      - 9c2bfa62-58ea-4c32-b0a1-2b09aff47b97
       X-Runtime:
-      - '0.180621'
+      - '0.073436'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Transfer-Encoding:
@@ -183,15 +183,15 @@ http_interactions:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: <html><body>You are being <a href="https://sandbox.v2.passaporteweb.com.br/oauth/authorize/native?code=95c44da8ad9043adad2be1ddffcb974a2a4e5ce257251c1b1a9c19760385f062">redirected</a>.</body></html>
+      string: <html><body>You are being <a href="https://sandbox.v2.passaporteweb.com.br/oauth/authorize/native?code=8561134d57043c840a348f091a8b7f09764e79107cfb3965d965dd7a9e400a1f">redirected</a>.</body></html>
     http_version: 
-  recorded_at: Mon, 13 Aug 2018 18:10:46 GMT
+  recorded_at: Mon, 13 Aug 2018 20:30:15 GMT
 - request:
     method: post
     uri: https://sandbox.v2.passaporteweb.com.br/oauth/token
     body:
       encoding: UTF-8
-      string: client_id=QMKAZVAZ6NBR3IO2MCEHOGKVCY&client_secret=HXKQYGAQ4JHR5HR73SKOQ5NI6E&code=95c44da8ad9043adad2be1ddffcb974a2a4e5ce257251c1b1a9c19760385f062&grant_type=authorization_code&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob
+      string: client_id=QMKAZVAZ6NBR3IO2MCEHOGKVCY&client_secret=HXKQYGAQ4JHR5HR73SKOQ5NI6E&code=8561134d57043c840a348f091a8b7f09764e79107cfb3965d965dd7a9e400a1f&grant_type=authorization_code&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob
     headers:
       Accept:
       - application/json
@@ -209,7 +209,7 @@ http_interactions:
       Server:
       - Cowboy
       Date:
-      - Mon, 13 Aug 2018 18:10:47 GMT
+      - Mon, 13 Aug 2018 20:30:16 GMT
       Connection:
       - keep-alive
       Cache-Control:
@@ -219,11 +219,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"5e872e5a1a9f4ab963727ae77e320181"
+      - W/"2bb4657d5e700b5df072c45715e43ecb"
       X-Request-Id:
-      - 033a60bc-3b89-4906-a56a-03582caa8f46
+      - ea39abe5-c0d6-4094-adf6-a62471011b92
       X-Runtime:
-      - '0.061823'
+      - '0.032125'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Transfer-Encoding:
@@ -232,8 +232,8 @@ http_interactions:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"access_token":"80f401056b3493cf9dee19f74d1d6fdcf614cb4761563118d1b39b7108baad87","token_type":"bearer","expires_in":7200,"refresh_token":"753c41ac8ac6878c10f1733ff4f75a30479747caa8de6402e289150ab1776224","scope":"profile
-        invite","created_at":1534183847}'
+      string: '{"access_token":"af086644fd91bf2f2365110f74ff02187fe3fd79686312f702af7f45d988154b","token_type":"bearer","expires_in":7200,"refresh_token":"27b384e5771535933475ec3c8751366ad22731da09bd93de31f8befcb8bdd226","scope":"profile
+        invite","created_at":1534192216}'
     http_version: 
-  recorded_at: Mon, 13 Aug 2018 18:10:47 GMT
+  recorded_at: Mon, 13 Aug 2018 20:30:16 GMT
 recorded_with: VCR 2.9.3

@@ -14,7 +14,7 @@
 # @see PassaporteWeb::Client::Identity#initialize
 class PassaporteWeb::Resources::Widget < PassaporteWeb::Resources::Base
 
-   # Retrieves the user's navbar URL
+  # Retrieves the user's navbar URL
   #
   # [API]
   #   Method: <tt>GET /api/v1/widgets/navbar</tt>

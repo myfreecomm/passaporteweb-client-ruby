@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe PassaporteWeb::Client::Identity do
   subject { described_class.new(user_credentials) }

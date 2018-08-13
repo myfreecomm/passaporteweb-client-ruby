@@ -1,10 +1,9 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe PassaporteWeb::Resources::SignUp do
   let(:resource) { client.sign_up }
 
   describe "#create" do
-
     describe 'with application client' do
       let(:client) { PassaporteWeb::Client::Application.new }
       subject { resource.create('demurtas@mailinator.com') }
@@ -31,5 +30,4 @@ describe PassaporteWeb::Resources::SignUp do
       end
     end
   end
-
 end

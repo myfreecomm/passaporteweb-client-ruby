@@ -37,7 +37,8 @@ class PassaporteWeb::Entities::Collection < Base
   private
 
   def page_for(page_rel)
-    parsed_body[page_rel].match(PAGE_REGEX)[1].to_i rescue nil
+    match = parsed_body[page_rel].match(PAGE_REGEX)
+    return match[1].to_i if match
   end
 
   def build_collection

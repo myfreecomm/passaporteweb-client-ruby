@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe PassaporteWeb::Resources::Profile do
   let(:client) { PassaporteWeb::Client::Identity.new(user_credentials) }
