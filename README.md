@@ -12,9 +12,9 @@ NexaasID API docs: https://id.nexaas.com/static/docs/
 
 nexaas-id-client-ruby RDoc documentation: http://rubydoc.info/github/myfreecomm/nexaas-id-client-ruby/frames/
 
-The {RDoc}[http://rubydoc.info/github/myfreecomm/nexaas-id-client-ruby/frames/] is the best place to learn how to use this client. A few example uses are listed below. See the mapping of API endpoints to this client code below as well to find what you need.
+The [RDoc](http://rubydoc.info/github/myfreecomm/nexaas-id-client-ruby/frames/) is the best place to learn how to use this client. A few example uses are listed below. See the mapping of API endpoints to this client code below as well to find what you need.
 
-This client only uses the API of Nexaas ID. To authenticate users via OAuth2 in Ruby, see the {omni_auth_nexaas_id gem}[https://rubygems.org/gems/omni_auth_nexaas_id] ({code}[https://github.com/myfreecomm/omniauth-nexaas_id] and {example of use}[https://github.com/myfreecomm/nexaas-id-demo-apps]).
+This client only uses the API of Nexaas ID. To authenticate users via OAuth2 in Ruby, see the [omni_auth_nexaas_id gem](https://rubygems.org/gems/omni_auth_nexaas_id) ([code](https://github.com/myfreecomm/omniauth-nexaas_id) and [example of use](https://github.com/myfreecomm/nexaas-id-demo-apps)).
 
 ## Installation
 
