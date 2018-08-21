@@ -4,7 +4,7 @@ require 'spec_helper'
 describe PassaporteWeb::Configuration do
 
   it "should use the production PassaporteWeb URL by default" do
-    expect(PassaporteWeb::Configuration.new.url).to eq('https://app.passaporteweb.com.br')
+    expect(PassaporteWeb::Configuration.new.url).to eq('https://v2.passaporteweb.com.br')
   end
 
   it "should use a default user agent" do
@@ -14,41 +14,24 @@ describe PassaporteWeb::Configuration do
   it 'should allow setting the configuration parameters' do
     config = PassaporteWeb::Configuration.new
 
-    config.url = 'http://sandbox.app.passaporteweb.com.br'
-    config.application_token = 'some-app-token'
-    config.application_secret = 'some-app-secret'
+    config.url = 'http://sandbox.v2.passaporteweb.com.br'
+    config.application_token = '58ca7acc-9479-4671-8b7c-745c5a65ce08'
+    config.application_secret = '8da0d1a5-961d-461f-8ae6-1922db172340'
 
-    expect(config.url).to eq('http://sandbox.app.passaporteweb.com.br')
-    expect(config.application_token).to eq('some-app-token')
-    expect(config.application_secret).to eq('some-app-secret')
-    expect(config.user_token).to be_nil
+    expect(config.url).to eq('http://sandbox.v2.passaporteweb.com.br')
+    expect(config.application_token).to eq('58ca7acc-9479-4671-8b7c-745c5a65ce08')
+    expect(config.application_secret).to eq('8da0d1a5-961d-461f-8ae6-1922db172340')
   end
 
-  describe "#application_credentials" do
-    let(:config) { PassaporteWeb::Configuration.new }
-    it "should return the HTTP Basic Auth header value for the application login" do
-      config.application_token = 'some-app-token'
-      config.application_secret = 'some-app-secret'
-      expect(config.application_credentials).to eq('Basic c29tZS1hcHAtdG9rZW46c29tZS1hcHAtc2VjcmV0')
-    end
-    it "should require the application_token to be set" do
-      config.application_secret = 'some-app-secret'
-      expect { config.application_credentials }.to raise_error(ArgumentError, 'application_token not set')
-    end
-    it "should require the application_secret to be set" do
-      config.application_token = 'some-app-token'
-      expect { config.application_credentials }.to raise_error(ArgumentError, 'application_secret not set')
-    end
-  end
+  describe '#url_for' do
+    let(:configuration) { described_class.new }
 
-  describe "#user_credentials" do
-    let(:config) { PassaporteWeb::Configuration.new }
-    it "should return the HTTP Basic Auth header value for the user login" do
-      config.user_token = 'some-user-token'
-      expect(config.user_credentials).to eq('Basic OnNvbWUtdXNlci10b2tlbg==')
-    end
-    it "should require the user_token to be set" do
-      expect { config.user_credentials }.to raise_error(ArgumentError, 'user_token not set')
+    it 'generates an URL to a resource' do
+      expect(configuration.url_for('/api/v1/profile')).to eq('https://v2.passaporteweb.com.br/api/v1/profile')
+
+      configuration.url = 'https://sandbox.v2.passaporteweb.com.br/'
+      expect(configuration.url_for('/api/v1/profile'))
+        .to eq('https://sandbox.v2.passaporteweb.com.br/api/v1/profile')
     end
   end
 
