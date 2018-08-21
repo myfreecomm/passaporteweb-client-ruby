@@ -11,7 +11,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 SimpleCov.start
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'passaporte_web'
+require 'nexaas_id'
 
 require 'vcr'
 require 'pry'
@@ -32,10 +32,10 @@ RSpec.configure do |c|
   c.include Authorization
 
   c.before do
-    PassaporteWeb.configure do |config|
-      # https://sandbox.v2.passaporteweb.com.br/applications/89e9d504-e2a8-476e-ac94-c33e68399c7e
+    NexaasID.configure do |config|
+      # https://sandbox.id.nexaas.com/applications/89e9d504-e2a8-476e-ac94-c33e68399c7e
       # Test application - luiz.buiatte+pw.api.test@nexaas.com
-      config.url = ENV['PASSAPORTE_WEB_URL']
+      config.url = ENV['NEXAAS_ID_URL']
       config.application_token = ENV['APPLICATION_TOKEN']
       config.application_secret = ENV['APPLICATION_SECRET']
     end
