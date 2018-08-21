@@ -8,7 +8,7 @@ This is the official Ruby client for the [Nexaas ID](https://id.nexaas.com) API.
 [![Code Climate Grade](https://codeclimate.com/github/myfreecomm/nexaas-id-client-ruby.png)](https://codeclimate.com/github/myfreecomm/nexaas-id-client-ruby)
 [![Inline docs](http://inch-ci.org/github/myfreecomm/nexaas-id-client-ruby.svg)](http://inch-ci.org/github/myfreecomm/nexaas-id-client-ruby)
 
-NexaasID API docs: https://id.nexaas.com/static/docs/
+Nexaas ID API docs: https://id.nexaas.com/static/docs/
 
 nexaas-id-client-ruby RDoc documentation: http://rubydoc.info/github/myfreecomm/nexaas-id-client-ruby/frames/
 
@@ -105,7 +105,7 @@ contacts.phone_numbers  # ['+55 21 12345678']
 
 sign_up_resource = client.sign_up
 
-# Invites another user to NexaasID on behalf of the current user
+# Invites another user to Nexaas ID on behalf of the current user
 sign_up = sign_up_resource.create('another.john@example.com')
 sign_up.id        # '1061a775-b86c-4082-b801-767f651fa4c7'
 sign_up.email     # 'another.john@example.com'
@@ -136,7 +136,7 @@ client = NexaasID::Client::Application.new
 
 sign_up_resource = client.sign_up
 
-# Invites another user to NexaasID on behalf of the application
+# Invites another user to Nexaas ID on behalf of the application
 sign_up = sign_up_resource.create('another.john@example.com')
 sign_up.id        # '1061a775-b86c-4082-b801-767f651fa4c7'
 sign_up.email     # 'another.john@example.com'

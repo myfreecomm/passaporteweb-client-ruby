@@ -4,7 +4,7 @@ class NexaasID::Configuration
 
   def initialize
     @url = 'https://id.nexaas.com'
-    @user_agent = "NexaasID Ruby Client v#{NexaasID::VERSION}"
+    @user_agent = "Nexaas ID Ruby Client v#{NexaasID::VERSION}"
   end
 
   def url_for(path)

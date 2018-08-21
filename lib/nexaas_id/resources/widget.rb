@@ -1,4 +1,4 @@
-# A wrapper to NexaasID's widget API
+# A wrapper to Nexaas ID's widget API
 #
 # [API]
 #   Documentation:
@@ -7,7 +7,7 @@
 #   client = NexaasID::Client::Identity.new(credentials)
 #   client.widget.navbar_url
 #
-# @example Inviting a new user to NexaasID (on behalf of an application):
+# @example Inviting a new user to Nexaas ID (on behalf of an application):
 #   client = NexaasID::Client::Application.new
 #   client.sign_up.create('john.doe@gmail.com')
 #

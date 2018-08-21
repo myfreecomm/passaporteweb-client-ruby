@@ -1,4 +1,4 @@
-# NexaasID Client for resources not owned by an Identity
+# Nexaas ID Client for resources not owned by an Identity
 #
 # [API]
 #   Documentation:

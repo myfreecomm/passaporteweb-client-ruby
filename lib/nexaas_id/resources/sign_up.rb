@@ -1,13 +1,13 @@
-# A wrapper to NexaasID's sign up API
+# A wrapper to Nexaas ID's sign up API
 #
 # [API]
 #   Documentation:
 #
-# @example Inviting a new user to NexaasID (on behalf of an existing user):
+# @example Inviting a new user to Nexaas ID (on behalf of an existing user):
 #   client = NexaasID::Client::Identity.new(credentials)
 #   client.sign_up.create('john.doe@gmail.com')
 #
-# @example Inviting a new user to NexaasID (on behalf of an application):
+# @example Inviting a new user to Nexaas ID (on behalf of an application):
 #   client = NexaasID::Client::Application.new
 #   client.sign_up.create('john.doe@gmail.com')
 #
@@ -15,7 +15,7 @@
 # @see NexaasID::Client::Application#initialize
 class NexaasID::Resources::SignUp < NexaasID::Resources::Base
 
-  # Invites an user to NexaasID, by creating a new sign up.
+  # Invites an user to Nexaas ID, by creating a new sign up.
   #
   # [API]
   #   Method: <tt>POST /api/v1/sign_up</tt>

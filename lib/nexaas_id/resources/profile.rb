@@ -1,4 +1,4 @@
-# A wrapper to NexaasID's profile API
+# A wrapper to Nexaas ID's profile API
 #
 # [API]
 #   Documentation:
