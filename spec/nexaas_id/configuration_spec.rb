@@ -3,12 +3,12 @@ require 'spec_helper'
 
 describe NexaasID::Configuration do
 
-  it "should use the production NexaasID URL by default" do
+  it "should use the production Nexaas ID URL by default" do
     expect(NexaasID::Configuration.new.url).to eq('https://id.nexaas.com')
   end
 
   it "should use a default user agent" do
-    expect(NexaasID::Configuration.new.user_agent).to eq("NexaasID Ruby Client v#{NexaasID::VERSION}")
+    expect(NexaasID::Configuration.new.user_agent).to eq("Nexaas ID Ruby Client v#{NexaasID::VERSION}")
   end
 
   it 'should allow setting the configuration parameters' do
