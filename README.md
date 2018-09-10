@@ -1,3 +1,9 @@
+# DEPRECATED
+
+This project has been marked as deprecated in favor of [nexaas-id-client-ruby](https://github.com/myfreecomm/nexaas-id-client-ruby).
+
+-----------------------------------------
+
 # passaporteweb-client-ruby
 
 This is the official Ruby client for the [PassaporteWeb 2](https://v2.passaporteweb.com.br) API.
